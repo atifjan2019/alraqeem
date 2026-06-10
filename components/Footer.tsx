@@ -9,11 +9,11 @@ export default function Footer() {
       <div className="container-site grid gap-10 py-12 sm:grid-cols-2 lg:grid-cols-4">
         <div>
           <Image
-            src="/logo-mark.png"
+            src="/logo.png"
             alt={`${site.name} logo`}
-            width={220}
-            height={214}
-            className="h-16 w-auto"
+            width={200}
+            height={200}
+            className="h-20 w-auto"
           />
           <p className="mt-5 text-sm leading-relaxed text-slate-400">
             {site.name} is a full-service travel company based in Charsadda,

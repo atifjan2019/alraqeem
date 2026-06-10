@@ -1,4 +1,5 @@
 import { NextResponse } from "next/server";
+import { revalidatePath } from "next/cache";
 import { deletePackage } from "@/lib/packagesStore";
 
 export const dynamic = "force-dynamic";
@@ -10,6 +11,8 @@ export async function DELETE(
   const { slug } = await params;
   try {
     await deletePackage(slug);
+    revalidatePath("/");
+    revalidatePath("/packages");
     return NextResponse.json({ ok: true });
   } catch (err) {
     const message =

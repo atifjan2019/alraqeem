@@ -29,12 +29,12 @@ export default function Header() {
           onClick={() => setOpen(false)}
         >
           <Image
-            src="/logo-mark.png"
+            src="/logo.png"
             alt={`${site.name} logo`}
-            width={280}
-            height={272}
+            width={200}
+            height={200}
             priority
-            className="h-14 w-auto sm:h-[68px]"
+            className="h-14 w-auto sm:h-16"
           />
         </Link>
 

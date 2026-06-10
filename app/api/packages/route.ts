@@ -1,4 +1,5 @@
 import { NextResponse } from "next/server";
+import { revalidatePath } from "next/cache";
 import { getPackages, addPackage } from "@/lib/packagesStore";
 import type { Category } from "@/lib/packages";
 
@@ -72,6 +73,8 @@ export async function POST(request: Request) {
       image,
       featured,
     });
+    revalidatePath("/");
+    revalidatePath("/packages");
     return NextResponse.json({ package: pkg }, { status: 201 });
   } catch (err) {
     const message = err instanceof Error ? err.message : "Failed to add package.";
