@@ -23,6 +23,7 @@ type Row = {
   description: string;
   image: string | null;
   sort_order: number | null;
+  expiry_date: string | null;
 };
 
 function rowToPackage(r: Row): TravelPackage {
@@ -36,6 +37,7 @@ function rowToPackage(r: Row): TravelPackage {
     highlights: r.highlights ?? [],
     description: r.description,
     image: r.image ?? undefined,
+    expiryDate: r.expiry_date ?? null,
   };
 }
 
@@ -98,10 +100,41 @@ export async function addPackage(input: PackageInput): Promise<TravelPackage> {
     highlights: input.highlights ?? [],
     description: input.description,
     image: input.image ?? null,
+    expiry_date: input.expiryDate || null,
   };
   const { data, error } = await supabase
     .from(PACKAGES_TABLE)
     .insert(row)
+    .select()
+    .single();
+  if (error) throw new Error(error.message);
+  return rowToPackage(data as Row);
+}
+
+/** Update an existing package by slug. Requires the service-role client. */
+export async function updatePackage(
+  slug: string,
+  input: PackageInput
+): Promise<TravelPackage> {
+  const supabase = getAdminClient();
+  if (!supabase) {
+    throw new Error("Supabase admin is not configured.");
+  }
+  const patch = {
+    title: input.title,
+    category: input.category,
+    duration: input.duration,
+    price: input.price,
+    featured: input.featured ?? false,
+    highlights: input.highlights ?? [],
+    description: input.description,
+    image: input.image ?? null,
+    expiry_date: input.expiryDate || null,
+  };
+  const { data, error } = await supabase
+    .from(PACKAGES_TABLE)
+    .update(patch)
+    .eq("slug", slug)
     .select()
     .single();
   if (error) throw new Error(error.message);

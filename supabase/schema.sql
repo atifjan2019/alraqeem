@@ -16,9 +16,13 @@ create table if not exists public.packages (
   highlights  text[] not null default '{}',
   description text not null,
   image       text,                    -- optional image URL override
+  expiry_date date,                     -- optional offer expiry (null = none)
   sort_order  integer not null default 0,
   created_at  timestamptz not null default now()
 );
+
+-- If the table already existed, make sure the newer column is present.
+alter table public.packages add column if not exists expiry_date date;
 
 -- Row Level Security: anyone may READ, but only the service-role key
 -- (used by the server-side admin API) may write.
@@ -114,3 +118,23 @@ values
    ],
    'Two countries, one booking. City lights in Kuala Lumpur and beaches in Thailand. Prices vary by season, so contact us for a quote on your dates.', 80)
 on conflict (slug) do nothing;
+
+
+-- =====================================================================
+-- Media storage (for the /admin/media image library)
+-- =====================================================================
+
+-- Public bucket to hold uploaded images.
+insert into storage.buckets (id, name, public)
+values ('media', 'media', true)
+on conflict (id) do nothing;
+
+-- Anyone may READ media files (they are referenced publicly on the site).
+drop policy if exists "Public can read media" on storage.objects;
+create policy "Public can read media"
+  on storage.objects
+  for select
+  using (bucket_id = 'media');
+
+-- Uploads and deletes happen server-side with the service-role key,
+-- which bypasses RLS — so no public write policy is created.

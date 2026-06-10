@@ -12,6 +12,8 @@ export type TravelPackage = {
   description: string;
   // optional override image URL (used for admin-added packages)
   image?: string;
+  // optional offer expiry date (ISO yyyy-mm-dd); null = no expiry
+  expiryDate?: string | null;
 };
 
 // Seed data — used as a fallback when Supabase is not configured,
