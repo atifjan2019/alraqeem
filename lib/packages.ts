@@ -1,4 +1,6 @@
-export type Category = "Umrah & Hajj" | "International";
+// Categories are now managed dynamically (see lib/categories.ts).
+// Kept as a string for flexibility; `categories` below is a fallback list.
+export type Category = string;
 
 export type TravelPackage = {
   slug: string;

@@ -1,6 +1,7 @@
 import { notFound } from "next/navigation";
 import PackageForm from "@/components/admin/PackageForm";
 import { getPackage, isSupabaseConfigured } from "@/lib/packagesStore";
+import { getCategoryNames } from "@/lib/categoriesStore";
 
 export const dynamic = "force-dynamic";
 
@@ -12,6 +13,7 @@ export default async function EditPackagePage({
   const { slug } = await params;
   const pkg = await getPackage(slug);
   if (!pkg) notFound();
+  const categoryOptions = await getCategoryNames("package");
 
   return (
     <div>
@@ -24,6 +26,7 @@ export default async function EditPackagePage({
           mode="edit"
           initial={pkg}
           configured={isSupabaseConfigured}
+          categoryOptions={categoryOptions}
         />
       </div>
     </div>

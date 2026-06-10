@@ -2,8 +2,8 @@ import type { Metadata } from "next";
 import SectionHeading from "@/components/SectionHeading";
 import PackageCard from "@/components/PackageCard";
 import { CtaBand, PageHero } from "@/components/Shared";
-import { categories } from "@/lib/packages";
 import { getPackages } from "@/lib/packagesStore";
+import { getCategoryNames } from "@/lib/categoriesStore";
 import { images } from "@/lib/images";
 
 export const dynamic = "force-dynamic";
@@ -23,6 +23,12 @@ const categoryIntro: Record<string, string> = {
 
 export default async function PackagesPage() {
   const packages = await getPackages();
+  const catNames = await getCategoryNames("package");
+  // Show known categories first, then any other categories present on packages.
+  const extras = packages
+    .map((p) => p.category)
+    .filter((c) => c && !catNames.includes(c));
+  const categories = [...catNames, ...Array.from(new Set(extras))];
 
   return (
     <>

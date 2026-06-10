@@ -1,4 +1,4 @@
-import { categories, type Category, type TravelPackage } from "@/lib/packages";
+import { type Category, type TravelPackage } from "@/lib/packages";
 
 export type PackageInput = Omit<TravelPackage, "slug"> & { slug?: string };
 
@@ -14,8 +14,8 @@ export function parsePackageBody(body: Record<string, unknown>): ParseResult {
   if (!title || !duration || !description) {
     return { error: "Title, duration and description are required." };
   }
-  if (!categories.includes(category)) {
-    return { error: `Category must be one of: ${categories.join(", ")}` };
+  if (!category) {
+    return { error: "Category is required." };
   }
 
   const rawPrice = body.price;
