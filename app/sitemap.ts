@@ -1,12 +1,14 @@
 import { MetadataRoute } from "next";
 import { site } from "@/lib/site";
 import { cities } from "@/lib/cities";
-import { posts } from "@/lib/posts";
+import { getPosts } from "@/lib/postsStore";
 
-export default function sitemap(): MetadataRoute.Sitemap {
+export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
+  const posts = await getPosts();
   const staticPages = [
     "",
     "/packages",
+    "/tickets",
     "/visa-services",
     "/about",
     "/blog",

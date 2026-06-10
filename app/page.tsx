@@ -4,7 +4,7 @@ import PackageCard from "@/components/PackageCard";
 import { CtaBand } from "@/components/Shared";
 import { getFeatured } from "@/lib/packagesStore";
 import { cities } from "@/lib/cities";
-import { posts } from "@/lib/posts";
+import { getPosts } from "@/lib/postsStore";
 import { images } from "@/lib/images";
 import { site, waLink } from "@/lib/site";
 
@@ -79,6 +79,7 @@ const stats = [
 
 export default async function HomePage() {
   const featured = await getFeatured(4);
+  const posts = (await getPosts()).slice(0, 3);
 
   return (
     <>

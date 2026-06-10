@@ -138,3 +138,103 @@ create policy "Public can read media"
 
 -- Uploads and deletes happen server-side with the service-role key,
 -- which bypasses RLS — so no public write policy is created.
+
+
+-- =====================================================================
+-- CATEGORIES (dynamic, for packages and tickets)
+-- =====================================================================
+create table if not exists public.categories (
+  id         uuid primary key default gen_random_uuid(),
+  name       text not null,
+  type       text not null check (type in ('package','ticket')),
+  sort_order integer not null default 0,
+  created_at timestamptz not null default now(),
+  unique (name, type)
+);
+alter table public.categories enable row level security;
+drop policy if exists "Public can read categories" on public.categories;
+create policy "Public can read categories" on public.categories for select using (true);
+
+insert into public.categories (name, type, sort_order) values
+  ('Umrah & Hajj', 'package', 10),
+  ('International', 'package', 20),
+  ('Umrah & Hajj Flights', 'ticket', 10),
+  ('International Flights', 'ticket', 20)
+on conflict (name, type) do nothing;
+
+-- =====================================================================
+-- TICKETS (air ticket / flight deals)
+-- =====================================================================
+create table if not exists public.tickets (
+  id          uuid primary key default gen_random_uuid(),
+  slug        text unique not null,
+  airline     text not null,
+  sector      text not null,
+  category    text not null,
+  trip_type   text not null default 'Return' check (trip_type in ('One-way','Return')),
+  fare        integer,
+  baggage     text,
+  description text,
+  image       text,
+  featured    boolean not null default false,
+  expiry_date date,
+  sort_order  integer not null default 0,
+  created_at  timestamptz not null default now()
+);
+alter table public.tickets enable row level security;
+drop policy if exists "Public can read tickets" on public.tickets;
+create policy "Public can read tickets" on public.tickets for select using (true);
+
+insert into public.tickets (slug, airline, sector, category, trip_type, fare, baggage, description, featured, sort_order) values
+  ('isb-jed-umrah-return','Saudia','Islamabad (ISB) → Jeddah (JED)','Umrah & Hajj Flights','Return',165000,'40 kg','<p>Direct return fares to Jeddah for Umrah travellers from Islamabad. Limited seats at this rate.</p>',true,10),
+  ('pew-jed-umrah-return','Airblue','Peshawar (PEW) → Jeddah (JED)','Umrah & Hajj Flights','Return',158000,'30 kg','<p>Convenient return fares from Peshawar to Jeddah, ideal for Umrah groups from KP.</p>',true,20),
+  ('isb-dxb-return','Emirates','Islamabad (ISB) → Dubai (DXB)','International Flights','Return',135000,'30 kg','<p>Return tickets to Dubai with checked baggage. Great for tourism and visit-visa travellers.</p>',true,30),
+  ('lhe-ist-return','Turkish Airlines','Lahore (LHE) → Istanbul (IST)','International Flights','Return',215000,'30 kg','<p>Return fares to Istanbul on Turkish Airlines.</p>',false,40)
+on conflict (slug) do nothing;
+
+-- =====================================================================
+-- POSTS (blog)
+-- =====================================================================
+create table if not exists public.posts (
+  id           uuid primary key default gen_random_uuid(),
+  slug         text unique not null,
+  title        text not null,
+  excerpt      text,
+  content      text not null,
+  image        text,
+  date         date not null default current_date,
+  read_minutes integer not null default 5,
+  created_at   timestamptz not null default now()
+);
+alter table public.posts enable row level security;
+drop policy if exists "Public can read posts" on public.posts;
+create policy "Public can read posts" on public.posts for select using (true);
+
+-- =====================================================================
+-- SITE SETTINGS (single row, id = 1)
+-- =====================================================================
+create table if not exists public.site_settings (
+  id        integer primary key default 1,
+  name      text,
+  tagline   text,
+  phone     text,
+  whatsapp  text,
+  email     text,
+  address   text,
+  hours     text,
+  facebook  text,
+  instagram text,
+  youtube   text,
+  tiktok    text,
+  constraint single_row check (id = 1)
+);
+alter table public.site_settings enable row level security;
+drop policy if exists "Public can read settings" on public.site_settings;
+create policy "Public can read settings" on public.site_settings for select using (true);
+
+insert into public.site_settings (id, name, tagline, phone, whatsapp, email, address, hours)
+values (1, 'Al Raqeem Travel & Tours', 'Your trusted partner for Umrah, Hajj and worldwide travel',
+        '+92 300 0000000', '923000000000', 'info@alraqeemtravels.com',
+        'Main Bazaar Road, Charsadda, Khyber Pakhtunkhwa, Pakistan',
+        'Monday to Saturday, 9:00 AM to 8:00 PM')
+on conflict (id) do nothing;

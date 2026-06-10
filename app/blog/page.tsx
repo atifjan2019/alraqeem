@@ -3,7 +3,9 @@ import Link from "next/link";
 import SectionHeading from "@/components/SectionHeading";
 import { PageHero } from "@/components/Shared";
 import { images } from "@/lib/images";
-import { posts } from "@/lib/posts";
+import { getPosts } from "@/lib/postsStore";
+
+export const dynamic = "force-dynamic";
 
 export const metadata: Metadata = {
   title: "Travel Blog & Guides",
@@ -11,7 +13,8 @@ export const metadata: Metadata = {
     "Umrah guides, visa requirements and Pakistan travel advice from the Al Raqeem Travel & Tours team.",
 };
 
-export default function BlogPage() {
+export default async function BlogPage() {
+  const posts = await getPosts();
   return (
     <>
       <PageHero

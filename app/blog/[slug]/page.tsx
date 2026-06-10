@@ -1,13 +1,12 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 import { notFound } from "next/navigation";
-import { posts, getPost } from "@/lib/posts";
+import { getPost } from "@/lib/postsStore";
 import { CtaBand } from "@/components/Shared";
+import RichText from "@/components/RichText";
 import { images } from "@/lib/images";
 
-export function generateStaticParams() {
-  return posts.map((p) => ({ slug: p.slug }));
-}
+export const dynamic = "force-dynamic";
 
 export async function generateMetadata({
   params,
@@ -15,7 +14,7 @@ export async function generateMetadata({
   params: Promise<{ slug: string }>;
 }): Promise<Metadata> {
   const { slug } = await params;
-  const post = getPost(slug);
+  const post = await getPost(slug);
   if (!post) return {};
   return {
     title: post.title,
@@ -29,7 +28,7 @@ export default async function BlogPostPage({
   params: Promise<{ slug: string }>;
 }) {
   const { slug } = await params;
-  const post = getPost(slug);
+  const post = await getPost(slug);
   if (!post) notFound();
 
   return (
@@ -60,18 +59,7 @@ export default async function BlogPostPage({
 
         <section className="py-14 sm:py-16">
           <div className="container-site max-w-3xl">
-            {post.body.map((para, i) => (
-              <p
-                key={i}
-                className={`leading-relaxed text-slate-700 ${
-                  i === 0
-                    ? "text-lg font-medium text-slate-800"
-                    : "mt-5 text-base"
-                }`}
-              >
-                {para}
-              </p>
-            ))}
+            <RichText html={post.content} />
             <div className="rule-gradient mt-10" aria-hidden="true" />
             <Link
               href="/blog"
