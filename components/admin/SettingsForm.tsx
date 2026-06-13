@@ -7,7 +7,8 @@ import type { SiteSettings } from "@/lib/settings";
 const fields: { key: keyof SiteSettings; label: string; placeholder?: string }[] = [
   { key: "name", label: "Site name" },
   { key: "tagline", label: "Tagline" },
-  { key: "phone", label: "Phone", placeholder: "+92 300 0000000" },
+  { key: "phone", label: "Phone (mobile)", placeholder: "03125446922" },
+  { key: "landline", label: "Landline number", placeholder: "091 1234567 (optional)" },
   { key: "whatsapp", label: "WhatsApp number", placeholder: "923000000000 (no + or spaces)" },
   { key: "email", label: "Email" },
   { key: "address", label: "Office address" },

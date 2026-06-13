@@ -13,6 +13,7 @@ export const metadata: Metadata = {
   description:
     "Browse all Al Raqeem Travel & Tours packages: Umrah and Hajj, Dubai, Turkey, Baku and Malaysia. Clear pricing, complete service.",
   alternates: { canonical: "/packages" },
+  openGraph: { url: "/packages" },
 };
 
 const categoryIntro: Record<string, string> = {

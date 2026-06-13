@@ -4,6 +4,7 @@ export type SiteSettings = {
   name: string;
   tagline: string;
   phone: string;
+  landline: string;
   whatsapp: string;
   email: string;
   address: string;
@@ -19,6 +20,7 @@ export const defaultSettings: SiteSettings = {
   name: site.name,
   tagline: site.tagline,
   phone: site.phone,
+  landline: site.landline,
   whatsapp: site.whatsapp,
   email: site.email,
   address: site.address,

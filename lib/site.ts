@@ -12,9 +12,12 @@ export const site = {
   // Live domain. www.alraqeemtravels.com is retired — do not reintroduce it.
   url: "https://alraqeem.com.pk",
 
-  // PLACEHOLDER: replace with real numbers (WhatsApp without + or spaces)
-  phone: "+92 300 0000000",
-  whatsapp: "923000000000",
+  // Primary mobile + WhatsApp (WhatsApp in international format, no + or spaces).
+  phone: "03125446922",
+  whatsapp: "923125446922",
+
+  // Optional landline / office number. Leave blank if not used.
+  landline: "",
 
   // PLACEHOLDER: replace with real email
   email: "info@alraqeem.com.pk",

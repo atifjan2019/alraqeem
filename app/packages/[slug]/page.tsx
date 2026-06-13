@@ -7,7 +7,8 @@ import { packageImage } from "@/lib/images";
 import { CtaBand } from "@/components/Shared";
 import RichText from "@/components/RichText";
 import JsonLd from "@/components/JsonLd";
-import { site, waLink, telLink } from "@/lib/site";
+import { getSettings } from "@/lib/settingsStore";
+import { waHref, telHref } from "@/lib/settings";
 import { packageSchema } from "@/lib/schema";
 
 export const dynamic = "force-dynamic";
@@ -39,6 +40,7 @@ export default async function PackageDetailPage({
   const related = (await getPackages())
     .filter((p) => p.category === pkg.category && p.slug !== pkg.slug)
     .slice(0, 3);
+  const settings = await getSettings();
 
   const quoteMsg = `Assalam o Alaikum, I want details about the "${pkg.title}" (${pkg.duration}) package.`;
   const heroImage = packageImage(pkg.slug, pkg.category, pkg.image);
@@ -151,15 +153,15 @@ export default async function PackageDetailPage({
 
               <div className="mt-7 flex flex-col gap-3">
                 <a
-                  href={waLink(quoteMsg)}
+                  href={waHref(settings.whatsapp, quoteMsg)}
                   target="_blank"
                   rel="noopener noreferrer"
                   className="btn-orange w-full"
                 >
                   Get Quote on WhatsApp
                 </a>
-                <a href={telLink()} className="btn-outline w-full">
-                  Call {site.phone}
+                <a href={telHref(settings.phone)} className="btn-outline w-full">
+                  Call {settings.phone}
                 </a>
               </div>
               <p className="mt-4 text-center text-xs text-slate-500">

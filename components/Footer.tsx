@@ -98,6 +98,13 @@ export default function Footer({
                 {settings.phone}
               </a>
             </li>
+            {settings.landline && (
+              <li>
+                <a href={telHref(settings.landline)} className="hover:text-white">
+                  {settings.landline}
+                </a>
+              </li>
+            )}
             <li>
               <a href={`mailto:${settings.email}`} className="hover:text-white">
                 {settings.email}

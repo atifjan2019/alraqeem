@@ -2,8 +2,9 @@ import type { Metadata } from "next";
 import InquiryForm from "@/components/InquiryForm";
 import { PageHero } from "@/components/Shared";
 import { getPackages } from "@/lib/packagesStore";
+import { getSettings } from "@/lib/settingsStore";
 import { images } from "@/lib/images";
-import { site, telLink, waLink } from "@/lib/site";
+import { waHref, telHref } from "@/lib/settings";
 
 export const dynamic = "force-dynamic";
 
@@ -15,6 +16,7 @@ export const metadata: Metadata = {
 };
 
 export default async function ContactPage() {
+  const settings = await getSettings();
   const packageOptions = (await getPackages())
     .filter((p) => p.category !== "Umrah & Hajj")
     .map((p) => p.title);
@@ -35,10 +37,10 @@ export default async function ContactPage() {
               <p className="eyebrow">Visit</p>
               <h2 className="mt-1 text-xl">Head Office</h2>
               <p className="mt-2 text-sm leading-relaxed text-slate-600">
-                {site.address}
+                {settings.address}
               </p>
               <p className="mt-2 text-sm font-semibold text-slate-700">
-                {site.hours}
+                {settings.hours}
               </p>
             </div>
 
@@ -46,18 +48,29 @@ export default async function ContactPage() {
               <p className="eyebrow">Call</p>
               <h2 className="mt-1 text-xl">Phone</h2>
               <a
-                href={telLink()}
+                href={telHref(settings.phone)}
                 className="mt-2 block font-display text-2xl text-brand-blue hover:underline"
               >
-                {site.phone}
+                {settings.phone}
               </a>
+              {settings.landline && (
+                <a
+                  href={telHref(settings.landline)}
+                  className="mt-1 block font-display text-xl text-brand-blue hover:underline"
+                >
+                  {settings.landline}
+                </a>
+              )}
             </div>
 
             <div className="rounded-3xl bg-white p-6 shadow-card">
               <p className="eyebrow">Message</p>
               <h2 className="mt-1 text-xl">WhatsApp & Email</h2>
               <a
-                href={waLink("Assalam o Alaikum, I have a question.")}
+                href={waHref(
+                  settings.whatsapp,
+                  "Assalam o Alaikum, I have a question."
+                )}
                 target="_blank"
                 rel="noopener noreferrer"
                 className="btn-orange mt-3 w-full"
@@ -65,10 +78,10 @@ export default async function ContactPage() {
                 Open WhatsApp Chat
               </a>
               <a
-                href={`mailto:${site.email}`}
+                href={`mailto:${settings.email}`}
                 className="mt-3 block text-center text-sm font-semibold text-brand-blue hover:underline"
               >
-                {site.email}
+                {settings.email}
               </a>
             </div>
           </div>

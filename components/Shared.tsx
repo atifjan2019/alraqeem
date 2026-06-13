@@ -1,24 +1,26 @@
 import Link from "next/link";
-import { site, waLink, telLink } from "@/lib/site";
 import { images } from "@/lib/images";
+import { getSettings } from "@/lib/settingsStore";
+import { waHref, telHref } from "@/lib/settings";
 
 export function PageHero({
   eyebrow,
   title,
   description,
   image = images.mosque,
+  imageAlt,
 }: {
   eyebrow: string;
   title: string;
   description?: string;
   image?: string;
+  imageAlt?: string;
 }) {
   return (
     <section className="relative overflow-hidden bg-ink text-white">
       <img
         src={image}
-        alt=""
-        aria-hidden="true"
+        alt={imageAlt ?? title}
         className="absolute inset-0 h-full w-full object-cover"
       />
       <div className="absolute inset-0 overlay-hero" />
@@ -37,21 +39,23 @@ export function PageHero({
   );
 }
 
-export function CtaBand({
+export async function CtaBand({
   title = "Ready to begin your journey?",
   subtitle = "Sit with our team in Charsadda or reach us on WhatsApp. Honest prices, complete service, and support from departure to safe return.",
   image = images.mosque,
+  imageAlt = "Umrah, Hajj and international travel destinations",
 }: {
   title?: string;
   subtitle?: string;
   image?: string;
+  imageAlt?: string;
 }) {
+  const settings = await getSettings();
   return (
     <section className="relative overflow-hidden bg-ink">
       <img
         src={image}
-        alt=""
-        aria-hidden="true"
+        alt={imageAlt}
         className="absolute inset-0 h-full w-full object-cover"
       />
       <div className="absolute inset-0 overlay-hero" />
@@ -66,7 +70,8 @@ export function CtaBand({
           </p>
           <div className="mt-8 flex flex-col gap-3 sm:flex-row">
             <a
-              href={waLink(
+              href={waHref(
+                settings.whatsapp,
                 "Assalam o Alaikum, I want to plan a trip with Al Raqeem."
               )}
               target="_blank"
@@ -76,10 +81,10 @@ export function CtaBand({
               WhatsApp Us Now
             </a>
             <a
-              href={telLink()}
+              href={telHref(settings.phone)}
               className="btn bg-white text-brand-blue-deep hover:bg-paper"
             >
-              Call {site.phone}
+              Call {settings.phone}
             </a>
             <Link
               href="/contact"

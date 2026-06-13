@@ -13,6 +13,7 @@ import { travelAgencySchema } from "@/lib/schema";
 
 export const metadata: Metadata = {
   alternates: { canonical: "/" },
+  openGraph: { url: "/" },
 };
 
 const services = [
@@ -361,7 +362,10 @@ export default async function HomePage() {
         </div>
       </section>
 
-      <CtaBand image={images.kaaba} />
+      <CtaBand
+        image={images.kaaba}
+        imageAlt="The Holy Kaaba in Masjid al-Haram, Makkah"
+      />
     </>
   );
 }

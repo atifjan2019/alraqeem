@@ -218,6 +218,7 @@ create table if not exists public.site_settings (
   name      text,
   tagline   text,
   phone     text,
+  landline  text,
   whatsapp  text,
   email     text,
   address   text,
@@ -228,13 +229,15 @@ create table if not exists public.site_settings (
   tiktok    text,
   constraint single_row check (id = 1)
 );
+-- For databases created before the landline column existed.
+alter table public.site_settings add column if not exists landline text;
 alter table public.site_settings enable row level security;
 drop policy if exists "Public can read settings" on public.site_settings;
 create policy "Public can read settings" on public.site_settings for select using (true);
 
 insert into public.site_settings (id, name, tagline, phone, whatsapp, email, address, hours)
 values (1, 'Al Raqeem Travel & Tours', 'Your trusted partner for Umrah, Hajj and worldwide travel',
-        '+92 300 0000000', '923000000000', 'info@alraqeem.com.pk',
+        '03125446922', '923125446922', 'info@alraqeem.com.pk',
         'Main Bazaar Road, Charsadda, Khyber Pakhtunkhwa, Pakistan',
         'Monday to Saturday, 9:00 AM to 8:00 PM')
 on conflict (id) do nothing;

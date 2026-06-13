@@ -44,7 +44,9 @@ export async function getPosts(): Promise<Post[]> {
     .from(TABLE)
     .select("*")
     .order("date", { ascending: false });
-  if (error || !data) return seedPosts;
+  // Fall back to seed content on error OR when the table is empty, so the
+  // blog (and sitemap) always have the starter posts until admins add their own.
+  if (error || !data || data.length === 0) return seedPosts;
   return (data as Row[]).map(rowTo);
 }
 

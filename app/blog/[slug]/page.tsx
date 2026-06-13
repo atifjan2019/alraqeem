@@ -59,8 +59,7 @@ export default async function BlogPostPage({
         <section className="relative overflow-hidden bg-ink py-20 text-white sm:py-28">
           <img
             src={images.quran}
-            alt=""
-            aria-hidden="true"
+            alt={post.title}
             className="absolute inset-0 h-full w-full object-cover"
           />
           <div className="absolute inset-0 overlay-hero" />
