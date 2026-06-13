@@ -9,6 +9,7 @@ export const metadata: Metadata = {
   description:
     "Visit visa processing from Pakistan for UAE, Saudi Arabia, Turkey, Malaysia, Thailand, Azerbaijan and more. Document preparation and checking included.",
   alternates: { canonical: "/visa-services" },
+  openGraph: { url: "/visa-services" },
 };
 
 const visas = [
