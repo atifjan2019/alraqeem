@@ -4,9 +4,19 @@ import { notFound } from "next/navigation";
 import { getPost } from "@/lib/postsStore";
 import { CtaBand } from "@/components/Shared";
 import RichText from "@/components/RichText";
+import JsonLd from "@/components/JsonLd";
 import { images } from "@/lib/images";
+import { blogPostingSchema } from "@/lib/schema";
 
 export const dynamic = "force-dynamic";
+
+// Keep the <title> tag under ~60 characters for search snippets.
+function metaTitle(title: string) {
+  if (title.length <= 60) return title;
+  const cut = title.slice(0, 59);
+  const lastSpace = cut.lastIndexOf(" ");
+  return (lastSpace > 30 ? cut.slice(0, lastSpace) : cut).trimEnd() + "…";
+}
 
 export async function generateMetadata({
   params,
@@ -16,9 +26,20 @@ export async function generateMetadata({
   const { slug } = await params;
   const post = await getPost(slug);
   if (!post) return {};
+  const title = metaTitle(post.title);
   return {
-    title: post.title,
+    // `absolute` skips the "| Al Raqeem Travel & Tours" template so the
+    // full <title> stays under 60 characters.
+    title: { absolute: title },
     description: post.excerpt,
+    alternates: { canonical: `/blog/${post.slug}` },
+    openGraph: {
+      type: "article",
+      title,
+      description: post.excerpt,
+      publishedTime: post.date,
+      modifiedTime: post.date,
+    },
   };
 }
 
@@ -33,6 +54,7 @@ export default async function BlogPostPage({
 
   return (
     <>
+      <JsonLd data={blogPostingSchema(post)} />
       <article>
         <section className="relative overflow-hidden bg-ink py-20 text-white sm:py-28">
           <img

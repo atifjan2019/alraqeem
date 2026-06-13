@@ -11,6 +11,7 @@ export const metadata: Metadata = {
   title: "Travel Blog & Guides",
   description:
     "Umrah guides, visa requirements and Pakistan travel advice from the Al Raqeem Travel & Tours team.",
+  alternates: { canonical: "/blog" },
 };
 
 export default async function BlogPage() {

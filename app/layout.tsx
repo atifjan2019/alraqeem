@@ -38,32 +38,6 @@ export const viewport: Viewport = {
   themeColor: "#0A211A",
 };
 
-const schema = {
-  "@context": "https://schema.org",
-  "@type": "TravelAgency",
-  name: site.name,
-  url: site.url,
-  telephone: site.phone,
-  email: site.email,
-  image: `${site.url}/logo.png`,
-  address: {
-    "@type": "PostalAddress",
-    streetAddress: "Main Bazaar Road",
-    addressLocality: "Charsadda",
-    addressRegion: "Khyber Pakhtunkhwa",
-    addressCountry: "PK",
-  },
-  areaServed: [
-    "Islamabad",
-    "Lahore",
-    "Rawalpindi",
-    "Peshawar",
-    "Charsadda",
-    "Tangi",
-    "Shabqadar",
-  ],
-};
-
 export default async function RootLayout({
   children,
 }: {
@@ -82,10 +56,6 @@ export default async function RootLayout({
         <link
           href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap"
           rel="stylesheet"
-        />
-        <script
-          type="application/ld+json"
-          dangerouslySetInnerHTML={{ __html: JSON.stringify(schema) }}
         />
       </head>
       <body>

@@ -9,15 +9,15 @@ export const site = {
   shortName: "Al Raqeem",
   tagline: "Your trusted partner for Umrah, Hajj and worldwide travel",
 
-  // PLACEHOLDER: replace with your real domain after purchase
-  url: "https://www.alraqeemtravels.com",
+  // Live domain. www.alraqeemtravels.com is retired — do not reintroduce it.
+  url: "https://alraqeem.com.pk",
 
   // PLACEHOLDER: replace with real numbers (WhatsApp without + or spaces)
   phone: "+92 300 0000000",
   whatsapp: "923000000000",
 
   // PLACEHOLDER: replace with real email
-  email: "info@alraqeemtravels.com",
+  email: "info@alraqeem.com.pk",
 
   // PLACEHOLDER: replace with exact office address
   address: "Main Bazaar Road, Charsadda, Khyber Pakhtunkhwa, Pakistan",

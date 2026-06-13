@@ -12,6 +12,7 @@ export const metadata: Metadata = {
   title: "Flight Deals & Air Tickets",
   description:
     "Discounted air tickets and flight deals from Pakistan for Umrah, Gulf and international routes. Book with Al Raqeem Travel & Tours.",
+  alternates: { canonical: "/tickets" },
 };
 
 export default async function TicketsPage() {

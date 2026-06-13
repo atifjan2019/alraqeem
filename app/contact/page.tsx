@@ -11,6 +11,7 @@ export const metadata: Metadata = {
   title: "Contact Us",
   description:
     "Contact Al Raqeem Travel & Tours in Charsadda. Call, WhatsApp or visit our office for Umrah packages, tours and visa services.",
+  alternates: { canonical: "/contact" },
 };
 
 export default async function ContactPage() {

@@ -1,13 +1,16 @@
 import type { Metadata } from "next";
 import SectionHeading from "@/components/SectionHeading";
 import { CtaBand, PageHero } from "@/components/Shared";
+import JsonLd from "@/components/JsonLd";
 import { images } from "@/lib/images";
 import { site } from "@/lib/site";
+import { travelAgencySchema } from "@/lib/schema";
 
 export const metadata: Metadata = {
   title: "About Us",
   description:
     "Al Raqeem Travel & Tours is a Charsadda-based travel company and sister concern of Al Nafi Travels, serving pilgrims and travelers across Pakistan.",
+  alternates: { canonical: "/about" },
 };
 
 const values = [
@@ -28,6 +31,7 @@ const values = [
 export default function AboutPage() {
   return (
     <>
+      <JsonLd data={travelAgencySchema()} />
       <PageHero
         eyebrow="About us"
         title="A new name built on an established foundation"

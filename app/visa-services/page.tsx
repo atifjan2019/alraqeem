@@ -8,6 +8,7 @@ export const metadata: Metadata = {
   title: "Visa Services",
   description:
     "Visit visa processing from Pakistan for UAE, Saudi Arabia, Turkey, Malaysia, Thailand, Azerbaijan and more. Document preparation and checking included.",
+  alternates: { canonical: "/visa-services" },
 };
 
 const visas = [

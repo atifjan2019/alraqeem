@@ -234,7 +234,7 @@ create policy "Public can read settings" on public.site_settings for select usin
 
 insert into public.site_settings (id, name, tagline, phone, whatsapp, email, address, hours)
 values (1, 'Al Raqeem Travel & Tours', 'Your trusted partner for Umrah, Hajj and worldwide travel',
-        '+92 300 0000000', '923000000000', 'info@alraqeemtravels.com',
+        '+92 300 0000000', '923000000000', 'info@alraqeem.com.pk',
         'Main Bazaar Road, Charsadda, Khyber Pakhtunkhwa, Pakistan',
         'Monday to Saturday, 9:00 AM to 8:00 PM')
 on conflict (id) do nothing;

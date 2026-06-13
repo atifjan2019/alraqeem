@@ -6,8 +6,10 @@ import { getFeatured } from "@/lib/packagesStore";
 import PackageCard from "@/components/PackageCard";
 import SectionHeading from "@/components/SectionHeading";
 import { CtaBand } from "@/components/Shared";
+import JsonLd from "@/components/JsonLd";
 import { images } from "@/lib/images";
 import { site, waLink } from "@/lib/site";
+import { localBusinessSchema } from "@/lib/schema";
 
 export function generateStaticParams() {
   return cities.map((c) => ({ city: c.slug }));
@@ -24,6 +26,7 @@ export async function generateMetadata({
   return {
     title: `Travel Agency in ${city.name} | Umrah & Tour Packages`,
     description: city.intro,
+    alternates: { canonical: `/areas/${city.slug}` },
   };
 }
 
@@ -41,6 +44,7 @@ export default async function CityPage({
 
   return (
     <>
+      <JsonLd data={localBusinessSchema(city)} />
       <section className="relative overflow-hidden bg-ink py-20 text-white sm:py-28">
         <img
           src={images.kaaba}

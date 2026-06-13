@@ -11,7 +11,7 @@ export type Post = {
 export const seedPosts: Post[] = [
   {
     slug: "first-time-umrah-guide-pakistan",
-    title: "First Time Umrah from Pakistan: A Complete Step by Step Guide",
+    title: "First-Time Umrah from Pakistan: A Complete Guide",
     excerpt:
       "Everything a first-time pilgrim from Pakistan needs to know, from documents and visa to what to pack and what to expect in Makkah.",
     date: "2026-05-12",

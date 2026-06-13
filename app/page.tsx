@@ -1,12 +1,19 @@
+import type { Metadata } from "next";
 import Link from "next/link";
 import SectionHeading from "@/components/SectionHeading";
 import PackageCard from "@/components/PackageCard";
 import { CtaBand } from "@/components/Shared";
+import JsonLd from "@/components/JsonLd";
 import { getFeatured } from "@/lib/packagesStore";
 import { cities } from "@/lib/cities";
 import { getPosts } from "@/lib/postsStore";
 import { images } from "@/lib/images";
 import { site, waLink } from "@/lib/site";
+import { travelAgencySchema } from "@/lib/schema";
+
+export const metadata: Metadata = {
+  alternates: { canonical: "/" },
+};
 
 const services = [
   {
@@ -83,6 +90,7 @@ export default async function HomePage() {
 
   return (
     <>
+      <JsonLd data={travelAgencySchema()} />
       {/* Hero */}
       <section className="relative overflow-hidden bg-ink text-white">
         <img

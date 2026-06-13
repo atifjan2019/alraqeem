@@ -6,7 +6,9 @@ import { formatPrice } from "@/lib/packages";
 import { packageImage } from "@/lib/images";
 import { CtaBand } from "@/components/Shared";
 import RichText from "@/components/RichText";
+import JsonLd from "@/components/JsonLd";
 import { site, waLink, telLink } from "@/lib/site";
+import { packageSchema } from "@/lib/schema";
 
 export const dynamic = "force-dynamic";
 
@@ -21,6 +23,7 @@ export async function generateMetadata({
   return {
     title: `${pkg.title} — ${pkg.duration}`,
     description: pkg.description,
+    alternates: { canonical: `/packages/${pkg.slug}` },
   };
 }
 
@@ -38,13 +41,15 @@ export default async function PackageDetailPage({
     .slice(0, 3);
 
   const quoteMsg = `Assalam o Alaikum, I want details about the "${pkg.title}" (${pkg.duration}) package.`;
+  const heroImage = packageImage(pkg.slug, pkg.category, pkg.image);
 
   return (
     <>
+      <JsonLd data={packageSchema(pkg, heroImage)} />
       {/* Hero */}
       <section className="relative overflow-hidden bg-ink text-white">
         <img
-          src={packageImage(pkg.slug, pkg.category, pkg.image)}
+          src={heroImage}
           alt={pkg.title}
           className="absolute inset-0 h-full w-full object-cover"
         />
