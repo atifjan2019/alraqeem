@@ -12,6 +12,7 @@ export const metadata: Metadata = {
   description:
     "Umrah guides, visa requirements and Pakistan travel advice from the Al Raqeem Travel & Tours team.",
   alternates: { canonical: "/blog" },
+  openGraph: { url: "/blog" },
 };
 
 export default async function BlogPage() {

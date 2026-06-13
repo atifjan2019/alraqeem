@@ -11,6 +11,7 @@ export const metadata: Metadata = {
   description:
     "Al Raqeem Travel & Tours is a Charsadda-based travel company and sister concern of Al Nafi Travels, serving pilgrims and travelers across Pakistan.",
   alternates: { canonical: "/about" },
+  openGraph: { url: "/about" },
 };
 
 const values = [
