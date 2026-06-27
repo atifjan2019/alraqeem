@@ -41,6 +41,8 @@ export default async function CityPage({
   if (!city) notFound();
 
   const featured = await getFeatured(3);
+  const spotlight = featured[0];
+  const supporting = featured.slice(1);
   const otherCities = cities.filter((c) => c.slug !== city.slug);
 
   return (
@@ -106,17 +108,47 @@ export default async function CityPage({
         </div>
       </section>
 
-      <section className="bg-white py-16 sm:py-20">
-        <div className="container-site">
-          <SectionHeading
-            eyebrow="Featured"
-            title={`Packages booked most from ${city.name}`}
-          />
-          <div className="grid gap-6 md:grid-cols-2 xl:grid-cols-3">
-            {featured.map((p) => (
-              <PackageCard key={p.slug} pkg={p} />
-            ))}
+      <section className="relative overflow-hidden bg-gradient-to-b from-white via-paper/40 to-white py-16 sm:py-20">
+        <div className="pointer-events-none absolute -left-24 top-8 h-56 w-56 rounded-full bg-brand-orange/10 blur-3xl" />
+        <div className="pointer-events-none absolute -right-24 bottom-0 h-64 w-64 rounded-full bg-brand-blue/10 blur-3xl" />
+        <div className="container-site relative">
+          <div className="mb-10 flex flex-col gap-4 sm:flex-row sm:items-end sm:justify-between">
+            <SectionHeading
+              eyebrow="Featured"
+              title={`Packages booked most from ${city.name}`}
+              description={`Most requested departures from ${city.name} this month.`}
+            />
+            <Link href="/packages" className="btn-outline">
+              Browse all packages
+            </Link>
           </div>
+
+          {spotlight ? (
+            <div className="grid gap-6 lg:grid-cols-3">
+              <div className="lg:col-span-2">
+                <div className="relative rounded-3xl border border-black/5 bg-white p-3 shadow-card">
+                  <p className="pointer-events-none absolute left-6 top-6 z-10 rounded-full bg-brand-blue-deep px-3 py-1 text-[11px] font-bold uppercase tracking-wide text-white">
+                    Most Booked
+                  </p>
+                  <PackageCard pkg={spotlight} />
+                </div>
+              </div>
+              <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-1">
+                {supporting.map((p) => (
+                  <PackageCard key={p.slug} pkg={p} />
+                ))}
+                {supporting.length === 0 && (
+                  <div className="rounded-3xl border border-dashed border-black/10 bg-white p-8 text-center text-sm text-slate-500">
+                    More featured packages will appear here soon.
+                  </div>
+                )}
+              </div>
+            </div>
+          ) : (
+            <div className="rounded-3xl border border-dashed border-black/10 bg-white p-10 text-center text-slate-500">
+              Featured packages are being updated.
+            </div>
+          )}
         </div>
       </section>
 

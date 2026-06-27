@@ -134,6 +134,19 @@ export default function Footer({
             © {new Date().getFullYear()} {settings.name}. All rights reserved.
           </p>
           <p>Umrah | Hajj | Flight Deals | Visa Services</p>
+          <p>
+            Developed with{" "}
+            <span className="text-red-500">❤️</span>{" "}
+            by{" "}
+            <a
+              href="https://webspires.com.pk?utm_source=alraqeem"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="font-semibold text-slate-300 hover:text-white"
+            >
+              Webspires
+            </a>
+          </p>
         </div>
       </div>
     </footer>
