@@ -143,29 +143,6 @@ export default async function HomePage() {
         </div>
       </section>
 
-      {/* Hajj Pre Registration */}
-      <section className="bg-brand-orange py-12 sm:py-16">
-        <div className="container-site flex flex-col items-center gap-6 text-center sm:flex-row sm:justify-between sm:text-left">
-          <div>
-            <p className="eyebrow text-brand-blue-deep/70">Official Government Portal</p>
-            <h2 className="mt-1 text-2xl font-semibold text-brand-blue-deep sm:text-3xl">
-              Hajj Pre-Registration
-            </h2>
-            <p className="mt-2 max-w-xl text-sm leading-relaxed text-brand-blue-deep/80">
-              Register your interest for Hajj through the Ministry of Religious Affairs &amp; Interfaith Harmony official portal. Secure your place early.
-            </p>
-          </div>
-          <a
-            href="https://www.mora.gov.pk/Detail/YTI4ZjNkYzAtNGNmMi00MzBiLWFlZmYtOTg5MGI5ZmRiY2Nm"
-            target="_blank"
-            rel="noopener noreferrer"
-            className="shrink-0 rounded-xl bg-brand-blue-deep px-7 py-3.5 text-sm font-semibold text-white shadow transition hover:opacity-90"
-          >
-            Register Now →
-          </a>
-        </div>
-      </section>
-
       {/* Services */}
       <section className="py-20 sm:py-28">
         <div className="container-site">
@@ -352,6 +329,123 @@ export default async function HomePage() {
                 </span>
               </Link>
             ))}
+          </div>
+        </div>
+      </section>
+
+      {/* Hajj Pre Registration */}
+      <section className="relative overflow-hidden bg-ink py-20 sm:py-28">
+        {/* Decorative crescent — top right */}
+        <svg
+          viewBox="0 0 400 400"
+          aria-hidden="true"
+          className="pointer-events-none absolute -right-20 -top-20 w-[340px] opacity-[0.07] sm:w-[420px]"
+        >
+          <path
+            d="M200 40a160 160 0 1 0 0 320 130 130 0 1 1 0-320z"
+            fill="#C5A253"
+          />
+        </svg>
+        {/* Decorative crescent — bottom left */}
+        <svg
+          viewBox="0 0 400 400"
+          aria-hidden="true"
+          className="pointer-events-none absolute -bottom-24 -left-24 w-[280px] rotate-180 opacity-[0.05]"
+        >
+          <path
+            d="M200 40a160 160 0 1 0 0 320 130 130 0 1 1 0-320z"
+            fill="#C5A253"
+          />
+        </svg>
+
+        <div className="container-site relative">
+          <div className="mx-auto max-w-2xl text-center">
+            {/* Icon badge */}
+            <div className="mb-6 inline-flex items-center justify-center rounded-full border border-brand-orange/40 bg-brand-orange/15 p-5">
+              <svg
+                width="36"
+                height="36"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="#C5A253"
+                strokeWidth="1.5"
+                strokeLinecap="round"
+                strokeLinejoin="round"
+                aria-hidden="true"
+              >
+                {/* Crescent moon */}
+                <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z" fill="#C5A253" stroke="none" />
+              </svg>
+            </div>
+
+            <p className="eyebrow text-brand-orange">
+              Ministry of Religious Affairs · Official Portal
+            </p>
+            <h2 className="mt-3 font-display text-4xl leading-tight text-white sm:text-5xl">
+              Hajj Pre-Registration
+            </h2>
+            <p className="mt-5 text-base leading-relaxed text-slate-300 sm:text-lg">
+              Register your interest for Hajj 2025 through the Government of
+              Pakistan's official MORA portal. Secure your seat before
+              allocations close.
+            </p>
+
+            {/* Info pills */}
+            <div className="mt-8 flex flex-wrap justify-center gap-3">
+              {[
+                { icon: "M12 2a10 10 0 1 0 0 20 10 10 0 0 0 0-20zM12 6v6l4 2", label: "Limited Seats" },
+                { icon: "M9 12l2 2 4-4M21 12a9 9 0 1 1-18 0 9 9 0 0 1 18 0z", label: "Free to Register" },
+                { icon: "M3 12l9-9 9 9M5 10v10h14V10", label: "Government Portal" },
+              ].map((item) => (
+                <span
+                  key={item.label}
+                  className="inline-flex items-center gap-2 rounded-full border border-white/10 bg-white/5 px-4 py-2 text-sm text-slate-300"
+                >
+                  <svg
+                    width="15"
+                    height="15"
+                    viewBox="0 0 24 24"
+                    fill="none"
+                    stroke="#C5A253"
+                    strokeWidth="2"
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                    aria-hidden="true"
+                  >
+                    <path d={item.icon} />
+                  </svg>
+                  {item.label}
+                </span>
+              ))}
+            </div>
+
+            {/* CTA */}
+            <div className="mt-10">
+              <a
+                href="https://www.mora.gov.pk/Detail/YTI4ZjNkYzAtNGNmMi00MzBiLWFlZmYtOTg5MGI5ZmRiY2Nm"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="inline-flex items-center gap-2.5 rounded-xl bg-brand-orange px-8 py-4 text-sm font-semibold text-brand-blue-deep shadow-lift transition hover:bg-brand-orange-dark"
+              >
+                Register on MORA Portal
+                <svg
+                  width="16"
+                  height="16"
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  stroke="currentColor"
+                  strokeWidth="2.5"
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                  aria-hidden="true"
+                >
+                  <path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6M15 3h6v6M10 14 21 3" />
+                </svg>
+              </a>
+              <p className="mt-3 text-xs text-slate-500">
+                Opens the official mora.gov.pk portal in a new tab
+              </p>
+            </div>
           </div>
         </div>
       </section>

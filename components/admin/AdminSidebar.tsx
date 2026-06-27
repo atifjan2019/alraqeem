@@ -24,14 +24,11 @@ export default function AdminSidebar() {
   }
 
   return (
-    <aside className="border-b border-white/10 bg-ink text-white lg:min-h-screen lg:w-64 lg:shrink-0 lg:border-b-0 lg:border-r">
-      <div className="flex flex-col items-center gap-2 px-6 py-5">
-        <Image src="/logo.png" alt="Al Raqeem" width={120} height={48} className="object-contain" priority />
-        <span className="rounded-full bg-brand-orange/20 px-2 py-0.5 text-[10px] font-bold uppercase tracking-wide text-brand-orange">
-          Admin
-        </span>
+    <aside className="border-b border-white/10 bg-ink text-white lg:flex lg:min-h-screen lg:w-64 lg:shrink-0 lg:flex-col lg:border-b-0 lg:border-r">
+      <div className="flex flex-col items-center px-6 py-5">
+        <Image src="/logo.png" alt="Al Raqeem" width={200} height={200} className="h-20 w-auto object-contain" priority />
       </div>
-      <nav className="flex gap-1 overflow-x-auto px-3 pb-3 lg:flex lg:flex-col lg:gap-1.5 lg:px-3 lg:pb-6">
+      <nav className="flex gap-1 overflow-x-auto px-3 pb-3 lg:flex lg:flex-1 lg:flex-col lg:gap-1.5 lg:px-3 lg:pb-6">
         {links.map((l) => {
           const active = isActive(l.href, l.exact);
           return (
@@ -64,9 +61,9 @@ export default function AdminSidebar() {
         <form action={adminLogout} className="lg:mt-auto lg:pt-4">
           <button
             type="submit"
-            className="flex w-full shrink-0 items-center gap-3 rounded-xl bg-yellow-400 px-4 py-2.5 text-sm font-semibold text-white transition hover:bg-yellow-500"
+            className="flex w-full shrink-0 items-center gap-3 rounded-xl bg-yellow-600 px-4 py-2.5 text-sm font-semibold text-black transition hover:bg-yellow-700"
           >
-            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="white" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="black" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
               <path d="M9 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h4M16 17l5-5-5-5M21 12H9" />
             </svg>
             Logout
