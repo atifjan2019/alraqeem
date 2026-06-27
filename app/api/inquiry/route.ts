@@ -112,6 +112,39 @@ export async function POST(request: Request) {
       html,
       replyTo: payload.email || from,
     });
+
+    if (payload.email) {
+      const userText = [
+        `Assalam o Alaikum ${payload.name},`,
+        "",
+        "We received your inquiry and our team will contact you shortly.",
+        "",
+        `Service: ${payload.service}`,
+        payload.city ? `City: ${payload.city}` : "",
+        "",
+        "Thanks,",
+        "Al Raqeem Travel & Tours",
+      ]
+        .filter(Boolean)
+        .join("\n");
+
+      const userHtml = `
+        <p>Assalam o Alaikum ${payload.name},</p>
+        <p>We received your inquiry and our team will contact you shortly.</p>
+        <p><strong>Service:</strong> ${payload.service}</p>
+        ${payload.city ? `<p><strong>City:</strong> ${payload.city}</p>` : ""}
+        <p>Thanks,<br/>Al Raqeem Travel &amp; Tours</p>
+      `;
+
+      await transport.sendMail({
+        from,
+        to: payload.email,
+        subject: "We received your inquiry | Al Raqeem Travel & Tours",
+        text: userText,
+        html: userHtml,
+      });
+    }
+
     return NextResponse.json({ ok: true });
   } catch {
     return NextResponse.json(
