@@ -143,6 +143,29 @@ export default async function HomePage() {
         </div>
       </section>
 
+      {/* Hajj Pre Registration */}
+      <section className="bg-brand-orange py-12 sm:py-16">
+        <div className="container-site flex flex-col items-center gap-6 text-center sm:flex-row sm:justify-between sm:text-left">
+          <div>
+            <p className="eyebrow text-brand-blue-deep/70">Official Government Portal</p>
+            <h2 className="mt-1 text-2xl font-semibold text-brand-blue-deep sm:text-3xl">
+              Hajj Pre-Registration
+            </h2>
+            <p className="mt-2 max-w-xl text-sm leading-relaxed text-brand-blue-deep/80">
+              Register your interest for Hajj through the Ministry of Religious Affairs &amp; Interfaith Harmony official portal. Secure your place early.
+            </p>
+          </div>
+          <a
+            href="https://www.mora.gov.pk/Detail/YTI4ZjNkYzAtNGNmMi00MzBiLWFlZmYtOTg5MGI5ZmRiY2Nm"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="shrink-0 rounded-xl bg-brand-blue-deep px-7 py-3.5 text-sm font-semibold text-white shadow transition hover:opacity-90"
+          >
+            Register Now →
+          </a>
+        </div>
+      </section>
+
       {/* Services */}
       <section className="py-20 sm:py-28">
         <div className="container-site">

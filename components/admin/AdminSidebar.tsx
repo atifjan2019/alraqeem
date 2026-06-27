@@ -1,6 +1,7 @@
 "use client";
 
 import Link from "next/link";
+import Image from "next/image";
 import { usePathname } from "next/navigation";
 import { adminLogout } from "@/app/admin/actions";
 
@@ -24,13 +25,13 @@ export default function AdminSidebar() {
 
   return (
     <aside className="border-b border-white/10 bg-ink text-white lg:min-h-screen lg:w-64 lg:shrink-0 lg:border-b-0 lg:border-r">
-      <div className="flex items-center gap-2 px-6 py-5">
-        <span className="font-display text-lg text-white">Al Raqeem</span>
+      <div className="flex flex-col items-center gap-2 px-6 py-5">
+        <Image src="/logo.png" alt="Al Raqeem" width={120} height={48} className="object-contain" priority />
         <span className="rounded-full bg-brand-orange/20 px-2 py-0.5 text-[10px] font-bold uppercase tracking-wide text-brand-orange">
           Admin
         </span>
       </div>
-      <nav className="flex gap-1 overflow-x-auto px-3 pb-3 lg:flex-col lg:gap-1.5 lg:px-3 lg:pb-6">
+      <nav className="flex gap-1 overflow-x-auto px-3 pb-3 lg:flex lg:flex-col lg:gap-1.5 lg:px-3 lg:pb-6">
         {links.map((l) => {
           const active = isActive(l.href, l.exact);
           return (
@@ -60,12 +61,12 @@ export default function AdminSidebar() {
             </Link>
           );
         })}
-        <form action={adminLogout} className="lg:mt-4">
+        <form action={adminLogout} className="lg:mt-auto lg:pt-4">
           <button
             type="submit"
-            className="flex w-full shrink-0 items-center gap-3 rounded-xl px-4 py-2.5 text-sm font-semibold text-slate-300 transition hover:bg-red-500/20 hover:text-red-400"
+            className="flex w-full shrink-0 items-center gap-3 rounded-xl bg-yellow-400 px-4 py-2.5 text-sm font-semibold text-white transition hover:bg-yellow-500"
           >
-            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="white" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
               <path d="M9 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h4M16 17l5-5-5-5M21 12H9" />
             </svg>
             Logout
