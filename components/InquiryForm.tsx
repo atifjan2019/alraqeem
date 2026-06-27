@@ -1,7 +1,6 @@
 "use client";
 
 import { useState } from "react";
-import { site } from "@/lib/site";
 
 export default function InquiryForm({
   packageOptions = [],
@@ -12,44 +11,63 @@ export default function InquiryForm({
     name: "",
     phone: "",
     city: "",
+    email: "",
     service: "Umrah Package",
     message: "",
   });
   const [error, setError] = useState("");
+  const [success, setSuccess] = useState("");
+  const [sending, setSending] = useState(false);
 
   function update(field: string, value: string) {
     setForm((f) => ({ ...f, [field]: value }));
     setError("");
+    setSuccess("");
   }
 
-  function submit() {
+  async function submit() {
     if (!form.name.trim() || !form.phone.trim()) {
       setError("Please enter your name and phone number so we can reach you.");
       return;
     }
-    const lines = [
-      "New inquiry from website:",
-      `Name: ${form.name}`,
-      `Phone: ${form.phone}`,
-      form.city ? `City: ${form.city}` : "",
-      `Service: ${form.service}`,
-      form.message ? `Message: ${form.message}` : "",
-    ]
-      .filter(Boolean)
-      .join("\n");
-    window.open(
-      `https://wa.me/${site.whatsapp}?text=${encodeURIComponent(lines)}`,
-      "_blank",
-      "noopener,noreferrer"
-    );
+
+    setSending(true);
+    setError("");
+    setSuccess("");
+
+    try {
+      const response = await fetch("/api/inquiry", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(form),
+      });
+      const data = (await response.json()) as { error?: string };
+      if (!response.ok) {
+        setError(data.error ?? "Failed to send your inquiry. Please try again.");
+        return;
+      }
+      setSuccess("Your inquiry has been sent. Our team will contact you soon.");
+      setForm({
+        name: "",
+        phone: "",
+        city: "",
+        email: "",
+        service: "Umrah Package",
+        message: "",
+      });
+    } catch {
+      setError("Network error. Please try again in a moment.");
+    } finally {
+      setSending(false);
+    }
   }
 
   return (
     <div className="rounded-3xl bg-white p-6 shadow-card sm:p-8">
       <h3 className="text-2xl">Send an Inquiry</h3>
       <p className="mt-2 text-sm text-slate-600">
-        Fill this form and it opens in WhatsApp, ready to send to our team. We
-        reply within business hours, usually within minutes.
+        Fill this form and it sends directly to our team by email. We reply
+        within business hours, usually within minutes.
       </p>
 
       <div className="mt-6 grid gap-5 sm:grid-cols-2">
@@ -82,6 +100,17 @@ export default function InquiryForm({
             onChange={(e) => update("city", e.target.value)}
             placeholder="e.g. Charsadda, Peshawar, Islamabad"
             autoComplete="address-level2"
+          />
+        </div>
+        <div>
+          <label htmlFor="email">Email (optional)</label>
+          <input
+            id="email"
+            type="email"
+            value={form.email}
+            onChange={(e) => update("email", e.target.value)}
+            placeholder="you@example.com"
+            autoComplete="email"
           />
         </div>
         <div>
@@ -119,8 +148,19 @@ export default function InquiryForm({
         </p>
       )}
 
-      <button type="button" onClick={submit} className="btn-orange mt-6 w-full sm:w-auto">
-        Send via WhatsApp
+      {success && (
+        <p className="mt-4 rounded-xl bg-emerald-50 px-4 py-3 text-sm font-semibold text-emerald-700">
+          {success}
+        </p>
+      )}
+
+      <button
+        type="button"
+        onClick={submit}
+        disabled={sending}
+        className="btn-orange mt-6 w-full disabled:opacity-70 sm:w-auto"
+      >
+        {sending ? "Sending..." : "Send Inquiry"}
       </button>
     </div>
   );
