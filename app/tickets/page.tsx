@@ -29,7 +29,7 @@ export default async function TicketsPage() {
       <PageHero
         eyebrow="Flight deals"
         title="Air tickets at honest, upfront fares"
-        description="Current fares on popular routes. Seats at these prices are limited — message us to confirm availability and book."
+        description="Current fares on popular routes. Seats at these prices are limited, message us to confirm availability and book."
         image={images.dubai}
       />
 

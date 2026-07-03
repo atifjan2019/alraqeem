@@ -42,6 +42,21 @@ export const images = {
   visa: img(SRC.visa, 2000, 72),
 };
 
+// Real, on-brand photography overrides. Drop files in /public/photos and set
+// the path here (e.g. "/photos/hero.jpg"), or paste a hosted URL. Any left
+// blank fall back to the stock image, so the page never 404s. Use `photo()`
+// to resolve an override with its fallback.
+export const realPhotos = {
+  hero: "",
+  office: "",
+  team: "",
+  departure: "",
+};
+
+export function photo(override: string, fallback: string) {
+  return override && override.trim() !== "" ? override : fallback;
+}
+
 // Per-package hero image (keyed by package slug).
 export const packageImages: Record<string, string> = {
   "economy-umrah-15-days": img(SRC.blueMosque, 1000),

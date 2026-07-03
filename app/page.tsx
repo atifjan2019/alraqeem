@@ -1,54 +1,78 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 import SectionHeading from "@/components/SectionHeading";
-import PackageCard from "@/components/PackageCard";
+import PackageInquiryCard from "@/components/packages/PackageInquiryCard";
 import { CtaBand } from "@/components/Shared";
 import JsonLd from "@/components/JsonLd";
+import HomeFaq from "@/components/HomeFaq";
+import Reviews from "@/components/Reviews";
 import { getFeatured } from "@/lib/packagesStore";
-import { cities } from "@/lib/cities";
 import { getPosts } from "@/lib/postsStore";
-import { images } from "@/lib/images";
-import { site, waLink } from "@/lib/site";
-import { travelAgencySchema } from "@/lib/schema";
+import { getSettings } from "@/lib/settingsStore";
+import { cities } from "@/lib/cities";
+import { images, photo, realPhotos } from "@/lib/images";
+import { reviewData } from "@/lib/reviews";
+import { site, mapsLink } from "@/lib/site";
+import { waHref, telHref } from "@/lib/settings";
+import { homepageGraph } from "@/lib/schema";
 
 export const metadata: Metadata = {
+  title: {
+    absolute: "Umrah and Hajj Travel Agency in Pakistan | Al Raqeem",
+  },
+  description:
+    "A full-service Umrah, Hajj and international travel agency in Pakistan, based in Charsadda, serving all Pakistan with visa, flights, hotels and support.",
   alternates: { canonical: "/" },
-  openGraph: { url: "/" },
+  openGraph: {
+    url: "/",
+    title: "Umrah and Hajj Travel Agency in Pakistan | Al Raqeem",
+    description:
+      "A full-service Umrah, Hajj and international travel agency in Pakistan, based in Charsadda and serving all Pakistan end to end.",
+  },
 };
 
 const services = [
   {
-    title: "Umrah & Hajj",
-    text: "Complete pilgrimage packages with visa, flights, hotels near the Haram and guided Ziyarat. From economy to five-star premium.",
-    href: "/packages",
+    title: "Umrah and Hajj Packages",
+    text: "Our Umrah packages run from economy to five star across 7 to 30 day durations, with quad and triple sharing and hotels near the Haram in Makkah and Madinah. Every program covers the Saudi Umrah e-visa, guided Ziyarat, and ground transport. For Hajj, choose our private route alongside the government scheme registered through MORA and Nusuk.",
     image: images.kaaba,
+    links: [
+      { label: "View Umrah packages", href: "/packages" },
+      { label: "Hajj packages and MORA", href: "/packages/hajj-package" },
+    ],
   },
   {
-    title: "International Tours",
-    text: "Dubai, Turkey, Baku, Malaysia and beyond. Visa, flights, hotels and sightseeing arranged in one booking.",
-    href: "/packages",
+    title: "International Tour Packages",
+    text: "Our international tours reach Dubai with the Burj Khalifa and Desert Safari, Turkey with Istanbul and Cappadocia, Baku with the Old City and Flame Towers, and a Malaysia and Thailand combo through Kuala Lumpur and Bangkok. Visa, flights, hotels, and sightseeing arrive in one booking.",
     image: images.dubai,
+    links: [
+      { label: "Dubai city tour", href: "/packages/dubai-5-days" },
+      { label: "Turkey tour", href: "/packages/turkey-7-days" },
+    ],
   },
   {
-    title: "Visa Services",
-    text: "Visit visas for UAE, Saudi Arabia, Turkey, Malaysia and more. We prepare and check every document before filing.",
-    href: "/visa-services",
+    title: "Visit Visa Services",
+    text: "Our desk prepares visit visas for the UAE, Saudi Arabia, Turkey, Malaysia, Thailand, Azerbaijan, Schengen states, and the United Kingdom. Every document is checked before filing, since most refusals come from small file errors rather than ineligibility.",
     image: images.visa,
+    links: [
+      { label: "Visa services", href: "/visa-services" },
+      { label: "UAE visa guide", href: "/blog/dubai-visit-visa-requirements-pakistan" },
+    ],
   },
 ];
 
 const reasons = [
   {
-    title: "A name you can visit",
-    text: "Our head office is in Charsadda. You deal with real people you can sit with, not a faceless call center.",
+    title: "A name you visit in person",
+    text: "Our head office is in Charsadda. You sit with real people across a desk, not a faceless call center.",
   },
   {
-    title: "Honest, upfront pricing",
-    text: "Every cost is explained before you pay. No hidden charges appear later, ever.",
+    title: "Honest pricing, clear quotes",
+    text: "Every cost is explained in your quote before you pay. No hidden charges appear later, ever.",
   },
   {
     title: "Experience behind us",
-    text: `Al Raqeem is the sister company of ${site.sisterCompany}, built on years of serving pilgrims and travelers.`,
+    text: `Our team works as the sister company of ${site.sisterCompany}, built on years of serving pilgrims and travelers.`,
   },
   {
     title: "With you till you return",
@@ -79,24 +103,100 @@ const steps = [
   },
 ];
 
-const stats = [
-  { value: "7+", label: "Cities served" },
-  { value: "8+", label: "Curated packages" },
-  { value: "100%", label: "Upfront pricing" },
+// Topical bridge: descriptive anchors from the root into the topical tree.
+// Every href resolves to an existing page. Missing targets go to the gaps report.
+const bridge = [
+  {
+    heading: "Umrah and Hajj packages",
+    links: [
+      { label: "Economy Umrah, 15 days", href: "/packages/economy-umrah-15-days" },
+      { label: "Premium Umrah, 21 days", href: "/packages/premium-umrah-21-days" },
+      { label: "Ramadan Umrah Special", href: "/packages/ramadan-umrah-special" },
+      { label: "Hajj packages and MORA guidance", href: "/packages/hajj-package" },
+    ],
+  },
+  {
+    heading: "Umrah from your city",
+    links: [
+      { label: "Umrah from Peshawar", href: "/areas/peshawar" },
+      { label: "Umrah from Islamabad", href: "/areas/islamabad" },
+      { label: "Umrah from Charsadda", href: "/areas/charsadda" },
+      { label: "Umrah from Rawalpindi", href: "/areas/rawalpindi" },
+      { label: "Umrah from Lahore", href: "/areas/lahore" },
+    ],
+  },
+  {
+    heading: "International tours",
+    links: [
+      { label: "Dubai city tour", href: "/packages/dubai-5-days" },
+      { label: "Turkey, Istanbul and Cappadocia", href: "/packages/turkey-7-days" },
+      { label: "Baku, Azerbaijan", href: "/packages/baku-5-days" },
+      { label: "Malaysia and Thailand combo", href: "/packages/malaysia-thailand-8-days" },
+    ],
+  },
+  {
+    heading: "Visas and travel guides",
+    links: [
+      { label: "Visit visa services", href: "/visa-services" },
+      { label: "First time Umrah guide", href: "/blog/first-time-umrah-guide-pakistan" },
+      { label: "Dubai visit visa guide", href: "/blog/dubai-visit-visa-requirements-pakistan" },
+      { label: "All travel guides", href: "/blog" },
+    ],
+  },
+];
+
+// Priority stack order for the homepage: pilgrimage hubs first.
+const cityOrder = [
+  "charsadda",
+  "peshawar",
+  "islamabad",
+  "rawalpindi",
+  "lahore",
+  "tangi",
+  "shabqadar",
 ];
 
 export default async function HomePage() {
-  const featured = await getFeatured(4);
+  const settings = await getSettings();
+  const featuredRaw = await getFeatured(4);
+  // Pilgrimage cards lead the stack on mobile. Pricing is inquiry based, so
+  // the price is stripped before it reaches the card.
+  const featured = [
+    ...featuredRaw.filter((p) => p.category === "Umrah & Hajj"),
+    ...featuredRaw.filter((p) => p.category !== "Umrah & Hajj"),
+  ].map((p) => ({ ...p, price: null }));
   const posts = (await getPosts()).slice(0, 3);
+  const orderedCities = cityOrder
+    .map((slug) => cities.find((c) => c.slug === slug))
+    .filter((c): c is (typeof cities)[number] => Boolean(c));
+
+  // Real credentials only. Blank values are omitted.
+  const credentialBadges = [
+    { label: "Company No.", value: site.credentials.companyNumber },
+    { label: "MORA Umrah operator", value: site.credentials.moraLicence },
+    { label: "IATA", value: site.credentials.iata },
+  ].filter((c) => c.value);
+
+  const stats = [
+    { value: "7+", label: "Cities served" },
+    { value: "8+", label: "Curated packages" },
+    { value: "0", label: "Hidden charges" },
+  ];
 
   return (
     <>
-      <JsonLd data={travelAgencySchema()} />
+      <JsonLd data={homepageGraph(featured, posts, reviewData)} />
+
       {/* Hero */}
       <section className="relative overflow-hidden bg-ink text-white">
         <img
-          src={images.heroKaaba}
-          alt="The Holy Kaaba in Masjid al-Haram, Makkah"
+          src={photo(realPhotos.hero, images.heroKaaba)}
+          alt={
+            realPhotos.hero
+              ? "Umrah, Hajj and international travel from Pakistan"
+              : "The Holy Kaaba in Masjid al-Haram, Makkah"
+          }
+          fetchPriority="high"
           className="absolute inset-0 h-full w-full object-cover"
         />
         <div className="absolute inset-0 overlay-hero" />
@@ -105,20 +205,23 @@ export default async function HomePage() {
             Charsadda · Peshawar · Islamabad · All Pakistan
           </p>
           <h1 className="mt-5 max-w-3xl text-4xl font-medium leading-[1.1] text-white sm:text-5xl lg:text-6xl">
-            From your doorstep to the{" "}
-            <span className="italic text-brand-orange">Haram</span> and the
-            world beyond
+            Umrah, Hajj and International Travel Agency in Pakistan
           </h1>
+          <p className="mt-4 max-w-2xl font-display text-xl italic text-brand-orange sm:text-2xl">
+            From your doorstep to the Haram and the world beyond
+          </p>
           <p className="mt-6 max-w-2xl text-base leading-relaxed text-slate-200 sm:text-lg">
-            {site.name} arranges Umrah, Hajj, international tours and visas with
-            one promise: you focus on the journey, we handle everything else.
+            {site.name} arranges Umrah, Hajj, international tours and visas from
+            Pakistan, with honest pricing quoted on inquiry and WhatsApp support
+            from inquiry to safe return.
           </p>
           <div className="mt-9 flex flex-col gap-3 sm:flex-row">
             <Link href="/packages" className="btn-orange">
               Explore Packages
             </Link>
             <a
-              href={waLink(
+              href={waHref(
+                settings.whatsapp,
                 "Assalam o Alaikum, I want to ask about Umrah packages."
               )}
               target="_blank"
@@ -126,6 +229,12 @@ export default async function HomePage() {
               className="btn border border-white/40 text-white hover:bg-white/10"
             >
               Ask on WhatsApp
+            </a>
+            <a
+              href={telHref(settings.phone)}
+              className="btn border border-white/40 text-white hover:bg-white/10 sm:hidden"
+            >
+              Call {settings.phone}
             </a>
           </div>
           <div className="mt-14 grid max-w-2xl grid-cols-3 gap-6 border-t border-white/15 pt-8">
@@ -188,57 +297,84 @@ export default async function HomePage() {
         </div>
       </section>
 
+      {/* Entity context layer */}
+      <section className="border-b border-black/5 bg-paper py-16 sm:py-20">
+        <div className="container-site">
+          <div className="mx-auto max-w-3xl text-center">
+            <p className="eyebrow">Umrah, Hajj and travel from Pakistan</p>
+            <p className="mt-5 text-base leading-relaxed text-slate-700 sm:text-lg">
+              {site.name} is a Charsadda based agency arranging Umrah and Hajj to
+              Makkah and Madinah, with hotels near Masjid al-Haram and Masjid
+              an-Nabawi, guided Ziyarat, and the Saudi Umrah e-visa handled for
+              you. Packages run from economy to five star across 7 to 30 day
+              durations for 2026, with quad, triple, and double sharing and
+              departures from Peshawar and Islamabad. Beyond the pilgrimage, our
+              desk arranges international tours to Dubai, Turkey, Baku, and
+              beyond, plus visit visas from Pakistan. One office in Charsadda
+              serves travelers across all Pakistan.
+            </p>
+          </div>
+        </div>
+      </section>
+
       {/* Services */}
       <section className="py-20 sm:py-28">
         <div className="container-site">
           <SectionHeading
             eyebrow="What we do"
             title="Every journey, handled completely"
-            description="Four services, one standard: nothing left for you to chase."
+            description="Umrah, Hajj, international tours and visas, one standard of care with nothing left for you to chase."
             align="center"
           />
           <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
             {services.map((s) => (
-              <Link
+              <div
                 key={s.title}
-                href={s.href}
-                className="group overflow-hidden rounded-2xl bg-white shadow-card ring-1 ring-black/5 transition duration-300 hover:-translate-y-1 hover:shadow-lift"
+                className="flex flex-col overflow-hidden rounded-2xl bg-white shadow-card ring-1 ring-black/5"
               >
                 <div className="relative h-44 overflow-hidden">
                   <img
                     src={s.image}
                     alt={s.title}
                     loading="lazy"
-                    className="h-full w-full object-cover transition duration-500 group-hover:scale-105"
+                    className="h-full w-full object-cover"
                   />
                   <div className="absolute inset-0 overlay-dark" />
                   <h3 className="absolute bottom-4 left-5 text-xl text-white">
                     {s.title}
                   </h3>
                 </div>
-                <div className="p-6">
+                <div className="flex flex-1 flex-col p-6">
                   <p className="text-sm leading-relaxed text-slate-600">
                     {s.text}
                   </p>
-                  <span className="mt-4 inline-flex items-center gap-1.5 text-sm font-semibold text-brand-orange-dark">
-                    Learn more
-                    <svg
-                      width="16"
-                      height="16"
-                      viewBox="0 0 24 24"
-                      fill="none"
-                      stroke="currentColor"
-                      strokeWidth="2.5"
-                      strokeLinecap="round"
-                      strokeLinejoin="round"
-                      className="transition group-hover:translate-x-1"
-                      aria-hidden="true"
-                    >
-                      <path d="M5 12h14M13 6l6 6-6 6" />
-                    </svg>
-                  </span>
+                  <div className="mt-auto flex flex-wrap gap-x-5 gap-y-1 border-t border-black/5 pt-3">
+                    {s.links.map((l) => (
+                      <Link
+                        key={l.label}
+                        href={l.href}
+                        className="group inline-flex min-h-[44px] items-center gap-1.5 text-sm font-semibold text-brand-orange-dark hover:text-brand-orange"
+                      >
+                        {l.label}
+                        <svg
+                          width="15"
+                          height="15"
+                          viewBox="0 0 24 24"
+                          fill="none"
+                          stroke="currentColor"
+                          strokeWidth="2.5"
+                          strokeLinecap="round"
+                          strokeLinejoin="round"
+                          className="transition group-hover:translate-x-1"
+                          aria-hidden="true"
+                        >
+                          <path d="M5 12h14M13 6l6 6-6 6" />
+                        </svg>
+                      </Link>
+                    ))}
+                  </div>
                 </div>
-              </Link>
+              </div>
             ))}
           </div>
         </div>
@@ -250,14 +386,18 @@ export default async function HomePage() {
           <SectionHeading
             eyebrow="Featured packages"
             title="Where will you go first?"
-            description="Our most booked journeys across Umrah, Hajj and international escapes."
+            description="Compare our most booked Umrah packages, Hajj programs and international tours, with hotels, flights and inclusions on every card, each quoted on inquiry."
           />
           <div className="grid gap-7 md:grid-cols-2 xl:grid-cols-4">
             {featured.map((p) => (
-              <PackageCard key={p.slug} pkg={p} />
+              <PackageInquiryCard
+                key={p.slug}
+                pkg={p}
+                whatsapp={settings.whatsapp}
+              />
             ))}
           </div>
-          <div className="mt-12 text-center">
+          <div className="mt-10 text-center">
             <Link href="/packages" className="btn-outline">
               View All Packages
             </Link>
@@ -265,14 +405,18 @@ export default async function HomePage() {
         </div>
       </section>
 
-      {/* Why us — split with image */}
+      {/* Why us: split with image */}
       <section className="py-20 sm:py-28">
         <div className="container-site grid items-center gap-12 lg:grid-cols-2">
           <div className="relative">
             <div className="overflow-hidden rounded-3xl shadow-lift">
               <img
-                src={images.madinah}
-                alt="Domes of the Prophet's Mosque in Madinah"
+                src={photo(realPhotos.office, images.madinah)}
+                alt={
+                  realPhotos.office
+                    ? "Al Raqeem Travel and Tours head office in Charsadda"
+                    : "Domes of the Prophet's Mosque in Madinah"
+                }
                 loading="lazy"
                 className="h-[420px] w-full object-cover"
               />
@@ -288,7 +432,7 @@ export default async function HomePage() {
           </div>
           <div>
             <SectionHeading
-              eyebrow="Why Al Raqeem"
+              eyebrow="Why travelers choose us"
               title="Travel companies sell tickets. We take responsibility."
             />
             <div className="grid gap-5 sm:grid-cols-2">
@@ -304,9 +448,30 @@ export default async function HomePage() {
                 </div>
               ))}
             </div>
+            <p className="mt-5 rounded-2xl border border-black/5 bg-paper p-5 text-sm leading-relaxed text-slate-600">
+              Our head office sits at Aman Plaza, Mardan Road, Charsadda, open
+              Monday to Saturday, where you meet the team in person before
+              booking.
+            </p>
+            {credentialBadges.length > 0 && (
+              <ul className="mt-4 flex flex-wrap gap-2">
+                {credentialBadges.map((c) => (
+                  <li
+                    key={c.label}
+                    className="inline-flex items-center gap-1.5 rounded-full border border-black/10 bg-white px-3 py-1.5 text-xs font-semibold text-brand-blue-deep shadow-card"
+                  >
+                    <span className="text-brand-orange-dark">{c.label}</span>
+                    {c.value}
+                  </li>
+                ))}
+              </ul>
+            )}
           </div>
         </div>
       </section>
+
+      {/* Social proof (renders only when real reviews exist) */}
+      <Reviews data={reviewData} />
 
       {/* How it works */}
       <section className="bg-brand-blue-deep py-20 text-white sm:py-28">
@@ -342,10 +507,10 @@ export default async function HomePage() {
           <SectionHeading
             eyebrow="Areas we serve"
             title="One office in Charsadda, serving all of Pakistan"
-            description="Wherever you live, our process works the same: WhatsApp, documents, departure."
+            description="Our Charsadda office serves Charsadda, Peshawar, Islamabad, Rawalpindi, Lahore, Tangi and Shabqadar, arranging Umrah, Hajj, tours and visas for travelers across all of Pakistan through WhatsApp, documents and departure."
           />
           <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
-            {cities.map((c) => (
+            {orderedCities.map((c) => (
               <Link
                 key={c.slug}
                 href={`/areas/${c.slug}`}
@@ -380,7 +545,7 @@ export default async function HomePage() {
 
       {/* Hajj Pre Registration */}
       <section className="relative overflow-hidden bg-ink py-20 sm:py-28">
-        {/* Decorative crescent — top right */}
+        {/* Decorative crescent, top right */}
         <svg
           viewBox="0 0 400 400"
           aria-hidden="true"
@@ -391,7 +556,7 @@ export default async function HomePage() {
             fill="#C5A253"
           />
         </svg>
-        {/* Decorative crescent — bottom left */}
+        {/* Decorative crescent, bottom left */}
         <svg
           viewBox="0 0 400 400"
           aria-hidden="true"
@@ -430,9 +595,9 @@ export default async function HomePage() {
               Hajj Pre-Registration
             </h2>
             <p className="mt-5 text-base leading-relaxed text-slate-300 sm:text-lg">
-              Register your interest for Hajj 2025 through the Government of
-              Pakistan's official MORA portal. Secure your seat before
-              allocations close.
+              Register your interest for the upcoming Hajj season through the
+              Government of Pakistan's official MORA portal. Secure your place
+              before allocations close.
             </p>
 
             {/* Info pills */}
@@ -490,6 +655,17 @@ export default async function HomePage() {
               <p className="mt-3 text-xs text-slate-500">
                 Opens the official mora.gov.pk portal in a new tab
               </p>
+              <p className="mx-auto mt-6 max-w-xl text-sm text-slate-400">
+                Prefer a fully arranged journey? Our{" "}
+                <Link
+                  href="/packages/hajj-package"
+                  className="font-semibold text-brand-orange underline"
+                >
+                  private Hajj packages
+                </Link>{" "}
+                cover Nusuk and visa processing, trained group leaders, and Mina
+                and Arafat camp services from booking to safe return.
+              </p>
             </div>
           </div>
         </div>
@@ -524,9 +700,70 @@ export default async function HomePage() {
         </div>
       </section>
 
+      {/* FAQ */}
+      <section className="py-20 sm:py-28">
+        <div className="container-site">
+          <SectionHeading
+            eyebrow="Questions and answers"
+            title="Umrah, Hajj and visa questions, answered"
+            description="Straight answers on Umrah and Hajj costs, inclusions, hotels, visas and booking from any city in Pakistan."
+            align="center"
+          />
+          <HomeFaq />
+        </div>
+      </section>
+
+      {/* Topical bridge: internal link hub into the topical tree */}
+      <section className="bg-paper py-20 sm:py-28">
+        <div className="container-site">
+          <SectionHeading
+            eyebrow="Explore more"
+            title="Plan your journey by package, city, or visa"
+            description="Jump straight to a package tier, your departure city, an international tour, or a visit visa, all handled by our team."
+            align="center"
+          />
+          <div className="grid gap-8 sm:grid-cols-2 lg:grid-cols-4">
+            {bridge.map((group) => (
+              <div key={group.heading}>
+                <h3 className="font-display text-lg text-brand-blue-deep">
+                  {group.heading}
+                </h3>
+                <ul className="mt-3 space-y-1">
+                  {group.links.map((l) => (
+                    <li key={l.href}>
+                      <Link
+                        href={l.href}
+                        className="flex min-h-[44px] items-center gap-2 rounded-lg px-3 py-2 text-sm text-slate-600 transition hover:bg-white hover:text-brand-blue"
+                      >
+                        <svg
+                          width="14"
+                          height="14"
+                          viewBox="0 0 24 24"
+                          fill="none"
+                          stroke="#A8853A"
+                          strokeWidth="2.5"
+                          strokeLinecap="round"
+                          strokeLinejoin="round"
+                          className="shrink-0"
+                          aria-hidden="true"
+                        >
+                          <path d="M5 12h14M13 6l6 6-6 6" />
+                        </svg>
+                        {l.label}
+                      </Link>
+                    </li>
+                  ))}
+                </ul>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
       <CtaBand
         image={images.kaaba}
         imageAlt="The Holy Kaaba in Masjid al-Haram, Makkah"
+        officeHref={mapsLink()}
       />
     </>
   );

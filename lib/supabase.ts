@@ -20,14 +20,14 @@ const serviceKey =
 /** True when the public read credentials are present. */
 export const isSupabaseConfigured = Boolean(url && anonKey);
 
-/** Read-only client (anon key) — used by public pages. */
+/** Read-only client (anon key), used by public pages. */
 export function getReadClient(): SupabaseClient | null {
   if (!url || !anonKey) return null;
   return createClient(url, anonKey, { auth: { persistSession: false } });
 }
 
 /**
- * Privileged client (service role) — used by admin write APIs only.
+ * Privileged client (service role), used by admin write APIs only.
  * Never import this into a client component.
  */
 export function getAdminClient(): SupabaseClient | null {

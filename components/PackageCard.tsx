@@ -1,8 +1,16 @@
 import Link from "next/link";
-import { TravelPackage, formatPrice } from "@/lib/packages";
+import { TravelPackage } from "@/lib/packages";
 import { packageImage } from "@/lib/images";
 
-export default function PackageCard({ pkg }: { pkg: TravelPackage }) {
+export default function PackageCard({
+  pkg,
+  inclusions = false,
+}: {
+  pkg: TravelPackage;
+  // When true, surface up to two real highlights as decision attributes.
+  inclusions?: boolean;
+}) {
+  const attributes = inclusions ? pkg.highlights.slice(0, 3) : [];
   return (
     <Link
       href={`/packages/${pkg.slug}`}
@@ -27,16 +35,42 @@ export default function PackageCard({ pkg }: { pkg: TravelPackage }) {
         </span>
       </div>
 
-      {/* Bottom content — kept minimal */}
+      {/* Bottom content, kept minimal */}
       <div className="relative p-6">
         <h3 className="text-xl leading-snug text-white">{pkg.title}</h3>
+        {attributes.length > 0 && (
+          <ul className="mt-3 space-y-1.5">
+            {attributes.map((a) => (
+              <li
+                key={a}
+                className="flex items-start gap-2 text-xs leading-snug text-white/85"
+              >
+                <svg
+                  width="14"
+                  height="14"
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  stroke="#C5A253"
+                  strokeWidth="3"
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                  className="mt-0.5 shrink-0"
+                  aria-hidden="true"
+                >
+                  <path d="M20 6L9 17l-5-5" />
+                </svg>
+                {a}
+              </li>
+            ))}
+          </ul>
+        )}
         <div className="mt-3 flex items-end justify-between">
           <div>
             <p className="text-[11px] font-medium uppercase tracking-wider text-white/70">
-              {pkg.price === null ? "Pricing" : "From"}
+              Pricing
             </p>
             <p className="font-display text-lg text-brand-orange">
-              {formatPrice(pkg.price)}
+              Price on inquiry
             </p>
           </div>
           <span className="inline-flex items-center gap-1.5 text-sm font-semibold text-white transition group-hover:text-brand-orange">

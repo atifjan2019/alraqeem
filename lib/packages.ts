@@ -18,7 +18,7 @@ export type TravelPackage = {
   expiryDate?: string | null;
 };
 
-// Seed data — used as a fallback when Supabase is not configured,
+// Seed data, used as a fallback when Supabase is not configured,
 // and to seed the database (see supabase/schema.sql).
 export const seedPackages: TravelPackage[] = [
   {
@@ -36,7 +36,7 @@ export const seedPackages: TravelPackage[] = [
       "Ground transport between cities",
     ],
     description:
-      "Our most popular package for first-time pilgrims. Comfortable hotels at honest prices, with our team handling visa, flights and transport so you can focus on your worship.",
+      "Our most popular package for first-time pilgrims. Comfortable hotels at honest prices, with our team handling visa, flights and transport so you focus on your worship.",
   },
   {
     slug: "premium-umrah-21-days",

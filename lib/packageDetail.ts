@@ -1,0 +1,329 @@
+// =====================================================================
+// Detail page content for the eight packages. Every field is grounded in
+// real repo data (title, category, duration, highlights, description) or
+// standard true requirements. Pricing is inquiry based, so no numbers.
+// Unknown slugs (admin added) fall back to derived content, never a crash.
+// =====================================================================
+import type { TravelPackage } from "@/lib/packages";
+
+export type Faq = { q: string; a: string };
+
+export type DetailContent = {
+  overview: string;
+  whoFor: string[];
+  faqs: Faq[];
+  // Hajj page shows a government MORA companion note.
+  moraNote?: boolean;
+};
+
+function pricingFaq(name: string): Faq {
+  return {
+    q: `How much does the ${name} cost?`,
+    a: `${name} pricing is quoted on inquiry because airfare and hotel rates shift every week. Our team checks live fares for your exact travel dates and sends the current best price on WhatsApp, with no hidden charges and no stale published numbers. Message our desk with your dates and group size for a same day quote.`,
+  };
+}
+
+export const detailContent: Record<string, DetailContent> = {
+  "economy-umrah-15-days": {
+    overview:
+      "Economy Umrah Package from Pakistan suits first time and budget conscious pilgrims who want a complete, guided journey at an honest cost. Our team arranges return airfare from Peshawar or Islamabad, hotels within walking distance of the Haram, the Saudi e-visa, ground transport between Makkah and Madinah, and guided Ziyarat at both holy sites. Fifteen days allows unhurried worship across both cities, with our desk handling every document and booking so you focus on your prayers.",
+    whoFor: [
+      "First time pilgrims from Pakistan",
+      "Budget conscious families and individuals",
+      "Travelers who want a complete package at an honest cost",
+      "Groups departing from Peshawar or Islamabad",
+    ],
+    faqs: [
+      pricingFaq("Economy Umrah Package"),
+      {
+        q: "What is included in the Economy Umrah Package?",
+        a: "Economy Umrah covers return airfare from Peshawar or Islamabad, hotels within walking distance of the Haram, the Saudi e-visa, ground transport between Makkah and Madinah, and guided Ziyarat at both holy sites. Our desk confirms every inclusion in writing before you pay, so nothing on the journey surprises you.",
+      },
+      {
+        q: "How far are the hotels from the Haram?",
+        a: "Economy Umrah books hotels within walking distance of the Haram, a short walk to the mataf for your daily prayers. Our team names the exact hotel for your travel dates before you confirm, since availability changes through the year and the closest options book early.",
+      },
+      {
+        q: "Which cities does the flight depart from?",
+        a: "Economy Umrah flights depart from Peshawar or Islamabad, whichever carries the better fare and schedule for your dates. Our desk arranges ground transport onward, and travelers from nearby towns coordinate airport pickup with our team when they book.",
+      },
+    ],
+  },
+
+  "premium-umrah-21-days": {
+    overview:
+      "Premium Umrah Package from Pakistan serves pilgrims who want deep comfort alongside their worship. Our team books five star hotels facing the Haram in Makkah and Madinah, direct flights with checked baggage, private transport with a personal guide, and a daily breakfast and dinner buffet. Twenty one days gives a calm, unhurried stay across both cities, with fast track visa processing and every detail handled by our desk from departure to safe return.",
+    whoFor: [
+      "Pilgrims who want five star comfort near the Haram",
+      "Families traveling together in one group",
+      "Elderly pilgrims who value short walking distances",
+      "Repeat pilgrims seeking a longer, calmer stay",
+    ],
+    faqs: [
+      pricingFaq("Premium Umrah Package"),
+      {
+        q: "What makes the Premium Umrah Package different?",
+        a: "Premium Umrah books five star hotels facing the Haram, direct flights with checked baggage, private transport with a personal guide, and a daily breakfast and dinner buffet. Twenty one days across Makkah and Madinah gives a slower, more comfortable pace, with fast track visa processing handled by our team.",
+      },
+      {
+        q: "How close are the hotels to the Haram?",
+        a: "Premium Umrah places pilgrims in five star hotels facing the Haram in both Makkah and Madinah, steps from the gates. Short walking distance matters most for elderly pilgrims and families, so our desk confirms the exact property and its position for your dates before booking.",
+      },
+      {
+        q: "Is private transport included?",
+        a: "Premium Umrah includes private transport with a personal guide across Makkah and Madinah, rather than shared coaches. Our team arranges airport transfers, intercity travel, and Ziyarat movement, so your group travels on its own schedule throughout the journey.",
+      },
+    ],
+  },
+
+  "ramadan-umrah-special": {
+    overview:
+      "Ramadan Umrah Special from Pakistan places you in Makkah and Madinah during the most blessed nights of the year. Our team arranges last Ashra stays, hotels booked months ahead, Itikaf on request, and flexible durations from ten to thirty days. Ramadan demand runs extremely high, so seats and rooms fill early. Message our desk well ahead of your dates to secure Taraweeh in the Haram and a place for the nights of Laylat al-Qadr.",
+    whoFor: [
+      "Pilgrims seeking Taraweeh and Laylat al-Qadr in the Haram",
+      "Travelers planning Itikaf in the last Ashra",
+      "Families wanting flexible Ramadan durations",
+      "Early planners who book months in advance",
+    ],
+    faqs: [
+      pricingFaq("Ramadan Umrah Special"),
+      {
+        q: "How early should I book Ramadan Umrah?",
+        a: "Ramadan Umrah fills months in advance, and the last Ashra sells out first. For 2026 dates, our team books hotels and seats as early as possible, so message our desk well ahead of Ramadan to secure your preferred nights, duration, and hotel near the Haram before availability closes.",
+      },
+      {
+        q: "Are Itikaf arrangements available?",
+        a: "Itikaf arrangements are available on request during the last Ashra of Ramadan. Our team plans your hotel stay and durations around Itikaf so your worship continues without disruption. Tell our desk your intended nights when you book, since these arrangements depend on early hotel availability.",
+      },
+      {
+        q: "What durations are available for Ramadan Umrah?",
+        a: "Ramadan Umrah runs across flexible durations from ten to thirty days, covering the first Ashra, the last Ashra, or the full month. Our team matches your stay to your work and family schedule, then books hotels and flights around the nights that matter most to you.",
+      },
+    ],
+  },
+
+  "hajj-package": {
+    moraNote: true,
+    overview:
+      "Hajj Package from Pakistan delivers a complete, guided pilgrimage with trained group leaders and scholars. Our team arranges government approved Hajj services, Mina and Arafat camp accommodation, Muzdalifah movement, and pre-departure training so you arrive prepared for every rite. Quotas stay limited every year, so early registration matters. For the government scheme, register free on the official MORA portal, then choose our private Hajj route for full document support and guided camp services from departure to safe return.",
+    whoFor: [
+      "First time Hajj pilgrims from Pakistan",
+      "Pilgrims who want trained group leaders and scholars",
+      "Families performing Hajj together",
+      "Travelers seeking full document and camp support",
+    ],
+    faqs: [
+      pricingFaq("Hajj Package"),
+      {
+        q: "How do I apply for Hajj from Pakistan?",
+        a: "Hajj from Pakistan runs through two routes. The Government scheme opens on the Ministry of Religious Affairs portal at mora.gov.pk, where you register free during the announced window. Our private Hajj package forms the second route, with documents, trained group leaders, and Mina and Arafat camp services arranged for you.",
+      },
+      {
+        q: "What does the Hajj Package include?",
+        a: "Hajj Package covers government approved arrangements, Mina and Arafat camp accommodation, trained group leaders and scholars, and pre-departure Hajj training. Our team guides your group through every rite, from Ihram to the farewell Tawaf, so first time pilgrims travel with clear support at each step.",
+      },
+      {
+        q: "When should I register for Hajj?",
+        a: "Hajj quotas stay limited every year and allocations close quickly, so early registration matters. Register free on the official MORA portal during the announced window, and message our desk in parallel to reserve a place on the private Hajj route with full document and camp support.",
+      },
+    ],
+  },
+
+  "dubai-5-days": {
+    overview:
+      "Dubai City Tour from Pakistan packs the emirate's highlights into five days and four nights. Our team arranges return airfare, the UAE visit visa, a four star hotel with breakfast, a desert safari with BBQ dinner, a Burj Khalifa and Dubai Mall visit, and a Marina dhow cruise. Visa, flights, hotel, and sightseeing sit in one booking, which makes this a smooth first international trip for couples and families traveling from Pakistan.",
+    whoFor: [
+      "Couples and honeymooners",
+      "Families with children",
+      "First time international travelers from Pakistan",
+      "Travelers who want visa, flights, and hotel in one booking",
+    ],
+    faqs: [
+      pricingFaq("Dubai City Tour"),
+      {
+        q: "Does the Dubai package include the visa and flights?",
+        a: "Dubai City Tour includes return airfare and the UAE visit visa, along with a four star hotel and breakfast. Our team prepares and checks your visa documents before filing, so your file clears cleanly. Visa, flights, hotel, and tours arrive in one booking with no separate arrangements to chase.",
+      },
+      {
+        q: "What is included in the Dubai City Tour?",
+        a: "Dubai City Tour covers return airfare, the UAE visit visa, a four star hotel with breakfast, a desert safari with BBQ dinner, a Burj Khalifa and Dubai Mall visit, and a Marina dhow cruise. Five days and four nights leave time for the emirate's landmark sights at a relaxed pace.",
+      },
+      {
+        q: "Is the Dubai tour suitable for families?",
+        a: "Dubai City Tour works well for families, with a four star hotel, a desert safari, and the Burj Khalifa and Dubai Mall on the itinerary. Our team adjusts the pace for children and elders, and arranges the UAE visit visa for every traveler in your group.",
+      },
+    ],
+  },
+
+  "turkey-7-days": {
+    overview:
+      "Turkey Tour Istanbul and Cappadocia from Pakistan runs seven days and six nights across two unforgettable regions. Our team arranges return airfare, Turkey e-visa support, guided tours of Istanbul's old city, a Cappadocia visit with an optional hot air balloon ride, a Bosphorus cruise, and halal meals throughout. Ottoman history and valley landscapes combine in one booking, a favorite for honeymoons and families traveling from Pakistan.",
+    whoFor: [
+      "Honeymooners and couples",
+      "Families who enjoy history and landscapes",
+      "First time Turkey travelers from Pakistan",
+      "Travelers who want halal meals arranged throughout",
+    ],
+    faqs: [
+      pricingFaq("Turkey Tour"),
+      {
+        q: "Does the Turkey tour include the visa and flights?",
+        a: "Turkey Tour includes return airfare and Turkey e-visa support. Our team checks eligibility and prepares your file, filing the e-visa for eligible travelers and guiding the sticker visa for others. Flights, tours, a Bosphorus cruise, and halal meals arrive in one booking managed by our desk.",
+      },
+      {
+        q: "What are the best months for the Turkey tour?",
+        a: "Turkey rewards spring and autumn travel, when Istanbul and Cappadocia stay comfortable for walking and balloon rides. Summer brings warmer days and larger crowds, while winter turns Cappadocia snowy and quiet. Tell our team your preferred window, and our desk builds the itinerary around it.",
+      },
+      {
+        q: "Is the hot air balloon ride included?",
+        a: "The Cappadocia hot air balloon ride is an optional add-on rather than a fixed inclusion, since flights depend on weather and demand. Our team books it alongside your package when you request it, and confirms timing on the ground so you catch a clear sunrise over the valleys.",
+      },
+    ],
+  },
+
+  "baku-5-days": {
+    overview:
+      "Baku Azerbaijan from Pakistan offers a short, easy international escape across five days and four nights. Our team arranges return airfare, the e-visa, a city center hotel with breakfast, an Old City and Flame Towers tour, and a Gabala day trip with a cable car ride. Walkable streets and simple visas make Baku a smooth first trip abroad for couples and families traveling from Pakistan.",
+    whoFor: [
+      "First time international travelers from Pakistan",
+      "Couples wanting a short getaway",
+      "Families who enjoy walkable cities",
+      "Travelers who want an easy visa process",
+    ],
+    faqs: [
+      pricingFaq("Baku Azerbaijan tour"),
+      {
+        q: "How easy is the Baku visa for Pakistani travelers?",
+        a: "Azerbaijan runs an e-visa that stays among the simpler options for Pakistani passport holders. Our team prepares and checks your documents, then files the e-visa so it clears without avoidable errors. The visa arrives inside your package, with no separate embassy visit to arrange.",
+      },
+      {
+        q: "What is included in the Baku package?",
+        a: "Baku Azerbaijan covers return airfare, the e-visa, a city center hotel with breakfast, an Old City and Flame Towers tour, and a Gabala day trip with a cable car ride. Five days and four nights leave room for walkable sightseeing and a mountain excursion at an easy pace.",
+      },
+      {
+        q: "Is Baku a good first trip abroad?",
+        a: "Baku suits first time international travelers, with short flights, a simple e-visa, and a compact, walkable city center. Our team handles the visa, hotel, and tours in one booking, so travelers new to international trips move through the journey with clear support from our desk.",
+      },
+    ],
+  },
+
+  "malaysia-thailand-8-days": {
+    overview:
+      "Malaysia and Thailand Combo from Pakistan brings two countries into one eight day, seven night booking. Our team arranges Kuala Lumpur and Bangkok in a single trip, a Genting Highlands day tour, an optional Phuket beach extension, and visa processing for both countries. City lights and beaches sit side by side, which makes this a full Far East experience for families and couples traveling from Pakistan.",
+    whoFor: [
+      "Families wanting two countries in one trip",
+      "Couples seeking cities and beaches together",
+      "First time Far East travelers from Pakistan",
+      "Travelers who want both visas handled in one booking",
+    ],
+    faqs: [
+      pricingFaq("Malaysia and Thailand Combo"),
+      {
+        q: "Does the combo include visas for both countries?",
+        a: "Malaysia and Thailand Combo includes visa processing for both countries. Our team prepares and checks each file before filing, so your Malaysia and Thailand entries clear cleanly. Two visas, flights, hotels, and tours arrive in one booking, with our desk coordinating the full route for you.",
+      },
+      {
+        q: "What is included in the combo tour?",
+        a: "Malaysia and Thailand Combo covers Kuala Lumpur and Bangkok in one trip, a Genting Highlands day tour, an optional Phuket beach extension, and visa processing for both countries. Eight days and seven nights balance city sightseeing with a beach option for a full Far East experience.",
+      },
+      {
+        q: "Is the Phuket beach extension available?",
+        a: "The Phuket beach extension is an optional add-on to the Kuala Lumpur and Bangkok route. Our team arranges the extra nights, transfers, and beach stay when you request it, and confirms the updated itinerary in writing so your full trip stays clear from the start.",
+      },
+    ],
+  },
+};
+
+// -------- Derivation helpers (real data only) --------
+
+// Duration band from the duration string, using the largest day count.
+export function durationBand(
+  duration: string
+): "short" | "mid" | "long" | null {
+  const nums = (duration.match(/\d+/g) || []).map(Number);
+  if (nums.length === 0) return null;
+  const max = Math.max(...nums);
+  if (max <= 10) return "short";
+  if (max <= 20) return "mid";
+  return "long";
+}
+
+// Tier from the package name, where the name genuinely states it.
+export function tierOf(pkg: TravelPackage): "Economy" | "Premium" | null {
+  const t = pkg.title.toLowerCase();
+  if (t.includes("economy")) return "Economy";
+  if (t.includes("premium")) return "Premium";
+  return null;
+}
+
+// Departure cities. Pilgrimage travel departs from Peshawar and Islamabad
+// across the site; tour origins are not stated per package, so they omit.
+export function departureCities(pkg: TravelPackage): string[] {
+  return pkg.category === "Umrah & Hajj" ? ["Peshawar", "Islamabad"] : [];
+}
+
+// The real hotel or proximity phrasing from the highlights, when present.
+export function hotelHighlight(pkg: TravelPackage): string | null {
+  return (
+    pkg.highlights.find((h) => /hotel|haram|walking|facing|star/i.test(h)) ??
+    null
+  );
+}
+
+export const standardExclusions = [
+  "Personal expenses such as shopping and phone credit",
+  "Anything not listed under what is included",
+  "Optional excursions and private upgrades",
+  "Travel insurance, unless stated in your quote",
+];
+
+export function documentsFor(pkg: TravelPackage): string[] {
+  if (pkg.category === "Umrah & Hajj") {
+    return [
+      "Passport valid for at least six months with blank pages",
+      "National identity card, CNIC",
+      "Passport size photographs with a white background",
+      "Umrah or Hajj visa, processed by our team",
+      "Vaccination certificate where required by Saudi authorities",
+    ];
+  }
+  return [
+    "Passport valid for at least six months with blank pages",
+    "National identity card, CNIC",
+    "Passport size photographs with a white background",
+    "Visit visa for the destination, processed by our team",
+    "Confirmed return ticket and hotel booking, arranged in your package",
+  ];
+}
+
+export const bookingSteps = [
+  "Message our team on WhatsApp or visit the Charsadda office with your travel dates.",
+  "Receive a quote for your exact dates, with the current best price and no hidden charges.",
+  "Confirm your package and submit your documents for processing.",
+  "Pay by bank transfer or in person, and receive written confirmation.",
+  "Travel with your documents in hand and our desk one WhatsApp message away.",
+];
+
+// Content for any package, with a safe fallback for admin added slugs.
+export function getDetail(pkg: TravelPackage): DetailContent {
+  const mapped = detailContent[pkg.slug];
+  if (mapped) return mapped;
+  const base = pkg.description
+    ? pkg.description.replace(/<[^>]*>/g, " ").replace(/\s+/g, " ").trim()
+    : `${pkg.title} from Pakistan, arranged end to end by our team across ${pkg.duration}.`;
+  return {
+    overview: base,
+    whoFor: [
+      "Travelers from Pakistan seeking a complete, arranged trip",
+      "Families and groups booking together",
+      "First time travelers who want documents handled",
+    ],
+    faqs: [
+      pricingFaq(pkg.title),
+      {
+        q: `What is included in the ${pkg.title}?`,
+        a: `The ${pkg.title} covers the items listed under what is included on this page. Our desk confirms every inclusion in writing before you pay, so the journey holds no surprises. Message our team for the current details and a quote for your exact dates.`,
+      },
+    ],
+  };
+}

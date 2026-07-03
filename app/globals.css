@@ -43,7 +43,7 @@ h4 {
   @apply inline-flex items-center justify-center gap-2 rounded-full px-7 py-3.5 text-sm font-semibold tracking-wide transition-all duration-200 active:scale-95;
 }
 
-/* Primary CTA — gold on deep green text reads premium */
+/* Primary CTA, gold on deep green text reads premium */
 .btn-orange {
   @apply btn bg-brand-orange text-brand-blue-deep font-bold shadow-[0_8px_24px_rgba(197,162,83,0.35)] hover:bg-brand-orange-dark hover:shadow-[0_10px_30px_rgba(168,133,58,0.45)];
 }
@@ -139,6 +139,14 @@ label {
 }
 .prose-site strong {
   @apply font-semibold text-brand-blue-deep;
+}
+
+/* On detail pages the mobile action bar toggles this class so the WhatsApp
+   float lifts above the bar instead of overlapping it. Mobile only. */
+@media (max-width: 1023px) {
+  body.has-action-bar .wa-float {
+    bottom: 5.5rem;
+  }
 }
 
 @media (prefers-reduced-motion: reduce) {

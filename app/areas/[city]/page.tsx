@@ -51,7 +51,7 @@ export default async function CityPage({
       <section className="relative overflow-hidden bg-ink py-20 text-white sm:py-28">
         <img
           src={images.kaaba}
-          alt={`Umrah and Hajj travel from ${city.name} — the Holy Kaaba in Makkah`}
+          alt={`Umrah and Hajj travel from ${city.name}, the Holy Kaaba in Makkah`}
           className="absolute inset-0 h-full w-full object-cover"
         />
         <div className="absolute inset-0 overlay-hero" />

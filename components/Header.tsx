@@ -30,7 +30,7 @@ export default function Header({
       <div className="container-site flex h-20 items-center justify-between sm:h-24">
         <Link
           href="/"
-          aria-label={`${site.name} — home`}
+          aria-label={`${site.name} home`}
           className="flex items-center"
           onClick={() => setOpen(false)}
         >

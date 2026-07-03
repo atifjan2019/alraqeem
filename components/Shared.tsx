@@ -44,18 +44,22 @@ export async function CtaBand({
   subtitle = "Sit with our team in Charsadda or reach us on WhatsApp. Honest prices, complete service, and support from departure to safe return.",
   image = images.mosque,
   imageAlt = "Umrah, Hajj and international travel destinations",
+  officeHref = "/contact",
 }: {
   title?: string;
   subtitle?: string;
   image?: string;
   imageAlt?: string;
+  officeHref?: string;
 }) {
   const settings = await getSettings();
+  const officeIsExternal = officeHref.startsWith("http");
   return (
     <section className="relative overflow-hidden bg-ink">
       <img
         src={image}
         alt={imageAlt}
+        loading="lazy"
         className="absolute inset-0 h-full w-full object-cover"
       />
       <div className="absolute inset-0 overlay-hero" />
@@ -86,12 +90,23 @@ export async function CtaBand({
             >
               Call {settings.phone}
             </a>
-            <Link
-              href="/contact"
-              className="btn border border-white/40 text-white hover:bg-white/10"
-            >
-              Visit Our Office
-            </Link>
+            {officeIsExternal ? (
+              <a
+                href={officeHref}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="btn border border-white/40 text-white hover:bg-white/10"
+              >
+                Visit Our Office
+              </a>
+            ) : (
+              <Link
+                href={officeHref}
+                className="btn border border-white/40 text-white hover:bg-white/10"
+              >
+                Visit Our Office
+              </Link>
+            )}
           </div>
         </div>
       </div>

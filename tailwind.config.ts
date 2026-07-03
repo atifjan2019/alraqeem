@@ -14,11 +14,11 @@ const config: Config = {
         brand: {
           blue: "#1C6B53", // primary emerald
           "blue-dark": "#14513F",
-          "blue-deep": "#0B2C22", // deepest forest — headings & dark sections
+          "blue-deep": "#0B2C22", // deepest forest, headings and dark sections
           orange: "#C5A253", // gold accent
           "orange-dark": "#A8853A",
         },
-        ink: "#0A211A", // near-black green — header / footer / hero base
+        ink: "#0A211A", // near-black green, header / footer / hero base
         paper: "#F5F1E8", // warm ivory
       },
       fontFamily: {

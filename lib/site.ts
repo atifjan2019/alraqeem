@@ -9,26 +9,37 @@ export const site = {
   shortName: "Al Raqeem",
   tagline: "Your trusted partner for Umrah, Hajj and worldwide travel",
 
-  // Live domain. www.alraqeemtravels.com is retired — do not reintroduce it.
+  // Live domain. www.alraqeemtravels.com is retired. Do not reintroduce it.
   url: "https://alraqeem.com.pk",
 
   // Primary mobile + WhatsApp (WhatsApp in international format, no + or spaces).
   phone: "03125446922",
   whatsapp: "923125446922",
 
-  // Optional landline / office number. Leave blank if not used.
-  landline: "",
+  // Secondary office / landline number.
+  landline: "09165100133",
 
-  // PLACEHOLDER: replace with real email
   email: "info@alraqeem.com.pk",
 
-  // PLACEHOLDER: replace with exact office address
-  address: "Main Bazaar Road, Charsadda, Khyber Pakhtunkhwa, Pakistan",
+  // Head office address.
+  address:
+    "Office 1 and 2, 1st Floor, Aman Plaza, Mardan Road, Charsadda, Khyber Pakhtunkhwa, Pakistan",
 
   hours: "Monday to Saturday, 9:00 AM to 8:00 PM",
 
   // Sister company
   sisterCompany: "Al Nafi Travels",
+
+  // Verifiable credentials. REAL values only. Any left blank are omitted from
+  // the page and the schema, so nothing is ever fabricated.
+  credentials: {
+    // Company / firm registration number (e.g. SECP or partnership registration).
+    companyNumber: "",
+    // MORA attested Umrah operator licence number.
+    moraLicence: "",
+    // IATA or DTS accreditation number.
+    iata: "",
+  },
 };
 
 export function waLink(message: string) {
@@ -37,4 +48,12 @@ export function waLink(message: string) {
 
 export function telLink() {
   return `tel:${site.phone.replace(/\s/g, "")}`;
+}
+
+// Google Maps search link for the head office address.
+export function mapsLink() {
+  const query = encodeURIComponent(
+    "Aman Plaza, Mardan Road, Charsadda, Khyber Pakhtunkhwa, Pakistan"
+  );
+  return `https://www.google.com/maps/search/?api=1&query=${query}`;
 }
