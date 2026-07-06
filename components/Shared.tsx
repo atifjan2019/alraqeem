@@ -41,7 +41,7 @@ export function PageHero({
 
 export async function CtaBand({
   title = "Ready to begin your journey?",
-  subtitle = "Sit with our team in Charsadda or reach us on WhatsApp. Honest prices, complete service, and support from departure to safe return.",
+  subtitle = "Sit with our team in Charsadda or reach us on WhatsApp. Clear written quotes, complete service, and support from departure to safe return.",
   image = images.mosque,
   imageAlt = "Umrah, Hajj and international travel destinations",
   officeHref = "/contact",

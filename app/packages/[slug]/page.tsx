@@ -154,7 +154,7 @@ export async function PackageDetailView({ pkg }: { pkg: TravelPackage }) {
   const heroSubhead = isTour
     ? "Visa, flights, hotel, and every sight handled. You travel, and our desk arranges it all, quoted for your exact dates with no hidden charges."
     : pkg.slug === "economy-umrah-15-days"
-      ? "A complete 15 day Umrah from Pakistan on an honest budget, with the Saudi e-visa, return flights from Peshawar and Islamabad, hotels within walking distance of the Haram, ground transport, and guided Ziyarat in Makkah and Madinah, all handled by our desk."
+      ? "A complete 15 day Umrah from Pakistan on a modest budget, with the Saudi e-visa, return flights from Peshawar and Islamabad, hotels within walking distance of the Haram, ground transport, and guided Ziyarat in Makkah and Madinah, all handled by our desk."
       : pkg.slug === "premium-umrah-21-days"
         ? "A 21 day five star Umrah from Pakistan, with hotels near or facing the Haram, private transport, daily breakfast and dinner, and the Saudi e-visa processed through Nusuk, arranged end to end by our desk."
         : pkg.slug === "ramadan-umrah-special"

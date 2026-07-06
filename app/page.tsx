@@ -761,10 +761,10 @@ export default async function HomePage() {
                 Cancellation and refund terms are confirmed in writing before you
                 pay.{" "}
                 <Link
-                  href="/contact"
+                  href="/terms-and-refunds"
                   className="font-semibold text-brand-blue underline"
                 >
-                  Ask our desk for the full terms.
+                  Read our full terms and refund policy.
                 </Link>
               </p>
             </div>

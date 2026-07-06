@@ -44,9 +44,8 @@ export default function AboutPage() {
         <div className="container-site max-w-3xl">
           <p className="text-lg leading-relaxed text-slate-700">
             {site.name} was founded in Charsadda as the sister company of{" "}
-            {site.sisterCompany}, carrying forward years of experience in
-            serving pilgrims and travelers from Khyber Pakhtunkhwa, Punjab and
-            beyond.
+            {site.sisterCompany}, serving pilgrims and travelers from Khyber
+            Pakhtunkhwa, Punjab and beyond.
           </p>
           <p className="mt-5 leading-relaxed text-slate-600">
             The name Al Raqeem comes from the Quran, from Surah Al Kahf, where
