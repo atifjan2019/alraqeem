@@ -1,6 +1,7 @@
 import { NextResponse } from "next/server";
 import { revalidatePath } from "next/cache";
 import { deletePackage, updatePackage } from "@/lib/packagesStore";
+import { packageHrefBySlug } from "@/lib/packages";
 import { parsePackageBody } from "@/lib/packageInput";
 
 export const dynamic = "force-dynamic";
@@ -26,7 +27,7 @@ export async function PUT(
     const pkg = await updatePackage(slug, parsed.input);
     revalidatePath("/");
     revalidatePath("/packages");
-    revalidatePath(`/packages/${slug}`);
+    revalidatePath(packageHrefBySlug(slug));
     return NextResponse.json({ package: pkg });
   } catch (err) {
     const message =

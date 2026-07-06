@@ -30,6 +30,10 @@ export const site = {
   // Sister company
   sisterCompany: "Al Nafi Travels",
 
+  // Freshness signal. Bump this month and year whenever page content is
+  // reviewed or updated, so every page shows an honest last updated date.
+  lastUpdated: "July 2026",
+
   // Verifiable credentials. REAL values only. Any left blank are omitted from
   // the page and the schema, so nothing is ever fabricated.
   credentials: {

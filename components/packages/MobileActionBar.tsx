@@ -8,9 +8,11 @@ import { useEffect, useState } from "react";
 export default function MobileActionBar({
   quoteHref,
   telHref,
+  quoteLabel = "Get a quote",
 }: {
   quoteHref: string;
   telHref: string;
+  quoteLabel?: string;
 }) {
   const [show, setShow] = useState(false);
 
@@ -53,7 +55,7 @@ export default function MobileActionBar({
           rel="noopener noreferrer"
           className="btn-orange min-h-[44px] flex-1 !py-2.5"
         >
-          Get a quote
+          {quoteLabel}
         </a>
         <a
           href={telHref}

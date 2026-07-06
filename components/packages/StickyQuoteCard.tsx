@@ -10,11 +10,15 @@ export default function StickyQuoteCard({
   quoteHref,
   telHref,
   trust,
+  quoteLabel = "Get a quote",
+  seasonalNote,
 }: {
   facts: Fact[];
   quoteHref: string;
   telHref: string;
   trust: Trust[];
+  quoteLabel?: string;
+  seasonalNote?: string;
 }) {
   return (
     <div className="rounded-3xl border border-black/5 bg-white p-6 shadow-lift">
@@ -55,12 +59,19 @@ export default function StickyQuoteCard({
           rel="noopener noreferrer"
           className="btn-orange w-full"
         >
-          Get a quote
+          {quoteLabel}
         </a>
         <a href={telHref} className="btn-outline w-full">
           Call
         </a>
       </div>
+
+      {seasonalNote && (
+        <p className="mt-3 flex items-start gap-2 text-xs leading-relaxed text-brand-orange-dark">
+          <Icon name="clock" size={14} className="mt-0.5 shrink-0" />
+          {seasonalNote}
+        </p>
+      )}
 
       <ul className="mt-5 space-y-3 border-t border-black/5 pt-5">
         {trust.map((t) => (

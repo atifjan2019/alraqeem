@@ -157,3 +157,50 @@ export function formatPrice(price: number | null) {
 }
 
 export const categories: Category[] = ["Umrah & Hajj", "International"];
+
+// Canonical, keyword-aligned display name for a package. The slug stays fixed
+// for URL stability; the visible name targets the query.
+export function packageDisplayName(
+  pkg: Pick<TravelPackage, "slug" | "title">
+): string {
+  if (pkg.slug === "ramadan-umrah-special") return "Ramadan Umrah Package";
+  if (pkg.slug === "dubai-5-days") return "Dubai Tour Package";
+  if (pkg.slug === "turkey-7-days") return "Turkey Tour Package";
+  return pkg.title;
+}
+
+// Folder based topical silos. Each package slug maps to exactly one silo URL.
+// The old /packages/[slug] URLs 301 to these (see next.config.mjs). Admin added
+// slugs not in the map fall back to /packages/[slug].
+const SILO_ROUTES: Record<string, string> = {
+  "economy-umrah-15-days": "/umrah/economy-15-days",
+  "premium-umrah-21-days": "/umrah/premium-21-days",
+  "ramadan-umrah-special": "/umrah/ramadan",
+  "hajj-package": "/hajj",
+  "dubai-5-days": "/tours/dubai",
+  "turkey-7-days": "/tours/turkey",
+  "baku-5-days": "/tours/baku",
+  "malaysia-thailand-8-days": "/tours/malaysia-thailand",
+};
+
+// Canonical URL path for a package by slug.
+export function packageHrefBySlug(slug: string): string {
+  return SILO_ROUTES[slug] ?? `/packages/${slug}`;
+}
+
+// Canonical URL path for a package.
+export function packageHref(pkg: Pick<TravelPackage, "slug">): string {
+  return packageHrefBySlug(pkg.slug);
+}
+
+// The silo a package belongs to, for breadcrumbs and hub links. Hajj is its own
+// hub, so its trail stops at the Hajj page itself.
+export function packageSilo(pkg: Pick<TravelPackage, "slug" | "category">): {
+  hub: string;
+  hubName: string;
+} {
+  if (pkg.slug === "hajj-package") return { hub: "/hajj", hubName: "Hajj" };
+  if (pkg.category === "Umrah & Hajj")
+    return { hub: "/umrah", hubName: "Umrah" };
+  return { hub: "/tours", hubName: "Tours" };
+}

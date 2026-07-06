@@ -5,6 +5,7 @@ import PackageInquiryCard from "@/components/packages/PackageInquiryCard";
 import { CtaBand } from "@/components/Shared";
 import JsonLd from "@/components/JsonLd";
 import HomeFaq from "@/components/HomeFaq";
+import LastUpdated from "@/components/LastUpdated";
 import Reviews from "@/components/Reviews";
 import { getFeatured } from "@/lib/packagesStore";
 import { getPosts } from "@/lib/postsStore";
@@ -39,8 +40,8 @@ const services = [
     text: "Our Umrah packages run from economy to five star across 7 to 30 day durations, with quad and triple sharing and hotels near the Haram in Makkah and Madinah. Every program covers the Saudi Umrah e-visa, guided Ziyarat, and ground transport. For Hajj, choose our private route alongside the government scheme registered through MORA and Nusuk.",
     image: images.kaaba,
     links: [
-      { label: "View Umrah packages", href: "/packages" },
-      { label: "Hajj packages and MORA", href: "/packages/hajj-package" },
+      { label: "View Umrah packages", href: "/umrah" },
+      { label: "Hajj packages and MORA", href: "/hajj" },
     ],
   },
   {
@@ -49,8 +50,8 @@ const services = [
     text: "Our international tours reach Dubai with the Burj Khalifa and Desert Safari, Turkey with Istanbul and Cappadocia, Baku with the Old City and Flame Towers, and a Malaysia and Thailand combo through Kuala Lumpur and Bangkok. Visa, flights, hotels, and sightseeing arrive in one booking.",
     image: images.dubai,
     links: [
-      { label: "Dubai city tour", href: "/packages/dubai-5-days" },
-      { label: "Turkey tour", href: "/packages/turkey-7-days" },
+      { label: "Dubai city tour", href: "/tours/dubai" },
+      { label: "Turkey tour", href: "/tours/turkey" },
     ],
   },
   {
@@ -69,7 +70,7 @@ const services = [
 const tiers = [
   {
     name: "Economy",
-    href: "/packages/economy-umrah-15-days",
+    href: "/umrah/economy-15-days",
     rows: [
       { k: "Hotels", v: "Walking or shuttle distance" },
       { k: "Room sharing", v: "Quad and shared" },
@@ -79,7 +80,7 @@ const tiers = [
   },
   {
     name: "Premium and five star",
-    href: "/packages/premium-umrah-21-days",
+    href: "/umrah/premium-21-days",
     rows: [
       { k: "Hotels", v: "Near or facing the Haram" },
       { k: "Room sharing", v: "Triple and double" },
@@ -89,7 +90,7 @@ const tiers = [
   },
   {
     name: "Ramadan",
-    href: "/packages/ramadan-umrah-special",
+    href: "/umrah/ramadan",
     rows: [
       { k: "Hotels", v: "Near the Haram, booked early" },
       { k: "Room sharing", v: "Confirmed on quote" },
@@ -147,10 +148,10 @@ const bridge = [
   {
     heading: "Umrah and Hajj packages",
     links: [
-      { label: "Economy Umrah, 15 days", href: "/packages/economy-umrah-15-days" },
-      { label: "Premium Umrah, 21 days", href: "/packages/premium-umrah-21-days" },
-      { label: "Ramadan Umrah Special", href: "/packages/ramadan-umrah-special" },
-      { label: "Hajj packages and MORA guidance", href: "/packages/hajj-package" },
+      { label: "Economy Umrah, 15 days", href: "/umrah/economy-15-days" },
+      { label: "Premium Umrah, 21 days", href: "/umrah/premium-21-days" },
+      { label: "Ramadan Umrah Special", href: "/umrah/ramadan" },
+      { label: "Hajj packages and MORA guidance", href: "/hajj" },
     ],
   },
   {
@@ -166,10 +167,10 @@ const bridge = [
   {
     heading: "International tours",
     links: [
-      { label: "Dubai city tour", href: "/packages/dubai-5-days" },
-      { label: "Turkey, Istanbul and Cappadocia", href: "/packages/turkey-7-days" },
-      { label: "Baku, Azerbaijan", href: "/packages/baku-5-days" },
-      { label: "Malaysia and Thailand combo", href: "/packages/malaysia-thailand-8-days" },
+      { label: "Dubai city tour", href: "/tours/dubai" },
+      { label: "Turkey, Istanbul and Cappadocia", href: "/tours/turkey" },
+      { label: "Baku, Azerbaijan", href: "/tours/baku" },
+      { label: "Malaysia and Thailand combo", href: "/tours/malaysia-thailand" },
     ],
   },
   {
@@ -275,6 +276,7 @@ export default async function HomePage() {
               Call {settings.phone}
             </a>
           </div>
+          <LastUpdated tone="dark" className="mt-6" />
           <div className="mt-14 grid max-w-2xl grid-cols-3 gap-6 border-t border-white/15 pt-8">
             {stats.map((s) => (
               <div key={s.label}>
@@ -491,11 +493,11 @@ export default async function HomePage() {
               .
             </p>
             <div className="mt-8 flex flex-col gap-3 sm:flex-row">
-              <Link href="/packages" className="btn-orange">
+              <Link href="/umrah" className="btn-orange">
                 Explore Umrah packages
               </Link>
               <Link
-                href="/packages/hajj-package"
+                href="/hajj"
                 className="btn-outline"
               >
                 Hajj packages
@@ -973,7 +975,7 @@ export default async function HomePage() {
               <p className="mx-auto mt-6 max-w-xl text-sm text-slate-400">
                 Prefer a fully arranged journey? Our{" "}
                 <Link
-                  href="/packages/hajj-package"
+                  href="/hajj"
                   className="font-semibold text-brand-orange underline"
                 >
                   private Hajj packages

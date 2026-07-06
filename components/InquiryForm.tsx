@@ -27,7 +27,7 @@ export default function InquiryForm({
 
   async function submit() {
     if (!form.name.trim() || !form.phone.trim()) {
-      setError("Please enter your name and phone number so we can reach you.");
+      setError("Please enter your name and phone number so our team reaches you.");
       return;
     }
 

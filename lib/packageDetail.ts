@@ -26,7 +26,7 @@ function pricingFaq(name: string): Faq {
 export const detailContent: Record<string, DetailContent> = {
   "economy-umrah-15-days": {
     overview:
-      "Economy Umrah Package from Pakistan suits first time and budget conscious pilgrims who want a complete, guided journey at an honest cost. Our team arranges return airfare from Peshawar or Islamabad, hotels within walking distance of the Haram, the Saudi e-visa, ground transport between Makkah and Madinah, and guided Ziyarat at both holy sites. Fifteen days allows unhurried worship across both cities, with our desk handling every document and booking so you focus on your prayers.",
+      "Economy Umrah Package from Pakistan suits first time and budget conscious pilgrims who want a complete, guided journey at an honest cost. Our team arranges return airfare from Peshawar or Islamabad, comfortable economy hotels within walking or shuttle distance of the Haram, quad or triple sharing, the Saudi e-visa through Nusuk, ground transport between Makkah and Madinah, and guided Ziyarat at both holy sites. Fifteen days allows unhurried worship across both cities, with our desk handling every document and booking so you focus on your prayers.",
     whoFor: [
       "First time pilgrims from Pakistan",
       "Budget conscious families and individuals",
@@ -37,22 +37,58 @@ export const detailContent: Record<string, DetailContent> = {
       pricingFaq("Economy Umrah Package"),
       {
         q: "What is included in the Economy Umrah Package?",
-        a: "Economy Umrah covers return airfare from Peshawar or Islamabad, hotels within walking distance of the Haram, the Saudi e-visa, ground transport between Makkah and Madinah, and guided Ziyarat at both holy sites. Our desk confirms every inclusion in writing before you pay, so nothing on the journey surprises you.",
+        a: "Economy Umrah covers return airfare from Peshawar or Islamabad, comfortable economy hotels within walking or shuttle distance of the Haram, quad or triple sharing, the Saudi e-visa through Nusuk, ground transport between Makkah and Madinah, and guided Ziyarat at both holy sites. Our desk confirms every inclusion in writing before you pay, so nothing on the journey surprises you.",
       },
       {
         q: "How close are the Economy Umrah hotels to the Haram?",
-        a: "Economy Umrah books hotels within walking distance of the Haram, a short walk to the mataf for your daily prayers. Our team names the exact hotel for your travel dates before you confirm, since availability changes through the year and the closest options book early.",
+        a: "Economy Umrah books hotels within walking or shuttle distance of the Haram, a short walk or ride to the mataf for your daily prayers. Our team names the exact hotel and its distance for your travel dates before you confirm, since availability changes through the year and the closest options book early.",
       },
       {
-        q: "Which cities does the flight depart from?",
-        a: "Economy Umrah flights depart from Peshawar or Islamabad, whichever carries the better fare and schedule for your dates. Our desk arranges ground transport onward, and travelers from nearby towns coordinate airport pickup with our team when they book.",
+        q: "Which cities does the Economy Umrah depart from?",
+        a: "Economy Umrah flights depart from Bacha Khan International in Peshawar or Islamabad International, whichever carries the better fare and schedule for your dates. Our desk arranges ground transport onward, and travelers from Charsadda, Tangi, Shabqadar, and nearby towns coordinate airport pickup with our team when they book.",
+      },
+      {
+        q: "Is the Economy Umrah Package worth it?",
+        a: "The Economy Umrah Package suits pilgrims who want a complete, guided Umrah at the lowest honest cost. You trade five star comfort and the very closest hotels for quad or triple sharing and a short walk or shuttle to the Haram, while the visa, flights, ground transport, and guided Ziyarat stay fully covered. First time and budget conscious pilgrims get the full spiritual journey without the premium price.",
+      },
+      {
+        q: "How is the Economy Umrah different from the Premium package?",
+        a: "Economy Umrah books economy tier hotels within walking or shuttle distance of the Haram with quad or triple sharing, while Premium books five star hotels near or facing the Haram with smaller rooms, private transport, and daily meals. Both cover the visa, return flights, and guided Ziyarat. See how this compares below, then choose the tier that fits your budget and comfort.",
+      },
+      {
+        q: "What is the difference between quad and triple sharing?",
+        a: "Quad sharing places four pilgrims in one room and carries the lowest cost, while triple sharing places three and costs a little more for extra space. Economy Umrah offers both, so tell our desk how your group prefers to share, and we confirm the room and the hotel with your quote.",
+      },
+      {
+        q: "Does the Economy Umrah Package include flights?",
+        a: "Yes. The Economy Umrah Package includes return airfare from Peshawar or Islamabad, booked on the carrier with the best fare and schedule for your dates. Flights, the Saudi e-visa, hotels, and ground transport arrive in one booking, so you travel without arranging any part separately.",
+      },
+      {
+        q: "Are meals included in the Economy Umrah Package?",
+        a: "Economy packages are usually room only or with breakfast, since keeping meals flexible holds the cost down near the Haram, where affordable food sits close by. Our desk confirms the exact meal plan for your hotel with your quote, so you know before you pay what is arranged and what you cover yourself.",
+      },
+      {
+        q: "Do you offer the Economy Umrah for a family or two persons on a budget?",
+        a: "Yes. The Economy Umrah Package works for couples, small families, and two person bookings, with quad or triple rooms arranged to keep the cost per pilgrim low. Tell our desk your group size and any needs, from connected rooms to airport assistance for elders, and we shape the booking around them.",
+      },
+      {
+        q: "Do women need a Mehram for the Economy Umrah?",
+        a: "Saudi rules on women travelling without a Mehram have shifted in recent years, with women joining organized groups under set conditions. Rules move year to year, so confirm the current position for your dates at the official Saudi source. Our desk arranges group travel for women where the rules allow, with the details set at booking.",
+      },
+      {
+        q: "When is Umrah cheaper, and are Rajab and Shaban good months?",
+        a: "Umrah costs less outside Ramadan and the Hajj season, when demand and hotel rates ease. Rajab and Shaban, the months before Ramadan, bring calmer crowds and lower fares while the reward of Umrah stays the same. Our desk quotes the current best price for your dates, so ask about off peak windows to stretch a budget further.",
+      },
+      {
+        q: "How many days is the Economy Umrah, and how does it compare to 21 days?",
+        a: "The Economy Umrah Package runs 15 days across Makkah and Madinah, enough for unhurried worship at both Harams and full guided Ziyarat. Longer 21 day packages add more nights for repeat Umrah and a slower pace, at a higher cost. The exact night split between the two cities is confirmed for your travel dates.",
       },
     ],
   },
 
   "premium-umrah-21-days": {
     overview:
-      "Premium Umrah Package from Pakistan serves pilgrims who want deep comfort alongside their worship. Our team books five star hotels near or facing the Haram in Makkah and Madinah, direct flights with checked baggage, private transport with a personal guide, and a daily breakfast and dinner buffet. Twenty one days gives a calm, unhurried stay across both cities, with the Saudi Umrah e-visa processed through Nusuk and every detail handled by our desk from departure to safe return.",
+      "Premium Umrah Package from Pakistan serves pilgrims who want a luxury, first class stay and deep comfort alongside their worship. Our team books five star hotels near or facing the Haram in Makkah and Madinah, direct flights with checked baggage, private transport with a personal guide, and a daily breakfast and dinner buffet. Twenty one days gives a calm, unhurried stay across both cities, with the Saudi Umrah e-visa processed through Nusuk and every detail handled by our desk from departure to safe return.",
     whoFor: [
       "Pilgrims who want five star comfort near the Haram",
       "Families traveling together in one group",
@@ -80,6 +116,10 @@ export const detailContent: Record<string, DetailContent> = {
       {
         q: "Why is the Premium Umrah Package 21 days?",
         a: "Twenty one days gives an unhurried Premium Umrah, with time for repeated Umrah, calm daily prayers in both Harams, and full Ziyarat without rushing. Longer stays suit first time and elderly pilgrims who want to settle in, and repeat pilgrims who value depth over speed. Shorter durations are arranged on request.",
+      },
+      {
+        q: "Is a 21 day Umrah worth it?",
+        a: "A 21 day Premium Umrah gives calm, unhurried worship, with time for repeated Umrah, daily prayers in both Harams, and full Ziyarat without rushing between cities. Five star hotels near the Haram and private transport suit families, elderly pilgrims, and repeat pilgrims who value comfort and a slower pace. Shorter durations are arranged on request for those with less time.",
       },
       {
         q: "Why choose Premium over Economy Umrah?",
@@ -136,6 +176,10 @@ export const detailContent: Record<string, DetailContent> = {
         a: "The last Ashra runs the final ten nights of Ramadan, nights 21 to 30, when Laylat al-Qadr falls on one of the odd nights. Exact Gregorian dates follow the moon sighting for Ramadan 2027. Book two to three months ahead, since hotels near the Haram for these nights close first.",
       },
       {
+        q: "Which Ashra is best for Umrah in Ramadan?",
+        a: "Each Ashra of Ramadan carries its own draw. The first and middle ten nights bring calmer crowds and a steadier pace, while the last Ashra holds Laylat al-Qadr, the Night of Power, and Itikaf, at the highest demand and cost. Tell our desk which nights matter most to you, and we build the stay around them.",
+      },
+      {
         q: "Are Itikaf arrangements available on the Ramadan Umrah?",
         a: "Itikaf arrangements are available on request during the last Ashra of Ramadan. Our team plans your hotel stay and durations around Itikaf so your worship continues without disruption. Tell our desk your intended nights when you book, since these arrangements depend on early hotel availability.",
       },
@@ -162,6 +206,10 @@ export const detailContent: Record<string, DetailContent> = {
       {
         q: "Is Ramadan Umrah suitable for elderly pilgrims when crowds peak?",
         a: "Ramadan crowds peak in the last Ashra, so for elderly pilgrims our team books hotels closest to the Haram to shorten the walk, requests wheelchair assistance at the airports, and plans rest between prayers. Tell our desk about any medical needs, and we shape the stay around them.",
+      },
+      {
+        q: "Is Ramadan Umrah crowded?",
+        a: "Ramadan draws the largest crowds of the year at both Harams, and the last ten nights peak hardest. Booking early holds a hotel close to the Haram, which shortens the walk through the busiest nights. For a calmer, lower cost stay, ask our desk about Umrah in Shawwal after Eid ul Fitr.",
       },
     ],
   },
@@ -243,18 +291,46 @@ export const detailContent: Record<string, DetailContent> = {
       "Travelers who want visa, flights, and hotel in one booking",
     ],
     faqs: [
-      pricingFaq("Dubai City Tour"),
+      pricingFaq("Dubai Tour Package"),
       {
-        q: "Does the Dubai package include the visa and flights?",
-        a: "Dubai City Tour includes return airfare and the UAE visit visa, along with a four star hotel and breakfast. Our team prepares and checks your visa documents before filing, so your file clears cleanly. Visa, flights, hotel, and tours arrive in one booking with no separate arrangements to chase.",
+        q: "Is a UAE visa required for the Dubai tour, and is it included?",
+        a: "Yes, Pakistani travelers need a UAE visit visa for Dubai, and the Dubai Tour Package includes it. Our team prepares and files your visa with the rest of your documents, and you verify the current rules at the official UAE government portal. Flights, hotel, and tours arrive in the same booking with no separate arrangements to chase.",
       },
       {
-        q: "What is included in the Dubai City Tour?",
-        a: "Dubai City Tour covers return airfare, the UAE visit visa, a four star hotel with breakfast, a desert safari with BBQ dinner, a Burj Khalifa and Dubai Mall visit, and a Marina dhow cruise. Five days and four nights leave time for the emirate's landmark sights at a relaxed pace.",
+        q: "What is included in the Dubai Tour Package?",
+        a: "The Dubai Tour Package covers return airfare, the UAE visit visa, a four star hotel with breakfast, a desert safari with BBQ dinner, a Burj Khalifa and Dubai Mall visit, and a Dubai Marina dhow cruise. Five days and four nights leave time for the city's landmark sights at a relaxed pace.",
       },
       {
-        q: "Is the Dubai tour suitable for families?",
-        a: "Dubai City Tour works well for families, with a four star hotel, a desert safari, and the Burj Khalifa and Dubai Mall on the itinerary. Our team adjusts the pace for children and elders, and arranges the UAE visit visa for every traveler in your group.",
+        q: "How many days in Dubai is enough?",
+        a: "Five days and four nights cover Dubai's headline sights, the city tour, the Burj Khalifa, the desert safari, and a Marina cruise, without rushing. Travelers who want Abu Dhabi, Atlantis, or extra beach days add a night or two, which our desk arranges on request.",
+      },
+      {
+        q: "What is the best time to visit Dubai?",
+        a: "November to March brings cooler, dry weather that suits sightseeing and the desert safari, and it is the peak season. Summer runs hotter and quieter, with lower rates and indoor attractions like the malls and aquariums. Tell our desk your window, and we build the trip around it.",
+      },
+      {
+        q: "Is the Dubai tour family friendly?",
+        a: "Yes. The Dubai Tour Package suits families, couples, and honeymooners, with a four star hotel, a desert safari, and the Burj Khalifa and Dubai Mall on the plan. Our team adjusts the pace for children and elders, and arranges the UAE visit visa for every traveler in your group.",
+      },
+      {
+        q: "Which attractions will I see on the Dubai tour?",
+        a: "The Dubai Tour Package takes in the Burj Khalifa, Dubai Mall, a desert safari in the dunes, and a Dubai Marina dhow cruise. Optional excursions to Palm Jumeirah, Atlantis Aquaventure, and Abu Dhabi with the Sheikh Zayed Grand Mosque are arranged on request.",
+      },
+      {
+        q: "Do you customize the Dubai tour or add another country?",
+        a: "Yes. Our desk shapes the Dubai tour around your dates, hotel choice, and excursions, and pairs Dubai with Baku, Turkey, or the Maldives for a combo trip. Tell us your plan, and we quote the customized route for your group.",
+      },
+      {
+        q: "Which cities do you fly from for the Dubai tour?",
+        a: "Our desk arranges Dubai flights from Karachi, Lahore, Islamabad, or Peshawar, on the carrier with the best fare and schedule for your dates. Travelers from Charsadda and nearby towns depart from Peshawar or Islamabad, with airport pickup coordinated when you book.",
+      },
+      {
+        q: "Is the Dubai tour good for a honeymoon?",
+        a: "Dubai works well for a honeymoon, with a four star stay, a desert safari, a Marina dhow cruise, and time along Jumeirah Beach. Our desk arranges a couples pace and optional upgrades, from a higher star hotel to a private tour, quoted with your dates.",
+      },
+      {
+        q: "Do I travel in a group or a private tour on the Dubai package?",
+        a: "Both suit the Dubai Tour Package. Join a group departure for the friendliest price, or ask our desk for a private, customized tour with your own vehicle and pace. Tell us your group size and preference, and we quote the option that fits.",
       },
     ],
   },
@@ -271,16 +347,44 @@ export const detailContent: Record<string, DetailContent> = {
     faqs: [
       pricingFaq("Turkey Tour"),
       {
-        q: "Does the Turkey tour include the visa and flights?",
-        a: "Turkey Tour includes return airfare and Turkey e-visa support. Our team checks eligibility and prepares your file, filing the e-visa for eligible travelers and guiding the sticker visa for others. Flights, tours, a Bosphorus cruise, and halal meals arrive in one booking managed by our desk.",
+        q: "Is a Turkey e visa required, and is it included?",
+        a: "Yes, Pakistani travelers need a Turkey visa, and the tour includes e visa support. Our team checks eligibility and prepares your file, filing the e visa for eligible travelers and guiding the sticker visa for others. Verify the current rules at the official Turkey e visa portal, and flights, tours, and halal meals arrive in the same booking.",
       },
       {
-        q: "What are the best months for the Turkey tour?",
-        a: "Turkey rewards spring and autumn travel, when Istanbul and Cappadocia stay comfortable for walking and balloon rides. Summer brings warmer days and larger crowds, while winter turns Cappadocia snowy and quiet. Tell our team your preferred window, and our desk builds the itinerary around it.",
+        q: "What is included in the Turkey tour package?",
+        a: "The Turkey tour covers return airfare, Turkey e visa support, hotels with breakfast, guided tours of Istanbul's old city, a Cappadocia visit with an optional hot air balloon ride, a Bosphorus cruise, domestic flights between the cities, and halal meals throughout. Seven days and six nights balance Ottoman history in Istanbul with the valleys of Cappadocia.",
       },
       {
-        q: "Is the hot air balloon ride included?",
-        a: "The Cappadocia hot air balloon ride is an optional add-on rather than a fixed inclusion, since flights depend on weather and demand. Our team books it alongside your package when you request it, and confirms timing on the ground so you catch a clear sunrise over the valleys.",
+        q: "How many days in Turkey is enough?",
+        a: "Seven days and six nights cover Istanbul and Cappadocia at a relaxed pace, the old city, the Bosphorus, and the fairy chimneys, without rushing. Travelers who add Antalya, Pamukkale, or Ephesus extend by a few nights, which our desk arranges on request.",
+      },
+      {
+        q: "What is the best time to visit Turkey?",
+        a: "Spring, from April to June, and autumn, from September to October, bring the most comfortable weather for walking Istanbul and flying the Cappadocia balloons. Summer runs warmer and busier, and winter turns Cappadocia snowy and quiet. Tell our team your window, and our desk builds the trip around it.",
+      },
+      {
+        q: "Is the hot air balloon ride in Cappadocia included?",
+        a: "The Cappadocia hot air balloon ride is an optional add on rather than a fixed inclusion, since flights depend on weather and demand. Our team books it alongside your package when you request it, and confirms timing on the ground so you catch a clear sunrise over the valleys.",
+      },
+      {
+        q: "Is the Turkey tour good for a honeymoon?",
+        a: "Turkey suits honeymooners, with the Bosphorus, the Cappadocia valleys, and an optional dawn balloon flight. Our desk arranges a couples pace, a cave hotel in Cappadocia on request, and quiet dinners, quoted with your dates. Families and first time travelers get the same care at their own pace.",
+      },
+      {
+        q: "Do you customize the Turkey tour or add Antalya and Pamukkale?",
+        a: "Yes. Our desk shapes the tour around your dates, hotel choice, and excursions, and extends the route to Antalya, Pamukkale, Ephesus, or Bursa on request. Tell us your plan, and we quote the customized route for your group.",
+      },
+      {
+        q: "Do you offer an Umrah and Turkey combo?",
+        a: "Yes. Our desk pairs an Umrah with a Turkey stopover for pilgrims who want to visit Istanbul on the same journey. Share your dates and group size, and we quote the combined route, with the Saudi and Turkey documents both handled by our team.",
+      },
+      {
+        q: "How do I travel between Istanbul and Cappadocia?",
+        a: "Domestic flights connect Istanbul and Cappadocia in about ninety minutes, and the tour includes them so you keep more time for sightseeing. Our team books the internal flights and the airport transfers, so your group moves between the cities without arranging anything separately.",
+      },
+      {
+        q: "What documents do I need for the Turkey tour?",
+        a: "The Turkey tour needs a passport valid for at least six months, your national identity card, passport photographs, and the Turkey visa, which our desk prepares and files. A confirmed return ticket and hotel booking are arranged inside your package, and our team checks every page before submission.",
       },
     ],
   },
@@ -489,6 +593,122 @@ export const ramadanFastingTips = [
   },
 ];
 
+// What sets the economy price. Cost drivers only, no numbers, routed to a
+// quote so cost queries land without a stale published figure.
+export const economyCostDrivers = [
+  {
+    icon: "plane",
+    factor: "Airline and travel dates",
+    detail:
+      "Airfare shifts with the carrier, the season, and how early you book, and it moves week to week.",
+  },
+  {
+    icon: "hotel",
+    factor: "Hotel tier and distance",
+    detail:
+      "A closer hotel or a higher tier lifts the price, while a short shuttle ride from a little farther out lowers it.",
+  },
+  {
+    icon: "users",
+    factor: "Room sharing",
+    detail:
+      "Quad sharing costs least and triple a little more, so your room choice shapes the price per pilgrim.",
+  },
+  {
+    icon: "moon",
+    factor: "Season",
+    detail:
+      "Ramadan and the Hajj season sit highest, while Rajab, Shaban, and other off peak months run lower.",
+  },
+];
+
+// What sets the premium price. Cost drivers only, no numbers, routed to a
+// quote. Names the honest reasons premium sits above economy.
+export const premiumCostDrivers = [
+  {
+    icon: "hotel",
+    factor: "Hotel proximity and tier",
+    detail:
+      "A five star hotel facing the Haram costs more than one a short walk away, so how near you stay sets much of the price.",
+  },
+  {
+    icon: "users",
+    factor: "Room configuration",
+    detail:
+      "Double and twin rooms cost more per pilgrim than triple sharing, so your room choice shapes the quote.",
+  },
+  {
+    icon: "plane",
+    factor: "Direct flights and dates",
+    detail:
+      "Direct flights with checked baggage and the travel season move the airfare, which shifts week to week.",
+  },
+  {
+    icon: "clock",
+    factor: "Length of stay",
+    detail:
+      "Twenty one days across Makkah and Madinah adds nights over a shorter Umrah, for a calmer, unhurried pace.",
+  },
+];
+
+// What sets the Ramadan price. Cost drivers only, no numbers, routed to a
+// quote. Ties the premium to the Ashra, proximity, duration, and timing.
+export const ramadanCostDrivers = [
+  {
+    icon: "moon",
+    factor: "Which Ashra you choose",
+    detail:
+      "The last ten nights carry the steepest premium, while the first and middle Ashra sit lower for the same blessed month.",
+  },
+  {
+    icon: "hotel",
+    factor: "Hotel proximity",
+    detail:
+      "A hotel closer to the Haram costs more, and the nearest rooms for Taraweeh and Qiyam sell out first.",
+  },
+  {
+    icon: "clock",
+    factor: "Duration",
+    detail:
+      "Ten to thirty days sets how many nights you stay, so a full Ramadan costs more than a single Ashra.",
+  },
+  {
+    icon: "plane",
+    factor: "Booking window",
+    detail:
+      "Airfare and rooms climb as Ramadan nears, so booking early holds a better price than a late one.",
+  },
+];
+
+// What sets the Hajj price. Cost drivers only, no numbers, routed to a quote.
+// Names the scheme, Maktab, hotels, and airline as the honest levers.
+export const hajjCostDrivers = [
+  {
+    icon: "shield",
+    factor: "Scheme and route",
+    detail:
+      "The government balloting scheme, a private package, or a sponsorship route each set a different base, since private and sponsorship carry their own costs.",
+  },
+  {
+    icon: "pin",
+    factor: "Maktab category",
+    detail:
+      "Category A, non shifting and closer to the Jamarat, costs more than the shifting Category B, the core Hajj price lever.",
+  },
+  {
+    icon: "hotel",
+    factor: "Hotels and duration",
+    detail:
+      "Closer Makkah, Madinah, and Aziziyah hotels and a longer stay lift the price, while a shorter trip lowers it.",
+  },
+  {
+    icon: "plane",
+    factor: "Airline and season",
+    detail:
+      "Direct flights and the peak Hajj window move the airfare, which our desk reads live for your dates.",
+  },
+];
+
 // Hajj scheme routes. Scheme mechanics only, no unverified quota or dates,
 // no fabricated approval. Current cycle facts route to the MORA portal.
 export const hajjSchemes = [
@@ -580,15 +800,15 @@ export const hajjJourney = [
   },
   {
     day: "8th of Dhul Hijjah",
-    title: "Tarwiyah, move to Mina",
+    title: "Yawm al Tarwiyah, move to Mina",
     detail:
       "Travel to Mina and spend the day and night in prayer and rest, preparing for the standing at Arafat.",
   },
   {
     day: "9th of Dhul Hijjah",
-    title: "The standing at Arafat, then Muzdalifah",
+    title: "The Day of Arafah, then Muzdalifah",
     detail:
-      "Stand at Arafat through the day in dua and worship, the pillar of Hajj, then move to Muzdalifah for the night and gather pebbles.",
+      "Stand at Arafat on the Day of Arafah in dua and worship, the pillar of Hajj, then move to Muzdalifah for the night and gather pebbles.",
   },
   {
     day: "10th of Dhul Hijjah",
@@ -639,6 +859,314 @@ export const hajjTraining = [
     detail:
       "Trained group leaders travel with you and guide each rite in order, from the move to Mina to the farewell Tawaf.",
   },
+];
+
+// Dubai tour content. The day by day maps the real package inclusions to the
+// five day flow; attractions and practical facts are public Dubai and UAE
+// knowledge, not fabricated claims about the package. Exact hotel names route
+// to inquiry.
+export const dubaiItinerary = [
+  {
+    day: "Day 1",
+    title: "Arrival in Dubai",
+    caption: "The Dubai skyline with the Burj Khalifa at dusk",
+    detail:
+      "Land in Dubai, clear the UAE visit visa, and transfer to your four star hotel to settle in and rest.",
+  },
+  {
+    day: "Day 2",
+    title: "Dubai city tour, Burj Khalifa and Dubai Mall",
+    caption: "The Burj Khalifa above Downtown Dubai",
+    detail:
+      "See the modern city, then visit the Burj Khalifa and Dubai Mall, with the Dubai Fountain show in the evening.",
+  },
+  {
+    day: "Day 3",
+    title: "Desert safari with BBQ dinner",
+    caption: "Dune bashing on a Dubai desert safari at sunset",
+    detail:
+      "Head into the dunes for a desert safari with dune bashing, then a BBQ dinner and a cultural show under the stars.",
+  },
+  {
+    day: "Day 4",
+    title: "Dubai Marina dhow cruise",
+    caption: "A dhow cruise on Dubai Marina at night",
+    detail:
+      "Spend the day at leisure, with an evening Dubai Marina dhow cruise and dinner along the waterfront. Optional excursions are arranged on request.",
+  },
+  {
+    day: "Day 5",
+    title: "Departure",
+    caption: "Dubai International Airport for the flight home",
+    detail:
+      "Check out and transfer to the airport for your return flight to Pakistan.",
+  },
+];
+
+// Named Dubai attractions. Included ones and clearly marked optional ones,
+// so nothing reads as included that is not.
+export const dubaiAttractions = [
+  {
+    name: "Burj Khalifa",
+    caption: "The Burj Khalifa, the tallest building in the world",
+    detail:
+      "The tallest building in the world at over eight hundred metres, rising above Downtown Dubai. Ride to the At the Top observation decks for views across the city, the coast, and the desert. The Dubai Fountain dances at its feet each evening.",
+  },
+  {
+    name: "Dubai Mall",
+    caption: "The Dubai Fountain outside Dubai Mall",
+    detail:
+      "One of the largest shopping and entertainment centres on earth, beside the Burj Khalifa. Inside sit the Dubai Aquarium and Underwater Zoo, an indoor ice rink, and hundreds of shops. Outside, the Dubai Fountain show runs on the lake at dusk.",
+  },
+  {
+    name: "Desert Safari",
+    caption: "Camel rides on a Dubai desert safari",
+    detail:
+      "A drive into the red dunes for dune bashing in a four wheel drive, then camel rides, sandboarding, and henna at a desert camp. Dinner is a BBQ under the stars with a Tanoura and belly dance show. The safari runs from the afternoon into the evening.",
+  },
+  {
+    name: "Dubai Marina",
+    caption: "The towers and yachts of Dubai Marina",
+    detail:
+      "A waterfront district of glass towers, yachts, and the Marina Walk promenade. The evening dhow cruise sails the canal with dinner on board, past the lit skyline and the Bluewaters wheel. A calm close to a full day of sightseeing.",
+  },
+  {
+    name: "Palm Jumeirah",
+    caption: "Palm Jumeirah and Atlantis from the air",
+    detail:
+      "The palm shaped island built into the Arabian Gulf, home to Atlantis The Palm and its Aquaventure water park. The monorail runs the trunk to the crescent, and beach clubs line the fronds. On the optional excursion list rather than the base plan.",
+  },
+  {
+    name: "Abu Dhabi and the Sheikh Zayed Grand Mosque",
+    caption: "The Sheikh Zayed Grand Mosque in Abu Dhabi",
+    detail:
+      "A day trip to the UAE capital and its white marble grand mosque, one of the largest in the world, with its many domes and vast main prayer hall. The route often adds the Corniche and Emirates Palace. Arranged on request as an add on.",
+  },
+];
+
+// Dubai gallery captions. Motif panels until real Dubai photos are supplied,
+// each caption naming the entity for the alt text and, once real, ImageObject.
+export const dubaiGallery = [
+  "The Burj Khalifa above Downtown Dubai",
+  "The Dubai Fountain at Dubai Mall",
+  "A desert safari at sunset near Dubai",
+  "Dubai Marina at night",
+  "Palm Jumeirah from the air",
+  "The Sheikh Zayed Grand Mosque in Abu Dhabi",
+];
+
+// Practical Dubai facts for a first time traveler, a full quick facts grid.
+// Public UAE knowledge. Halal food is a real trust signal for this audience.
+export const dubaiPractical = [
+  {
+    icon: "clock",
+    label: "Best time to visit",
+    value: "November to March, cooler and dry",
+  },
+  { icon: "tag", label: "Currency", value: "UAE dirham, AED" },
+  { icon: "meal", label: "Halal food", value: "Widely available across the emirate" },
+  { icon: "document", label: "Power and plugs", value: "Type G sockets, 230 volts" },
+  { icon: "route", label: "Driving side", value: "Right hand side of the road" },
+  {
+    icon: "users",
+    label: "Language",
+    value: "Arabic, with English widely spoken",
+  },
+  { icon: "clock", label: "Time zone", value: "GMT plus 4" },
+  { icon: "pin", label: "Top cities", value: "Dubai, Abu Dhabi, and Sharjah" },
+];
+
+// What sets the Dubai price. Cost drivers only, no numbers, routed to a quote.
+export const dubaiCostDrivers = [
+  {
+    icon: "clock",
+    factor: "Travel season",
+    detail:
+      "The cooler winter months and holidays sit highest, while summer runs lower for the same city.",
+  },
+  {
+    icon: "hotel",
+    factor: "Hotel and area",
+    detail:
+      "A higher star rating or a central area lifts the price, while a standard four star holds it down.",
+  },
+  {
+    icon: "camera",
+    factor: "Excursions and add ons",
+    detail:
+      "Optional trips like Abu Dhabi, Atlantis Aquaventure, or a yacht tour add to the base package.",
+  },
+  {
+    icon: "plane",
+    factor: "Airline and departure city",
+    detail:
+      "The carrier, the season, and whether you fly from Karachi, Lahore, Islamabad, or Peshawar move the airfare.",
+  },
+];
+
+// Turkey tour content. The day by day maps the real package scope, Istanbul
+// and Cappadocia across seven days and six nights; captions name the entity
+// and double as alt text. Antalya and Pamukkale are marked optional, since the
+// base package is Istanbul and Cappadocia. Exact hotels route to inquiry.
+export const turkeyItinerary = [
+  {
+    day: "Day 1",
+    title: "Arrival in Istanbul",
+    caption: "Istanbul skyline over the Bosphorus at dusk",
+    detail:
+      "Land in Istanbul, clear the Turkey e visa, and transfer to your hotel with halal meals arranged.",
+  },
+  {
+    day: "Day 2",
+    title: "Istanbul old city",
+    caption: "Hagia Sophia and the Blue Mosque in Sultanahmet",
+    detail:
+      "Guided tour of Sultanahmet with Hagia Sophia, the Blue Mosque, and the lanes of the Grand Bazaar.",
+  },
+  {
+    day: "Day 3",
+    title: "The Bosphorus and Topkapi",
+    caption: "A Bosphorus cruise between Europe and Asia",
+    detail:
+      "Cruise the Bosphorus between two continents, then visit Topkapi Palace and the Basilica Cistern.",
+  },
+  {
+    day: "Day 4",
+    title: "Fly to Cappadocia",
+    caption: "Cappadocia at sunrise with hot air balloons",
+    detail:
+      "Fly to Cappadocia for Goreme, the fairy chimneys, and an optional hot air balloon ride at dawn.",
+  },
+  {
+    day: "Day 5",
+    title: "Cappadocia valleys",
+    caption: "The fairy chimneys and Uchisar castle in Cappadocia",
+    detail:
+      "Explore Uchisar, the valleys, and an underground city, with time among the rock churches of Goreme.",
+  },
+  {
+    day: "Day 6",
+    title: "Return to Istanbul",
+    caption: "The covered lanes of the Grand Bazaar",
+    detail:
+      "Fly back to Istanbul for a free day, the Grand Bazaar, and Galata, with optional extensions on request.",
+  },
+  {
+    day: "Day 7",
+    title: "Departure",
+    caption: "Istanbul airport departure for the flight home",
+    detail:
+      "Transfer to the airport for your return flight to Pakistan.",
+  },
+];
+
+// Named Turkey attractions with captions. Included ones and clearly marked
+// optional extensions, so nothing reads as included that is not.
+export const turkeyAttractions = [
+  {
+    name: "Hagia Sophia",
+    caption: "Hagia Sophia in Sultanahmet, Istanbul",
+    detail:
+      "The great Byzantine and Ottoman monument at the heart of old Istanbul.",
+  },
+  {
+    name: "The Blue Mosque",
+    caption: "The six minarets of the Blue Mosque",
+    detail:
+      "The Sultan Ahmed Mosque, known for its blue Iznik tiles, across from Hagia Sophia.",
+  },
+  {
+    name: "The Bosphorus",
+    caption: "A ferry crossing the Bosphorus strait",
+    detail:
+      "The strait between Europe and Asia, seen on the included cruise.",
+  },
+  {
+    name: "Cappadocia and the hot air balloon",
+    caption: "Hot air balloons over the Cappadocia valleys at sunrise",
+    detail:
+      "Fairy chimneys, Goreme, and an optional dawn balloon flight over the valleys.",
+  },
+  {
+    name: "Topkapi Palace and the Grand Bazaar",
+    caption: "The Grand Bazaar, one of the oldest covered markets",
+    detail:
+      "The Ottoman palace above the Bosphorus and the covered market of thousands of shops.",
+  },
+  {
+    name: "Pamukkale and Antalya",
+    caption: "The white travertine terraces of Pamukkale",
+    detail:
+      "The travertine terraces and the Mediterranean coast, on the optional extension list.",
+  },
+];
+
+// Practical Turkey facts for a first time traveler. Public knowledge.
+export const turkeyPractical = [
+  {
+    icon: "clock",
+    label: "Best time to visit",
+    value: "April to June and September to October",
+  },
+  { icon: "tag", label: "Currency", value: "Turkish lira, TRY" },
+  { icon: "pin", label: "Time zone", value: "GMT plus 3" },
+  {
+    icon: "users",
+    label: "Language",
+    value: "Turkish, with English in tourist areas",
+  },
+  { icon: "route", label: "Driving side", value: "Right hand side of the road" },
+];
+
+// What sets the Turkey price. Cost drivers only, no numbers, routed to a quote.
+export const turkeyCostDrivers = [
+  {
+    icon: "clock",
+    factor: "Travel season",
+    detail:
+      "Spring and autumn sit highest for comfortable weather and the balloon flights, while winter runs lower.",
+  },
+  {
+    icon: "hotel",
+    factor: "Hotels and cities",
+    detail:
+      "A higher star rating or a cave hotel in Cappadocia lifts the price, while a standard four star holds it down.",
+  },
+  {
+    icon: "camera",
+    factor: "Excursions and the balloon",
+    detail:
+      "The optional hot air balloon, Pamukkale, and Antalya add to the base package.",
+  },
+  {
+    icon: "plane",
+    factor: "Airline and departure city",
+    detail:
+      "The carrier, the season, and whether you fly from Karachi, Lahore, Islamabad, or Peshawar move the airfare.",
+  },
+];
+
+// Premium Umrah hotel and room gallery captions. Motif panels until real
+// photos are supplied; each caption names the entity for the alt text and,
+// once real, ImageObject. No specific hotel name is invented.
+export const premiumGallery = [
+  "A five star hotel room near the Haram in Makkah",
+  "Masjid al-Haram and the Kaaba at Fajr",
+  "A hotel near Masjid an-Nabawi in Madinah",
+  "The Rawdah inside Masjid an-Nabawi",
+  "A twin room set for a family stay",
+  "The mataf around the Kaaba during Umrah",
+];
+
+// Gallery captions. Motif panels until real Turkey photos are supplied, each
+// caption naming the entity for the alt text and, once real, ImageObject.
+export const turkeyGallery = [
+  "Hagia Sophia at dusk in Istanbul",
+  "The Blue Mosque and its six minarets",
+  "A Bosphorus cruise between two continents",
+  "Hot air balloons over Cappadocia at sunrise",
+  "The fairy chimneys of Goreme",
+  "The Grand Bazaar of Istanbul",
 ];
 
 // Standard, well documented Ziyarat sites in Makkah and Madinah. Guided
@@ -797,9 +1325,15 @@ export function itinerary(
 // Generated questions are skipped when the base already covers the topic, so
 // nothing repeats within the page, and every answer stays grounded in the repo.
 export function detailFaqs(pkg: TravelPackage): Faq[] {
-  // Ramadan uses "Package" as its visible name while the slug stays "special".
+  // Some pages use a keyword-aligned visible name while the slug stays fixed.
   const name =
-    pkg.slug === "ramadan-umrah-special" ? "Ramadan Umrah Package" : pkg.title;
+    pkg.slug === "ramadan-umrah-special"
+      ? "Ramadan Umrah Package"
+      : pkg.slug === "dubai-5-days"
+        ? "Dubai Tour Package"
+        : pkg.slug === "turkey-7-days"
+          ? "Turkey Tour"
+          : pkg.title;
   const isUmrah = /umrah/i.test(pkg.slug) || /umrah/i.test(pkg.title);
   const isHajj = /hajj/i.test(pkg.slug);
   const isPilg = pkg.category === "Umrah & Hajj";

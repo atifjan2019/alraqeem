@@ -4,8 +4,19 @@
 // (see <JsonLd />). Keep TravelAgency for home/about only.
 // =====================================================================
 import { site } from "@/lib/site";
-import type { TravelPackage } from "@/lib/packages";
+import {
+  type TravelPackage,
+  packageHref,
+  packageDisplayName,
+  packageSilo,
+} from "@/lib/packages";
 import { packageImage } from "@/lib/images";
+import {
+  dubaiItinerary,
+  dubaiAttractions,
+  turkeyItinerary,
+  turkeyAttractions,
+} from "@/lib/packageDetail";
 import type { Post } from "@/lib/posts";
 import type { City } from "@/lib/cities";
 import type { ReviewData } from "@/lib/reviews";
@@ -257,7 +268,7 @@ export function homepageGraph(
       "@type": "ListItem",
       position: i + 1,
       name: `${pkg.title} from Pakistan`,
-      url: absoluteUrl(`/packages/${pkg.slug}`),
+      url: absoluteUrl(packageHref(pkg)),
     })),
   };
 
@@ -319,7 +330,7 @@ export function localBusinessSchema(city: City) {
 const orgRef = { "@type": "Organization", name: site.name, url: site.url };
 
 function packageNode(pkg: TravelPackage) {
-  const url = absoluteUrl(`/packages/${pkg.slug}`);
+  const url = absoluteUrl(packageHref(pkg));
   const image = packageImage(pkg.slug, pkg.category, pkg.image);
   const isTour = pkg.category !== "Umrah & Hajj";
   const description = pkg.description
@@ -327,7 +338,7 @@ function packageNode(pkg: TravelPackage) {
     : `${pkg.title}, ${pkg.duration} from ${site.name}.`;
   return {
     "@type": isTour ? "TouristTrip" : "Product",
-    name: `${pkg.title} from Pakistan`,
+    name: `${packageDisplayName(pkg)} from Pakistan`,
     description,
     image,
     url,
@@ -335,13 +346,21 @@ function packageNode(pkg: TravelPackage) {
   };
 }
 
-// /packages hub. CollectionPage + two ItemLists + Breadcrumb + business.
-export function packagesHubGraph(packages: TravelPackage[]) {
-  const hubUrl = absoluteUrl("/packages");
-  const umrah = packages.filter((p) => p.category === "Umrah & Hajj");
-  const intl = packages.filter((p) => p.category !== "Umrah & Hajj");
+// Shared business node for the hub graphs.
+const businessNode = {
+  "@type": ["Organization", "TravelAgency"],
+  "@id": `${site.url}/#organization`,
+  name: site.name,
+  url: site.url,
+  logo: { "@type": "ImageObject", url: absoluteUrl("/logo.png") },
+  telephone: site.phone,
+  email: site.email,
+  address: postalAddress,
+  areaServed: [...serviceAreas, "Pakistan"],
+};
 
-  const list = (name: string, items: TravelPackage[]) => ({
+function packageItemList(name: string, items: TravelPackage[]) {
+  return {
     "@type": "ItemList",
     name,
     itemListElement: items.map((pkg, i) => ({
@@ -349,8 +368,68 @@ export function packagesHubGraph(packages: TravelPackage[]) {
       position: i + 1,
       item: packageNode(pkg),
     })),
-  });
+  };
+}
 
+// /packages is now a lightweight browse-all index. It does not target a head
+// term (the silo hubs own those), so it carries no package ItemList.
+export function packagesHubGraph() {
+  const hubUrl = absoluteUrl("/packages");
+  return {
+    "@context": "https://schema.org",
+    "@graph": [
+      businessNode,
+      {
+        "@type": "CollectionPage",
+        "@id": `${hubUrl}#collection`,
+        url: hubUrl,
+        name: "Al Raqeem packages and services",
+        about: { "@id": `${site.url}/#organization` },
+      },
+      {
+        "@type": "BreadcrumbList",
+        itemListElement: [
+          { "@type": "ListItem", position: 1, name: "Home", item: site.url },
+          { "@type": "ListItem", position: 2, name: "Packages", item: hubUrl },
+        ],
+      },
+    ],
+  };
+}
+
+// /umrah hub. CollectionPage + Umrah ItemList + Breadcrumb + business.
+export function umrahHubGraph(packages: TravelPackage[]) {
+  const hubUrl = absoluteUrl("/umrah");
+  const umrah = packages.filter(
+    (p) => p.category === "Umrah & Hajj" && p.slug !== "hajj-package"
+  );
+  return {
+    "@context": "https://schema.org",
+    "@graph": [
+      businessNode,
+      {
+        "@type": "CollectionPage",
+        "@id": `${hubUrl}#collection`,
+        url: hubUrl,
+        name: "Umrah Packages from Pakistan",
+        about: { "@id": `${site.url}/#organization` },
+      },
+      {
+        "@type": "BreadcrumbList",
+        itemListElement: [
+          { "@type": "ListItem", position: 1, name: "Home", item: site.url },
+          { "@type": "ListItem", position: 2, name: "Umrah", item: hubUrl },
+        ],
+      },
+      packageItemList("Umrah packages from Pakistan", umrah),
+    ],
+  };
+}
+
+// /tours hub. CollectionPage + tour ItemList + Breadcrumb + business.
+export function toursHubGraph(packages: TravelPackage[]) {
+  const hubUrl = absoluteUrl("/tours");
+  const tours = packages.filter((p) => p.category !== "Umrah & Hajj");
   return {
     "@context": "https://schema.org",
     "@graph": [
@@ -369,55 +448,114 @@ export function packagesHubGraph(packages: TravelPackage[]) {
         "@type": "CollectionPage",
         "@id": `${hubUrl}#collection`,
         url: hubUrl,
-        name: "Umrah, Hajj and Tour Packages from Pakistan",
+        name: "Tour Packages from Pakistan",
         about: { "@id": `${site.url}/#organization` },
       },
       {
         "@type": "BreadcrumbList",
         itemListElement: [
           { "@type": "ListItem", position: 1, name: "Home", item: site.url },
-          { "@type": "ListItem", position: 2, name: "Packages", item: hubUrl },
+          { "@type": "ListItem", position: 2, name: "Tours", item: hubUrl },
         ],
       },
-      list("Umrah and Hajj packages from Pakistan", umrah),
-      list("International tour packages from Pakistan", intl),
+      {
+        "@type": "ItemList",
+        name: "International tour packages from Pakistan",
+        itemListElement: tours.map((pkg, i) => ({
+          "@type": "ListItem",
+          position: i + 1,
+          item: packageNode(pkg),
+        })),
+      },
     ],
   };
 }
 
-// /packages/[slug] detail. Product or TouristTrip (no price) + Breadcrumb.
+// /packages/[slug] and the /tours Dubai pillar. Product or TouristTrip (no
+// price) + Breadcrumb, plus itinerary and attraction ItemLists for Dubai.
 export function packageDetailGraph(pkg: TravelPackage) {
-  const url = absoluteUrl(`/packages/${pkg.slug}`);
-  const groupName =
-    pkg.category === "Umrah & Hajj" ? "Umrah and Hajj" : "International";
-  return {
-    "@context": "https://schema.org",
-    "@graph": [
-      { "@id": url, ...packageNode(pkg) },
+  const url = absoluteUrl(packageHref(pkg));
+  const silo = packageSilo(pkg);
+  // Hajj is its own hub, so its breadcrumb stops at Home, Hajj.
+  const isHub = pkg.slug === "hajj-package";
+
+  const crumbs: Record<string, unknown>[] = [
+    { "@type": "ListItem", position: 1, name: "Home", item: site.url },
+  ];
+  if (isHub) {
+    crumbs.push({
+      "@type": "ListItem",
+      position: 2,
+      name: silo.hubName,
+      item: url,
+    });
+  } else {
+    crumbs.push(
       {
-        "@type": "BreadcrumbList",
-        itemListElement: [
-          { "@type": "ListItem", position: 1, name: "Home", item: site.url },
-          {
-            "@type": "ListItem",
-            position: 2,
-            name: "Packages",
-            item: absoluteUrl("/packages"),
-          },
-          {
-            "@type": "ListItem",
-            position: 3,
-            name: groupName,
-            item: absoluteUrl("/packages"),
-          },
-          {
-            "@type": "ListItem",
-            position: 4,
-            name: `${pkg.title} from Pakistan`,
-            item: url,
-          },
-        ],
+        "@type": "ListItem",
+        position: 2,
+        name: silo.hubName,
+        item: absoluteUrl(silo.hub),
       },
-    ],
-  };
+      {
+        "@type": "ListItem",
+        position: 3,
+        name: `${packageDisplayName(pkg)} from Pakistan`,
+        item: url,
+      }
+    );
+  }
+
+  const graph: Record<string, unknown>[] = [
+    { "@id": url, ...packageNode(pkg) },
+    { "@type": "BreadcrumbList", itemListElement: crumbs },
+  ];
+
+  if (pkg.slug === "dubai-5-days") {
+    graph.push(
+      {
+        "@type": "ItemList",
+        name: "Dubai tour itinerary",
+        itemListElement: dubaiItinerary.map((s, i) => ({
+          "@type": "ListItem",
+          position: i + 1,
+          name: `${s.day}: ${s.title}`,
+        })),
+      },
+      {
+        "@type": "ItemList",
+        name: "Dubai attractions",
+        itemListElement: dubaiAttractions.map((a, i) => ({
+          "@type": "ListItem",
+          position: i + 1,
+          name: a.name,
+        })),
+      }
+    );
+  }
+
+  if (pkg.slug === "turkey-7-days") {
+    graph.push(
+      {
+        "@type": "ItemList",
+        name: "Turkey tour itinerary",
+        itemListElement: turkeyItinerary.map((s, i) => ({
+          "@type": "ListItem",
+          position: i + 1,
+          name: `${s.day}: ${s.title}`,
+        })),
+      },
+      {
+        "@type": "ItemList",
+        name: "Turkey attractions",
+        itemListElement: turkeyAttractions.map((a, i) => ({
+          "@type": "ListItem",
+          position: i + 1,
+          name: a.name,
+        })),
+      }
+    );
+  }
+
+  return { "@context": "https://schema.org", "@graph": graph };
 }

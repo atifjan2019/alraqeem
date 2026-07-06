@@ -7,9 +7,21 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
   const posts = await getPosts();
   const staticPages = [
     "",
-    "/packages",
-    "/tickets",
+    // Silo hubs and their package children.
+    "/umrah",
+    "/umrah/economy-15-days",
+    "/umrah/premium-21-days",
+    "/umrah/ramadan",
+    "/hajj",
+    "/tours",
+    "/tours/dubai",
+    "/tours/turkey",
+    "/tours/baku",
+    "/tours/malaysia-thailand",
     "/visa-services",
+    "/tickets",
+    // Lightweight browse-all index.
+    "/packages",
     "/about",
     "/blog",
     "/contact",

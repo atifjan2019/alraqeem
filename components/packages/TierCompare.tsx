@@ -5,7 +5,7 @@ import Link from "next/link";
 const tiers = [
   {
     name: "Economy",
-    href: "/packages/economy-umrah-15-days",
+    href: "/umrah/economy-15-days",
     rows: [
       { k: "Duration", v: "15 days" },
       { k: "Hotels", v: "Walking or shuttle distance" },
@@ -16,7 +16,7 @@ const tiers = [
   },
   {
     name: "Premium and five star",
-    href: "/packages/premium-umrah-21-days",
+    href: "/umrah/premium-21-days",
     rows: [
       { k: "Duration", v: "21 days" },
       { k: "Hotels", v: "Near or facing the Haram" },
@@ -27,7 +27,7 @@ const tiers = [
   },
   {
     name: "Ramadan",
-    href: "/packages/ramadan-umrah-special",
+    href: "/umrah/ramadan",
     rows: [
       { k: "Duration", v: "10 to 30 days" },
       { k: "Hotels", v: "Near the Haram, booked early" },

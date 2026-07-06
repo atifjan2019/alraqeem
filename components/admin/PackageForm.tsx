@@ -142,7 +142,7 @@ export default function PackageForm({
             type="number"
             value={form.price}
             onChange={(e) => update("price", e.target.value)}
-            placeholder="Empty = 'Contact for price'"
+            placeholder="Leave empty for inquiry pricing"
           />
         </div>
         <div>

@@ -1,5 +1,5 @@
 import Link from "next/link";
-import { TravelPackage } from "@/lib/packages";
+import { TravelPackage, packageHref } from "@/lib/packages";
 import { packageImage } from "@/lib/images";
 import { tierOf } from "@/lib/packageDetail";
 import { waHref } from "@/lib/settings";
@@ -13,7 +13,7 @@ export default function PackageInquiryCard({
   pkg: TravelPackage;
   whatsapp: string;
 }) {
-  const href = `/packages/${pkg.slug}`;
+  const href = packageHref(pkg);
   const tier = tierOf(pkg);
   const signals = pkg.highlights.slice(0, 2);
   const quote = waHref(

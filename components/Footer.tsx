@@ -63,7 +63,9 @@ export default function Footer({
             Quick Links
           </h3>
           <ul className="space-y-2.5 text-sm">
-            <li><Link href="/packages" className="hover:text-white">All Packages</Link></li>
+            <li><Link href="/umrah" className="hover:text-white">Umrah Packages</Link></li>
+            <li><Link href="/hajj" className="hover:text-white">Hajj Package</Link></li>
+            <li><Link href="/tours" className="hover:text-white">Tour Packages</Link></li>
             <li><Link href="/tickets" className="hover:text-white">Flight Deals</Link></li>
             <li><Link href="/visa-services" className="hover:text-white">Visa Services</Link></li>
             <li><Link href="/about" className="hover:text-white">About Us</Link></li>
@@ -133,7 +135,7 @@ export default function Footer({
           <p>
             © {new Date().getFullYear()} {settings.name}. All rights reserved.
           </p>
-          <p>Umrah | Hajj | Flight Deals | Visa Services</p>
+          <p>Umrah | Hajj | Tours | Flight Deals | Visa Services</p>
           <p>
             Developed with{" "}
             <span className="text-red-500">❤️</span>{" "}

@@ -2,7 +2,12 @@ import type { Metadata } from "next";
 import Link from "next/link";
 import { notFound } from "next/navigation";
 import { getPackage, getPackages } from "@/lib/packagesStore";
-import type { TravelPackage } from "@/lib/packages";
+import {
+  type TravelPackage,
+  packageDisplayName,
+  packageSilo,
+} from "@/lib/packages";
+import { packageMetadata } from "@/lib/packageMeta";
 import { packageImage, images } from "@/lib/images";
 import { CtaBand } from "@/components/Shared";
 import JsonLd from "@/components/JsonLd";
@@ -12,6 +17,10 @@ import TierCompare from "@/components/packages/TierCompare";
 import Icon, { inclusionIcon } from "@/components/packages/DetailIcons";
 import StickyQuoteCard from "@/components/packages/StickyQuoteCard";
 import MobileActionBar from "@/components/packages/MobileActionBar";
+import TourCta from "@/components/packages/TourCta";
+import SocialProof from "@/components/packages/SocialProof";
+import CaptionedImage from "@/components/packages/CaptionedImage";
+import LastUpdated from "@/components/LastUpdated";
 import Reviews from "@/components/Reviews";
 import { getSettings } from "@/lib/settingsStore";
 import { waHref, telHref } from "@/lib/settings";
@@ -33,6 +42,21 @@ import {
   ramadanAshras,
   ramadanTiers,
   ramadanFastingTips,
+  ramadanCostDrivers,
+  economyCostDrivers,
+  premiumCostDrivers,
+  hajjCostDrivers,
+  dubaiItinerary,
+  dubaiAttractions,
+  dubaiPractical,
+  dubaiCostDrivers,
+  dubaiGallery,
+  turkeyItinerary,
+  turkeyAttractions,
+  turkeyPractical,
+  turkeyCostDrivers,
+  turkeyGallery,
+  premiumGallery,
   hajjSchemes,
   maktabCategories,
   minaFacilities,
@@ -43,60 +67,8 @@ import {
 
 export const dynamic = "force-dynamic";
 
-const TITLE_SUFFIX = " from Pakistan | Al Raqeem";
-
-// Ramadan targets "package", which outranks "special" in search. The visible
-// title, H1, and meta use the package wording, while the slug stays
-// "ramadan-umrah-special" to keep the live URL from breaking.
-function displayName(pkg: TravelPackage) {
-  return pkg.slug === "ramadan-umrah-special"
-    ? "Ramadan Umrah Package"
-    : pkg.title;
-}
-
-// Clean the stored name for use in the title tag and meta: ampersands become
-// "and", colons drop, so no HTML entities leak into head tags.
-function cleanName(title: string) {
-  return title
-    .replace(/&/g, "and")
-    .replace(/:/g, "")
-    .replace(/\s+/g, " ")
-    .trim();
-}
-
-// Build a title of "[Name] from Pakistan | Al Raqeem", trimmed to 58 by
-// dropping trailing words at word boundaries. No dashes.
-function detailTitle(pkg: TravelPackage) {
-  // Hajj targets the plural head term in the title tag, singular in the H1.
-  if (pkg.slug === "hajj-package") {
-    return "Hajj Packages from Pakistan | Al Raqeem";
-  }
-  const clean = cleanName(displayName(pkg));
-  let words = clean.split(/\s+/);
-  let name = clean;
-  while ((name + TITLE_SUFFIX).length > 58 && words.length > 1) {
-    words = words.slice(0, -1);
-    name = words
-      .join(" ")
-      .replace(/[\s,]+(and|or|with|the|of|in)$/i, "")
-      .trim();
-  }
-  return `${name}${TITLE_SUFFIX}`;
-}
-
-// Plain text meta, 156 or fewer, no HTML, no price.
-function detailMeta(pkg: TravelPackage) {
-  if (pkg.slug === "ramadan-umrah-special") {
-    return "Ramadan Umrah Package from Pakistan. Last Ashra and Laylat al-Qadr stays, flexible durations, hotels booked early. Quoted on inquiry via WhatsApp.";
-  }
-  if (pkg.slug === "hajj-package") {
-    return "Hajj Package from Pakistan. MORA scheme guidance and a private Hajj route through a Saudi approved operator, with scholar led training. Quoted on inquiry.";
-  }
-  const clean = cleanName(displayName(pkg));
-  const base = `${clean} from Pakistan. Quoted on inquiry for your dates, with visa, flights and hotels handled. Message on WhatsApp for a quote.`;
-  if (base.length <= 156) return base;
-  return `${clean} from Pakistan. Quoted on inquiry for your dates. Visa, flights and hotels handled by our desk.`;
-}
+// The visible name for the H1, breadcrumb, and prefills.
+const displayName = packageDisplayName;
 
 export async function generateMetadata({
   params,
@@ -106,12 +78,7 @@ export async function generateMetadata({
   const { slug } = await params;
   const pkg = await getPackage(slug);
   if (!pkg) return {};
-  return {
-    title: { absolute: detailTitle(pkg) },
-    description: detailMeta(pkg),
-    alternates: { canonical: `/packages/${pkg.slug}` },
-    openGraph: { url: `/packages/${pkg.slug}` },
-  };
+  return packageMetadata(pkg);
 }
 
 // Consistent section header: eyebrow, serif heading, gold rule.
@@ -127,15 +94,9 @@ function Head({ eyebrow, title }: { eyebrow: string; title: string }) {
   );
 }
 
-export default async function PackageDetailPage({
-  params,
-}: {
-  params: Promise<{ slug: string }>;
-}) {
-  const { slug } = await params;
-  const pkg = await getPackage(slug);
-  if (!pkg) notFound();
-
+// The full detail view, rendered by both /packages/[slug] and the /tours
+// Dubai pillar. Takes a resolved package, so either route supplies it.
+export async function PackageDetailView({ pkg }: { pkg: TravelPackage }) {
   const settings = await getSettings();
   const detail = getDetail(pkg);
   const tier = tierOf(pkg);
@@ -146,8 +107,15 @@ export default async function PackageDetailPage({
   const isUmrah = /umrah/i.test(pkg.slug) || /umrah/i.test(pkg.title);
   const isRamadan = pkg.slug === "ramadan-umrah-special";
   const isHajj = pkg.slug === "hajj-package";
+  const isEconomy = pkg.slug === "economy-umrah-15-days";
+  const isPremium = pkg.slug === "premium-umrah-21-days";
+  const isDubai = pkg.slug === "dubai-5-days";
+  const isTurkey = pkg.slug === "turkey-7-days";
   const displayTitle = displayName(pkg);
   const groupName = isPilgrimage ? "Umrah and Hajj" : "International";
+  const silo = packageSilo(pkg);
+  // Hajj is its own hub, so its breadcrumb stops at Home, Hajj.
+  const breadcrumbIsHub = pkg.slug === "hajj-package";
   const heroImage = packageImage(pkg.slug, pkg.category, pkg.image);
 
   const quoteHref = waHref(
@@ -159,6 +127,27 @@ export default async function PackageDetailPage({
     settings.whatsapp,
     `Assalam o Alaikum, please send the document checklist for the "${displayTitle}" package.`
   );
+
+  // Tour CRO: a specific, possessive quote label and a lighter micro conversion
+  // (the itinerary on WhatsApp). Applied to tours so all tour pages inherit it.
+  const isTour = !isPilgrimage;
+  const tourName = isDubai
+    ? "Dubai"
+    : pkg.slug === "turkey-7-days"
+      ? "Turkey"
+      : pkg.slug === "baku-5-days"
+        ? "Baku"
+        : pkg.slug === "malaysia-thailand-8-days"
+          ? "Far East"
+          : "trip";
+  const quoteLabel = isTour ? `Get my ${tourName} quote` : "Get a quote";
+  const itineraryHref = waHref(
+    settings.whatsapp,
+    `Assalam o Alaikum, please send the day by day itinerary for the "${displayTitle}" package.`
+  );
+  const seasonalNote = isTour
+    ? "Peak seasons and holidays book earliest, so message us as soon as your dates are set."
+    : undefined;
 
   // Overview: pull the first sentence as a lead line (presentation only).
   const sentences = detail.overview.split(/(?<=\.)\s+/);
@@ -181,13 +170,11 @@ export default async function PackageDetailPage({
       ]
     : pkg.slug === "dubai-5-days"
       ? [
-          {
-            label: "Dubai visit visa guide",
-            href: "/blog/dubai-visit-visa-requirements-pakistan",
-          },
+          { label: "All tour packages", href: "/tours" },
           { label: "UAE visit visa services", href: "/visa-services" },
         ]
       : [
+          { label: "All tour packages", href: "/tours" },
           { label: "Visit visa services", href: "/visa-services" },
           { label: "Travel guides", href: "/blog" },
         ];
@@ -244,14 +231,23 @@ export default async function PackageDetailPage({
             aria-label="Breadcrumb"
             className="flex flex-wrap items-center gap-2 text-sm text-slate-200"
           >
-            <Link href="/packages" className="hover:text-white">
-              Packages
+            <Link href="/" className="hover:text-white">
+              Home
             </Link>
             <span aria-hidden="true">/</span>
-            <span>{groupName}</span>
-            <span aria-hidden="true">/</span>
-            <span className="text-white">{displayTitle}</span>
+            {breadcrumbIsHub ? (
+              <span className="text-white">{silo.hubName}</span>
+            ) : (
+              <>
+                <Link href={silo.hub} className="hover:text-white">
+                  {silo.hubName}
+                </Link>
+                <span aria-hidden="true">/</span>
+                <span className="text-white">{displayTitle}</span>
+              </>
+            )}
           </nav>
+          <LastUpdated tone="dark" className="mt-3" />
           <div className="mt-6 flex flex-wrap gap-2">
             <span className="rounded-full bg-brand-orange px-3 py-1 text-[11px] font-bold uppercase tracking-wide text-brand-blue-deep">
               {pkg.duration}
@@ -265,6 +261,13 @@ export default async function PackageDetailPage({
           <h1 className="mt-4 max-w-3xl text-4xl font-medium leading-[1.1] text-white sm:text-5xl">
             {displayTitle} from Pakistan
           </h1>
+          {isTour && (
+            <p className="mt-4 max-w-2xl text-lg leading-relaxed text-slate-200">
+              Visa, flights, hotel, and every sight handled. You travel, and our
+              desk arranges it all, quoted for your exact dates with no hidden
+              charges.
+            </p>
+          )}
           <div className="mt-8 flex flex-col gap-3 sm:flex-row">
             <a
               href={quoteHref}
@@ -272,7 +275,7 @@ export default async function PackageDetailPage({
               rel="noopener noreferrer"
               className="btn-orange"
             >
-              Get a quote
+              {quoteLabel}
             </a>
             <a
               href={callHref}
@@ -281,8 +284,47 @@ export default async function PackageDetailPage({
               Call {settings.phone}
             </a>
           </div>
+          {/* Social proof and trust, high near the first CTA, every detail page */}
+          <div className="mt-6 flex flex-col gap-4">
+            <SocialProof theme="dark" />
+            <ul className="flex flex-wrap gap-x-5 gap-y-2 text-sm text-slate-200">
+              {trust.map((t) => (
+                <li key={t.text} className="inline-flex items-center gap-2">
+                  <Icon
+                    name={t.icon}
+                    size={16}
+                    className="shrink-0 text-brand-orange"
+                  />
+                  {t.text}
+                </li>
+              ))}
+            </ul>
+          </div>
         </div>
       </section>
+
+      {/* Value strip under the hero (tours) */}
+      {isTour && (
+        <section className="border-b border-black/5 bg-white">
+          <div className="container-site grid grid-cols-2 gap-x-6 gap-y-5 py-6 sm:grid-cols-4">
+            {[
+              { icon: "plane", text: "Visa and flights included" },
+              { icon: "hotel", text: "Hotel with breakfast" },
+              { icon: "camera", text: "Guided sightseeing" },
+              { icon: "phone", text: "WhatsApp support throughout" },
+            ].map((v) => (
+              <div key={v.text} className="flex items-center gap-2.5">
+                <span className="flex h-9 w-9 shrink-0 items-center justify-center rounded-full bg-brand-orange/12 text-brand-orange-dark">
+                  <Icon name={v.icon} size={18} />
+                </span>
+                <p className="text-sm font-semibold leading-snug text-brand-blue-deep">
+                  {v.text}
+                </p>
+              </div>
+            ))}
+          </div>
+        </section>
+      )}
 
       {/* Content: main column plus sticky quote card */}
       <section className="bg-paper py-12 sm:py-16">
@@ -325,6 +367,173 @@ export default async function PackageDetailPage({
                   </p>
                 )}
               </section>
+
+              {/* Dubai day by day itinerary, the core tour section */}
+              {isDubai && (
+                <section>
+                  <Head
+                    eyebrow="Day by day"
+                    title="Your five day Dubai itinerary"
+                  />
+                  <div className="mt-6 space-y-5">
+                    {dubaiItinerary.map((step) => (
+                      <article
+                        key={step.day}
+                        className="grid gap-4 rounded-2xl border border-black/5 bg-white p-5 shadow-card sm:grid-cols-[1fr_1.8fr] sm:items-center"
+                      >
+                        <CaptionedImage
+                          caption={step.caption}
+                          icon="camera"
+                          aspect="aspect-[16/10]"
+                        />
+                        <div>
+                          <p className="text-xs font-semibold uppercase tracking-wider text-brand-orange-dark">
+                            {step.day}
+                          </p>
+                          <h3 className="mt-0.5 font-display text-lg text-brand-blue-deep">
+                            {step.title}
+                          </h3>
+                          <p className="mt-1.5 text-sm leading-relaxed text-slate-600">
+                            {step.detail}
+                          </p>
+                        </div>
+                      </article>
+                    ))}
+                  </div>
+                  <p className="mt-4 max-w-[65ch] text-sm leading-relaxed text-slate-500">
+                    The flow above is the typical five day plan. Our desk adjusts
+                    the order and adds excursions to suit your dates and group.
+                  </p>
+                  <div className="mt-6">
+                    <SocialProof />
+                  </div>
+                </section>
+              )}
+
+              {/* Top Dubai attractions */}
+              {isDubai && (
+                <section>
+                  <Head
+                    eyebrow="What you will see"
+                    title="Top Dubai attractions"
+                  />
+                  <div className="mt-6 grid gap-5 sm:grid-cols-2 lg:grid-cols-3">
+                    {dubaiAttractions.map((a) => (
+                      <article
+                        key={a.name}
+                        className="rounded-2xl border border-black/5 bg-white p-4 shadow-card"
+                      >
+                        <CaptionedImage
+                          caption={a.caption}
+                          icon="pin"
+                          aspect="aspect-[4/3]"
+                        />
+                        <h3 className="mt-3 font-display text-base text-brand-blue-deep">
+                          {a.name}
+                        </h3>
+                        <p className="mt-1 text-sm leading-relaxed text-slate-600">
+                          {a.detail}
+                        </p>
+                      </article>
+                    ))}
+                  </div>
+                </section>
+              )}
+
+              {/* Decision-point CTA after itinerary and attractions (Dubai) */}
+              {isDubai && (
+                <TourCta
+                  heading={`Ready to plan your ${tourName} trip?`}
+                  quoteHref={quoteHref}
+                  quoteLabel={quoteLabel}
+                  itineraryHref={itineraryHref}
+                  seasonalNote="Dubai peaks from November to March, when the weather is cool and the hotels book earliest. Message us for your dates."
+                />
+              )}
+
+              {/* Turkey day by day itinerary, captioned image per day */}
+              {isTurkey && (
+                <section>
+                  <Head
+                    eyebrow="Day by day"
+                    title="Your seven day Turkey itinerary"
+                  />
+                  <div className="mt-6 space-y-5">
+                    {turkeyItinerary.map((step) => (
+                      <article
+                        key={step.day}
+                        className="grid gap-4 rounded-2xl border border-black/5 bg-white p-5 shadow-card sm:grid-cols-[1fr_1.8fr] sm:items-center"
+                      >
+                        <CaptionedImage
+                          caption={step.caption}
+                          icon="camera"
+                          aspect="aspect-[16/10]"
+                        />
+                        <div>
+                          <p className="text-xs font-semibold uppercase tracking-wider text-brand-orange-dark">
+                            {step.day}
+                          </p>
+                          <h3 className="mt-0.5 font-display text-lg text-brand-blue-deep">
+                            {step.title}
+                          </h3>
+                          <p className="mt-1.5 text-sm leading-relaxed text-slate-600">
+                            {step.detail}
+                          </p>
+                        </div>
+                      </article>
+                    ))}
+                  </div>
+                  <p className="mt-4 max-w-[65ch] text-sm leading-relaxed text-slate-500">
+                    The flow above is the typical seven day plan across Istanbul
+                    and Cappadocia. Our desk adjusts the order and adds Antalya,
+                    Pamukkale, or Ephesus on request.
+                  </p>
+                  <div className="mt-6">
+                    <SocialProof />
+                  </div>
+                </section>
+              )}
+
+              {/* Top Turkey attractions, captioned */}
+              {isTurkey && (
+                <section>
+                  <Head
+                    eyebrow="What you will see"
+                    title="Top Turkey attractions"
+                  />
+                  <div className="mt-6 grid gap-5 sm:grid-cols-2 lg:grid-cols-3">
+                    {turkeyAttractions.map((a) => (
+                      <article
+                        key={a.name}
+                        className="rounded-2xl border border-black/5 bg-white p-4 shadow-card"
+                      >
+                        <CaptionedImage
+                          caption={a.caption}
+                          icon="pin"
+                          aspect="aspect-[4/3]"
+                        />
+                        <h3 className="mt-3 font-display text-base text-brand-blue-deep">
+                          {a.name}
+                        </h3>
+                        <p className="mt-1 text-sm leading-relaxed text-slate-600">
+                          {a.detail}
+                        </p>
+                      </article>
+                    ))}
+                  </div>
+                </section>
+              )}
+
+              {/* Decision-point CTA after itinerary and attractions (Turkey) */}
+              {isTurkey && (
+                <TourCta
+                  heading={`Ready to plan your ${tourName} trip?`}
+                  quoteHref={quoteHref}
+                  quoteLabel={quoteLabel}
+                  itineraryHref={itineraryHref}
+                  seasonalNote="Spring and autumn book early in Turkey, when the weather is best and the Cappadocia balloons fly. Message us for your dates."
+                />
+              )}
 
               {/* Ramadan by Ashra */}
               {pkg.slug === "ramadan-umrah-special" && (
@@ -449,6 +658,20 @@ export default async function PackageDetailPage({
                       Nusuk
                     </a>
                     .
+                  </p>
+                  <p className="mt-4 flex items-start gap-3 rounded-xl border border-black/10 bg-paper/60 p-4 text-sm leading-relaxed text-slate-600">
+                    <Icon
+                      name="clock"
+                      size={18}
+                      className="mt-0.5 shrink-0 text-brand-orange-dark"
+                    />
+                    <span>
+                      Hajj policy note: MORA announces the scheme, quota, and
+                      application window for each cycle, and Saudi rules update
+                      through Nusuk. Our desk tracks the current announcements
+                      and confirms the rules that apply to your booking, so ask
+                      for the latest position on your dates.
+                    </span>
                   </p>
                 </section>
               )}
@@ -643,6 +866,37 @@ export default async function PackageDetailPage({
                     </span>
                   </p>
                 )}
+                {isEconomy && (
+                  <p className="mt-5 flex items-start gap-3 rounded-xl bg-brand-orange/10 p-4 text-sm leading-relaxed text-brand-blue-deep">
+                    <Icon
+                      name="meal"
+                      size={18}
+                      className="mt-0.5 shrink-0 text-brand-orange-dark"
+                    />
+                    <span>
+                      Economy packages are usually room only or with breakfast,
+                      since keeping meals flexible holds the cost down near the
+                      Haram, where affordable food sits close by. Our desk
+                      confirms the exact meal plan for your hotel with your
+                      quote.
+                    </span>
+                  </p>
+                )}
+                {isPremium && (
+                  <p className="mt-5 flex items-start gap-3 rounded-xl bg-brand-orange/10 p-4 text-sm leading-relaxed text-brand-blue-deep">
+                    <Icon
+                      name="route"
+                      size={18}
+                      className="mt-0.5 shrink-0 text-brand-orange-dark"
+                    />
+                    <span>
+                      Intercity travel between Makkah and Madinah is by private
+                      transport or the Haramain high speed rail, confirmed for
+                      your dates. Our desk arranges every transfer, so your group
+                      moves on its own schedule from arrival to safe return.
+                    </span>
+                  </p>
+                )}
               </section>
 
               {/* What is not included, muted card */}
@@ -739,6 +993,13 @@ export default async function PackageDetailPage({
                             last Ashra books earliest of all.
                           </p>
                         )}
+                        {isPremium && (
+                          <p className="mt-3 text-sm leading-relaxed text-slate-300">
+                            Rooms are arranged as double, twin, or triple to suit
+                            couples, families, and small groups, confirmed with
+                            your quote.
+                          </p>
+                        )}
                       </div>
                       <div className="relative min-h-[220px] md:min-h-full">
                         <img
@@ -750,6 +1011,27 @@ export default async function PackageDetailPage({
                       </div>
                     </div>
                   </div>
+                </section>
+              )}
+
+              {/* Premium hotel and room gallery, captioned motif panels */}
+              {isPremium && (
+                <section>
+                  <Head eyebrow="Gallery" title="Hotels, rooms, and the Haram" />
+                  <div className="mt-6 grid grid-cols-2 gap-4 sm:grid-cols-3">
+                    {premiumGallery.map((caption) => (
+                      <CaptionedImage
+                        key={caption}
+                        caption={caption}
+                        icon="hotel"
+                        aspect="aspect-square"
+                      />
+                    ))}
+                  </div>
+                  <p className="mt-4 max-w-[65ch] text-sm leading-relaxed text-slate-500">
+                    Branded panels stand in until our own five star hotel and
+                    room photos are added, so every slot names what it will show.
+                  </p>
                 </section>
               )}
 
@@ -772,6 +1054,108 @@ export default async function PackageDetailPage({
                       early. Message our team for the current details.
                     </p>
                   </div>
+                </section>
+              )}
+
+              {/* Best time and practical info (Dubai) */}
+              {isDubai && (
+                <section>
+                  <Head
+                    eyebrow="Good to know"
+                    title="Best time and practical info"
+                  />
+                  <div className="mt-6 grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
+                    {dubaiPractical.map((p) => (
+                      <div
+                        key={p.label}
+                        className="flex items-center gap-3 rounded-2xl border border-black/5 bg-white p-5 shadow-card"
+                      >
+                        <span className="flex h-11 w-11 shrink-0 items-center justify-center rounded-xl bg-brand-blue/10 text-brand-blue">
+                          <Icon name={p.icon} size={22} />
+                        </span>
+                        <div>
+                          <dt className="text-[11px] font-semibold uppercase tracking-wider text-slate-500">
+                            {p.label}
+                          </dt>
+                          <dd className="text-sm font-semibold text-brand-blue-deep">
+                            {p.value}
+                          </dd>
+                        </div>
+                      </div>
+                    ))}
+                  </div>
+                </section>
+              )}
+
+              {/* Dubai photo gallery, captioned motif panels until real photos */}
+              {isDubai && (
+                <section>
+                  <Head eyebrow="Gallery" title="Dubai in pictures" />
+                  <div className="mt-6 grid grid-cols-2 gap-4 sm:grid-cols-3">
+                    {dubaiGallery.map((caption) => (
+                      <CaptionedImage
+                        key={caption}
+                        caption={caption}
+                        icon="camera"
+                        aspect="aspect-square"
+                      />
+                    ))}
+                  </div>
+                  <p className="mt-4 max-w-[65ch] text-sm leading-relaxed text-slate-500">
+                    Branded panels stand in until our own Dubai photos are added,
+                    so every slot names the place it will show.
+                  </p>
+                </section>
+              )}
+
+              {/* Best time and practical info (Turkey) */}
+              {isTurkey && (
+                <section>
+                  <Head
+                    eyebrow="Good to know"
+                    title="Best time and practical info"
+                  />
+                  <div className="mt-6 grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
+                    {turkeyPractical.map((p) => (
+                      <div
+                        key={p.label}
+                        className="flex items-center gap-3 rounded-2xl border border-black/5 bg-white p-5 shadow-card"
+                      >
+                        <span className="flex h-11 w-11 shrink-0 items-center justify-center rounded-xl bg-brand-blue/10 text-brand-blue">
+                          <Icon name={p.icon} size={22} />
+                        </span>
+                        <div>
+                          <dt className="text-[11px] font-semibold uppercase tracking-wider text-slate-500">
+                            {p.label}
+                          </dt>
+                          <dd className="text-sm font-semibold text-brand-blue-deep">
+                            {p.value}
+                          </dd>
+                        </div>
+                      </div>
+                    ))}
+                  </div>
+                </section>
+              )}
+
+              {/* Turkey photo gallery, captioned motif panels until real photos */}
+              {isTurkey && (
+                <section>
+                  <Head eyebrow="Gallery" title="Turkey in pictures" />
+                  <div className="mt-6 grid grid-cols-2 gap-4 sm:grid-cols-3">
+                    {turkeyGallery.map((caption) => (
+                      <CaptionedImage
+                        key={caption}
+                        caption={caption}
+                        icon="camera"
+                        aspect="aspect-square"
+                      />
+                    ))}
+                  </div>
+                  <p className="mt-4 max-w-[65ch] text-sm leading-relaxed text-slate-500">
+                    Branded panels stand in until our own Turkey photos are
+                    added, so every slot names the place it will show.
+                  </p>
                 </section>
               )}
 
@@ -859,11 +1243,11 @@ export default async function PackageDetailPage({
                       Itikaf is arranged on request during the last Ashra and
                       depends on hotel availability, so our desk presents it as
                       requested, not guaranteed. Rooms near the Haram for the
-                      odd nights of Laylat al-Qadr are booked as close as
-                      availability allows, without promising a specific hotel or
-                      a view facing the Haram. Tell our team your intended
-                      nights early, and we hold the nearest option we secure for
-                      your dates.
+                      odd nights of Laylat al-Qadr, the Night of Power, are
+                      booked as close as availability allows, without promising a
+                      specific hotel or a view facing the Haram. Tell our team
+                      your intended nights early, and we hold the nearest option
+                      we secure for your dates.
                     </p>
                   </div>
                 </section>
@@ -909,8 +1293,8 @@ export default async function PackageDetailPage({
                 </section>
               )}
 
-              {/* Sample itinerary. Hajj uses the day by day journey below. */}
-              {!isHajj && (
+              {/* Sample itinerary. Hajj, Dubai, and Turkey use their own. */}
+              {!isHajj && !isDubai && !isTurkey && (
               <section>
                 <Head
                   eyebrow="Sample itinerary"
@@ -945,6 +1329,23 @@ export default async function PackageDetailPage({
               </section>
               )}
 
+              {/* Decision-point CTA after the itinerary (tours without a named
+                  attractions section: Baku, Malaysia and Thailand) */}
+              {isTour && !isDubai && !isTurkey && (
+                <>
+                  <div>
+                    <SocialProof />
+                  </div>
+                  <TourCta
+                    heading={`Ready to plan your ${tourName} trip?`}
+                    quoteHref={quoteHref}
+                    quoteLabel={quoteLabel}
+                    itineraryHref={itineraryHref}
+                    seasonalNote={seasonalNote}
+                  />
+                </>
+              )}
+
               {/* The Hajj journey, day by day across Dhul Hijjah */}
               {isHajj && (
                 <section>
@@ -952,6 +1353,12 @@ export default async function PackageDetailPage({
                     eyebrow="The Hajj journey"
                     title="Day by day, the 8th to the 13th of Dhul Hijjah"
                   />
+                  <p className="mt-6 max-w-[65ch] text-base leading-relaxed text-slate-700">
+                    Most pilgrims from Pakistan perform Hajj al Tamattu, joining
+                    Umrah and Hajj in one trip with a release from Ihram between
+                    them, while Ifrad and Qiran are arranged for those who intend
+                    them. The rites below follow the days of Dhul Hijjah.
+                  </p>
                   <ol className="mt-6 space-y-4">
                     {hajjJourney.map((step, i) => (
                       <li
@@ -1138,6 +1545,16 @@ export default async function PackageDetailPage({
                     arranges onward ground transport, and travelers from nearby
                     towns coordinate airport pickup when they book.
                   </p>
+                  {isEconomy && (
+                    <p className="mt-4 max-w-[65ch] text-sm leading-relaxed text-slate-500">
+                      Flights leave from Bacha Khan International in Peshawar or
+                      Islamabad International, booked on the carrier with the best
+                      fare and schedule, such as Saudia, PIA, Airblue, or AirSial.
+                      Routes land at Jeddah or Prince Mohammad bin Abdulaziz
+                      International in Madinah, and our desk arranges the ground
+                      transport onward to your hotel.
+                    </p>
+                  )}
                 </section>
               )}
 
@@ -1169,6 +1586,22 @@ export default async function PackageDetailPage({
                     <span>
                       Women travelling without a Mehram should confirm the
                       current Saudi rule for their cycle, since the conditions
+                      have shifted in recent years. Our desk arranges group
+                      travel for women where the rules allow, with the details
+                      set at booking.
+                    </span>
+                  </p>
+                )}
+                {isEconomy && (
+                  <p className="mt-5 flex items-start gap-3 rounded-xl bg-brand-blue/5 p-4 text-sm leading-relaxed text-slate-700">
+                    <Icon
+                      name="users"
+                      size={18}
+                      className="mt-0.5 shrink-0 text-brand-blue"
+                    />
+                    <span>
+                      Women travelling without a Mehram should confirm the
+                      current Saudi rule for their dates, since the conditions
                       have shifted in recent years. Our desk arranges group
                       travel for women where the rules allow, with the details
                       set at booking.
@@ -1235,6 +1668,34 @@ export default async function PackageDetailPage({
                         Saudi vaccination requirements
                       </a>
                       .
+                    </p>
+                  )}
+                  {isDubai && (
+                    <p className="mt-5 border-t border-black/5 pt-4 text-xs leading-relaxed text-slate-500">
+                      Verify the current UAE visit visa rules at the official{" "}
+                      <a
+                        href="https://u.ae"
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="font-semibold text-brand-blue underline"
+                      >
+                        UAE government portal
+                      </a>
+                      . Our team prepares and files your visa with your booking.
+                    </p>
+                  )}
+                  {isTurkey && (
+                    <p className="mt-5 border-t border-black/5 pt-4 text-xs leading-relaxed text-slate-500">
+                      Verify the current rules and apply at the official{" "}
+                      <a
+                        href="https://www.evisa.gov.tr"
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="font-semibold text-brand-blue underline"
+                      >
+                        Turkey e visa portal
+                      </a>
+                      . Our team prepares and files your visa with your booking.
                     </p>
                   )}
                 </div>
@@ -1331,6 +1792,229 @@ export default async function PackageDetailPage({
                 </section>
               )}
 
+              {/* What sets the price, cost drivers passage */}
+              {isEconomy && (
+                <section>
+                  <Head
+                    eyebrow="What sets the price"
+                    title="Why an economy quote moves"
+                  />
+                  <p className="mt-6 max-w-[65ch] text-base leading-relaxed text-slate-700">
+                    A 15 day economy Umrah has no fixed sticker, since a handful
+                    of factors set each quote. Our desk reads them live for your
+                    dates and sends the current best price, with no hidden
+                    charges and no stale published number.
+                  </p>
+                  <div className="mt-6 grid gap-4 sm:grid-cols-2">
+                    {economyCostDrivers.map((c) => (
+                      <div
+                        key={c.factor}
+                        className="flex items-start gap-3 rounded-2xl border border-black/5 bg-white p-5 shadow-card"
+                      >
+                        <span className="flex h-11 w-11 shrink-0 items-center justify-center rounded-xl bg-brand-orange/12 text-brand-orange-dark">
+                          <Icon name={c.icon} size={22} />
+                        </span>
+                        <div>
+                          <h3 className="font-display text-base text-brand-blue-deep">
+                            {c.factor}
+                          </h3>
+                          <p className="mt-1 text-sm leading-relaxed text-slate-600">
+                            {c.detail}
+                          </p>
+                        </div>
+                      </div>
+                    ))}
+                  </div>
+                  <p className="mt-4 max-w-[65ch] text-sm leading-relaxed text-slate-500">
+                    Ask about Rajab and Shaban, the calmer months before Ramadan,
+                    for lower off peak rates that stretch a budget further.
+                  </p>
+                </section>
+              )}
+
+              {/* What sets the price, Ramadan cost drivers passage */}
+              {isRamadan && (
+                <section>
+                  <Head
+                    eyebrow="What sets the price"
+                    title="Why a Ramadan quote moves"
+                  />
+                  <p className="mt-6 max-w-[65ch] text-base leading-relaxed text-slate-700">
+                    A Ramadan, or Ramzan, Umrah has no fixed sticker, since a few
+                    factors set each quote. Our desk reads them live for your
+                    dates and sends the current best price, with no hidden
+                    charges and no stale published number.
+                  </p>
+                  <div className="mt-6 grid gap-4 sm:grid-cols-2">
+                    {ramadanCostDrivers.map((c) => (
+                      <div
+                        key={c.factor}
+                        className="flex items-start gap-3 rounded-2xl border border-black/5 bg-white p-5 shadow-card"
+                      >
+                        <span className="flex h-11 w-11 shrink-0 items-center justify-center rounded-xl bg-brand-orange/12 text-brand-orange-dark">
+                          <Icon name={c.icon} size={22} />
+                        </span>
+                        <div>
+                          <h3 className="font-display text-base text-brand-blue-deep">
+                            {c.factor}
+                          </h3>
+                          <p className="mt-1 text-sm leading-relaxed text-slate-600">
+                            {c.detail}
+                          </p>
+                        </div>
+                      </div>
+                    ))}
+                  </div>
+                </section>
+              )}
+
+              {/* What sets the price, premium cost drivers passage */}
+              {isPremium && (
+                <section>
+                  <Head
+                    eyebrow="What sets the price"
+                    title="Why premium sits above economy"
+                  />
+                  <p className="mt-6 max-w-[65ch] text-base leading-relaxed text-slate-700">
+                    A premium Umrah has no fixed sticker, since a few factors set
+                    each quote. Our desk reads them live for your dates and sends
+                    the current best price, with no hidden charges and no stale
+                    published number.
+                  </p>
+                  <div className="mt-6 grid gap-4 sm:grid-cols-2">
+                    {premiumCostDrivers.map((c) => (
+                      <div
+                        key={c.factor}
+                        className="flex items-start gap-3 rounded-2xl border border-black/5 bg-white p-5 shadow-card"
+                      >
+                        <span className="flex h-11 w-11 shrink-0 items-center justify-center rounded-xl bg-brand-orange/12 text-brand-orange-dark">
+                          <Icon name={c.icon} size={22} />
+                        </span>
+                        <div>
+                          <h3 className="font-display text-base text-brand-blue-deep">
+                            {c.factor}
+                          </h3>
+                          <p className="mt-1 text-sm leading-relaxed text-slate-600">
+                            {c.detail}
+                          </p>
+                        </div>
+                      </div>
+                    ))}
+                  </div>
+                </section>
+              )}
+
+              {/* What sets the price, Hajj cost drivers passage */}
+              {isHajj && (
+                <section>
+                  <Head
+                    eyebrow="What sets the price"
+                    title="Why a Hajj quote moves"
+                  />
+                  <p className="mt-6 max-w-[65ch] text-base leading-relaxed text-slate-700">
+                    A Hajj package has no fixed sticker, since the scheme, the
+                    Maktab, the hotels, and the airline each set the quote. Our
+                    desk reads them live for your dates and sends the current
+                    best price, with no hidden charges and no stale published
+                    number.
+                  </p>
+                  <div className="mt-6 grid gap-4 sm:grid-cols-2">
+                    {hajjCostDrivers.map((c) => (
+                      <div
+                        key={c.factor}
+                        className="flex items-start gap-3 rounded-2xl border border-black/5 bg-white p-5 shadow-card"
+                      >
+                        <span className="flex h-11 w-11 shrink-0 items-center justify-center rounded-xl bg-brand-orange/12 text-brand-orange-dark">
+                          <Icon name={c.icon} size={22} />
+                        </span>
+                        <div>
+                          <h3 className="font-display text-base text-brand-blue-deep">
+                            {c.factor}
+                          </h3>
+                          <p className="mt-1 text-sm leading-relaxed text-slate-600">
+                            {c.detail}
+                          </p>
+                        </div>
+                      </div>
+                    ))}
+                  </div>
+                </section>
+              )}
+
+              {/* What sets the price, Dubai cost drivers passage */}
+              {isDubai && (
+                <section>
+                  <Head
+                    eyebrow="What sets the price"
+                    title="Why a Dubai quote moves"
+                  />
+                  <p className="mt-6 max-w-[65ch] text-base leading-relaxed text-slate-700">
+                    A Dubai tour has no fixed sticker, since the season, the
+                    hotel, the excursions, and your departure city set each
+                    quote. Our desk reads them live for your dates and sends the
+                    current best price, with no hidden charges and no stale
+                    published number.
+                  </p>
+                  <div className="mt-6 grid gap-4 sm:grid-cols-2">
+                    {dubaiCostDrivers.map((c) => (
+                      <div
+                        key={c.factor}
+                        className="flex items-start gap-3 rounded-2xl border border-black/5 bg-white p-5 shadow-card"
+                      >
+                        <span className="flex h-11 w-11 shrink-0 items-center justify-center rounded-xl bg-brand-orange/12 text-brand-orange-dark">
+                          <Icon name={c.icon} size={22} />
+                        </span>
+                        <div>
+                          <h3 className="font-display text-base text-brand-blue-deep">
+                            {c.factor}
+                          </h3>
+                          <p className="mt-1 text-sm leading-relaxed text-slate-600">
+                            {c.detail}
+                          </p>
+                        </div>
+                      </div>
+                    ))}
+                  </div>
+                </section>
+              )}
+
+              {/* What sets the price, Turkey cost drivers passage */}
+              {isTurkey && (
+                <section>
+                  <Head
+                    eyebrow="What sets the price"
+                    title="Why a Turkey quote moves"
+                  />
+                  <p className="mt-6 max-w-[65ch] text-base leading-relaxed text-slate-700">
+                    A Turkey tour has no fixed sticker, since the season, the
+                    hotel, the excursions, and your departure city set each
+                    quote. Our desk reads them live for your dates and sends the
+                    current best price, with no hidden charges and no stale
+                    published number.
+                  </p>
+                  <div className="mt-6 grid gap-4 sm:grid-cols-2">
+                    {turkeyCostDrivers.map((c) => (
+                      <div
+                        key={c.factor}
+                        className="flex items-start gap-3 rounded-2xl border border-black/5 bg-white p-5 shadow-card"
+                      >
+                        <span className="flex h-11 w-11 shrink-0 items-center justify-center rounded-xl bg-brand-orange/12 text-brand-orange-dark">
+                          <Icon name={c.icon} size={22} />
+                        </span>
+                        <div>
+                          <h3 className="font-display text-base text-brand-blue-deep">
+                            {c.factor}
+                          </h3>
+                          <p className="mt-1 text-sm leading-relaxed text-slate-600">
+                            {c.detail}
+                          </p>
+                        </div>
+                      </div>
+                    ))}
+                  </div>
+                </section>
+              )}
+
               {/* Price on inquiry, in flow twin of the sticky card */}
               <section>
                 <div className="rounded-3xl border border-brand-orange/30 bg-brand-orange/10 p-6 sm:p-8">
@@ -1342,6 +2026,27 @@ export default async function PackageDetailPage({
                     our team quotes the current best price for your exact dates,
                     with no hidden charges and no stale published numbers.
                   </p>
+                  {isTour && (
+                    <ul className="mt-5 grid gap-2.5 sm:grid-cols-3">
+                      {[
+                        "The visa is prepared and filed for you",
+                        "No hidden charges, every amount in writing",
+                        "Dates and hotel are adjusted before you pay",
+                      ].map((o) => (
+                        <li
+                          key={o}
+                          className="flex items-start gap-2 text-sm leading-snug text-brand-blue-deep"
+                        >
+                          <Icon
+                            name="checkCircle"
+                            size={18}
+                            className="mt-0.5 shrink-0 text-brand-orange-dark"
+                          />
+                          {o}
+                        </li>
+                      ))}
+                    </ul>
+                  )}
                   <div className="mt-5 flex flex-col gap-3 sm:flex-row">
                     <a
                       href={quoteHref}
@@ -1349,26 +2054,13 @@ export default async function PackageDetailPage({
                       rel="noopener noreferrer"
                       className="btn-orange"
                     >
-                      Get a quote
+                      {quoteLabel}
                     </a>
                     <a href={callHref} className="btn-outline">
                       Call {settings.phone}
                     </a>
                   </div>
                 </div>
-              </section>
-
-              {/* Common questions */}
-              <section>
-                <Head
-                  eyebrow="Questions and answers"
-                  title="Common questions"
-                />
-                <FaqAccordion
-                  items={detailFaqs(pkg)}
-                  idBase={`pkg-${pkg.slug}`}
-                  accent
-                />
               </section>
 
               {/* MORA companion (Hajj) */}
@@ -1497,6 +2189,39 @@ export default async function PackageDetailPage({
                 </div>
               </section>
 
+              {/* Dubai durations, cities, and combos */}
+              {isDubai && (
+                <section className="rounded-3xl bg-brand-blue-deep p-7 text-white shadow-lift sm:p-8">
+                  <p className="eyebrow text-brand-orange">More Dubai options</p>
+                  <h2 className="mt-2 font-display text-2xl text-white">
+                    Durations, departure cities, and combos
+                  </h2>
+                  <p className="mt-3 max-w-[65ch] text-base leading-relaxed text-slate-200">
+                    Beyond this five day plan, our desk arranges longer Dubai
+                    tours, six and seven day stays, departures from Karachi,
+                    Lahore, Islamabad, and Peshawar, and Dubai combos with Baku,
+                    Turkey, or the Maldives. Ask for the option that fits your
+                    dates and group.
+                  </p>
+                  <div className="mt-5 flex flex-col gap-3 sm:flex-row">
+                    <a
+                      href={quoteHref}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="btn-orange"
+                    >
+                      Get a Dubai quote
+                    </a>
+                    <Link
+                      href="/packages"
+                      className="btn border border-white/40 text-white hover:bg-white/10"
+                    >
+                      Browse all packages
+                    </Link>
+                  </div>
+                </section>
+              )}
+
               {/* Shawwal alternative */}
               {isRamadan && (
                 <section className="rounded-3xl bg-brand-blue-deep p-7 text-white shadow-lift sm:p-8">
@@ -1508,14 +2233,14 @@ export default async function PackageDetailPage({
                   </h2>
                   <p className="mt-3 max-w-[65ch] text-base leading-relaxed text-slate-200">
                     Missed the Ramadan window, or want a quieter, lower cost
-                    stay? Umrah in Shawwal, the month after Eid, brings lighter
-                    crowds and easier hotel availability with the same complete
-                    service. Compare the Economy Umrah Package, or message our
-                    desk for a Shawwal quote.
+                    stay? Umrah in Shawwal, the month after Eid ul Fitr, brings
+                    lighter crowds and easier hotel availability with the same
+                    complete service. Compare the Economy Umrah Package, or
+                    message our desk for a Shawwal quote.
                   </p>
                   <div className="mt-5 flex flex-col gap-3 sm:flex-row">
                     <Link
-                      href="/packages/economy-umrah-15-days"
+                      href="/umrah/economy-15-days"
                       className="btn-orange"
                     >
                       View the Economy Umrah Package
@@ -1544,6 +2269,8 @@ export default async function PackageDetailPage({
                   quoteHref={quoteHref}
                   telHref={callHref}
                   trust={trust}
+                  quoteLabel={quoteLabel}
+                  seasonalNote={seasonalNote}
                 />
               </div>
             </aside>
@@ -1553,6 +2280,23 @@ export default async function PackageDetailPage({
 
       {/* Social proof: staging placeholders until real reviews are connected */}
       <Reviews data={reviewData} />
+
+      {/* FAQ. Placed after reviews and the trust card, before the final CTA, so
+          social proof and trust always sit above the FAQ per the section order. */}
+      <section className="bg-white py-16 sm:py-20">
+        <div className="container-site">
+          <div className="mx-auto max-w-2xl text-center">
+            <p className="eyebrow">Questions and answers</p>
+            <h2 className="mt-3 text-3xl sm:text-4xl">Common questions</h2>
+            <div className="gold-rule mx-auto mt-6" />
+          </div>
+          <FaqAccordion
+            items={detailFaqs(pkg)}
+            idBase={`pkg-${pkg.slug}`}
+            accent
+          />
+        </div>
+      </section>
 
       {/* Related packages */}
       {related.length > 0 && (
@@ -1580,7 +2324,22 @@ export default async function PackageDetailPage({
       />
 
       {/* Mobile sticky quote bar */}
-      <MobileActionBar quoteHref={quoteHref} telHref={callHref} />
+      <MobileActionBar
+        quoteHref={quoteHref}
+        telHref={callHref}
+        quoteLabel={quoteLabel}
+      />
     </>
   );
+}
+
+export default async function PackageDetailPage({
+  params,
+}: {
+  params: Promise<{ slug: string }>;
+}) {
+  const { slug } = await params;
+  const pkg = await getPackage(slug);
+  if (!pkg) notFound();
+  return <PackageDetailView pkg={pkg} />;
 }

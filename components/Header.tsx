@@ -9,7 +9,9 @@ import { defaultSettings, telHref, type SiteSettings } from "@/lib/settings";
 
 const nav = [
   { href: "/", label: "Home" },
-  { href: "/packages", label: "Packages" },
+  { href: "/umrah", label: "Umrah" },
+  { href: "/hajj", label: "Hajj" },
+  { href: "/tours", label: "Tours" },
   { href: "/tickets", label: "Flight Deals" },
   { href: "/visa-services", label: "Visa Services" },
   { href: "/about", label: "About" },

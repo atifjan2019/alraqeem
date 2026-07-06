@@ -99,20 +99,32 @@ export default function PackagesExplorer({
   packages,
   whatsapp,
   intro,
+  scope = "all",
 }: {
   packages: TravelPackage[];
   whatsapp: string;
   intro?: string;
+  // "umrah" and "international" scope the explorer to one vertical, hiding the
+  // Type filter (and, for tours, the Tier filter). "all" shows both groups.
+  scope?: "all" | "umrah" | "international";
 }) {
   const [vertical, setVertical] = useState("all");
   const [duration, setDuration] = useState("all");
   const [tier, setTier] = useState("all");
 
-  const filtered = packages.filter((p) => {
-    const okVertical = vertical === "all" || p.category === vertical;
+  const inScope = packages.filter((p) => {
+    if (scope === "umrah") return p.category === "Umrah & Hajj";
+    if (scope === "international") return p.category !== "Umrah & Hajj";
+    return true;
+  });
+
+  const filtered = inScope.filter((p) => {
+    const okVertical =
+      scope !== "all" || vertical === "all" || p.category === vertical;
     const okDuration =
       duration === "all" || durationBand(p.duration) === duration;
-    const okTier = tier === "all" || tierOf(p) === tier;
+    const okTier =
+      scope === "international" || tier === "all" || tierOf(p) === tier;
     return okVertical && okDuration && okTier;
   });
 
@@ -127,19 +139,28 @@ export default function PackagesExplorer({
   return (
     <div>
       <div className="mb-12 flex flex-col gap-4 rounded-3xl border border-black/5 bg-white p-5 shadow-card sm:p-6">
-        <ChipRow
-          label="Type"
-          choices={VERTICALS}
-          value={vertical}
-          onChange={setVertical}
-        />
+        {scope === "all" && (
+          <ChipRow
+            label="Type"
+            choices={VERTICALS}
+            value={vertical}
+            onChange={setVertical}
+          />
+        )}
         <ChipRow
           label="Duration"
           choices={DURATIONS}
           value={duration}
           onChange={setDuration}
         />
-        <ChipRow label="Tier" choices={TIERS} value={tier} onChange={setTier} />
+        {scope !== "international" && (
+          <ChipRow
+            label="Tier"
+            choices={TIERS}
+            value={tier}
+            onChange={setTier}
+          />
+        )}
       </div>
 
       {intro && (
@@ -148,20 +169,24 @@ export default function PackagesExplorer({
         </p>
       )}
 
-      <Group
-        eyebrow={`${umrah.length} package${umrah.length === 1 ? "" : "s"}`}
-        title="Umrah and Hajj"
-        intro="Pilgrimage packages from Pakistan across economy, premium, and five star, from Peshawar and Islamabad, with visa, flights, hotels near the Haram, and guided Ziyarat."
-        items={umrah}
-        whatsapp={whatsapp}
-      />
-      <Group
-        eyebrow={`${intl.length} package${intl.length === 1 ? "" : "s"}`}
-        title="International"
-        intro="International tour packages from Pakistan to Dubai, Turkey, Baku, and Malaysia with Thailand, with visa, flights, hotels, and sightseeing in one booking."
-        items={intl}
-        whatsapp={whatsapp}
-      />
+      {scope !== "international" && (
+        <Group
+          eyebrow={`${umrah.length} package${umrah.length === 1 ? "" : "s"}`}
+          title="Umrah and Hajj"
+          intro="Pilgrimage packages from Pakistan across economy, premium, and five star, from Peshawar and Islamabad, with visa, flights, hotels near the Haram, and guided Ziyarat."
+          items={umrah}
+          whatsapp={whatsapp}
+        />
+      )}
+      {scope !== "umrah" && (
+        <Group
+          eyebrow={`${intl.length} package${intl.length === 1 ? "" : "s"}`}
+          title="International tours"
+          intro="International tour packages from Pakistan to Dubai, Turkey, Baku, and Malaysia with Thailand, with visa, flights, hotels, and sightseeing in one booking."
+          items={intl}
+          whatsapp={whatsapp}
+        />
+      )}
 
       {filtered.length === 0 && (
         <div className="rounded-3xl border border-black/5 bg-white p-10 text-center shadow-card">

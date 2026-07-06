@@ -1,5 +1,5 @@
 import Link from "next/link";
-import { TravelPackage } from "@/lib/packages";
+import { TravelPackage, packageHref } from "@/lib/packages";
 import { packageImage } from "@/lib/images";
 
 export default function PackageCard({
@@ -13,7 +13,7 @@ export default function PackageCard({
   const attributes = inclusions ? pkg.highlights.slice(0, 3) : [];
   return (
     <Link
-      href={`/packages/${pkg.slug}`}
+      href={packageHref(pkg)}
       className="group relative flex aspect-[4/5] flex-col justify-end overflow-hidden rounded-3xl shadow-card ring-1 ring-black/5 transition duration-300 hover:-translate-y-1 hover:shadow-lift"
     >
       {/* Image */}
