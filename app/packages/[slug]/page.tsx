@@ -260,10 +260,28 @@ export async function PackageDetailView({ pkg }: { pkg: TravelPackage }) {
   ];
 
   const all = await getPackages();
-  const related = [
+  // Southeast Asia mini silo, so a solo or combo page cross links to its own
+  // family first, the interlinking that makes the silo work.
+  const seAsiaSilo = [
+    "malaysia",
+    "thailand",
+    "singapore",
+    "malaysia-thailand-8-days",
+    "malaysia-thailand-singapore",
+  ];
+  const inSeAsia = seAsiaSilo.includes(pkg.slug);
+  const relatedPool = [
     ...all.filter((p) => p.category === pkg.category && p.slug !== pkg.slug),
     ...all.filter((p) => p.category !== pkg.category && p.slug !== pkg.slug),
-  ]
+  ];
+  if (inSeAsia) {
+    relatedPool.sort(
+      (a, b) =>
+        (seAsiaSilo.includes(a.slug) ? 0 : 1) -
+        (seAsiaSilo.includes(b.slug) ? 0 : 1)
+    );
+  }
+  const related = relatedPool
     .slice(0, 3)
     .map((p) => ({ ...p, price: null }));
 
