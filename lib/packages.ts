@@ -166,6 +166,40 @@ export const seedPackages: TravelPackage[] = [
     description:
       "A halal friendly first trip abroad. Kuala Lumpur, Genting Highlands, and Putrajaya in a Muslim majority country, with Langkawi as an optional island add on. Quoted on inquiry for your dates.",
   },
+  {
+    slug: "thailand",
+    title: "Thailand Tour",
+    category: "International",
+    duration: "6 Days, 5 Nights",
+    price: null,
+    highlights: [
+      "Return airfare and Thailand visa",
+      "City hotel with breakfast",
+      "Bangkok temples and Grand Palace tour",
+      "Pattaya and a Coral Island day",
+      "Halal food in Bangkok",
+      "English speaking guide and transfers",
+    ],
+    description:
+      "Temples and beaches in one trip. Bangkok, the Grand Palace, and the riverside temples with Pattaya and Coral Island, and an optional Phuket leg. Quoted on inquiry for your dates.",
+  },
+  {
+    slug: "singapore",
+    title: "Singapore Tour",
+    category: "International",
+    duration: "5 Days, 4 Nights",
+    price: null,
+    highlights: [
+      "Return airfare and Singapore visa",
+      "City hotel with breakfast",
+      "City tour, the Merlion and Gardens by the Bay",
+      "A full Sentosa day",
+      "The Night Safari",
+      "English speaking guide and transfers",
+    ],
+    description:
+      "A compact, easy city trip. The Merlion, Gardens by the Bay, a full Sentosa day with Universal Studios, and the Night Safari. Quoted on inquiry for your dates.",
+  },
 ];
 
 export function formatPrice(price: number | null) {
@@ -185,6 +219,8 @@ export function packageDisplayName(
   if (pkg.slug === "turkey-7-days") return "Turkey Tour Package";
   if (pkg.slug === "baku-5-days") return "Baku Tour Packages";
   if (pkg.slug === "malaysia") return "Malaysia Tour Packages";
+  if (pkg.slug === "thailand") return "Thailand Tour Packages";
+  if (pkg.slug === "singapore") return "Singapore Tour Packages";
   return pkg.title;
 }
 
@@ -201,6 +237,8 @@ const SILO_ROUTES: Record<string, string> = {
   "baku-5-days": "/tours/baku",
   "malaysia-thailand-8-days": "/tours/malaysia-thailand",
   malaysia: "/tours/malaysia",
+  thailand: "/tours/thailand",
+  singapore: "/tours/singapore",
 };
 
 // Canonical URL path for a package by slug.

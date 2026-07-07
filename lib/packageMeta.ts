@@ -38,6 +38,12 @@ export function packageTitle(pkg: TravelPackage) {
   if (pkg.slug === "malaysia") {
     return "Malaysia Tour Package from Pakistan | Al Raqeem";
   }
+  if (pkg.slug === "thailand") {
+    return "Thailand Tour Package from Pakistan | Al Raqeem";
+  }
+  if (pkg.slug === "singapore") {
+    return "Singapore Tour Package from Pakistan | Al Raqeem";
+  }
   const clean = cleanName(packageDisplayName(pkg));
   let words = clean.split(/\s+/);
   let name = clean;
@@ -79,6 +85,12 @@ export function packageMetaDescription(pkg: TravelPackage) {
   }
   if (pkg.slug === "malaysia") {
     return "Malaysia Tour Package from Pakistan, 6 days. Kuala Lumpur, Batu Caves, Genting Highlands, and Putrajaya, a halal friendly Muslim country. Inquiry priced.";
+  }
+  if (pkg.slug === "thailand") {
+    return "Thailand Tour Package from Pakistan, 6 days. Bangkok, the Grand Palace and temples, Pattaya and Coral Island, with the visa and flights. Inquiry priced.";
+  }
+  if (pkg.slug === "singapore") {
+    return "Singapore Tour Package from Pakistan, 5 days. The Merlion, Gardens by the Bay, a Sentosa day with Universal Studios, and the Night Safari. Inquiry priced.";
   }
   const clean = cleanName(packageDisplayName(pkg));
   const base = `${clean} from Pakistan. Quoted on inquiry for your dates, with visa, flights and hotels handled. Message on WhatsApp for a quote.`;
@@ -158,6 +170,30 @@ export function packageMetadata(pkg: TravelPackage): Metadata {
       "Malaysia tour from Karachi",
       "Malaysia tour from Lahore",
       "Malaysia tour from Islamabad",
+    ];
+  }
+  if (pkg.slug === "thailand") {
+    meta.keywords = [
+      "Thailand tour package from Pakistan",
+      "Bangkok tour from Pakistan",
+      "Phuket tour from Pakistan",
+      "Thailand holiday package",
+      "Thailand family package",
+      "Thailand honeymoon package",
+      "Thailand tour from Karachi",
+      "Thailand tour from Lahore",
+      "Thailand tour from Islamabad",
+    ];
+  }
+  if (pkg.slug === "singapore") {
+    meta.keywords = [
+      "Singapore tour package from Pakistan",
+      "Singapore holiday package",
+      "Sentosa and Universal Studios tour",
+      "Singapore family package",
+      "Singapore tour from Karachi",
+      "Singapore tour from Lahore",
+      "Singapore tour from Islamabad",
     ];
   }
   return meta;

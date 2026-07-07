@@ -566,6 +566,118 @@ export const detailContent: Record<string, DetailContent> = {
       },
     ],
   },
+
+  thailand: {
+    overview:
+      "Thailand Tour Package from Pakistan pairs the temples of Bangkok with the beaches of Pattaya across six days and five nights. Our team arranges return airfare, the Thailand visa, a city hotel with breakfast, the Grand Palace and the riverside temples, a Coral Island day, Nong Nooch and the Sanctuary of Truth, with Phuket and the Phi Phi Islands as an optional southern add on. City lights, gold temples, and easy beaches make Thailand a favourite for families and couples traveling from Pakistan.",
+    whoFor: [
+      "Families wanting temples, culture, and beaches together",
+      "Couples and honeymooners seeking city and coast",
+      "First time Far East travelers from Pakistan",
+      "Groups who want a full week of sightseeing",
+    ],
+    faqs: [
+      pricingFaq("Thailand Tour Package"),
+      {
+        q: "Is a Thailand visa required for Pakistani travelers?",
+        a: "Pakistani passport holders need entry for Thailand, and the tourism visa rules move from cycle to cycle. Our team confirms the current position for your passport, then prepares and files the visa so it clears cleanly. Verify the latest rules at the official Thai source before you travel.",
+      },
+      {
+        q: "How many days do I need for a Thailand tour?",
+        a: "Six days and five nights cover Bangkok and Pattaya at a comfortable pace, the temples, a Coral Island day, and the Pattaya sights. Add two or three nights for Phuket, Krabi, or the islands. Tell our desk your dates and we shape the length around them.",
+      },
+      {
+        q: "What is the best time to visit Thailand?",
+        a: "November to February is the cool, dry season and the most comfortable for sightseeing and the beaches. The green season from June brings short showers and lower rates. Share your travel window and our team plans the route and the cities around it.",
+      },
+      {
+        q: "What is included in the Thailand package?",
+        a: "The Thailand package covers return airfare, the Thailand visa, a city hotel with breakfast, the Bangkok temples and Grand Palace tour, a Coral Island day at Pattaya, Nong Nooch and the Sanctuary of Truth, transfers, and an English speaking guide. Optional Phuket and island add ons arrive on request.",
+      },
+      {
+        q: "Is Thailand good for families?",
+        a: "Thailand suits families, with the gold temples and river of Bangkok, the beaches and Coral Island of Pattaya, and easy add ons like SEA LIFE Ocean World. Our team sets a steady pace and connected rooms, and adjusts the days for younger children on request.",
+      },
+      {
+        q: "Is halal food available in Thailand?",
+        a: "Halal food is widely available in Bangkok, with halal restaurants in the main tourist and shopping areas and near the mosques of the city. Our desk plans meals and stops so travelers from Pakistan stay comfortable across Bangkok and Pattaya throughout the trip.",
+      },
+      {
+        q: "How do I get around on the Thailand tour?",
+        a: "Private transfers and guided tours cover the sightseeing days and the Bangkok to Pattaya drive, with airport pickups arranged by our team. Between the planned days you explore Bangkok on foot or by the BTS Skytrain and river boats at your own pace, with our desk on WhatsApp throughout.",
+      },
+      {
+        q: "Do you customize the Thailand itinerary?",
+        a: "Yes. Our desk adds Phuket, Krabi, or the islands, a Chiang Mai leg, extra Pattaya time, or a slower pace, and builds the days around your group. Share how many travelers and what you want to see, and we send a plan and a quote for your exact dates.",
+      },
+      {
+        q: "Which airlines fly to Bangkok from Pakistan?",
+        a: "Our desk books Bangkok flights on the carrier with the best fare and schedule for your dates, among Thai Airways, Emirates, Qatar Airways, and other Gulf carriers. Travelers depart from Karachi, Lahore, Islamabad, or Peshawar, with airport transfers arranged when you book.",
+      },
+      {
+        q: "Is the Thailand tour suitable for a honeymoon?",
+        a: "Thailand works well for honeymooners, pairing the temples and river of Bangkok with the beaches of Pattaya or an optional Phuket and Krabi leg. Our team arranges a comfortable hotel, a relaxed pace, and quiet dinners or an island day on request for couples traveling from Pakistan.",
+      },
+      {
+        q: "Do you offer Thailand combined with Malaysia or Singapore?",
+        a: "Yes. Our desk builds Thailand with Malaysia, or all three with Singapore, in one trip, pairing Bangkok and Pattaya with Kuala Lumpur and Genting or the Marina Bay of Singapore. See our combo tours, and tell us your dates for a plan and a quote across the countries you choose.",
+      },
+    ],
+  },
+
+  singapore: {
+    overview:
+      "Singapore Tour Package from Pakistan is a compact, easy trip through one of the cleanest, safest cities in the world, five days and four nights on the bay. Our team arranges return airfare, the Singapore visa, a city hotel with breakfast, a city tour with the Merlion and Gardens by the Bay, a full Sentosa day with Universal Studios, and the Night Safari. Green streets, world class attractions, and simple transit make Singapore a smooth first trip abroad for families and couples traveling from Pakistan.",
+    whoFor: [
+      "Families wanting theme parks and a safe, easy city",
+      "Couples seeking a short, polished getaway",
+      "First time international travelers from Pakistan",
+      "Travelers pairing Singapore with Malaysia",
+    ],
+    faqs: [
+      pricingFaq("Singapore Tour Package"),
+      {
+        q: "Is a Singapore visa required for Pakistani travelers?",
+        a: "Yes, Pakistani passport holders need a Singapore visa, applied through an authorized agent under the official system. Our team prepares and files the application, checking every document first so it clears cleanly. Verify the current rules at the official Singapore source before you travel.",
+      },
+      {
+        q: "How many days do I need for a Singapore tour?",
+        a: "Five days and four nights cover the city, a full Sentosa day, and the Night Safari at a comfortable pace. Add a night for more Sentosa time or a Malaysia leg across the causeway. Tell our desk your dates and we shape the length around them.",
+      },
+      {
+        q: "What is the best time to visit Singapore?",
+        a: "Singapore is warm and tropical year round, so any month works. Brief afternoon showers pass quickly, and the year end and school holidays are busiest. Share your travel window and our team plans the days and the attractions around it.",
+      },
+      {
+        q: "What is included in the Singapore package?",
+        a: "The Singapore package covers return airfare, the Singapore visa, a city hotel with breakfast, a city tour with the Merlion and Gardens by the Bay, a Sentosa day, the Night Safari, transfers, and an English speaking guide. Universal Studios and other attraction tickets arrive on request.",
+      },
+      {
+        q: "Is Singapore good for families?",
+        a: "Singapore suits families, with Universal Studios and the SEA Aquarium on Sentosa, Gardens by the Bay, the Night Safari, and clean, safe streets with easy transit. Our team sets a steady pace and connected rooms, and adjusts the days for younger children on request.",
+      },
+      {
+        q: "Is halal food available in Singapore?",
+        a: "Halal certified food is available across Singapore, with outlets in the malls and hawker centres and a cluster in the Kampong Glam and Arab Street area around the Sultan Mosque. Our desk plans meals and stops so travelers from Pakistan stay comfortable throughout the trip.",
+      },
+      {
+        q: "How do I get around on the Singapore tour?",
+        a: "Private transfers and guided tours cover the sightseeing days and Sentosa, with airport pickups arranged by our team. Between the planned days you explore the city on the clean, simple MRT at your own pace, with our desk on WhatsApp throughout.",
+      },
+      {
+        q: "Do you customize the Singapore itinerary?",
+        a: "Yes. Our desk adds a second Sentosa day, Universal Studios tickets, a Malaysia leg across the causeway, or a slower pace, and builds the days around your group. Share how many travelers and what you want to see, and we send a plan and a quote for your exact dates.",
+      },
+      {
+        q: "Which airlines fly to Singapore from Pakistan?",
+        a: "Our desk books Singapore flights on the carrier with the best fare and schedule for your dates, among Singapore Airlines, Emirates, Qatar Airways, and other Gulf carriers. Travelers depart from Karachi, Lahore, Islamabad, or Peshawar, with airport transfers arranged when you book.",
+      },
+      {
+        q: "Do you offer Singapore combined with Malaysia or Thailand?",
+        a: "Yes. Our desk builds Singapore with Malaysia across the causeway, or all three with Thailand, in one trip, pairing the Marina Bay with Kuala Lumpur and Genting or Bangkok and Pattaya. See our combo tours, and tell us your dates for a plan and a quote across the countries you choose.",
+      },
+    ],
+  },
 };
 
 // -------- Derivation helpers (real data only) --------
@@ -1769,6 +1881,279 @@ export const tourContent: Record<string, TourContent> = {
     ],
     visaIntro: "Verify the current rules and apply at the official",
     visaLinks: [{ label: "Malaysia e visa portal", href: "https://malaysiavisa.imi.gov.my" }],
+  },
+
+  thailand: {
+    name: "Thailand",
+    durationWords: "six day",
+    itineraryNote:
+      "The flow above is the typical six day plan across Bangkok and Pattaya. Our desk adjusts the order and adds Phuket, Krabi, or the islands on request.",
+    seasonalNote:
+      "November to February is the cool, dry season in Thailand and books earliest. Message us as soon as your dates are set.",
+    itinerary: [
+      {
+        day: "Day 1",
+        title: "Arrival in Bangkok",
+        caption: "The Bangkok skyline along the Chao Phraya River at dusk",
+        detail:
+          "Land in Bangkok, clear the Thailand visa, and transfer to your hotel to rest before the touring begins.",
+      },
+      {
+        day: "Day 2",
+        title: "Bangkok temples and the Grand Palace",
+        caption: "The Grand Palace and Wat Phra Kaew in Bangkok",
+        detail:
+          "A guided tour of the Grand Palace and Wat Phra Kaew, the reclining Buddha at Wat Pho, Wat Arun across the river, and the Golden Buddha at Wat Traimit, with a Chao Phraya cruise.",
+      },
+      {
+        day: "Day 3",
+        title: "Transfer to Pattaya and Coral Island",
+        caption: "Longtail boats at Coral Island near Pattaya",
+        detail:
+          "Drive to the coast at Pattaya, then a speedboat to Coral Island for the beaches and clear water, with water sports on request.",
+      },
+      {
+        day: "Day 4",
+        title: "Pattaya, Nong Nooch and the Sanctuary of Truth",
+        caption: "The carved Sanctuary of Truth on the Pattaya shore",
+        detail:
+          "Explore Nong Nooch tropical garden with its cultural show, the all wood Sanctuary of Truth, and the Khao Chi Chan Laser Buddha carved into the hillside.",
+      },
+      {
+        day: "Day 5",
+        title: "Back to Bangkok, markets and shopping",
+        caption: "A floating market near Bangkok",
+        detail:
+          "Return to Bangkok for a floating market and time to shop, with SEA LIFE Ocean World or Madame Tussauds as an optional add on.",
+      },
+      {
+        day: "Day 6",
+        title: "Departure",
+        caption: "Suvarnabhumi Airport in Bangkok for the flight home",
+        detail:
+          "Check out and transfer to Suvarnabhumi Airport for your return flight to Pakistan.",
+      },
+    ],
+    attractions: [
+      {
+        name: "The Grand Palace and Wat Phra Kaew",
+        caption: "The Grand Palace and Wat Phra Kaew in Bangkok",
+        detail:
+          "The former royal palace of Bangkok and the temple of the Emerald Buddha, a complex of gilded spires and detailed murals beside the Chao Phraya. The most visited landmark in the city and the heart of the temple tour.",
+      },
+      {
+        name: "Wat Pho and Wat Arun",
+        caption: "Wat Arun on the Chao Phraya River in Bangkok",
+        detail:
+          "Wat Pho holds the vast gold reclining Buddha, while Wat Arun, the Temple of Dawn, rises in porcelain tiled spires across the river. A short boat ride links them on the Bangkok temple day.",
+      },
+      {
+        name: "Wat Traimit and the Golden Buddha",
+        caption: "The solid gold Buddha at Wat Traimit in Bangkok",
+        detail:
+          "The temple in Bangkok's Chinatown that holds the world's largest solid gold Buddha, cast in centuries past and hidden under plaster for years. The lanes of Yaowarat outside are a food and market highlight.",
+      },
+      {
+        name: "Pattaya and Coral Island",
+        caption: "The beach and clear water of Coral Island near Pattaya",
+        detail:
+          "The beach city on the Gulf coast, a short drive from Bangkok, with a speedboat trip to Coral Island for swimming and water sports. The evenings bring a lively waterfront and markets.",
+      },
+      {
+        name: "Nong Nooch and the Sanctuary of Truth",
+        caption: "The all wood Sanctuary of Truth in Pattaya",
+        detail:
+          "Nong Nooch tropical garden spreads over vast grounds with a cultural show, while the Sanctuary of Truth is a towering hand carved wooden temple on the shore, one of Pattaya's signature sights.",
+      },
+      {
+        name: "Phuket and the Phi Phi Islands",
+        caption: "Longtail boats at the Phi Phi Islands near Phuket",
+        detail:
+          "The beaches of Patong and a boat trip to the Phi Phi Islands and James Bond Island of clear water and limestone cliffs. On the optional southern extension rather than the base Bangkok and Pattaya plan.",
+      },
+    ],
+    gallery: [
+      "The Grand Palace in Bangkok",
+      "Wat Arun on the Chao Phraya River",
+      "The Golden Buddha at Wat Traimit",
+      "Coral Island near Pattaya",
+      "The Sanctuary of Truth in Pattaya",
+      "The Phi Phi Islands near Phuket",
+    ],
+    practical: [
+      { icon: "clock", label: "Best time to visit", value: "November to February, cool and dry" },
+      { icon: "tag", label: "Currency", value: "Thai baht, THB" },
+      { icon: "meal", label: "Halal food", value: "Widely available in Bangkok" },
+      { icon: "clock", label: "Time zone", value: "GMT plus 7" },
+      { icon: "users", label: "Language", value: "Thai, with English in tourist areas" },
+      { icon: "route", label: "Driving side", value: "Left hand side of the road" },
+      { icon: "pin", label: "Top cities", value: "Bangkok, Pattaya, and Phuket" },
+    ],
+    costDrivers: [
+      {
+        icon: "clock",
+        factor: "Travel season",
+        detail:
+          "The cool, dry months from November to February sit highest, while the green season runs lower for the same cities.",
+      },
+      {
+        icon: "hotel",
+        factor: "Hotel and area",
+        detail:
+          "A higher star rating or a central Bangkok or beachfront Pattaya address lifts the price, while a standard four star holds it down.",
+      },
+      {
+        icon: "camera",
+        factor: "Excursions and the islands",
+        detail:
+          "Optional Phuket and Krabi, island boat trips, and the Bangkok theme attractions add to the base package.",
+      },
+      {
+        icon: "plane",
+        factor: "Airline and departure city",
+        detail:
+          "The carrier, the season, and whether you fly from Karachi, Lahore, Islamabad, or Peshawar move the airfare.",
+      },
+    ],
+    visaIntro:
+      "The Thailand visa rules for tourism move from cycle to cycle, so verify the current position for your passport and apply at the official",
+    visaLinks: [{ label: "Thailand e visa portal", href: "https://www.thaievisa.go.th" }],
+  },
+
+  singapore: {
+    name: "Singapore",
+    durationWords: "five day",
+    itineraryNote:
+      "The flow above is the typical five day plan around Singapore. Our desk adjusts the order and adds a Sentosa day or a Malaysia leg on request.",
+    seasonalNote:
+      "Singapore is a year round destination, so message us with your dates and our desk plans around the school holidays and the events calendar.",
+    itinerary: [
+      {
+        day: "Day 1",
+        title: "Arrival in Singapore",
+        caption: "The Marina Bay Sands and the Singapore skyline at night",
+        detail:
+          "Land in Singapore, clear the visa, and transfer to your hotel to settle in before the touring begins.",
+      },
+      {
+        day: "Day 2",
+        title: "Singapore city tour",
+        caption: "The Merlion and Marina Bay in Singapore",
+        detail:
+          "A guided city tour with the Merlion and Marina Bay, Gardens by the Bay and its Supertrees, and the streets of Chinatown, Little India, and Orchard Road.",
+      },
+      {
+        day: "Day 3",
+        title: "Sentosa Island",
+        caption: "Universal Studios Singapore on Sentosa Island",
+        detail:
+          "A full day on Sentosa with Universal Studios, the SEA Aquarium, the cable car and beaches, and the Wings of Time show over the water after dark.",
+      },
+      {
+        day: "Day 4",
+        title: "Gardens, the Flyer and the Night Safari",
+        caption: "The Supertrees at Gardens by the Bay in Singapore",
+        detail:
+          "Time at Gardens by the Bay and the Singapore Flyer, with the evening at the Night Safari, the world's first nocturnal wildlife park, or Bugis Street for shopping.",
+      },
+      {
+        day: "Day 5",
+        title: "Departure",
+        caption: "Changi Airport in Singapore for the flight home",
+        detail:
+          "Check out and transfer to Changi Airport for your return flight to Pakistan.",
+      },
+    ],
+    attractions: [
+      {
+        name: "Marina Bay Sands",
+        caption: "The Marina Bay Sands over the Singapore waterfront",
+        detail:
+          "The three towered hotel crowned by a ship shaped SkyPark, the signature of the Singapore skyline. The bay below hosts the Spectra light and water show, and the ArtScience Museum sits alongside.",
+      },
+      {
+        name: "Gardens by the Bay",
+        caption: "The Supertree Grove at Gardens by the Bay",
+        detail:
+          "A futuristic garden on the waterfront, famous for the towering Supertrees and the Cloud Forest and Flower Dome conservatories. The Garden Rhapsody light show runs among the Supertrees each evening.",
+      },
+      {
+        name: "Sentosa and Universal Studios",
+        caption: "Universal Studios Singapore on Sentosa Island",
+        detail:
+          "The resort island reached by cable car and monorail, home to Universal Studios, the SEA Aquarium, beaches, and the Wings of Time show. A full family day of rides and sea life.",
+      },
+      {
+        name: "The Merlion",
+        caption: "The Merlion statue on Marina Bay in Singapore",
+        detail:
+          "The lion headed, fish bodied statue that is the emblem of Singapore, spouting water over Marina Bay against the skyline. The classic photo stop at the start of the city tour.",
+      },
+      {
+        name: "The Night Safari",
+        caption: "A tram on the Night Safari in Singapore",
+        detail:
+          "The world's first nocturnal wildlife park, toured by tram and walking trails after dark, with lions, elephants, and leopards in naturalistic habitats. A different evening from the city lights.",
+      },
+      {
+        name: "The Singapore Flyer",
+        caption: "The Singapore Flyer observation wheel over Marina Bay",
+        detail:
+          "One of the largest observation wheels in Asia, turning slowly over Marina Bay for views across the city, the port, and out to the islands. Best at dusk as the skyline lights up.",
+      },
+    ],
+    gallery: [
+      "The Marina Bay Sands over the Singapore waterfront",
+      "The Supertree Grove at Gardens by the Bay",
+      "Universal Studios on Sentosa Island",
+      "The Merlion on Marina Bay",
+      "The Night Safari in Singapore",
+      "The Singapore Flyer over Marina Bay",
+    ],
+    practical: [
+      { icon: "clock", label: "Best time to visit", value: "Year round destination" },
+      { icon: "tag", label: "Currency", value: "Singapore dollar, SGD" },
+      { icon: "meal", label: "Halal food", value: "Halal certified outlets across the city" },
+      { icon: "clock", label: "Time zone", value: "GMT plus 8" },
+      {
+        icon: "users",
+        label: "Language",
+        value: "English, Malay, Mandarin, and Tamil",
+      },
+      { icon: "route", label: "Driving side", value: "Left hand side of the road" },
+      { icon: "pin", label: "Top areas", value: "Marina Bay, Sentosa, and Orchard Road" },
+    ],
+    costDrivers: [
+      {
+        icon: "clock",
+        factor: "Travel season",
+        detail:
+          "School holidays, the year end, and major events sit highest, while quieter weeks run lower for the same city.",
+      },
+      {
+        icon: "hotel",
+        factor: "Hotel and area",
+        detail:
+          "A higher star rating or a Marina Bay or Orchard Road address lifts the price, while a value hotel near an MRT line holds it down.",
+      },
+      {
+        icon: "camera",
+        factor: "Attractions and add ons",
+        detail:
+          "Universal Studios, the SEA Aquarium, the Night Safari, and other Sentosa tickets add to the base package.",
+      },
+      {
+        icon: "plane",
+        factor: "Airline and departure city",
+        detail:
+          "The carrier, the season, and whether you fly from Karachi, Lahore, Islamabad, or Peshawar move the airfare.",
+      },
+    ],
+    visaIntro:
+      "Pakistani travelers need a Singapore visa, arranged through an authorized agent. Verify the current rules at the official",
+    visaLinks: [
+      { label: "Singapore Immigration and Checkpoints Authority", href: "https://www.ica.gov.sg" },
+    ],
   },
 };
 
