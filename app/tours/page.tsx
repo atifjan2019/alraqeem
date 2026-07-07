@@ -199,6 +199,34 @@ export default async function ToursPage() {
         </div>
       </section>
 
+      {/* Travel your way, theme facets */}
+      <section className="bg-white py-14 sm:py-20">
+        <div className="container-site">
+          <p className="eyebrow">Travel your way</p>
+          <h2 className="mt-2 font-display text-2xl text-brand-blue-deep sm:text-3xl">
+            Tours shaped around how you travel
+          </h2>
+          <div className="mt-6 grid gap-5 sm:grid-cols-2 lg:grid-cols-3">
+            <Link
+              href="/tours/muslim-friendly-tours"
+              className="group flex flex-col rounded-3xl border border-black/5 bg-paper p-6 shadow-card transition duration-300 hover:-translate-y-1 hover:shadow-lift"
+            >
+              <h3 className="font-display text-lg text-brand-blue-deep">
+                Muslim friendly and halal tours
+              </h3>
+              <p className="mt-2 flex-1 text-sm leading-relaxed text-slate-600">
+                Halal food, easy prayer, and Muslim majority destinations like
+                Malaysia, Turkey, and Baku, planned for a family from Pakistan.
+              </p>
+              <span className="mt-4 inline-flex items-center gap-1.5 text-sm font-semibold text-brand-orange-dark group-hover:text-brand-orange">
+                Explore Muslim friendly tours
+                <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round" className="transition group-hover:translate-x-1" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6" /></svg>
+              </span>
+            </Link>
+          </div>
+        </div>
+      </section>
+
       {/* Social proof: staging placeholders until real reviews are connected */}
       <Reviews data={reviewData} />
 
