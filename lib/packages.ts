@@ -200,6 +200,23 @@ export const seedPackages: TravelPackage[] = [
     description:
       "A compact, easy city trip. The Merlion, Gardens by the Bay, a full Sentosa day with Universal Studios, and the Night Safari. Quoted on inquiry for your dates.",
   },
+  {
+    slug: "malaysia-thailand-singapore",
+    title: "Malaysia Thailand Singapore Combo",
+    category: "International",
+    duration: "9 Days, 8 Nights",
+    price: null,
+    highlights: [
+      "Three countries in one booking",
+      "Return airfare and two inter-country flights",
+      "All three visas processed",
+      "Bangkok, Pattaya, Kuala Lumpur, Genting, and Singapore",
+      "Sentosa and the Night Safari",
+      "English speaking guides and transfers",
+    ],
+    description:
+      "The full Southeast Asia trio. Bangkok and Pattaya, Kuala Lumpur and Genting, and Singapore with Sentosa and the Night Safari, with all flights and visas handled. Quoted on inquiry for your dates.",
+  },
 ];
 
 export function formatPrice(price: number | null) {
@@ -221,6 +238,8 @@ export function packageDisplayName(
   if (pkg.slug === "malaysia") return "Malaysia Tour Packages";
   if (pkg.slug === "thailand") return "Thailand Tour Packages";
   if (pkg.slug === "singapore") return "Singapore Tour Packages";
+  if (pkg.slug === "malaysia-thailand-singapore")
+    return "Malaysia Thailand Singapore Tour Packages";
   return pkg.title;
 }
 
@@ -239,6 +258,7 @@ const SILO_ROUTES: Record<string, string> = {
   malaysia: "/tours/malaysia",
   thailand: "/tours/thailand",
   singapore: "/tours/singapore",
+  "malaysia-thailand-singapore": "/tours/malaysia-thailand-singapore",
 };
 
 // Canonical URL path for a package by slug.

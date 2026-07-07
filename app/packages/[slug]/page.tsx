@@ -200,7 +200,9 @@ export async function PackageDetailView({ pkg }: { pkg: TravelPackage }) {
               ? "Malaysia, Singapore, or the two and three country combos"
               : pkg.slug === "singapore"
                 ? "Malaysia, Thailand, or the two and three country combos"
-                : "our other destinations";
+                : pkg.slug === "malaysia-thailand-singapore"
+                  ? "each country on its own, or a two country combo"
+                  : "our other destinations";
 
   // Overview: pull the first sentence as a lead line (presentation only).
   const sentences = detail.overview.split(/(?<=\.)\s+/);

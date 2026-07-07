@@ -678,6 +678,60 @@ export const detailContent: Record<string, DetailContent> = {
       },
     ],
   },
+
+  "malaysia-thailand-singapore": {
+    overview:
+      "Malaysia Thailand Singapore Tour Package from Pakistan is the full Southeast Asia trio in one booking, nine days and eight nights across three countries. Our team arranges return airfare, the two inter country flights, all three visas, hotels with breakfast, and guided tours, from the temples of Bangkok and the beaches of Pattaya to Kuala Lumpur and Genting, and on to Singapore with Sentosa and the Night Safari. Temples, cities, hills, and islands in one journey, a grand tour for families and couples traveling from Pakistan.",
+    whoFor: [
+      "Families wanting three countries in one grand trip",
+      "Couples seeking cities, temples, and islands together",
+      "Travelers making the most of a long flight from Pakistan",
+      "Groups who want every visa and flight in one booking",
+    ],
+    faqs: [
+      pricingFaq("Malaysia Thailand Singapore Tour Package"),
+      {
+        q: "How many visas do I need for the three country tour?",
+        a: "The trip needs three visas, for Thailand, Malaysia, and Singapore. Our team prepares and files each, checking every document first so the files clear cleanly. All three arrive inside your package, coordinated by our desk, so you handle one booking rather than three separate applications.",
+      },
+      {
+        q: "How many days do I need for Malaysia, Thailand, and Singapore?",
+        a: "Nine days and eight nights cover all three at a steady pace, Bangkok and Pattaya, Kuala Lumpur and Genting, and Singapore with Sentosa. Add nights for a beach leg in Phuket or Langkawi, or a fourth country. Tell our desk your dates and we shape the length around them.",
+      },
+      {
+        q: "What is the best time for the three country tour?",
+        a: "November to February is the cool, dry window across all three countries and the most comfortable for the temples, the hills, and the islands. The green season brings short showers and lower rates. Share your travel window and our team plans the route around it.",
+      },
+      {
+        q: "What is included in the three country package?",
+        a: "The package covers return airfare, the two inter country flights, all three visas, hotels with breakfast, the Bangkok and Pattaya tours, the Kuala Lumpur and Genting days, the Singapore city and Sentosa, transfers, and English speaking guides. Universal Studios and island add ons arrive on request.",
+      },
+      {
+        q: "Is the three country tour good for families?",
+        a: "The grand tour suits families, with the temples and beaches of Thailand, the towers and theme parks of Malaysia, and Universal Studios and the Night Safari in Singapore. Our team sets a steady pace, connected rooms, and short internal flights, and adjusts the days for younger children on request.",
+      },
+      {
+        q: "Do you customize the three country itinerary?",
+        a: "Yes. Our desk changes the nights in each country, adds a Phuket or Langkawi beach leg, a fourth country like Vietnam, or a slower pace, and builds the days around your group. Share how many travelers and what you want to see, and we send a plan and a quote for your exact dates.",
+      },
+      {
+        q: "How do the flights between the countries work?",
+        a: "Two short internal flights sit inside the package, Bangkok to Kuala Lumpur and Kuala Lumpur to Singapore, so you move between the countries without arranging them yourself. Our desk books the international flights from Pakistan and all transfers, and confirms the full routing in writing.",
+      },
+      {
+        q: "Is the three country tour suitable for a honeymoon?",
+        a: "The trio works well for honeymooners, pairing the temples and beaches of Thailand with the cities of Kuala Lumpur and Singapore. Our team arranges comfortable hotels, a relaxed pace, and add ons like an island day, a couples dinner, or a beach leg on request for travelers from Pakistan.",
+      },
+      {
+        q: "Which airlines fly this Southeast Asia route from Pakistan?",
+        a: "Our desk books the trip on the carrier with the best fare and schedule for your dates, among Thai Airways, Singapore Airlines, Malaysia Airlines, Emirates, and Qatar Airways, with the two internal sectors included. Travelers depart from Karachi, Lahore, Islamabad, or Peshawar.",
+      },
+      {
+        q: "How does the three country tour compare with two countries?",
+        a: "The two country combo pairs Malaysia and Thailand, while the three country grand tour adds Singapore and its Sentosa and Night Safari for a fuller trip. See our Malaysia and Thailand combo for the shorter route, and tell us which cities you want so we shape the plan and the quote.",
+      },
+    ],
+  },
 };
 
 // -------- Derivation helpers (real data only) --------
@@ -2152,6 +2206,176 @@ export const tourContent: Record<string, TourContent> = {
     visaIntro:
       "Pakistani travelers need a Singapore visa, arranged through an authorized agent. Verify the current rules at the official",
     visaLinks: [
+      { label: "Singapore Immigration and Checkpoints Authority", href: "https://www.ica.gov.sg" },
+    ],
+  },
+
+  "malaysia-thailand-singapore": {
+    name: "Malaysia, Thailand and Singapore",
+    durationWords: "nine day",
+    itineraryNote:
+      "The flow above is the typical nine day three country plan across Thailand, Malaysia, and Singapore. Our desk adjusts the order and the nights in each country on request.",
+    seasonalNote:
+      "The cool, dry months from November to February book earliest across all three countries. Message us as soon as your dates are set.",
+    itinerary: [
+      {
+        day: "Day 1",
+        title: "Arrival in Bangkok",
+        caption: "The Bangkok skyline along the Chao Phraya River at dusk",
+        detail:
+          "Land in Bangkok, clear the Thailand visa, and transfer to your hotel to rest before the three country journey begins.",
+      },
+      {
+        day: "Day 2",
+        title: "Bangkok temples and the Grand Palace",
+        caption: "The Grand Palace and Wat Phra Kaew in Bangkok",
+        detail:
+          "A guided tour of the Grand Palace and Wat Phra Kaew, Wat Pho and Wat Arun, and the Golden Buddha at Wat Traimit, with a Chao Phraya cruise.",
+      },
+      {
+        day: "Day 3",
+        title: "Pattaya and Coral Island",
+        caption: "Longtail boats at Coral Island near Pattaya",
+        detail:
+          "A day trip to Pattaya on the coast, with a speedboat to Coral Island and a stop at the Sanctuary of Truth on the shore.",
+      },
+      {
+        day: "Day 4",
+        title: "Fly to Kuala Lumpur, city tour",
+        caption: "The Petronas Twin Towers over the Kuala Lumpur skyline",
+        detail:
+          "Fly to Kuala Lumpur and tour the Petronas Twin Towers and KLCC, Merdeka Square, the National Mosque, and the Batu Caves shrine.",
+      },
+      {
+        day: "Day 5",
+        title: "Genting Highlands day",
+        caption: "The Awana Skyway cable car to Genting Highlands",
+        detail:
+          "A day in the cool hills of Genting Highlands, riding the Awana Skyway cable car to the resort, its theme parks, and the Chin Swee Caves Temple.",
+      },
+      {
+        day: "Day 6",
+        title: "Fly to Singapore, the Night Safari",
+        caption: "A tram on the Night Safari in Singapore",
+        detail:
+          "Fly to Singapore, transfer to your hotel, and head out for the Night Safari, the world's first nocturnal wildlife park, after dark.",
+      },
+      {
+        day: "Day 7",
+        title: "Singapore city tour",
+        caption: "The Merlion and Marina Bay Sands in Singapore",
+        detail:
+          "A city tour with the Merlion and Marina Bay, Gardens by the Bay and its Supertrees, and the streets of Chinatown, Little India, and Orchard Road.",
+      },
+      {
+        day: "Day 8",
+        title: "Sentosa Island",
+        caption: "Universal Studios Singapore on Sentosa Island",
+        detail:
+          "A full day on Sentosa with Universal Studios, the SEA Aquarium, the beaches, and the Wings of Time show over the water in the evening.",
+      },
+      {
+        day: "Day 9",
+        title: "Departure",
+        caption: "Changi Airport in Singapore for the flight home",
+        detail:
+          "Check out and transfer to Changi Airport for your return flight to Pakistan.",
+      },
+    ],
+    attractions: [
+      {
+        name: "Bangkok, the Grand Palace and temples",
+        caption: "The Grand Palace and Wat Phra Kaew in Bangkok",
+        detail:
+          "The Thai capital opens the trip with the gilded Grand Palace and Wat Phra Kaew, the reclining Buddha at Wat Pho, Wat Arun across the river, and the Golden Buddha at Wat Traimit.",
+      },
+      {
+        name: "Pattaya and Coral Island",
+        caption: "The beach and clear water of Coral Island near Pattaya",
+        detail:
+          "A coastal day from Bangkok, with a speedboat to Coral Island for the beaches and the towering hand carved Sanctuary of Truth on the Pattaya shore.",
+      },
+      {
+        name: "Kuala Lumpur, the Petronas Towers and Batu Caves",
+        caption: "The rainbow steps at Batu Caves near Kuala Lumpur",
+        detail:
+          "Malaysia brings the Petronas Twin Towers and KLCC, the National Mosque, and the Batu Caves shrine beneath the Lord Murugan statue, in a Muslim majority city where halal food is everywhere.",
+      },
+      {
+        name: "Genting Highlands",
+        caption: "The resort of Genting Highlands above the clouds",
+        detail:
+          "A hilltop resort reached by the Awana Skyway cable car past the Chin Swee Caves Temple, with theme parks and a cool climate above the Kuala Lumpur heat.",
+      },
+      {
+        name: "Singapore, Marina Bay and Gardens by the Bay",
+        caption: "The Marina Bay Sands and the Supertrees in Singapore",
+        detail:
+          "The final country brings the Marina Bay Sands, the Supertrees of Gardens by the Bay, and the Merlion on the waterfront, with the evening light shows over the bay.",
+      },
+      {
+        name: "Sentosa and the Night Safari",
+        caption: "Universal Studios Singapore on Sentosa Island",
+        detail:
+          "Sentosa Island holds Universal Studios, the SEA Aquarium, and the Wings of Time show, while the Night Safari tours nocturnal wildlife by tram after dark, a strong family close to the trip.",
+      },
+    ],
+    gallery: [
+      "The Grand Palace in Bangkok",
+      "Coral Island near Pattaya",
+      "The Petronas Twin Towers in Kuala Lumpur",
+      "Genting Highlands above the clouds",
+      "The Marina Bay Sands in Singapore",
+      "Universal Studios on Sentosa Island",
+    ],
+    practical: [
+      { icon: "clock", label: "Best time to visit", value: "November to February, cool and dry" },
+      {
+        icon: "tag",
+        label: "Currency",
+        value: "Thai baht, Malaysian ringgit, Singapore dollar",
+      },
+      { icon: "meal", label: "Halal food", value: "Widely available, easiest in Malaysia" },
+      { icon: "clock", label: "Time zone", value: "GMT plus 7 to plus 8" },
+      { icon: "users", label: "Language", value: "Thai and Malay, with English throughout" },
+      { icon: "route", label: "Driving side", value: "Left hand side of the road" },
+      {
+        icon: "pin",
+        label: "Countries",
+        value: "Thailand, Malaysia, and Singapore",
+      },
+    ],
+    costDrivers: [
+      {
+        icon: "clock",
+        factor: "Travel season",
+        detail:
+          "The cool, dry months from November to February sit highest across all three countries, while the green season runs lower.",
+      },
+      {
+        icon: "hotel",
+        factor: "Hotels across three cities",
+        detail:
+          "A higher star rating or central addresses in Bangkok, Kuala Lumpur, and Singapore lift the price, while standard four star hotels hold it down.",
+      },
+      {
+        icon: "plane",
+        factor: "The two inter country flights",
+        detail:
+          "The Bangkok to Kuala Lumpur and Kuala Lumpur to Singapore sectors sit inside the package, and their fares move with the season and how early you book.",
+      },
+      {
+        icon: "camera",
+        factor: "Excursions and add ons",
+        detail:
+          "Universal Studios, island trips, extra Sentosa or Genting time, and a fourth country leg add to the base three country package.",
+      },
+    ],
+    visaIntro:
+      "The trip needs three visas, and our team prepares and files each. Verify the current rules at the official",
+    visaLinks: [
+      { label: "Thailand e visa portal", href: "https://www.thaievisa.go.th" },
+      { label: "Malaysia e visa portal", href: "https://malaysiavisa.imi.gov.my" },
       { label: "Singapore Immigration and Checkpoints Authority", href: "https://www.ica.gov.sg" },
     ],
   },

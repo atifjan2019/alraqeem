@@ -44,6 +44,9 @@ export function packageTitle(pkg: TravelPackage) {
   if (pkg.slug === "singapore") {
     return "Singapore Tour Package from Pakistan | Al Raqeem";
   }
+  if (pkg.slug === "malaysia-thailand-singapore") {
+    return "Malaysia Thailand Singapore Tour from Pakistan | Al Raqeem";
+  }
   const clean = cleanName(packageDisplayName(pkg));
   let words = clean.split(/\s+/);
   let name = clean;
@@ -91,6 +94,9 @@ export function packageMetaDescription(pkg: TravelPackage) {
   }
   if (pkg.slug === "singapore") {
     return "Singapore Tour Package from Pakistan, 5 days. The Merlion, Gardens by the Bay, a Sentosa day with Universal Studios, and the Night Safari. Inquiry priced.";
+  }
+  if (pkg.slug === "malaysia-thailand-singapore") {
+    return "Malaysia Thailand Singapore Tour from Pakistan, 9 days. Bangkok, Kuala Lumpur, Genting, and Singapore with Sentosa, all visas and flights handled.";
   }
   const clean = cleanName(packageDisplayName(pkg));
   const base = `${clean} from Pakistan. Quoted on inquiry for your dates, with visa, flights and hotels handled. Message on WhatsApp for a quote.`;
@@ -194,6 +200,19 @@ export function packageMetadata(pkg: TravelPackage): Metadata {
       "Singapore tour from Karachi",
       "Singapore tour from Lahore",
       "Singapore tour from Islamabad",
+    ];
+  }
+  if (pkg.slug === "malaysia-thailand-singapore") {
+    meta.keywords = [
+      "Malaysia Thailand Singapore tour package from Pakistan",
+      "three countries tour from Pakistan",
+      "3 countries tour from Pakistan",
+      "Southeast Asia combo tour",
+      "Bangkok Kuala Lumpur Singapore tour",
+      "Far East grand tour from Pakistan",
+      "three country tour from Karachi",
+      "three country tour from Lahore",
+      "three country tour from Islamabad",
     ];
   }
   return meta;
