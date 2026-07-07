@@ -391,7 +391,7 @@ export const detailContent: Record<string, DetailContent> = {
 
   "baku-5-days": {
     overview:
-      "Baku Azerbaijan from Pakistan offers a short, easy international escape across five days and four nights. Our team arranges return airfare, the e-visa, a city center hotel with breakfast, an Old City and Flame Towers tour, and a Gabala day trip with a cable car ride. Walkable streets and simple visas make Baku a smooth first trip abroad for couples and families traveling from Pakistan.",
+      "Baku Azerbaijan from Pakistan is a short, easy escape to the Land of Fire, five days and four nights on the Caspian shore. Our team arranges return airfare, the Azerbaijan e visa, a city center hotel with breakfast, a guided tour of the Icherisheher Old City and the Flame Towers, the fire sites at Ateshgah and Yanardag with the Gobustan mud volcanoes, and a full Gabala day with the Tufandag cable car. Walkable streets and a simple e visa make Baku a smooth first trip abroad for couples and families traveling from Pakistan.",
     whoFor: [
       "First time international travelers from Pakistan",
       "Couples wanting a short getaway",
@@ -411,6 +411,42 @@ export const detailContent: Record<string, DetailContent> = {
       {
         q: "Is Baku a good first trip abroad?",
         a: "Baku suits first time international travelers, with short flights, a simple e-visa, and a compact, walkable city center. Our team handles the visa, hotel, and tours in one booking, so travelers new to international trips move through the journey with clear support from our desk.",
+      },
+      {
+        q: "How many days do I need for a Baku tour?",
+        a: "Five days and four nights cover Baku well, the Icherisheher Old City and the Flame Towers, the Gobustan and Absheron fire sites, and a full Gabala day. Add a night or two for Sheki and its Khan Palace or the Shahdag resort. Tell our desk your dates and we shape the length around them.",
+      },
+      {
+        q: "What is the best time to visit Baku?",
+        a: "April to June and September to October bring mild, comfortable weather for sightseeing. Summer runs warm and lively along Baku Boulevard, while winter is cold and opens the Shahdag ski season. Share your travel window and our team plans the trip around the season you choose.",
+      },
+      {
+        q: "What are the fire sites on the Baku tour?",
+        a: "The fire sites are the Ateshgah Fire Temple, built around a natural gas flame on the Absheron peninsula, and Yanardag, a hillside that has burned for centuries. Both sit a short drive from the city and give Azerbaijan its name, the Land of Fire. The Absheron day covers them alongside Gobustan.",
+      },
+      {
+        q: "What does the Gabala day trip include?",
+        a: "The Gabala day trip travels into the Caucasus foothills for the Tufandag cable car and its mountain views, with a stop at Nohur Lake. In the green season the route often adds the Yeddi Gozal waterfalls. Our desk confirms the exact stops for your travel dates before you go.",
+      },
+      {
+        q: "Is the Baku tour suitable for a honeymoon?",
+        a: "Baku suits honeymooners, with the Old City lanes, Baku Boulevard along the Caspian, the Flame Towers light show, and a mountain day in Gabala. Our team arranges a comfortable hotel and a relaxed pace, and adds quiet dinners or extra Gabala nights on request for couples traveling from Pakistan.",
+      },
+      {
+        q: "Do you customize the Baku itinerary?",
+        a: "Yes. Our desk adds Sheki with its Khan Palace and Caravanserai, the Shahdag resort, extra Gabala nights, or a slower city pace, and builds the days around your group. Share how many travelers and what you want to see, and we send a plan and a quote for your exact dates.",
+      },
+      {
+        q: "Do you offer a Dubai and Baku combined tour?",
+        a: "Yes. Our desk builds a Dubai plus Baku trip in one booking, pairing the Dubai city and desert with the Baku Old City and fire sites. The route, the nights in each city, and the flights are arranged together, so tell us your dates and we quote the combined tour for your group.",
+      },
+      {
+        q: "Which airlines fly to Baku from Pakistan?",
+        a: "Our desk books Baku flights on the carrier with the best fare and schedule for your dates, among Azerbaijan Airlines, Pegasus, and Qatar Airways, connecting through the Gulf or Istanbul. Travelers depart from Karachi, Lahore, Islamabad, or Peshawar, with airport transfers arranged when you book.",
+      },
+      {
+        q: "Is Baku a Muslim friendly destination with halal food?",
+        a: "Azerbaijan is a majority Muslim country, and halal food is widely available across Baku. Mosques include the Bibi Heybat and the Taza Pir, and prayer is simple to arrange around the touring. Our desk plans meals and stops so travelers from Pakistan stay comfortable throughout the trip.",
       },
     ],
   },
@@ -1167,6 +1203,147 @@ export const turkeyGallery = [
   "Hot air balloons over Cappadocia at sunrise",
   "The fairy chimneys of Goreme",
   "The Grand Bazaar of Istanbul",
+];
+
+// Baku tour content. The day by day maps the real five day flow, the attractions
+// and practical facts are public Azerbaijan knowledge, not fabricated claims
+// about the package. The exact hotel name and night plan route to inquiry.
+export const bakuItinerary = [
+  {
+    day: "Day 1",
+    title: "Arrival in Baku",
+    caption: "The Flame Towers above the Baku skyline at dusk",
+    detail:
+      "Land in Baku, clear the Azerbaijan e visa, and transfer to your city center hotel to settle in and rest before the touring begins.",
+  },
+  {
+    day: "Day 2",
+    title: "Baku city and Old City tour",
+    caption: "The Maiden Tower in the Icherisheher Old City of Baku",
+    detail:
+      "A guided tour of the Icherisheher Old City with the Maiden Tower and Shirvanshah Palace, then the Flame Towers, the Heydar Aliyev Center, Baku Boulevard, and Fountain Square.",
+  },
+  {
+    day: "Day 3",
+    title: "Gobustan and the Absheron fire sites",
+    caption: "The mud volcanoes of Gobustan near Baku",
+    detail:
+      "Drive to Gobustan for the ancient petroglyphs and the bubbling mud volcanoes, then the Ateshgah Fire Temple and Yanardag, the burning mountain of the Absheron peninsula.",
+  },
+  {
+    day: "Day 4",
+    title: "Full day Gabala tour",
+    caption: "The Tufandag cable car above Gabala",
+    detail:
+      "A full day tour to Gabala in the Caucasus foothills, with the Tufandag cable car for mountain views and a stop at Nohur Lake.",
+  },
+  {
+    day: "Day 5",
+    title: "Departure",
+    caption: "Heydar Aliyev International Airport in Baku",
+    detail:
+      "Check out and transfer to Heydar Aliyev International Airport for your return flight to Pakistan.",
+  },
+];
+
+// Named Baku attractions, public Azerbaijan knowledge with the fire sites that
+// give the Land of Fire its name. Longer trips add Sheki and Shahdag on request.
+export const bakuAttractions = [
+  {
+    name: "Icherisheher, the Old City",
+    caption: "The Maiden Tower in the Old City of Baku",
+    detail:
+      "The walled Old City of Baku, a UNESCO site of cobbled lanes and stone houses. Inside stand the Maiden Tower and the Shirvanshah Palace, with the Little Venice canals and the Carpet Museum a short walk along Baku Boulevard.",
+  },
+  {
+    name: "The Flame Towers",
+    caption: "The Flame Towers lit above Baku at night",
+    detail:
+      "Three flame shaped towers that rise over the city and light up with an LED show after dark. Highland Park below gives the classic view across the bay, the Old City, and the modern skyline together.",
+  },
+  {
+    name: "Ateshgah Fire Temple",
+    caption: "The eternal flame at the Ateshgah Fire Temple",
+    detail:
+      "A fire temple on the Absheron peninsula, built around a natural gas flame that once drew Zoroastrian and Hindu pilgrims. The central altar still burns, one of the sites that earned Azerbaijan the name Land of Fire.",
+  },
+  {
+    name: "Yanardag, the Burning Mountain",
+    caption: "The natural flames of Yanardag near Baku",
+    detail:
+      "A hillside on Absheron that has burned without pause for centuries, fed by natural gas seeping through the rock. The flames run brightest after dark, a short drive from Baku and a highlight of the fire sites day.",
+  },
+  {
+    name: "Gobustan National Park",
+    caption: "Ancient petroglyphs at Gobustan National Park",
+    detail:
+      "A UNESCO reserve south of Baku with thousands of rock petroglyphs carved over millennia. Nearby, the field of mud volcanoes bubbles cold grey mud, one of the largest such clusters on earth.",
+  },
+  {
+    name: "Gabala",
+    caption: "The Tufandag cable car above Gabala",
+    detail:
+      "A resort town in the Caucasus foothills, reached on a full day trip. The Tufandag cable car climbs for mountain views, and the day often adds Nohur Lake and the Yeddi Gozal waterfalls in the green season.",
+  },
+];
+
+// Gallery captions. Motif panels until real Baku photos are supplied, each
+// caption naming the entity for the alt text and, once real, ImageObject.
+export const bakuGallery = [
+  "The Flame Towers above the Baku skyline",
+  "The Maiden Tower in the Old City of Baku",
+  "The eternal flame at the Ateshgah Fire Temple",
+  "Yanardag, the burning mountain of Absheron",
+  "The mud volcanoes of Gobustan",
+  "The Tufandag cable car in Gabala",
+];
+
+// Practical Baku facts for a first time traveler, a full quick facts grid.
+// Public Azerbaijan knowledge. Halal food is a real trust signal here.
+export const bakuPractical = [
+  {
+    icon: "clock",
+    label: "Best time to visit",
+    value: "April to June and September to October",
+  },
+  { icon: "tag", label: "Currency", value: "Azerbaijani manat, AZN" },
+  { icon: "meal", label: "Halal food", value: "Widely available across the city" },
+  { icon: "clock", label: "Time zone", value: "GMT plus 4" },
+  {
+    icon: "users",
+    label: "Language",
+    value: "Azerbaijani, with Russian and some English",
+  },
+  { icon: "route", label: "Driving side", value: "Right hand side of the road" },
+  { icon: "pin", label: "Top cities", value: "Baku, Gabala, and Sheki" },
+];
+
+// What sets the Baku price. Cost drivers only, no numbers, routed to a quote.
+export const bakuCostDrivers = [
+  {
+    icon: "clock",
+    factor: "Travel season",
+    detail:
+      "Spring and autumn sit highest for mild weather, summer runs warm and busy, and winter runs lower outside the Shahdag ski season.",
+  },
+  {
+    icon: "hotel",
+    factor: "Hotel and area",
+    detail:
+      "A higher star rating or a city center address near the Boulevard lifts the price, while a standard four star holds it down.",
+  },
+  {
+    icon: "camera",
+    factor: "Excursions and add ons",
+    detail:
+      "Optional days to Sheki and its Khan Palace, the Shahdag resort, or extra nights in Gabala add to the base package.",
+  },
+  {
+    icon: "plane",
+    factor: "Airline and departure city",
+    detail:
+      "The carrier, the season, and whether you fly from Karachi, Lahore, Islamabad, or Peshawar move the airfare.",
+  },
 ];
 
 // Standard, well documented Ziyarat sites in Makkah and Madinah. Guided

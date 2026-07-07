@@ -16,6 +16,8 @@ import {
   dubaiAttractions,
   turkeyItinerary,
   turkeyAttractions,
+  bakuItinerary,
+  bakuAttractions,
 } from "@/lib/packageDetail";
 import type { Post } from "@/lib/posts";
 import type { City } from "@/lib/cities";
@@ -549,6 +551,29 @@ export function packageDetailGraph(pkg: TravelPackage) {
         "@type": "ItemList",
         name: "Turkey attractions",
         itemListElement: turkeyAttractions.map((a, i) => ({
+          "@type": "ListItem",
+          position: i + 1,
+          name: a.name,
+        })),
+      }
+    );
+  }
+
+  if (pkg.slug === "baku-5-days") {
+    graph.push(
+      {
+        "@type": "ItemList",
+        name: "Baku tour itinerary",
+        itemListElement: bakuItinerary.map((s, i) => ({
+          "@type": "ListItem",
+          position: i + 1,
+          name: `${s.day}: ${s.title}`,
+        })),
+      },
+      {
+        "@type": "ItemList",
+        name: "Baku attractions",
+        itemListElement: bakuAttractions.map((a, i) => ({
           "@type": "ListItem",
           position: i + 1,
           name: a.name,
