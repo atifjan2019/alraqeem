@@ -569,7 +569,7 @@ export const detailContent: Record<string, DetailContent> = {
 
   thailand: {
     overview:
-      "Thailand Tour Package from Pakistan pairs the temples of Bangkok with the beaches of Pattaya across six days and five nights. Our team arranges return airfare, the Thailand visa, a city hotel with breakfast, the Grand Palace and the riverside temples, a Coral Island day, Nong Nooch and the Sanctuary of Truth, with Phuket and the Phi Phi Islands as an optional southern add on. City lights, gold temples, and easy beaches make Thailand a favourite for families and couples traveling from Pakistan.",
+      "Thailand Tour Package from Pakistan pairs the temples of Bangkok with the beaches of Pattaya across six days and five nights. Our team arranges return airfare, the Thailand visa, a city hotel with breakfast, the Grand Palace and the riverside temples, a Coral Island day, Nong Nooch and the Sanctuary of Truth, with Phuket and the Phi Phi Islands as an optional southern add on. Halal food is widely available in Bangkok, so a Muslim traveler from Pakistan eats comfortably, and the city lights, gold temples, and easy beaches make Thailand a favourite for families and couples.",
     whoFor: [
       "Families wanting temples, culture, and beaches together",
       "Couples and honeymooners seeking city and coast",
@@ -580,7 +580,7 @@ export const detailContent: Record<string, DetailContent> = {
       pricingFaq("Thailand Tour Package"),
       {
         q: "Is a Thailand visa required for Pakistani travelers?",
-        a: "Pakistani passport holders need entry for Thailand, and the tourism visa rules move from cycle to cycle. Our team confirms the current position for your passport, then prepares and files the visa so it clears cleanly. Verify the latest rules at the official Thai source before you travel.",
+        a: "Yes, Pakistani passport holders need a Thailand visa, most easily the Thailand e visa applied online, since the visa exemption for short stays does not cover Pakistani passports. The rules move from cycle to cycle, so verify the current position at the official Thai source. Our team prepares and files the visa so it clears cleanly.",
       },
       {
         q: "How many days do I need for a Thailand tour?",
