@@ -19,6 +19,7 @@ import { stagingCredentials, stagingFounder } from "@/lib/staging";
 import { site, mapsLink } from "@/lib/site";
 import { waHref, telHref } from "@/lib/settings";
 import { homepageGraph } from "@/lib/schema";
+import DestinationDirectory from "@/components/DestinationDirectory";
 
 export const metadata: Metadata = {
   title: {
@@ -565,6 +566,12 @@ export default async function HomePage() {
           </div>
         </div>
       </section>
+
+      {/* Destination directory, down links to every live destination */}
+      <DestinationDirectory
+        eyebrow="Where we travel"
+        heading="Our tour destinations"
+      />
 
       {/* Choosing your package */}
       <section className="py-20 sm:py-28">

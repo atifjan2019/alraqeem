@@ -11,6 +11,7 @@ import MobileActionBar from "@/components/packages/MobileActionBar";
 import LastUpdated from "@/components/LastUpdated";
 import SearchInquiryWidget from "@/components/SearchInquiryWidget";
 import CaptionedImage from "@/components/packages/CaptionedImage";
+import DestinationDirectory from "@/components/DestinationDirectory";
 import { packageHref } from "@/lib/packages";
 import { getPackages } from "@/lib/packagesStore";
 import { getSettings } from "@/lib/settingsStore";
@@ -325,6 +326,12 @@ export default async function ToursPage() {
           </div>
         </div>
       </section>
+
+      {/* Destination directory, the two column down-linking block */}
+      <DestinationDirectory
+        eyebrow="Browse destinations"
+        heading="Every destination we serve"
+      />
 
       {/* Social proof: staging placeholders until real reviews are connected */}
       <Reviews data={reviewData} />
