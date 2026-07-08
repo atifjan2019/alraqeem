@@ -1,0 +1,101 @@
+[
+  {
+    "key": "bibi-heybat",
+    "file": "/images/tours/umrah-plus/bibi-heybat.jpg",
+    "title": "Bibi-Heybat Mosque",
+    "commonsFile": "File:Bibi_Heybat_Mosque_Baku_1.jpg",
+    "license": "CC BY-SA 3.0",
+    "artist": "Emin Bashirov",
+    "source": "https://commons.wikimedia.org/wiki/File:Bibi_Heybat_Mosque_Baku_1.jpg"
+  },
+  {
+    "key": "eyup-sultan",
+    "file": "/images/tours/umrah-plus/eyup-sultan.jpg",
+    "title": "Eyüp Sultan Mosque",
+    "commonsFile": "File:İstanbul_5999.jpg",
+    "license": "CC BY-SA 3.0",
+    "artist": "User:Darwinek",
+    "source": "https://commons.wikimedia.org/wiki/File:%C4%B0stanbul_5999.jpg"
+  },
+  {
+    "key": "suleymaniye",
+    "file": "/images/tours/umrah-plus/suleymaniye.jpg",
+    "title": "Süleymaniye Mosque",
+    "commonsFile": "File:SüleymaniyeMosqueIstanbul_(cropped).jpg",
+    "license": "CC0",
+    "artist": "Hunanuk",
+    "source": "https://commons.wikimedia.org/wiki/File:S%C3%BCleymaniyeMosqueIstanbul_(cropped).jpg"
+  },
+  {
+    "key": "jumeirah-mosque",
+    "file": "/images/tours/umrah-plus/jumeirah-mosque.jpg",
+    "title": "Jumeirah Mosque",
+    "commonsFile": "File:Jumeira_Mosque_Dubai.jpg",
+    "license": "CC BY-SA 3.0",
+    "artist": "Vicharam",
+    "source": "https://commons.wikimedia.org/wiki/File:Jumeira_Mosque_Dubai.jpg"
+  },
+  {
+    "key": "museum-islamic-art",
+    "file": "/images/tours/umrah-plus/museum-islamic-art.jpg",
+    "title": "Museum of Islamic Art, Doha",
+    "commonsFile": "File:Museum_of_Islamic_Art_in_Doha,_Qatar_(32673171432).jpg",
+    "license": "CC-BY-2.0",
+    "artist": "Ralf Steinberger from Milan, Berlin + Munich, Italy + German",
+    "source": "https://en.wikipedia.org/wiki/File:Museum_of_Islamic_Art_in_Doha,_Qatar_(32673171432).jpg"
+  },
+  {
+    "key": "katara",
+    "file": "/images/tours/umrah-plus/katara.jpg",
+    "title": "Katara Cultural Village",
+    "commonsFile": "File:Doha_Qatar_-_Masjid_Katara.jpg",
+    "license": "CC BY-SA 4.0",
+    "artist": "Chainwit.",
+    "source": "https://commons.wikimedia.org/wiki/File:Doha_Qatar_-_Masjid_Katara.jpg"
+  },
+  {
+    "key": "souq-waqif",
+    "file": "/images/tours/umrah-plus/souq-waqif.jpg",
+    "title": "Souq Waqif",
+    "commonsFile": "File:Souq_Waqif,_Doha,_Catar,_2013-08-05,_DD_84.JPG",
+    "license": "CC BY-SA 3.0",
+    "artist": "Diego Delso",
+    "source": "https://commons.wikimedia.org/wiki/File:Souq_Waqif,_Doha,_Catar,_2013-08-05,_DD_84.JPG"
+  },
+  {
+    "key": "al-azhar",
+    "file": "/images/tours/umrah-plus/al-azhar.jpg",
+    "title": "Al-Azhar Mosque",
+    "commonsFile": "File:Mosquée_Al-Azhar.jpg",
+    "license": "CC BY-SA 4.0",
+    "artist": "Wildoo78",
+    "source": "https://commons.wikimedia.org/wiki/File:Mosqu%C3%A9e_Al-Azhar.jpg"
+  },
+  {
+    "key": "amr-ibn-al-as",
+    "file": "/images/tours/umrah-plus/amr-ibn-al-as.jpg",
+    "title": "Mosque of Amr ibn al-As",
+    "commonsFile": "File:جامع_عمرو_بن_العاص.jpg",
+    "license": "CC BY-SA 4.0",
+    "artist": "Yasseralghol",
+    "source": "https://commons.wikimedia.org/wiki/File:%D8%AC%D8%A7%D9%85%D8%B9_%D8%B9%D9%85%D8%B1%D9%88_%D8%A8%D9%86_%D8%A7%D9%84%D8%B9%D8%A7%D8%B5.jpg"
+  },
+  {
+    "key": "giza-pyramids",
+    "file": "/images/tours/umrah-plus/giza-pyramids.jpg",
+    "title": "Giza pyramid complex",
+    "commonsFile": "File:Pyramids_of_the_Giza_Necropolis.jpg",
+    "license": "CC BY-SA 4.0",
+    "artist": "KennyOMG",
+    "source": "https://commons.wikimedia.org/wiki/File:Pyramids_of_the_Giza_Necropolis.jpg"
+  },
+  {
+    "key": "khan-el-khalili",
+    "file": "/images/tours/umrah-plus/khan-el-khalili.jpg",
+    "title": "Khan el-Khalili",
+    "commonsFile": "File:خان_الخليلي_1.jpg",
+    "license": "CC BY-SA 4.0",
+    "artist": "Heba otefy",
+    "source": "https://commons.wikimedia.org/wiki/File:%D8%AE%D8%A7%D9%86_%D8%A7%D9%84%D8%AE%D9%84%D9%8A%D9%84%D9%8A_1.jpg"
+  }
+]

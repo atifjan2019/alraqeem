@@ -2,6 +2,7 @@ import { MetadataRoute } from "next";
 import { site } from "@/lib/site";
 import { cities } from "@/lib/cities";
 import { liveDepartureCities } from "@/lib/departureCities";
+import { liveUmrahPlus } from "@/lib/umrahPlus";
 import { getPosts } from "@/lib/postsStore";
 
 export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
@@ -61,10 +62,15 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
     lastModified: new Date(),
   }));
 
+  const umrahPlusPages = liveUmrahPlus().map((c) => ({
+    url: `${site.url}/umrah/${c.slug}`,
+    lastModified: new Date(),
+  }));
+
   const postPages = posts.map((p) => ({
     url: `${site.url}/blog/${p.slug}`,
     lastModified: new Date(p.date),
   }));
 
-  return [...staticPages, ...cityPages, ...umrahCityPages, ...postPages];
+  return [...staticPages, ...cityPages, ...umrahCityPages, ...umrahPlusPages, ...postPages];
 }

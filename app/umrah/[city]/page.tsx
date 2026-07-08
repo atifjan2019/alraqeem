@@ -17,15 +17,18 @@ import { site, mapsLink } from "@/lib/site";
 import { waHref, telHref } from "@/lib/settings";
 import { travelAgencySchema } from "@/lib/schema";
 import {
-  departureCities,
   getDepartureCity,
   liveDepartureCities,
   cityFaqs,
-  type DepartureCity,
 } from "@/lib/departureCities";
+import { getUmrahPlus, liveUmrahPlus } from "@/lib/umrahPlus";
+import UmrahPlusView from "@/components/umrah/UmrahPlusView";
 
 export function generateStaticParams() {
-  return liveDepartureCities().map((c) => ({ city: c.slug }));
+  return [
+    ...liveDepartureCities().map((c) => ({ city: c.slug })),
+    ...liveUmrahPlus().map((c) => ({ city: c.slug })),
+  ];
 }
 
 export async function generateMetadata({
@@ -34,6 +37,15 @@ export async function generateMetadata({
   params: Promise<{ city: string }>;
 }): Promise<Metadata> {
   const { city: slug } = await params;
+  const combo = getUmrahPlus(slug);
+  if (combo && combo.live) {
+    return {
+      title: { absolute: `Umrah Plus ${combo.destination} Packages | Al Raqeem` },
+      description: `Umrah Plus ${combo.destination} packages from Pakistan, the pilgrimage first, then ${combo.destination} as a heritage and leisure extension on one booking. Both visas handled, quoted on inquiry.`,
+      alternates: { canonical: `/umrah/${combo.slug}` },
+      openGraph: { url: `/umrah/${combo.slug}` },
+    };
+  }
   const c = getDepartureCity(slug);
   if (!c || !c.live) return {};
   return {
@@ -65,10 +77,17 @@ export default async function UmrahCityPage({
   params: Promise<{ city: string }>;
 }) {
   const { city: slug } = await params;
+  const settings = await getSettings();
+
+  // Dispatch: an Umrah Plus combo, or a departure city page.
+  const combo = getUmrahPlus(slug);
+  if (combo && combo.live) {
+    return <UmrahPlusView combo={combo} settings={settings} />;
+  }
+
   const c = getDepartureCity(slug);
   if (!c || !c.live) notFound();
 
-  const settings = await getSettings();
   const quoteMsg = `Assalam o Alaikum, I want a quote for an Umrah package from ${c.city} for my dates.`;
   const quoteHref = waHref(settings.whatsapp, quoteMsg);
 

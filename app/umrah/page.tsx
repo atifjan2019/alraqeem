@@ -13,6 +13,7 @@ import MobileActionBar from "@/components/packages/MobileActionBar";
 import LastUpdated from "@/components/LastUpdated";
 import SearchInquiryWidget from "@/components/SearchInquiryWidget";
 import DepartureCityDirectory from "@/components/DepartureCityDirectory";
+import UmrahPlusStrip from "@/components/umrah/UmrahPlusStrip";
 import { getPackages } from "@/lib/packagesStore";
 import { getSettings } from "@/lib/settingsStore";
 import { reviewData } from "@/lib/reviews";
@@ -201,6 +202,9 @@ export default async function UmrahHubPage() {
           <TierCompare />
         </div>
       </section>
+
+      {/* Umrah Plus combos, the bridge to the tours silo */}
+      <UmrahPlusStrip />
 
       {/* Umrah by departure city, links down to the live city pages */}
       <DepartureCityDirectory />
