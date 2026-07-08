@@ -9,7 +9,7 @@ import LastUpdated from "@/components/LastUpdated";
 import CaptionedImage from "@/components/packages/CaptionedImage";
 import SearchInquiryWidget from "@/components/SearchInquiryWidget";
 import Reviews from "@/components/Reviews";
-import { getFeatured } from "@/lib/packagesStore";
+import { getPackages } from "@/lib/packagesStore";
 import { getPosts } from "@/lib/postsStore";
 import { getSettings } from "@/lib/settingsStore";
 import { cities } from "@/lib/cities";
@@ -62,40 +62,6 @@ const silos = [
     icon: "plane",
     caption: "The Dubai skyline with the Burj Khalifa",
     text: "Dubai, Turkey, Baku, and Malaysia with Thailand, with the visit visa, flights, hotels, guided sightseeing, and a day by day itinerary in one booking.",
-  },
-];
-
-// Umrah tier comparison. Attributes only, no price in any cell.
-const tiers = [
-  {
-    name: "Economy",
-    href: "/umrah/economy-15-days",
-    rows: [
-      { k: "Hotels", v: "Walking or shuttle distance" },
-      { k: "Room sharing", v: "Quad and shared" },
-      { k: "Transport", v: "Shared ground transport" },
-      { k: "Best suited", v: "Budget conscious pilgrims" },
-    ],
-  },
-  {
-    name: "Premium and five star",
-    href: "/umrah/premium-21-days",
-    rows: [
-      { k: "Hotels", v: "Near or facing the Haram" },
-      { k: "Room sharing", v: "Triple and double" },
-      { k: "Transport", v: "Private transport" },
-      { k: "Best suited", v: "Comfort with worship" },
-    ],
-  },
-  {
-    name: "Ramadan",
-    href: "/umrah/ramadan",
-    rows: [
-      { k: "Hotels", v: "Near the Haram, booked early" },
-      { k: "Room sharing", v: "Confirmed on quote" },
-      { k: "Transport", v: "Arranged for your group" },
-      { k: "Best suited", v: "Last Ashra and Laylat al-Qadr" },
-    ],
   },
 ];
 
@@ -196,12 +162,14 @@ const cityOrder = [
 
 export default async function HomePage() {
   const settings = await getSettings();
-  const featuredRaw = await getFeatured(4);
-  // Pilgrimage cards lead the stack on mobile. Pricing is inquiry based, so
-  // the price is stripped before it reaches the card.
+  // Balanced across the silos, not mostly Umrah, the most booked from each,
+  // two Umrah, one Hajj, and one tour. Pricing is inquiry based, so the price
+  // is stripped before it reaches the card.
+  const allPkgs = await getPackages();
   const featured = [
-    ...featuredRaw.filter((p) => p.category === "Umrah & Hajj"),
-    ...featuredRaw.filter((p) => p.category !== "Umrah & Hajj"),
+    ...allPkgs.filter((p) => /umrah/i.test(p.slug)).slice(0, 2),
+    ...allPkgs.filter((p) => /hajj/i.test(p.slug)).slice(0, 1),
+    ...allPkgs.filter((p) => p.category !== "Umrah & Hajj").slice(0, 1),
   ].map((p) => ({ ...p, price: null }));
   const posts = (await getPosts()).slice(0, 3);
   const orderedCities = cityOrder
@@ -249,9 +217,8 @@ export default async function HomePage() {
             From your doorstep to the Haram and the world beyond
           </p>
           <p className="mt-6 max-w-2xl text-base leading-relaxed text-slate-200 sm:text-lg">
-            {site.name} arranges Umrah, Hajj, international tours and visas from
-            Pakistan, quoted on inquiry because airfare and hotel rates move
-            weekly, with WhatsApp support from inquiry to safe return.
+            Arranged end to end from our Charsadda office, with WhatsApp support
+            from your first inquiry to your safe return.
           </p>
           <div className="mt-9 flex flex-col gap-3 sm:flex-row">
             <Link href="/packages" className="btn-orange">
@@ -573,62 +540,27 @@ export default async function HomePage() {
         heading="Our tour destinations"
       />
 
-      {/* Choosing your package */}
+      {/* Umrah tiers teaser, the full comparison lives on the Umrah hub */}
       <section className="py-20 sm:py-28">
         <div className="container-site">
           <SectionHeading
-            eyebrow="Choosing your package"
-            title="Which Umrah tier fits you?"
-            description="Compare the tiers by what actually differs, with no price in any cell."
+            eyebrow="Choosing your Umrah"
+            title="Economy, premium, and five star Umrah"
             align="center"
           />
-          <p className="mx-auto max-w-3xl text-base leading-relaxed text-slate-700">
-            Every Umrah package covers the Saudi e-visa, flights, hotels,
-            transport, and guided Ziyarat, so the choice comes down to comfort
-            and budget. Economy suits budget conscious pilgrims, with shared
-            rooms and hotels within walking or shuttle distance of the Haram.
-            Premium and five star place you in hotels near or facing the Haram,
-            with fewer travelers per room and private transport. Ramadan
-            programs focus on the last Ashra and the nights of Laylat al-Qadr,
-            and book months ahead. Family and group options run across every
-            tier, with connected rooms arranged. Durations run from 7 to 30 days,
-            departing from Peshawar and Islamabad.
+          <p className="mx-auto max-w-3xl text-center text-base leading-relaxed text-slate-700">
+            Economy suits budget conscious pilgrims, with hotels a short walk or
+            shuttle from the Haram. Premium and five star place you near or
+            facing it, with fewer travelers per room and private transport, and
+            the Ramadan program focuses on the last Ashra. Compare the three
+            tiers side by side, the room sharing, the hotel distance, and the
+            transport, on the Umrah hub, each quoted on inquiry.
           </p>
-          <div className="mt-10 grid gap-6 lg:grid-cols-3">
-            {tiers.map((t) => (
-              <div
-                key={t.name}
-                className="flex flex-col rounded-3xl border border-black/5 bg-white p-6 shadow-card"
-              >
-                <h3 className="font-display text-xl text-brand-blue-deep">
-                  {t.name}
-                </h3>
-                <dl className="mt-4 flex-1 divide-y divide-black/5">
-                  {t.rows.map((r) => (
-                    <div key={r.k} className="flex justify-between gap-3 py-2.5">
-                      <dt className="text-xs font-semibold uppercase tracking-wider text-slate-500">
-                        {r.k}
-                      </dt>
-                      <dd className="text-right text-sm font-medium text-brand-blue-deep">
-                        {r.v}
-                      </dd>
-                    </div>
-                  ))}
-                </dl>
-                <Link
-                  href={t.href}
-                  className="btn-outline mt-5 w-full !py-2.5 text-sm"
-                >
-                  View {t.name} Umrah
-                </Link>
-              </div>
-            ))}
+          <div className="mt-8 text-center">
+            <Link href="/umrah" className="btn-orange">
+              Compare Umrah tiers on the hub
+            </Link>
           </div>
-          <p className="mx-auto mt-6 max-w-3xl text-center text-xs leading-relaxed text-slate-500">
-            Room sharing and exact hotels are confirmed for your group when we
-            quote. No prices are published, since airfare and hotel rates change
-            weekly.
-          </p>
         </div>
       </section>
 
