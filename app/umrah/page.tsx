@@ -12,6 +12,7 @@ import TierCompare from "@/components/packages/TierCompare";
 import MobileActionBar from "@/components/packages/MobileActionBar";
 import LastUpdated from "@/components/LastUpdated";
 import SearchInquiryWidget from "@/components/SearchInquiryWidget";
+import DepartureCityDirectory from "@/components/DepartureCityDirectory";
 import { getPackages } from "@/lib/packagesStore";
 import { getSettings } from "@/lib/settingsStore";
 import { reviewData } from "@/lib/reviews";
@@ -200,6 +201,9 @@ export default async function UmrahHubPage() {
           <TierCompare />
         </div>
       </section>
+
+      {/* Umrah by departure city, links down to the live city pages */}
+      <DepartureCityDirectory />
 
       {/* Social proof: staging placeholders until real reviews are connected */}
       <Reviews data={reviewData} />
