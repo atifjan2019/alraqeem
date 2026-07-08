@@ -603,8 +603,8 @@ export const detailContent: Record<string, DetailContent> = {
     faqs: [
       pricingFaq("Thailand Tour Package"),
       {
-        q: "Is a Thailand visa required for Pakistani travelers?",
-        a: "Yes, Pakistani passport holders need a Thailand visa, most easily the Thailand e visa applied online, since the visa exemption for short stays does not cover Pakistani passports. The rules move from cycle to cycle, so verify the current position at the official Thai source. Our team prepares and files the visa so it clears cleanly.",
+        q: "Is a Thailand visa required for Pakistani travelers, or is it visa on arrival?",
+        a: "Yes, a visa is required, and Thailand is not a reliable visa on arrival country for Pakistani passport holders, so the visa is arranged in advance rather than at the airport. Our team prepares and files it with a confirmed return ticket and hotel booking, both part of your package, and checks every document first so it clears cleanly. Verify the current position at the official Thai source before you travel.",
       },
       {
         q: "How many days do I need for a Thailand tour?",
@@ -632,7 +632,11 @@ export const detailContent: Record<string, DetailContent> = {
       },
       {
         q: "Do you customize the Thailand itinerary?",
-        a: "Yes. Our desk adds Phuket, Krabi, or the islands, a Chiang Mai leg, extra Pattaya time, or a slower pace, and builds the days around your group. Share how many travelers and what you want to see, and we send a plan and a quote for your exact dates.",
+        a: "Yes. Our desk adds Phuket, Krabi, or the islands, a Chiang Mai leg for the temples and elephant parks, extra Pattaya time, or a slower pace, and builds the days around your group. Share how many travelers and what you want to see, and we send a plan and a quote for your exact dates.",
+      },
+      {
+        q: "Do you add Phuket and Krabi beaches to the Thailand tour?",
+        a: "Yes. The base tour covers Bangkok and Pattaya, and our desk extends it south to Phuket and Krabi on a seven to ten day route, with the domestic flight from Bangkok included. Beach days bring the Phi Phi Islands, James Bond Island in Phang Nga Bay, and the limestone bays of the Andaman coast. Tell us your dates and group, and we quote the beach extension with the right hotels.",
       },
       {
         q: "Which airlines fly to Bangkok from Pakistan?",
@@ -2406,7 +2410,7 @@ export const tourContent: Record<string, TourContent> = {
         name: "Wat Pho and Wat Arun",
         caption: "Wat Arun on the Chao Phraya River in Bangkok",
         detail:
-          "Wat Pho holds the vast gold reclining Buddha, while Wat Arun, the Temple of Dawn, rises in porcelain tiled spires across the river. A short boat ride links them on the Bangkok temple day.",
+          "Wat Pho holds the vast gold reclining Buddha, some forty six metres long, while Wat Arun, the Temple of Dawn, rises in porcelain tiled spires across the river. A short boat ride links them on the Bangkok temple day, often closed with an evening Chao Phraya dinner cruise.",
       },
       {
         name: "Wat Traimit and the Golden Buddha",
@@ -2430,7 +2434,13 @@ export const tourContent: Record<string, TourContent> = {
         name: "Phuket and the Phi Phi Islands",
         caption: "Longtail boats at the Phi Phi Islands near Phuket",
         detail:
-          "The beaches of Patong and a boat trip to the Phi Phi Islands and James Bond Island of clear water and limestone cliffs. On the optional southern extension rather than the base Bangkok and Pattaya plan.",
+          "The beaches of Patong and a boat trip to the Phi Phi Islands, plus James Bond Island and the sea caves of Phang Nga Bay, of clear water and limestone cliffs. On the optional southern extension rather than the base Bangkok and Pattaya plan, arranged on request.",
+      },
+      {
+        name: "Krabi and the Andaman coast",
+        caption: "The limestone cliffs and beaches of Krabi",
+        detail:
+          "The white sand beaches, towering limestone cliffs, and emerald lagoons of Krabi on the Andaman Sea, with Railay Beach and the four island boat trip. On the optional southern extension rather than the base Bangkok and Pattaya plan, arranged on request.",
       },
     ],
     gallery: [
@@ -2442,7 +2452,11 @@ export const tourContent: Record<string, TourContent> = {
       "The Phi Phi Islands near Phuket",
     ],
     practical: [
-      { icon: "clock", label: "Best time to visit", value: "November to February, cool and dry" },
+      {
+        icon: "clock",
+        label: "Best time to visit",
+        value: "November to February cool and dry, March to May for the islands, June to October cheaper",
+      },
       { icon: "tag", label: "Currency", value: "Thai baht, THB" },
       { icon: "meal", label: "Halal food", value: "Widely available in Bangkok" },
       { icon: "clock", label: "Time zone", value: "GMT plus 7" },
@@ -2477,7 +2491,7 @@ export const tourContent: Record<string, TourContent> = {
       },
     ],
     visaIntro:
-      "The Thailand visa rules for tourism move from cycle to cycle, so verify the current position for your passport and apply at the official",
+      "A Thailand tourist visa is required for Pakistani passport holders and is not reliable on arrival, so it is arranged in advance with a confirmed return ticket and hotel booking. Verify the current rules and apply at the official",
     visaLinks: [{ label: "Thailand e visa portal", href: "https://www.thaievisa.go.th" }],
   },
 
