@@ -233,6 +233,33 @@ export const tourImages: Record<string, TourImageSet> = {
     ],
   },
 
+  chitral: {
+    itinerary: [
+      `${D}/chitral/tirich-mir.jpg`,
+      `${D}/chitral/chitral-fort.jpg`,
+      `${D}/chitral/garam-chashma.jpg`,
+      `${D}/chitral/kalash-bumburet.jpg`,
+      `${D}/chitral/tirich-mir.jpg`,
+    ],
+    attractions: [
+      `${D}/chitral/chitral-fort.jpg`,
+      `${D}/chitral/chitral-fort.jpg`,
+      `${D}/chitral/tirich-mir.jpg`,
+      `${D}/chitral/garam-chashma.jpg`,
+      `${D}/chitral/kalash-bumburet.jpg`,
+      `${D}/chitral/shandur.jpg`,
+      `${D}/chitral/chitral-gol.jpg`,
+    ],
+    gallery: [
+      `${D}/chitral/chitral-fort.jpg`,
+      `${D}/chitral/chitral-fort.jpg`,
+      `${D}/chitral/tirich-mir.jpg`,
+      `${D}/chitral/garam-chashma.jpg`,
+      `${D}/chitral/kalash-bumburet.jpg`,
+      `${D}/chitral/shandur.jpg`,
+    ],
+  },
+
   // Combos reuse the single country files, no duplicate downloads.
   "malaysia-thailand-8-days": {
     itinerary: [

@@ -951,8 +951,8 @@ export const detailContent: Record<string, DetailContent> = {
         a: "April to October is the open season, with July bringing the Shandur polo festival on the high pass. The Lowari Tunnel keeps the road open through the year, though the high routes close with snow. Share your window and we plan the trip around it.",
       },
       {
-        q: "How do we reach Chitral, and is transport included?",
-        a: "Yes, transport is included. Our team drives you from Peshawar or Islamabad through Dir and the Lowari Tunnel into Chitral, with the jeeps for Garam Chashma and the Kalash valleys arranged on the day. Travelers near our Charsadda base start closest.",
+        q: "How do we reach Chitral, by road or flight?",
+        a: "Yes, transport is included. Our team drives you from Peshawar or Islamabad through Dir and the all weather Lowari Tunnel into Chitral, about nine hours, with the jeeps for Garam Chashma and the Kalash valleys arranged on the day. A fifty minute PIA flight from Islamabad is an option when the mountain weather allows, with Tirich Mir from the window. Travelers near our Charsadda base start closest, so we pick up from Peshawar and Charsadda.",
       },
       {
         q: "Can I visit the Kalash valleys from Chitral?",
@@ -972,7 +972,19 @@ export const detailContent: Record<string, DetailContent> = {
       },
       {
         q: "Do you customize the Chitral itinerary?",
-        a: "Yes. Our desk adds the Shandur Pass and its polo festival, a longer Kalash stay, or a Garam Chashma overnight, and builds the days around your group. Share how many travelers and what you want, and we send a plan and a quote for your exact dates.",
+        a: "Yes. Our desk adds the Shandur Pass and its July polo festival, a longer Kalash stay, a Garam Chashma overnight, or an Upper Chitral leg to Booni, Mastuj, and Madaklasht, with Broghil and Karambar Lake for the adventurous, and builds the days around your group. Share how many travelers and what you want, and we send a plan and a quote for your exact dates.",
+      },
+      {
+        q: "When is the Shandur Polo Festival, and how do we attend?",
+        a: "The Shandur Polo Festival runs each July on the Shandur Pass at about 3,700 metres, the highest polo ground on earth, where the teams of Chitral and Gilgit meet for three days of free style mountain polo, music, and camping. Our desk arranges the Shandur leg from Chitral with the jeeps, the camp, and the timing, since the pass is crossable May to September. Tell us your dates and we plan the festival trip for your group.",
+      },
+      {
+        q: "How do I see or trek toward Tirich Mir from Chitral?",
+        a: "Tirich Mir, at 7,708 metres the crown of the Hindu Kush, rises over Chitral town and fills the skyline on a clear day, with the Birmoglasht viewpoint above town for the classic view. Stronger walkers reach the Tirich Mir base camp on a multi day trek from the Tirich valley, arranged with guides and porters. Our team sets the viewpoint or the trek to your fitness and your dates.",
+      },
+      {
+        q: "How is a Chitral tour different from a Kalash valley tour?",
+        a: "Chitral is the district hub and a full trip in its own right, the Chitral Fort and Shahi Masjid, Tirich Mir over the town, the Garam Chashma hot springs, the Shandur Pass, and the Chitral Gol wildlife park, while the Kalash valleys of Bumburet, Rumbur, and Birir are the living culture a short drive away. Most travelers pair the two, and our desk builds a combined Chitral and Kalash route, with the town, the mountains, and the Kalash days in one plan.",
       },
     ],
   },
@@ -3295,7 +3307,7 @@ export const tourContent: Record<string, TourContent> = {
     wedge: {
       eyebrow: "Local KPK expertise",
       title: "Run from our Charsadda base in Khyber Pakhtunkhwa",
-      body: "Chitral is the far northwest of Khyber Pakhtunkhwa, reached through the Lowari Tunnel, and our desk runs it with drivers and hosts who know the road, the town, and the Kalash valleys beyond. Our team knows the Chitral hotels, the Garam Chashma drive, and the Shandur season, years of arranging the far north from our KPK base rather than a booking passed to a distant handler.",
+      body: "Chitral is the far northwest of Khyber Pakhtunkhwa, reached by road from Peshawar through Dir and the Lowari Tunnel, so from our Charsadda base we are the closest road operator to the gateway and pick up from Peshawar and Charsadda. Our desk runs it with drivers and hosts who know the road, the town, and the Kalash valleys beyond, the Chitral hotels, the Garam Chashma drive, and the Shandur season, years of arranging the far north from our KPK base rather than a booking passed to a distant handler.",
     },
     itineraryNote:
       "The flow above is the typical five day plan for Chitral. Our desk adds a Kalash valley night, Garam Chashma, or the Shandur Pass on request.",
@@ -3349,19 +3361,19 @@ export const tourContent: Record<string, TourContent> = {
         name: "The Shahi Masjid",
         caption: "The white Shahi Masjid in Chitral town",
         detail:
-          "The white and green royal mosque beside the fort, built by the Mehtar in the early twentieth century, the landmark of Chitral town and an easy stop on the city tour.",
+          "The white marble royal mosque beside the fort, built by the Mehtar in 1924, the landmark of Chitral town and an easy stop on the city tour.",
       },
       {
         name: "Tirich Mir",
         caption: "Tirich Mir, the highest peak of the Hindu Kush",
         detail:
-          "The highest peak of the Hindu Kush at over seven thousand seven hundred metres, rising over the Chitral valley. On a clear day it fills the skyline above the town.",
+          "The highest peak of the Hindu Kush at 7,708 metres, the crown of the range, rising over the Chitral valley. On a clear day it fills the skyline above the town, seen best from the Birmoglasht viewpoint, with a base camp trek for stronger walkers.",
       },
       {
         name: "Garam Chashma",
         caption: "The Garam Chashma hot springs valley",
         detail:
-          "The natural hot springs up a side valley from Chitral, set among the mountains and long used for their warm mineral water. A scenic half day drive and a soak.",
+          "The natural hot springs about forty five kilometres up a side valley from Chitral, set among the mountains and long used for their warm mineral water, with trout in the streams. A scenic half day drive and a soak.",
       },
       {
         name: "The Kalash valleys",
@@ -3373,7 +3385,13 @@ export const tourContent: Record<string, TourContent> = {
         name: "The Shandur Pass",
         caption: "The Shandur polo ground, the roof of the world",
         detail:
-          "The high pass toward Gilgit, home to the Shandur polo festival each July on the highest polo ground on earth. On the longer Chitral routes rather than the base plan.",
+          "The high pass toward Gilgit at about 3,700 metres, home to the Shandur polo festival each July, where Chitral and Gilgit meet on the highest polo ground on earth. On the longer Chitral routes rather than the base plan.",
+      },
+      {
+        name: "Chitral Gol National Park",
+        caption: "A markhor in the Chitral Gol National Park",
+        detail:
+          "The national park in the hills above Chitral town, home to the Kashmir markhor, the snow leopard, and the Himalayan ibex, with alpine meadows and pine forest. A wildlife and nature half day, arranged with a permit and a guide.",
       },
     ],
     gallery: [
@@ -3386,8 +3404,16 @@ export const tourContent: Record<string, TourContent> = {
     ],
     practical: [
       { icon: "clock", label: "Best season", value: "April to October, July for Shandur" },
-      { icon: "pin", label: "Altitude", value: "Chitral low, Tirich Mir over 7000 m" },
-      { icon: "bus", label: "Road access", value: "Lowari Tunnel, open through the year" },
+      {
+        icon: "pin",
+        label: "Altitude",
+        value: "Chitral town low, Tirich Mir 7,708 m, Shandur about 3,700 m",
+      },
+      {
+        icon: "bus",
+        label: "Access",
+        value: "Lowari Tunnel road year round, or a 50 minute Islamabad flight, weather dependent",
+      },
       { icon: "route", label: "Jeep sections", value: "Garam Chashma and the Kalash valleys" },
       { icon: "phone", label: "Connectivity", value: "Signal in Chitral town, limited beyond" },
       { icon: "shield", label: "What to pack", value: "Layers, warm for the cold nights" },

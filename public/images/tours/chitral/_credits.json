@@ -1,0 +1,56 @@
+[
+  {
+    "key": "chitral-fort",
+    "file": "/images/tours/chitral/chitral-fort.jpg",
+    "title": "Chitral Fort",
+    "commonsFile": "File:Shahi_Fort_Chitral_KPK_Pakistan.JPG",
+    "license": "CC BY-SA 4.0",
+    "artist": "Kamran Adil",
+    "source": "https://commons.wikimedia.org/wiki/File:Shahi_Fort_Chitral_KPK_Pakistan.JPG"
+  },
+  {
+    "key": "tirich-mir",
+    "file": "/images/tours/chitral/tirich-mir.jpg",
+    "title": "Tirich Mir",
+    "commonsFile": "File:Tirich_Mir_(The_Kingdom_Of_Djinns_And_Fairies).jpg",
+    "license": "CC BY-SA 4.0",
+    "artist": "KaleemUllah550",
+    "source": "https://commons.wikimedia.org/wiki/File:Tirich_Mir_(The_Kingdom_Of_Djinns_And_Fairies).jpg"
+  },
+  {
+    "key": "garam-chashma",
+    "file": "/images/tours/chitral/garam-chashma.jpg",
+    "title": "Garam Chashma",
+    "commonsFile": "File:Zhiture,_Garam_Chashma.jpg",
+    "license": "CC BY-SA 4.0",
+    "artist": "Syed Gohar Ali Shah",
+    "source": "https://commons.wikimedia.org/wiki/File:Zhiture,_Garam_Chashma.jpg"
+  },
+  {
+    "key": "kalash-bumburet",
+    "file": "/images/tours/chitral/kalash-bumburet.jpg",
+    "title": "Bumburet",
+    "commonsFile": "File:Bomboret_River.jpg",
+    "license": "CC BY-SA 3.0",
+    "artist": "Hassan Ali",
+    "source": "https://commons.wikimedia.org/wiki/File:Bomboret_River.jpg"
+  },
+  {
+    "key": "shandur",
+    "file": "/images/tours/chitral/shandur.jpg",
+    "title": "Shandur Top",
+    "commonsFile": "File:Shandur_Top_&_Shandur_Lake.jpg",
+    "license": "CC BY-SA 4.0",
+    "artist": "Mudassir Ahmed",
+    "source": "https://commons.wikimedia.org/wiki/File:Shandur_Top_%26_Shandur_Lake.jpg"
+  },
+  {
+    "key": "chitral-gol",
+    "file": "/images/tours/chitral/chitral-gol.jpg",
+    "title": "Chitral Gol National Park",
+    "commonsFile": "File:Meadows_of_Chitral_Gol_National_Park;_Tahsin_Shah_03.jpg",
+    "license": "CC BY-SA 4.0",
+    "artist": "Tahsin A Shah",
+    "source": "https://commons.wikimedia.org/wiki/File:Meadows_of_Chitral_Gol_National_Park;_Tahsin_Shah_03.jpg"
+  }
+]
