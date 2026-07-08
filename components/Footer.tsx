@@ -140,6 +140,10 @@ export default function Footer({
               Terms and Refund Policy
             </Link>
             <span aria-hidden="true" className="text-white/25">·</span>
+            <Link href="/photo-credits" className="hover:text-white">
+              Photo Credits
+            </Link>
+            <span aria-hidden="true" className="text-white/25">·</span>
             <Link href="/packages" className="hover:text-white">
               All Packages
             </Link>

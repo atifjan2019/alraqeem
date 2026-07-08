@@ -20,6 +20,7 @@ import MobileActionBar from "@/components/packages/MobileActionBar";
 import TourCta from "@/components/packages/TourCta";
 import SocialProof from "@/components/packages/SocialProof";
 import CaptionedImage from "@/components/packages/CaptionedImage";
+import { tourImages } from "@/lib/tourImages";
 import SearchInquiryWidget from "@/components/SearchInquiryWidget";
 import LastUpdated from "@/components/LastUpdated";
 import Reviews from "@/components/Reviews";
@@ -124,6 +125,7 @@ export async function PackageDetailView({ pkg }: { pkg: TravelPackage }) {
   const isDubai = pkg.slug === "dubai-5-days";
   const isTurkey = pkg.slug === "turkey-7-days";
   const isBaku = pkg.slug === "baku-5-days";
+  const imgs = tourImages[pkg.slug];
   const isFarEast = pkg.slug === "malaysia-thailand-8-days";
   // Domestic Pakistan tours, no visa, transport by road or a domestic flight.
   const isDomestic = pkg.category === "Pakistan";
@@ -492,12 +494,13 @@ export async function PackageDetailView({ pkg }: { pkg: TravelPackage }) {
                     title="Your five day Dubai itinerary"
                   />
                   <div className="mt-6 space-y-5">
-                    {dubaiItinerary.map((step) => (
+                    {dubaiItinerary.map((step, i) => (
                       <article
                         key={step.day}
                         className="grid gap-4 rounded-2xl border border-black/5 bg-white p-5 shadow-card sm:grid-cols-[1fr_1.8fr] sm:items-center"
                       >
                         <CaptionedImage
+                          src={imgs?.itinerary?.[i]}
                           caption={step.caption}
                           icon="camera"
                           aspect="aspect-[16/10]"
@@ -534,12 +537,13 @@ export async function PackageDetailView({ pkg }: { pkg: TravelPackage }) {
                     title="Top Dubai attractions"
                   />
                   <div className="mt-6 grid gap-5 sm:grid-cols-2 lg:grid-cols-3">
-                    {dubaiAttractions.map((a) => (
+                    {dubaiAttractions.map((a, i) => (
                       <article
                         key={a.name}
                         className="rounded-2xl border border-black/5 bg-white p-4 shadow-card"
                       >
                         <CaptionedImage
+                          src={imgs?.attractions?.[i]}
                           caption={a.caption}
                           icon="pin"
                           aspect="aspect-[4/3]"
@@ -575,12 +579,13 @@ export async function PackageDetailView({ pkg }: { pkg: TravelPackage }) {
                     title="Your seven day Turkey itinerary"
                   />
                   <div className="mt-6 space-y-5">
-                    {turkeyItinerary.map((step) => (
+                    {turkeyItinerary.map((step, i) => (
                       <article
                         key={step.day}
                         className="grid gap-4 rounded-2xl border border-black/5 bg-white p-5 shadow-card sm:grid-cols-[1fr_1.8fr] sm:items-center"
                       >
                         <CaptionedImage
+                          src={imgs?.itinerary?.[i]}
                           caption={step.caption}
                           icon="camera"
                           aspect="aspect-[16/10]"
@@ -618,12 +623,13 @@ export async function PackageDetailView({ pkg }: { pkg: TravelPackage }) {
                     title="Top Turkey attractions"
                   />
                   <div className="mt-6 grid gap-5 sm:grid-cols-2 lg:grid-cols-3">
-                    {turkeyAttractions.map((a) => (
+                    {turkeyAttractions.map((a, i) => (
                       <article
                         key={a.name}
                         className="rounded-2xl border border-black/5 bg-white p-4 shadow-card"
                       >
                         <CaptionedImage
+                          src={imgs?.attractions?.[i]}
                           caption={a.caption}
                           icon="pin"
                           aspect="aspect-[4/3]"
@@ -659,12 +665,13 @@ export async function PackageDetailView({ pkg }: { pkg: TravelPackage }) {
                     title="Your five day Baku itinerary"
                   />
                   <div className="mt-6 space-y-5">
-                    {bakuItinerary.map((step) => (
+                    {bakuItinerary.map((step, i) => (
                       <article
                         key={step.day}
                         className="grid gap-4 rounded-2xl border border-black/5 bg-white p-5 shadow-card sm:grid-cols-[1fr_1.8fr] sm:items-center"
                       >
                         <CaptionedImage
+                          src={imgs?.itinerary?.[i]}
                           caption={step.caption}
                           icon="camera"
                           aspect="aspect-[16/10]"
@@ -702,12 +709,13 @@ export async function PackageDetailView({ pkg }: { pkg: TravelPackage }) {
                     title="Top Baku attractions"
                   />
                   <div className="mt-6 grid gap-5 sm:grid-cols-2 lg:grid-cols-3">
-                    {bakuAttractions.map((a) => (
+                    {bakuAttractions.map((a, i) => (
                       <article
                         key={a.name}
                         className="rounded-2xl border border-black/5 bg-white p-4 shadow-card"
                       >
                         <CaptionedImage
+                          src={imgs?.attractions?.[i]}
                           caption={a.caption}
                           icon="pin"
                           aspect="aspect-[4/3]"
@@ -743,12 +751,13 @@ export async function PackageDetailView({ pkg }: { pkg: TravelPackage }) {
                     title="Your eight day Malaysia and Thailand itinerary"
                   />
                   <div className="mt-6 space-y-5">
-                    {farEastItinerary.map((step) => (
+                    {farEastItinerary.map((step, i) => (
                       <article
                         key={step.day}
                         className="grid gap-4 rounded-2xl border border-black/5 bg-white p-5 shadow-card sm:grid-cols-[1fr_1.8fr] sm:items-center"
                       >
                         <CaptionedImage
+                          src={imgs?.itinerary?.[i]}
                           caption={step.caption}
                           icon="camera"
                           aspect="aspect-[16/10]"
@@ -791,12 +800,13 @@ export async function PackageDetailView({ pkg }: { pkg: TravelPackage }) {
                     title="Top Malaysia and Thailand attractions"
                   />
                   <div className="mt-6 grid gap-5 sm:grid-cols-2 lg:grid-cols-3">
-                    {farEastAttractions.map((a) => (
+                    {farEastAttractions.map((a, i) => (
                       <article
                         key={a.name}
                         className="rounded-2xl border border-black/5 bg-white p-4 shadow-card"
                       >
                         <CaptionedImage
+                          src={imgs?.attractions?.[i]}
                           caption={a.caption}
                           icon="pin"
                           aspect="aspect-[4/3]"
@@ -848,12 +858,13 @@ export async function PackageDetailView({ pkg }: { pkg: TravelPackage }) {
                       title={`Your ${tour.durationWords} ${tour.name} itinerary`}
                     />
                     <div className="mt-6 space-y-5">
-                      {tour.itinerary.map((step) => (
+                      {tour.itinerary.map((step, i) => (
                         <article
                           key={step.day}
                           className="grid gap-4 rounded-2xl border border-black/5 bg-white p-5 shadow-card sm:grid-cols-[1fr_1.8fr] sm:items-center"
                         >
                           <CaptionedImage
+                            src={imgs?.itinerary?.[i]}
                             caption={step.caption}
                             icon="camera"
                             aspect="aspect-[16/10]"
@@ -891,12 +902,13 @@ export async function PackageDetailView({ pkg }: { pkg: TravelPackage }) {
                       title={`Top ${tour.name} attractions`}
                     />
                     <div className="mt-6 grid gap-5 sm:grid-cols-2 lg:grid-cols-3">
-                      {tour.attractions.map((a) => (
+                      {tour.attractions.map((a, i) => (
                         <article
                           key={a.name}
                           className="rounded-2xl border border-black/5 bg-white p-4 shadow-card"
                         >
                           <CaptionedImage
+                            src={imgs?.attractions?.[i]}
                             caption={a.caption}
                             icon="pin"
                             aspect="aspect-[4/3]"
@@ -1486,9 +1498,10 @@ export async function PackageDetailView({ pkg }: { pkg: TravelPackage }) {
                 <section>
                   <Head eyebrow="Gallery" title="Dubai in pictures" />
                   <div className="mt-6 grid grid-cols-2 gap-4 sm:grid-cols-3">
-                    {dubaiGallery.map((caption) => (
+                    {dubaiGallery.map((caption, i) => (
                       <CaptionedImage
                         key={caption}
+                        src={imgs?.gallery?.[i]}
                         caption={caption}
                         icon="camera"
                         aspect="aspect-square"
@@ -1496,8 +1509,9 @@ export async function PackageDetailView({ pkg }: { pkg: TravelPackage }) {
                     ))}
                   </div>
                   <p className="mt-4 max-w-[65ch] text-sm leading-relaxed text-slate-500">
-                    Branded panels stand in until our own Dubai photos are added,
-                    so every slot names the place it will show.
+                    Photos are representative, licensed under Creative Commons,
+                    credited on our photo credits page. Our own Dubai photos
+                    replace them as they are added.
                   </p>
                 </section>
               )}
@@ -1537,9 +1551,10 @@ export async function PackageDetailView({ pkg }: { pkg: TravelPackage }) {
                 <section>
                   <Head eyebrow="Gallery" title="Turkey in pictures" />
                   <div className="mt-6 grid grid-cols-2 gap-4 sm:grid-cols-3">
-                    {turkeyGallery.map((caption) => (
+                    {turkeyGallery.map((caption, i) => (
                       <CaptionedImage
                         key={caption}
+                        src={imgs?.gallery?.[i]}
                         caption={caption}
                         icon="camera"
                         aspect="aspect-square"
@@ -1588,9 +1603,10 @@ export async function PackageDetailView({ pkg }: { pkg: TravelPackage }) {
                 <section>
                   <Head eyebrow="Gallery" title="Baku in pictures" />
                   <div className="mt-6 grid grid-cols-2 gap-4 sm:grid-cols-3">
-                    {bakuGallery.map((caption) => (
+                    {bakuGallery.map((caption, i) => (
                       <CaptionedImage
                         key={caption}
+                        src={imgs?.gallery?.[i]}
                         caption={caption}
                         icon="camera"
                         aspect="aspect-square"
@@ -1639,9 +1655,10 @@ export async function PackageDetailView({ pkg }: { pkg: TravelPackage }) {
                 <section>
                   <Head eyebrow="Gallery" title="Malaysia and Thailand in pictures" />
                   <div className="mt-6 grid grid-cols-2 gap-4 sm:grid-cols-3">
-                    {farEastGallery.map((caption) => (
+                    {farEastGallery.map((caption, i) => (
                       <CaptionedImage
                         key={caption}
+                        src={imgs?.gallery?.[i]}
                         caption={caption}
                         icon="camera"
                         aspect="aspect-square"
@@ -1690,9 +1707,10 @@ export async function PackageDetailView({ pkg }: { pkg: TravelPackage }) {
                 <section>
                   <Head eyebrow="Gallery" title={`${tour.name} in pictures`} />
                   <div className="mt-6 grid grid-cols-2 gap-4 sm:grid-cols-3">
-                    {tour.gallery.map((caption) => (
+                    {tour.gallery.map((caption, i) => (
                       <CaptionedImage
                         key={caption}
+                        src={imgs?.gallery?.[i]}
                         caption={caption}
                         icon="camera"
                         aspect="aspect-square"

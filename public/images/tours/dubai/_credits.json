@@ -1,0 +1,56 @@
+[
+  {
+    "key": "burj-khalifa",
+    "file": "/images/tours/dubai/burj-khalifa.jpg",
+    "title": "Burj Khalifa",
+    "commonsFile": "File:Burj_Khalifa_(worlds_tallest_building)_and_the_Dubai_skyline_(25781049892).jpg",
+    "license": "CC BY 2.0",
+    "artist": "imran shahabuddin",
+    "source": "https://commons.wikimedia.org/wiki/File:Burj_Khalifa_(worlds_tallest_building)_and_the_Dubai_skyline_(25781049892).jpg"
+  },
+  {
+    "key": "dubai-mall",
+    "file": "/images/tours/dubai/dubai-mall.jpg",
+    "title": "Dubai Mall",
+    "commonsFile": "File:Dubai_Mall_10.jpg",
+    "license": "CC0",
+    "artist": "EditQ",
+    "source": "https://en.wikipedia.org/wiki/File:Dubai_Mall_10.jpg"
+  },
+  {
+    "key": "desert-safari",
+    "file": "/images/tours/dubai/desert-safari.jpg",
+    "title": "Dune bashing",
+    "commonsFile": "File:Landy4no.jpg",
+    "license": "Public domain",
+    "artist": "Dazzuko at English Wikipedia",
+    "source": "https://commons.wikimedia.org/wiki/File:Landy4no.jpg"
+  },
+  {
+    "key": "dubai-marina",
+    "file": "/images/tours/dubai/dubai-marina.jpg",
+    "title": "Dubai Marina",
+    "commonsFile": "File:Dubai_Marina_Skyline.jpg",
+    "license": "CC BY 2.0",
+    "artist": "Norlando Pobre",
+    "source": "https://commons.wikimedia.org/wiki/File:Dubai_Marina_Skyline.jpg"
+  },
+  {
+    "key": "palm-jumeirah",
+    "file": "/images/tours/dubai/palm-jumeirah.jpg",
+    "title": "Palm Jumeirah",
+    "commonsFile": "File:Artificial_Archipelagos,_Dubai,_United_Arab_Emirates_ISS022-E-024940_lrg_(cropped).jpg",
+    "license": "Public domain",
+    "artist": "Member of the Expedition 22 crew.",
+    "source": "https://commons.wikimedia.org/wiki/File:Artificial_Archipelagos,_Dubai,_United_Arab_Emirates_ISS022-E-024940_lrg_(cropped).jpg"
+  },
+  {
+    "key": "abu-dhabi-mosque",
+    "file": "/images/tours/dubai/abu-dhabi-mosque.jpg",
+    "title": "Sheikh Zayed Grand Mosque",
+    "commonsFile": "File:Sheikh_Zayed_Mosque_view.jpg",
+    "license": "CC-BY-SA-4.0",
+    "artist": "Wikiemirati",
+    "source": "https://en.wikipedia.org/wiki/File:Sheikh_Zayed_Mosque_view.jpg"
+  }
+]
