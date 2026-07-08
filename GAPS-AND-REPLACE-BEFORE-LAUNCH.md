@@ -96,3 +96,45 @@ Connect or confirm each item, then flip it live.
 - Honest wedges: proximity is led only where it is real (Swat, Chitral, Kalash,
   Naran). Hunza and Skardu lead Gilgit Baltistan operator experience instead,
   since they are a flight or a two day drive.
+
+---
+
+## 4. Umrah city pages, gaps and launch gate
+
+Thirteen live city pages under /umrah/umrah-packages-[city], eight Tier 1
+airport cities and five Tier 2 Khyber Pakhtunkhwa cities, each with a real,
+distinct departure passage and local service passage, ten city tailored FAQs,
+and the hub city directory on /umrah. The anti doorway gate is verified, every
+page renders its own real airport or routing fact, none is a name swap.
+
+**Gaps, real data not invented:**
+
+1. **Flight status, verify at launch.** Each city page states its airport and
+   whether Umrah flights are direct or, for Quetta, seasonal and often routed
+   through Karachi. No flight times, schedules, or fares are stated, those are
+   inquiry. Airline routes shift by season, so re-confirm each city's current
+   direct Saudi service before launch, especially the smaller airports,
+   Faisalabad, Sialkot, and Quetta.
+2. **City photos.** The city hero uses the shared Haram image, and the
+   departure and service slots use branded motif panels captioned with the
+   airport or the road. Real airport or office photos would lift them.
+3. **Reviews, accreditation, licence number, consultant name.** The same
+   staging placeholders as the rest of the site, gated, no schema while
+   placeholder.
+
+**Tier 3, not built, available to add as data:**
+
+Rawalpindi via Islamabad, Hyderabad via Karachi, and Gujranwala via Lahore or
+Sialkot are not built, since each folds into a Tier 1 airport nearby. Add them
+to lib/departureCities.ts with live true and a real service angle when
+confirmed, and they render and link automatically. Every other town is covered
+by the all cities line on the hub, no doorway pages.
+
+**Replace before launch, city pages:**
+
+- [ ] Confirm each city's current direct Saudi Umrah flight status, correct any
+      that have changed, or move the city to connecting.
+- [ ] Swap the motif panels and the shared hero for real airport or office
+      photos where available.
+- [ ] Reviews, accreditation, licence number, and consultant name, same as the
+      site wide list above.
