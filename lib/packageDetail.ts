@@ -426,7 +426,7 @@ export const detailContent: Record<string, DetailContent> = {
       },
       {
         q: "Is Baku a good first trip abroad?",
-        a: "Baku suits first time international travelers, with short flights, a simple e-visa, and a compact, walkable city center. Our team handles the visa, hotel, and tours in one booking, so travelers new to international trips move through the journey with clear support from our desk.",
+        a: "Baku suits first time international travelers, with a short flight of about three and a half hours direct, a simple e-visa, and a compact, walkable city center. Our team handles the visa, hotel, and tours in one booking, so travelers new to international trips move through the journey with clear support from our desk.",
       },
       {
         q: "How many days do I need for a Baku tour?",
@@ -454,11 +454,11 @@ export const detailContent: Record<string, DetailContent> = {
       },
       {
         q: "Do you customize the Baku itinerary?",
-        a: "Yes. Our desk adds Sheki with its Khan Palace and Caravanserai, the Shahdag resort, extra Gabala nights, or a slower city pace, and builds the days around your group. Share how many travelers and what you want to see, and we send a plan and a quote for your exact dates.",
+        a: "Yes. Our desk adds Sheki with its Khan Palace and Caravanserai, Ganja with the Nizami Mausoleum, the Bottle House, and Lake Goygol, the Shahdag mountain resort for skiing, zip line, and paragliding, extra Gabala nights, or a slower city pace, and builds the days around your group. Share how many travelers and what you want to see, and we send a plan and a quote for your exact dates.",
       },
       {
-        q: "Do you offer a Dubai and Baku combined tour?",
-        a: "Yes. Our desk builds a Dubai plus Baku trip in one booking, pairing the Dubai city and desert with the Baku Old City and fire sites. The route, the nights in each city, and the flights are arranged together, so tell us your dates and we quote the combined tour for your group.",
+        q: "Do you offer Baku combined tours, with Dubai or Umrah?",
+        a: "Yes. Our desk builds a Dubai plus Baku trip in one booking, pairing the Dubai city and desert with the Baku Old City and fire sites. Pilgrims add a Baku stay before or after an Umrah, since our team runs both, so the Saudi and Azerbaijan legs sit in one plan. Tell us your dates and we quote the combined tour for your group.",
       },
       {
         q: "Which airlines fly to Baku from Pakistan?",
@@ -466,7 +466,7 @@ export const detailContent: Record<string, DetailContent> = {
       },
       {
         q: "Is Baku a Muslim friendly destination with halal food?",
-        a: "Azerbaijan is a majority Muslim country, and halal food is widely available across Baku. Mosques include the Bibi Heybat and the Taza Pir, and prayer is simple to arrange around the touring. Our desk plans meals and stops so travelers from Pakistan stay comfortable throughout the trip.",
+        a: "Azerbaijan is a majority Muslim country, and halal food is widely available across Baku. Mosques include the Bibi Heybat and the Taza Pir, and prayer is simple to arrange around the touring. Urdu is understood in many tourist areas, the culture carries a familiar warmth toward visitors from Pakistan, and our desk plans meals and stops so your group stays comfortable throughout the trip.",
       },
     ],
   },
@@ -1886,7 +1886,7 @@ export const bakuAttractions = [
     name: "Gabala",
     caption: "The Tufandag cable car above Gabala",
     detail:
-      "A resort town in the Caucasus foothills, reached on a full day trip. The Tufandag cable car climbs for mountain views, and the day often adds Nohur Lake and the Yeddi Gozal waterfalls in the green season.",
+      "A resort town in the Caucasus foothills, reached on a full day trip and a cool mountain escape through the summer heat. The Tufandag cable car climbs for mountain views, and the day often adds Nohur Lake, the Yeddi Gozal waterfalls in the green season, and Gabaland for families with children.",
   },
 ];
 
@@ -1909,8 +1909,27 @@ export const bakuPractical = [
     label: "Best time to visit",
     value: "April to June and September to October",
   },
-  { icon: "tag", label: "Currency", value: "Azerbaijani manat, AZN" },
+  {
+    icon: "plane",
+    label: "Flight time",
+    value: "About three and a half hours direct from Pakistan",
+  },
+  {
+    icon: "tag",
+    label: "Currency",
+    value: "Azerbaijani manat, AZN, about 165 PKR each",
+  },
   { icon: "meal", label: "Halal food", value: "Widely available across the city" },
+  {
+    icon: "document",
+    label: "Power and plugs",
+    value: "Type C and F sockets, 230 volts",
+  },
+  {
+    icon: "phone",
+    label: "SIM cards",
+    value: "Azercell, Nar, and Bakcell at the airport",
+  },
   { icon: "clock", label: "Time zone", value: "GMT plus 4" },
   {
     icon: "users",

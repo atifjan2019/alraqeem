@@ -2247,7 +2247,11 @@ export async function PackageDetailView({ pkg }: { pkg: TravelPackage }) {
                   )}
                   {isBaku && (
                     <p className="mt-5 border-t border-black/5 pt-4 text-xs leading-relaxed text-slate-500">
-                      Verify the current rules and apply at the official{" "}
+                      The Azerbaijan e visa is applied for online and issued in
+                      about three to five working days, on a passport valid at
+                      least six months, one photograph, and a copy of your
+                      itinerary. Verify the current rules and apply at the
+                      official{" "}
                       <a
                         href="https://evisa.gov.az"
                         target="_blank"
@@ -2969,6 +2973,42 @@ export async function PackageDetailView({ pkg }: { pkg: TravelPackage }) {
                     >
                       Browse all tours
                     </Link>
+                  </div>
+                </section>
+              )}
+
+              {/* Umrah plus Baku cross sell, ties this tour to the Umrah silo */}
+              {isBaku && (
+                <section className="rounded-3xl bg-brand-blue-deep p-7 text-white shadow-lift sm:p-8">
+                  <p className="eyebrow text-brand-orange">
+                    Baku and Umrah together
+                  </p>
+                  <h2 className="mt-2 font-display text-2xl text-white">
+                    Pair your Baku tour with an Umrah
+                  </h2>
+                  <p className="mt-3 max-w-[65ch] text-base leading-relaxed text-slate-200">
+                    Our desk runs both Umrah and Baku, so pilgrims add the Land
+                    of Fire before or after the holy cities in one journey. The
+                    Saudi visa, the Azerbaijan e visa, the flights, and the
+                    hotels sit in a single booking, arranged end to end by our
+                    team. Tell us your dates and we quote the combined trip for
+                    your group.
+                  </p>
+                  <div className="mt-5 flex flex-col gap-3 sm:flex-row">
+                    <Link href="/umrah" className="btn-orange">
+                      Explore our Umrah packages
+                    </Link>
+                    <a
+                      href={waHref(
+                        settings.whatsapp,
+                        "Assalam o Alaikum, I want a quote for an Umrah plus Baku combined trip for my dates."
+                      )}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="btn border border-white/40 text-white hover:bg-white/10"
+                    >
+                      Get a combo quote
+                    </a>
                   </div>
                 </section>
               )}
