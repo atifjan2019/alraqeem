@@ -138,3 +138,40 @@ by the all cities line on the hub, no doorway pages.
       photos where available.
 - [ ] Reviews, accreditation, licence number, and consultant name, same as the
       site wide list above.
+
+---
+
+## 5. Umrah Plus combos, gaps and launch gate
+
+Five live combo pages under /umrah/umrah-plus-[destination], Baku, Turkey,
+Dubai, Qatar, and Egypt, each Umrah led with a heritage and leisure extension
+on one booking. Jordan is held at live false until routing and access are
+confirmed. Each page links up to the Umrah pillar and sideways to the matching
+tour page or the international hub, the bridge between the two silos.
+
+**Gaps, real data not invented:**
+
+1. **Routing, verify at launch.** Each combo states the honest airline and
+   stopover logic, Baku through the Gulf, Turkey through Istanbul, Dubai and
+   Qatar through their hubs, Egypt through the Gulf or a direct link. No flight
+   times, schedules, or fares are stated, those are inquiry. Confirm the real
+   combined routing per combo for the season before launch.
+2. **Hotels both legs and day plans.** Hotels near the Haram and in the
+   destination, and the night split, are described but not named or fixed to a
+   day plan, both route to inquiry. Send the real hotels per tier to name them.
+3. **One motif panel.** Every combo entity carries a real licensed photo except
+   the Qatar State Mosque, which has no free Commons image and shows a branded
+   panel. A real photo removes it.
+4. **Reviews, accreditation, licence number, consultant name.** The same gated
+   placeholders as the rest of the site.
+
+**Replace before launch, combos:**
+
+- [ ] Confirm the real combined airline routing per combo, correct any that have
+      changed.
+- [ ] Name the real hotels on both legs per tier, if you want them on the page
+      rather than at inquiry.
+- [ ] Add a real photo for the Qatar State Mosque.
+- [ ] Flip Umrah Plus Jordan to live true once the routing and access are
+      confirmed, the data entry is ready.
+- [ ] Reviews, accreditation, licence number, and consultant name, site wide.
