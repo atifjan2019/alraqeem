@@ -23,11 +23,14 @@ import {
 } from "@/lib/departureCities";
 import { getUmrahPlus, liveUmrahPlus } from "@/lib/umrahPlus";
 import UmrahPlusView from "@/components/umrah/UmrahPlusView";
+import { getSeasonalUmrah, liveSeasonalUmrah } from "@/lib/seasonalUmrah";
+import SeasonalUmrahView from "@/components/umrah/SeasonalUmrahView";
 
 export function generateStaticParams() {
   return [
     ...liveDepartureCities().map((c) => ({ city: c.slug })),
     ...liveUmrahPlus().map((c) => ({ city: c.slug })),
+    ...liveSeasonalUmrah().map((s) => ({ city: s.slug })),
   ];
 }
 
@@ -37,6 +40,15 @@ export async function generateMetadata({
   params: Promise<{ city: string }>;
 }): Promise<Metadata> {
   const { city: slug } = await params;
+  const season = getSeasonalUmrah(slug);
+  if (season && season.live) {
+    return {
+      title: { absolute: `${season.season} Umrah Packages from Pakistan | Al Raqeem` },
+      description: `${season.season} Umrah packages from Pakistan for ${season.hijriYear}, ${season.gregorianWindow}. The Saudi Nusuk visa, hotels near the Haram, guided Ziyarat, departing Peshawar and Islamabad, quoted on inquiry.`,
+      alternates: { canonical: `/umrah/${season.slug}` },
+      openGraph: { url: `/umrah/${season.slug}` },
+    };
+  }
   const combo = getUmrahPlus(slug);
   if (combo && combo.live) {
     return {
@@ -79,7 +91,12 @@ export default async function UmrahCityPage({
   const { city: slug } = await params;
   const settings = await getSettings();
 
-  // Dispatch: an Umrah Plus combo, or a departure city page.
+  // Dispatch: a seasonal Umrah, an Umrah Plus combo, or a departure city page.
+  const season = getSeasonalUmrah(slug);
+  if (season && season.live) {
+    return <SeasonalUmrahView season={season} settings={settings} />;
+  }
+
   const combo = getUmrahPlus(slug);
   if (combo && combo.live) {
     return <UmrahPlusView combo={combo} settings={settings} />;

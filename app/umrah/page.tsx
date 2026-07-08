@@ -14,6 +14,7 @@ import LastUpdated from "@/components/LastUpdated";
 import SearchInquiryWidget from "@/components/SearchInquiryWidget";
 import DepartureCityDirectory from "@/components/DepartureCityDirectory";
 import UmrahPlusStrip from "@/components/umrah/UmrahPlusStrip";
+import SeasonalUmrahStrip from "@/components/umrah/SeasonalUmrahStrip";
 import { getPackages } from "@/lib/packagesStore";
 import { getSettings } from "@/lib/settingsStore";
 import { reviewData } from "@/lib/reviews";
@@ -202,6 +203,9 @@ export default async function UmrahHubPage() {
           <TierCompare />
         </div>
       </section>
+
+      {/* Seasonal Umrah, the Islamic calendar pages */}
+      <SeasonalUmrahStrip />
 
       {/* Umrah Plus combos, the bridge to the tours silo */}
       <UmrahPlusStrip />

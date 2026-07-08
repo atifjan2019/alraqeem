@@ -3,6 +3,7 @@ import { site } from "@/lib/site";
 import { cities } from "@/lib/cities";
 import { liveDepartureCities } from "@/lib/departureCities";
 import { liveUmrahPlus } from "@/lib/umrahPlus";
+import { liveSeasonalUmrah } from "@/lib/seasonalUmrah";
 import { getPosts } from "@/lib/postsStore";
 
 export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
@@ -67,10 +68,15 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
     lastModified: new Date(),
   }));
 
+  const seasonalUmrahPages = liveSeasonalUmrah().map((s) => ({
+    url: `${site.url}/umrah/${s.slug}`,
+    lastModified: new Date(),
+  }));
+
   const postPages = posts.map((p) => ({
     url: `${site.url}/blog/${p.slug}`,
     lastModified: new Date(p.date),
   }));
 
-  return [...staticPages, ...cityPages, ...umrahCityPages, ...umrahPlusPages, ...postPages];
+  return [...staticPages, ...cityPages, ...umrahCityPages, ...umrahPlusPages, ...seasonalUmrahPages, ...postPages];
 }
