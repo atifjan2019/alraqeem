@@ -175,7 +175,7 @@ export async function PackageDetailView({ pkg }: { pkg: TravelPackage }) {
   // CTA. Tours share one benefit line; each pilgrimage package names its own
   // entities and answers what the package delivers.
   const heroSubhead = isDomestic
-    ? "Transport, hotels, and every sight handled across the northern areas. You travel, and our desk arranges it all, quoted for your exact dates with no hidden charges."
+    ? "Transport, hotels, and every sight handled, run from our Charsadda base. You travel, and our desk arranges it all, quoted for your exact dates with no hidden charges."
     : isTour
     ? "Visa, flights, hotel, and every sight handled. You travel, and our desk arranges it all, quoted for your exact dates with no hidden charges."
     : pkg.slug === "economy-umrah-15-days"

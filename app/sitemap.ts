@@ -15,6 +15,7 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
     "/hajj",
     "/tours",
     "/tours/international-tours",
+    "/tours/pakistan",
     "/tours/dubai",
     "/tours/turkey",
     "/tours/baku",

@@ -255,8 +255,16 @@ export default async function ToursPage() {
               ))}
             </div>
             <p className="mt-6 max-w-3xl text-sm leading-relaxed text-slate-500">
-              More northern areas are on the way, Kumrat, Kalash, Chitral, Hunza,
-              Skardu, and Naran. Message our desk for a trip to any of them.
+              See the full{" "}
+              <Link
+                href="/tours/pakistan"
+                className="font-semibold text-brand-blue underline"
+              >
+                Pakistan tour packages
+              </Link>{" "}
+              hub for every region, with Kashmir, Neelum Valley, Fairy Meadows,
+              and more of the north on the way. Message our desk for a trip to any
+              of them.
             </p>
           </div>
         </section>
