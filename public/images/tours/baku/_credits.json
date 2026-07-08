@@ -1,0 +1,47 @@
+[
+  {
+    "key": "old-city",
+    "file": "/images/tours/baku/old-city.jpg",
+    "title": "Maiden Tower (Baku)",
+    "commonsFile": "File:Maiden_tower_IMG_8521.jpg",
+    "license": "CC BY-SA 4.0",
+    "artist": "AlixSaz",
+    "source": "https://commons.wikimedia.org/wiki/File:Maiden_tower_IMG_8521.jpg"
+  },
+  {
+    "key": "flame-towers",
+    "file": "/images/tours/baku/flame-towers.jpg",
+    "title": "Flame Towers",
+    "commonsFile": "File:Flame_towers_baku.jpg",
+    "license": "CC0",
+    "artist": "Viceskeeni2",
+    "source": "https://en.wikipedia.org/wiki/File:Flame_towers_baku.jpg"
+  },
+  {
+    "key": "ateshgah",
+    "file": "/images/tours/baku/ateshgah.jpg",
+    "title": "Ateshgah of Baku",
+    "commonsFile": "File:Ateshgah_Fire_Temple.jpg",
+    "license": "CC BY 2.0",
+    "artist": "Nick Taylor",
+    "source": "https://commons.wikimedia.org/wiki/File:Ateshgah_Fire_Temple.jpg"
+  },
+  {
+    "key": "yanardag",
+    "file": "/images/tours/baku/yanardag.jpg",
+    "title": "Yanar Dag",
+    "commonsFile": "File:Yanar_Dagh.JPG",
+    "license": "CC BY-SA 3.0",
+    "artist": "Frokor",
+    "source": "https://commons.wikimedia.org/wiki/File:Yanar_Dagh.JPG"
+  },
+  {
+    "key": "gobustan",
+    "file": "/images/tours/baku/gobustan.jpg",
+    "title": "Gobustan National Park",
+    "commonsFile": "File:Qobustan_giriş_qayası_2026_(1).jpg",
+    "license": "CC BY-SA 4.0",
+    "artist": "Rəcəb Yaxşı",
+    "source": "https://commons.wikimedia.org/wiki/File:Qobustan_giri%C5%9F_qayas%C4%B1_2026_(1).jpg"
+  }
+]

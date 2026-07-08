@@ -1,0 +1,74 @@
+[
+  {
+    "key": "marina-bay-sands",
+    "file": "/images/tours/singapore/marina-bay-sands.jpg",
+    "title": "Marina Bay Sands",
+    "commonsFile": "File:Marina_Bay_Sands_(I).jpg",
+    "license": "CC BY 4.0",
+    "artist": "This Photo was taken by Supanut Arunoprayote . Feel free to ",
+    "source": "https://commons.wikimedia.org/wiki/File:Marina_Bay_Sands_(I).jpg"
+  },
+  {
+    "key": "gardens-by-the-bay",
+    "file": "/images/tours/singapore/gardens-by-the-bay.jpg",
+    "title": "Gardens by the Bay",
+    "commonsFile": "File:Supertree_Grove,_Gardens_by_the_Bay,_Singapore_-_20120712-02.jpg",
+    "license": "CC BY 2.0",
+    "artist": "Shiny Things .",
+    "source": "https://commons.wikimedia.org/wiki/File:Supertree_Grove,_Gardens_by_the_Bay,_Singapore_-_20120712-02.jpg"
+  },
+  {
+    "key": "sentosa-universal",
+    "file": "/images/tours/singapore/sentosa-universal.jpg",
+    "title": "Universal Studios Singapore",
+    "commonsFile": "File:Universal_Studios_Singapore_Gate.jpg",
+    "license": "CC BY-SA 2.0",
+    "artist": "ashleyt",
+    "source": "https://commons.wikimedia.org/wiki/File:Universal_Studios_Singapore_Gate.jpg"
+  },
+  {
+    "key": "merlion",
+    "file": "/images/tours/singapore/merlion.jpg",
+    "title": "Merlion",
+    "commonsFile": "File:Singapore_Skyline_2019-10.jpg",
+    "license": "CC BY-SA 4.0",
+    "artist": "Unwicked",
+    "source": "https://commons.wikimedia.org/wiki/File:Singapore_Skyline_2019-10.jpg"
+  },
+  {
+    "key": "night-safari",
+    "file": "/images/tours/singapore/night-safari.jpg",
+    "title": "Night Safari, Singapore",
+    "commonsFile": "File:Entrance_of_Night_Safari,_Singapore,_2012.jpg",
+    "license": "CC BY 2.0",
+    "artist": "Allie Caulfield",
+    "source": "https://commons.wikimedia.org/wiki/File:Entrance_of_Night_Safari,_Singapore,_2012.jpg"
+  },
+  {
+    "key": "singapore-flyer",
+    "file": "/images/tours/singapore/singapore-flyer.jpg",
+    "title": "Singapore Flyer",
+    "commonsFile": "File:Singapore_Flyer_20250903.jpg",
+    "license": "CC0",
+    "artist": "DvTor8303",
+    "source": "https://commons.wikimedia.org/wiki/File:Singapore_Flyer_20250903.jpg"
+  },
+  {
+    "key": "kampong-glam",
+    "file": "/images/tours/singapore/kampong-glam.jpg",
+    "title": "Kampong Glam",
+    "commonsFile": "File:Kampong_Glam_aerial_shot_-_20250628_-_RSKY.jpg",
+    "license": "CC BY-SA 4.0",
+    "artist": "Robert Sim",
+    "source": "https://commons.wikimedia.org/wiki/File:Kampong_Glam_aerial_shot_-_20250628_-_RSKY.jpg"
+  },
+  {
+    "key": "jewel-changi",
+    "file": "/images/tours/singapore/jewel-changi.jpg",
+    "title": "Jewel Changi Airport",
+    "commonsFile": "File:Jewel_Changi_Airport_13-11-2023(1).jpg",
+    "license": "CC BY-SA 4.0",
+    "artist": "LN9267",
+    "source": "https://commons.wikimedia.org/wiki/File:Jewel_Changi_Airport_13-11-2023(1).jpg"
+  }
+]

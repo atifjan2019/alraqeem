@@ -1,0 +1,56 @@
+[
+  {
+    "key": "hagia-sophia",
+    "file": "/images/tours/turkey/hagia-sophia.jpg",
+    "title": "Hagia Sophia",
+    "commonsFile": "File:Hagia_Sophia_(228968325).jpeg",
+    "license": "CC BY-SA 3.0",
+    "artist": "Adli Wahid",
+    "source": "https://commons.wikimedia.org/wiki/File:Hagia_Sophia_(228968325).jpeg"
+  },
+  {
+    "key": "blue-mosque",
+    "file": "/images/tours/turkey/blue-mosque.jpg",
+    "title": "Sultan Ahmed Mosque",
+    "commonsFile": "File:Istanbul_(34223582516)_(cropped).jpg",
+    "license": "CC BY-SA 2.0",
+    "artist": "Pedro Szekely from Los Angeles, USA",
+    "source": "https://commons.wikimedia.org/wiki/File:Istanbul_(34223582516)_(cropped).jpg"
+  },
+  {
+    "key": "bosphorus",
+    "file": "/images/tours/turkey/bosphorus.jpg",
+    "title": "Bosphorus",
+    "commonsFile": "File:2007 0919 Bosporus Rumelihisarı.jpg",
+    "license": "CC BY-SA 3.0",
+    "artist": "Takeaway",
+    "source": "https://commons.wikimedia.org/wiki/File:2007_0919_Bosporus_Rumelihisar%C4%B1.jpg"
+  },
+  {
+    "key": "cappadocia",
+    "file": "/images/tours/turkey/cappadocia.jpg",
+    "title": "Cappadocia",
+    "commonsFile": "File:Cappadocia_balloon_trip,_Ortahisar_Castle_(11893715185).jpg",
+    "license": "CC BY 2.0",
+    "artist": "Arian Zwegers from Brussels, Belgium",
+    "source": "https://commons.wikimedia.org/wiki/File:Cappadocia_balloon_trip,_Ortahisar_Castle_(11893715185).jpg"
+  },
+  {
+    "key": "grand-bazaar",
+    "file": "/images/tours/turkey/grand-bazaar.jpg",
+    "title": "Topkapı Palace",
+    "commonsFile": "File:Topkapı_-_01.jpg",
+    "license": "CC BY-SA 3.0",
+    "artist": "Carlos Delgado",
+    "source": "https://commons.wikimedia.org/wiki/File:Topkap%C4%B1_-_01.jpg"
+  },
+  {
+    "key": "pamukkale",
+    "file": "/images/tours/turkey/pamukkale.jpg",
+    "title": "Pamukkale",
+    "commonsFile": "File:Pamukkale,_Denizli_2026_68.jpg",
+    "license": "CC BY-SA 4.0",
+    "artist": "Biologg",
+    "source": "https://commons.wikimedia.org/wiki/File:Pamukkale,_Denizli_2026_68.jpg"
+  }
+]

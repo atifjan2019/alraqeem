@@ -1,5 +1,55 @@
 [
   {
+    "slug": "baku",
+    "key": "ateshgah",
+    "file": "/images/tours/baku/ateshgah.jpg",
+    "title": "Ateshgah of Baku",
+    "commonsFile": "File:Ateshgah_Fire_Temple.jpg",
+    "license": "CC BY 2.0",
+    "artist": "Nick Taylor",
+    "source": "https://commons.wikimedia.org/wiki/File:Ateshgah_Fire_Temple.jpg"
+  },
+  {
+    "slug": "baku",
+    "key": "flame-towers",
+    "file": "/images/tours/baku/flame-towers.jpg",
+    "title": "Flame Towers",
+    "commonsFile": "File:Flame_towers_baku.jpg",
+    "license": "CC0",
+    "artist": "Viceskeeni2",
+    "source": "https://en.wikipedia.org/wiki/File:Flame_towers_baku.jpg"
+  },
+  {
+    "slug": "baku",
+    "key": "gobustan",
+    "file": "/images/tours/baku/gobustan.jpg",
+    "title": "Gobustan National Park",
+    "commonsFile": "File:Qobustan_giriş_qayası_2026_(1).jpg",
+    "license": "CC BY-SA 4.0",
+    "artist": "Rəcəb Yaxşı",
+    "source": "https://commons.wikimedia.org/wiki/File:Qobustan_giri%C5%9F_qayas%C4%B1_2026_(1).jpg"
+  },
+  {
+    "slug": "baku",
+    "key": "old-city",
+    "file": "/images/tours/baku/old-city.jpg",
+    "title": "Maiden Tower (Baku)",
+    "commonsFile": "File:Maiden_tower_IMG_8521.jpg",
+    "license": "CC BY-SA 4.0",
+    "artist": "AlixSaz",
+    "source": "https://commons.wikimedia.org/wiki/File:Maiden_tower_IMG_8521.jpg"
+  },
+  {
+    "slug": "baku",
+    "key": "yanardag",
+    "file": "/images/tours/baku/yanardag.jpg",
+    "title": "Yanar Dag",
+    "commonsFile": "File:Yanar_Dagh.JPG",
+    "license": "CC BY-SA 3.0",
+    "artist": "Frokor",
+    "source": "https://commons.wikimedia.org/wiki/File:Yanar_Dagh.JPG"
+  },
+  {
     "slug": "dubai",
     "key": "abu-dhabi-mosque",
     "file": "/images/tours/dubai/abu-dhabi-mosque.jpg",
@@ -58,5 +108,405 @@
     "license": "Public domain",
     "artist": "Member of the Expedition 22 crew.",
     "source": "https://commons.wikimedia.org/wiki/File:Artificial_Archipelagos,_Dubai,_United_Arab_Emirates_ISS022-E-024940_lrg_(cropped).jpg"
+  },
+  {
+    "slug": "kumrat",
+    "key": "jahaz-banda",
+    "file": "/images/tours/kumrat/jahaz-banda.jpg",
+    "title": "Jahaz Banda",
+    "commonsFile": "File:Jahaz_Banda_Meadows_-_3,100_m_(Kumrat_Valley).jpg",
+    "license": "CC BY-SA 4.0",
+    "artist": "Shahbaz Aslam",
+    "source": "https://commons.wikimedia.org/wiki/File:Jahaz_Banda_Meadows_-_3,100_m_(Kumrat_Valley).jpg"
+  },
+  {
+    "slug": "kumrat",
+    "key": "katora-lake",
+    "file": "/images/tours/kumrat/katora-lake.jpg",
+    "title": "Katora Lake",
+    "commonsFile": "File:Katora_lake_dir.jpg",
+    "license": "CC BY-SA 4.0",
+    "artist": "Jehan Sher",
+    "source": "https://commons.wikimedia.org/wiki/File:Katora_lake_dir.jpg"
+  },
+  {
+    "slug": "kumrat",
+    "key": "kumrat-forest",
+    "file": "/images/tours/kumrat/kumrat-forest.jpg",
+    "title": "Kumrat Valley",
+    "commonsFile": "File:Evening_shades.jpg",
+    "license": "CC BY-SA 4.0",
+    "artist": "Ali Rasheed",
+    "source": "https://commons.wikimedia.org/wiki/File:Evening_shades.jpg"
+  },
+  {
+    "slug": "kumrat",
+    "key": "kumrat-waterfall",
+    "file": "/images/tours/kumrat/kumrat-waterfall.jpg",
+    "title": "Kumrat",
+    "commonsFile": "File:Evening_shades.jpg",
+    "license": "CC BY-SA 4.0",
+    "artist": "Ali Rasheed",
+    "source": "https://commons.wikimedia.org/wiki/File:Evening_shades.jpg"
+  },
+  {
+    "slug": "kumrat",
+    "key": "panjkora",
+    "file": "/images/tours/kumrat/panjkora.jpg",
+    "title": "Panjkora River",
+    "commonsFile": "File:Panjkora_River_in_Kumrat_Valley.jpg",
+    "license": "CC BY-SA 4.0",
+    "artist": "Ashfaqq",
+    "source": "https://commons.wikimedia.org/wiki/File:Panjkora_River_in_Kumrat_Valley.jpg"
+  },
+  {
+    "slug": "malaysia",
+    "key": "batu-caves",
+    "file": "/images/tours/malaysia/batu-caves.jpg",
+    "title": "Batu Caves",
+    "commonsFile": "File:Batu_Caves_stairs_2022-05.jpg",
+    "license": "CC BY-SA 4.0",
+    "artist": "Chainwit.",
+    "source": "https://commons.wikimedia.org/wiki/File:Batu_Caves_stairs_2022-05.jpg"
+  },
+  {
+    "slug": "malaysia",
+    "key": "cameron-highlands",
+    "file": "/images/tours/malaysia/cameron-highlands.jpg",
+    "title": "Cameron Highlands",
+    "commonsFile": "File:Tea_fields_(Will_Ellis).jpg",
+    "license": "CC BY 2.0",
+    "artist": "Will Ellis from Reading, England",
+    "source": "https://commons.wikimedia.org/wiki/File:Tea_fields_(Will_Ellis).jpg"
+  },
+  {
+    "slug": "malaysia",
+    "key": "genting",
+    "file": "/images/tours/malaysia/genting.jpg",
+    "title": "Genting Highlands",
+    "commonsFile": "File:Genting_SkyWorlds_Theme_Park.jpg",
+    "license": "CC BY-SA 4.0",
+    "artist": "Chongkian",
+    "source": "https://commons.wikimedia.org/wiki/File:Genting_SkyWorlds_Theme_Park.jpg"
+  },
+  {
+    "slug": "malaysia",
+    "key": "george-town",
+    "file": "/images/tours/malaysia/george-town.jpg",
+    "title": "George Town, Penang",
+    "commonsFile": "File:Skyline_of_George_Town,_Penang_at_night_Nov2024-29-17.jpg",
+    "license": "CC BY-SA 4.0",
+    "artist": "HundenvonPenang",
+    "source": "https://commons.wikimedia.org/wiki/File:Skyline_of_George_Town,_Penang_at_night_Nov2024-29-17.jpg"
+  },
+  {
+    "slug": "malaysia",
+    "key": "langkawi",
+    "file": "/images/tours/malaysia/langkawi.jpg",
+    "title": "Langkawi",
+    "commonsFile": "File:Eagle_square_at_Kuah_Langkawi.jpg",
+    "license": "CC BY-SA 4.0",
+    "artist": "Ttt.Osakanman",
+    "source": "https://commons.wikimedia.org/wiki/File:Eagle_square_at_Kuah_Langkawi.jpg"
+  },
+  {
+    "slug": "malaysia",
+    "key": "national-mosque",
+    "file": "/images/tours/malaysia/national-mosque.jpg",
+    "title": "National Mosque of Malaysia",
+    "commonsFile": "File:Masjid_Negara_Malaysia_20250822.jpg",
+    "license": "CC0",
+    "artist": "DvTor8303",
+    "source": "https://commons.wikimedia.org/wiki/File:Masjid_Negara_Malaysia_20250822.jpg"
+  },
+  {
+    "slug": "malaysia",
+    "key": "petronas",
+    "file": "/images/tours/malaysia/petronas.jpg",
+    "title": "Petronas Towers",
+    "commonsFile": "File:2016 Kuala Lumpur, Park KLCC i Suria KLCC (cropped).jpg",
+    "license": "CC BY-SA 4.0",
+    "artist": "Marcin Konsek",
+    "source": "https://commons.wikimedia.org/wiki/File:2016_Kuala_Lumpur,_Park_KLCC_i_Suria_KLCC_(cropped).jpg"
+  },
+  {
+    "slug": "malaysia",
+    "key": "putra-mosque",
+    "file": "/images/tours/malaysia/putra-mosque.jpg",
+    "title": "Putra Mosque",
+    "commonsFile": "File:Masjid_Putra,_Putrajaya,_Malaysia.jpg",
+    "license": "CC BY 4.0",
+    "artist": "iPhone",
+    "source": "https://commons.wikimedia.org/wiki/File:Masjid_Putra,_Putrajaya,_Malaysia.jpg"
+  },
+  {
+    "slug": "singapore",
+    "key": "gardens-by-the-bay",
+    "file": "/images/tours/singapore/gardens-by-the-bay.jpg",
+    "title": "Gardens by the Bay",
+    "commonsFile": "File:Supertree_Grove,_Gardens_by_the_Bay,_Singapore_-_20120712-02.jpg",
+    "license": "CC BY 2.0",
+    "artist": "Shiny Things .",
+    "source": "https://commons.wikimedia.org/wiki/File:Supertree_Grove,_Gardens_by_the_Bay,_Singapore_-_20120712-02.jpg"
+  },
+  {
+    "slug": "singapore",
+    "key": "jewel-changi",
+    "file": "/images/tours/singapore/jewel-changi.jpg",
+    "title": "Jewel Changi Airport",
+    "commonsFile": "File:Jewel_Changi_Airport_13-11-2023(1).jpg",
+    "license": "CC BY-SA 4.0",
+    "artist": "LN9267",
+    "source": "https://commons.wikimedia.org/wiki/File:Jewel_Changi_Airport_13-11-2023(1).jpg"
+  },
+  {
+    "slug": "singapore",
+    "key": "kampong-glam",
+    "file": "/images/tours/singapore/kampong-glam.jpg",
+    "title": "Kampong Glam",
+    "commonsFile": "File:Kampong_Glam_aerial_shot_-_20250628_-_RSKY.jpg",
+    "license": "CC BY-SA 4.0",
+    "artist": "Robert Sim",
+    "source": "https://commons.wikimedia.org/wiki/File:Kampong_Glam_aerial_shot_-_20250628_-_RSKY.jpg"
+  },
+  {
+    "slug": "singapore",
+    "key": "marina-bay-sands",
+    "file": "/images/tours/singapore/marina-bay-sands.jpg",
+    "title": "Marina Bay Sands",
+    "commonsFile": "File:Marina_Bay_Sands_(I).jpg",
+    "license": "CC BY 4.0",
+    "artist": "This Photo was taken by Supanut Arunoprayote . Feel free to ",
+    "source": "https://commons.wikimedia.org/wiki/File:Marina_Bay_Sands_(I).jpg"
+  },
+  {
+    "slug": "singapore",
+    "key": "merlion",
+    "file": "/images/tours/singapore/merlion.jpg",
+    "title": "Merlion",
+    "commonsFile": "File:Singapore_Skyline_2019-10.jpg",
+    "license": "CC BY-SA 4.0",
+    "artist": "Unwicked",
+    "source": "https://commons.wikimedia.org/wiki/File:Singapore_Skyline_2019-10.jpg"
+  },
+  {
+    "slug": "singapore",
+    "key": "night-safari",
+    "file": "/images/tours/singapore/night-safari.jpg",
+    "title": "Night Safari, Singapore",
+    "commonsFile": "File:Entrance_of_Night_Safari,_Singapore,_2012.jpg",
+    "license": "CC BY 2.0",
+    "artist": "Allie Caulfield",
+    "source": "https://commons.wikimedia.org/wiki/File:Entrance_of_Night_Safari,_Singapore,_2012.jpg"
+  },
+  {
+    "slug": "singapore",
+    "key": "sentosa-universal",
+    "file": "/images/tours/singapore/sentosa-universal.jpg",
+    "title": "Universal Studios Singapore",
+    "commonsFile": "File:Universal_Studios_Singapore_Gate.jpg",
+    "license": "CC BY-SA 2.0",
+    "artist": "ashleyt",
+    "source": "https://commons.wikimedia.org/wiki/File:Universal_Studios_Singapore_Gate.jpg"
+  },
+  {
+    "slug": "singapore",
+    "key": "singapore-flyer",
+    "file": "/images/tours/singapore/singapore-flyer.jpg",
+    "title": "Singapore Flyer",
+    "commonsFile": "File:Singapore_Flyer_20250903.jpg",
+    "license": "CC0",
+    "artist": "DvTor8303",
+    "source": "https://commons.wikimedia.org/wiki/File:Singapore_Flyer_20250903.jpg"
+  },
+  {
+    "slug": "swat",
+    "key": "bahrain",
+    "file": "/images/tours/swat/bahrain.jpg",
+    "title": "Bahrain, Swat",
+    "commonsFile": "File:Bahrain_Valley,_Swat,_KPK.JPG",
+    "license": "CC BY-SA 3.0",
+    "artist": "Muhammad Ashar",
+    "source": "https://commons.wikimedia.org/wiki/File:Bahrain_Valley,_Swat,_KPK.JPG"
+  },
+  {
+    "slug": "swat",
+    "key": "kalam",
+    "file": "/images/tours/swat/kalam.jpg",
+    "title": "Kalam, Swat",
+    "commonsFile": "File:Kalam,_Swat_(Pakistan).jpg",
+    "license": "CC BY-SA 4.0",
+    "artist": "Muhammad Akram Attari",
+    "source": "https://commons.wikimedia.org/wiki/File:Kalam,_Swat_(Pakistan).jpg"
+  },
+  {
+    "slug": "swat",
+    "key": "mahodand-lake",
+    "file": "/images/tours/swat/mahodand-lake.jpg",
+    "title": "Mahodand Lake",
+    "commonsFile": "File:River_Swat_Pakistan_3.jpg",
+    "license": "CC BY-SA 3.0",
+    "artist": "Designer429",
+    "source": "https://commons.wikimedia.org/wiki/File:River_Swat_Pakistan_3.jpg"
+  },
+  {
+    "slug": "swat",
+    "key": "malam-jabba",
+    "file": "/images/tours/swat/malam-jabba.jpg",
+    "title": "Malam Jabba",
+    "commonsFile": "File:Malam_Jaba,_Swat,_Pakistan.JPG",
+    "license": "CC BY-SA 4.0",
+    "artist": "Mehlab Jameel",
+    "source": "https://commons.wikimedia.org/wiki/File:Malam_Jaba,_Swat,_Pakistan.JPG"
+  },
+  {
+    "slug": "swat",
+    "key": "swat-museum",
+    "file": "/images/tours/swat/swat-museum.jpg",
+    "title": "Swat Museum",
+    "commonsFile": "File:Swat_Museum.jpg",
+    "license": "CC BY-SA 4.0",
+    "artist": "Adilswati",
+    "source": "https://commons.wikimedia.org/wiki/File:Swat_Museum.jpg"
+  },
+  {
+    "slug": "swat",
+    "key": "white-palace",
+    "file": "/images/tours/swat/white-palace.jpg",
+    "title": "Marghazar",
+    "commonsFile": "File:A_marghazar_village_in_background.JPG",
+    "license": "CC BY-SA 3.0",
+    "artist": "Samikhanjb",
+    "source": "https://commons.wikimedia.org/wiki/File:A_marghazar_village_in_background.JPG"
+  },
+  {
+    "slug": "thailand",
+    "key": "coral-island",
+    "file": "/images/tours/thailand/coral-island.png",
+    "title": "Ko Lan",
+    "commonsFile": "File:Ko Lan74.png",
+    "license": "Public domain",
+    "artist": "Xufanc",
+    "source": "https://commons.wikimedia.org/wiki/File:Ko_Lan74.png"
+  },
+  {
+    "slug": "thailand",
+    "key": "golden-buddha",
+    "file": "/images/tours/thailand/golden-buddha.jpg",
+    "title": "Golden Buddha (statue)",
+    "commonsFile": "File:วัดไตรมิตรวิทยารามวรวิหาร_เขตสัมพันธวงศ์_กรุงเทพมหานคร_(70).jpg",
+    "license": "CC BY-SA 4.0",
+    "artist": "กสิณธร ราชโอรส",
+    "source": "https://commons.wikimedia.org/wiki/File:%E0%B8%A7%E0%B8%B1%E0%B8%94%E0%B9%84%E0%B8%95%E0%B8%A3%E0%B8%A1%E0%B8%B4%E0%B8%95%E0%B8%A3%E0%B8%A7%E0%B8%B4%E0%B8%97%E0%B8%A2%E0%B8%B2%E0%B8%A3%E0%B8%B2%E0%B8%A1%E0%B8%A7%E0%B8%A3%E0%B8%A7%E0%B8%B4%E0%B8%AB%E0%B8%B2%E0%B8%A3_%E0%B9%80%E0%B8%82%E0%B8%95%E0%B8%AA%E0%B8%B1%E0%B8%A1%E0%B8%9E%E0%B8%B1%E0%B8%99%E0%B8%98%E0%B8%A7%E0%B8%87%E0%B8%A8%E0%B9%8C_%E0%B8%81%E0%B8%A3%E0%B8%B8%E0%B8%87%E0%B9%80%E0%B8%97%E0%B8%9E%E0%B8%A1%E0%B8%AB%E0%B8%B2%E0%B8%99%E0%B8%84%E0%B8%A3_(70).jpg"
+  },
+  {
+    "slug": "thailand",
+    "key": "grand-palace",
+    "file": "/images/tours/thailand/grand-palace.jpg",
+    "title": "Grand Palace",
+    "commonsFile": "File:0005574_-_Wat_Phra_Kaew_006.jpg",
+    "license": "CC BY-SA 4.0",
+    "artist": "Preecha.MJ",
+    "source": "https://commons.wikimedia.org/wiki/File:0005574_-_Wat_Phra_Kaew_006.jpg"
+  },
+  {
+    "slug": "thailand",
+    "key": "krabi",
+    "file": "/images/tours/thailand/krabi.jpg",
+    "title": "Railay Beach",
+    "commonsFile": "File:Railay_Beach_5.jpg",
+    "license": "CC BY-SA 3.0",
+    "artist": "kallerna",
+    "source": "https://commons.wikimedia.org/wiki/File:Railay_Beach_5.jpg"
+  },
+  {
+    "slug": "thailand",
+    "key": "phi-phi",
+    "file": "/images/tours/thailand/phi-phi.jpg",
+    "title": "Phi Phi Islands",
+    "commonsFile": "File:KohPhiPhi.JPG",
+    "license": "CC BY 3.0 au",
+    "artist": "Luxure",
+    "source": "https://commons.wikimedia.org/wiki/File:KohPhiPhi.JPG"
+  },
+  {
+    "slug": "thailand",
+    "key": "sanctuary-of-truth",
+    "file": "/images/tours/thailand/sanctuary-of-truth.jpg",
+    "title": "Sanctuary of Truth",
+    "commonsFile": "File:Santuaryoftruth2.jpg",
+    "license": "CC BY-SA 3.0",
+    "artist": "Marlinjuice at English Wikipedia",
+    "source": "https://commons.wikimedia.org/wiki/File:Santuaryoftruth2.jpg"
+  },
+  {
+    "slug": "thailand",
+    "key": "wat-arun",
+    "file": "/images/tours/thailand/wat-arun.jpg",
+    "title": "Wat Arun",
+    "commonsFile": "File:เจดีย์ประธานทรงปรางค์วัดอรุณ2.jpg",
+    "license": "CC BY-SA 4.0",
+    "artist": "Mastertongapollo",
+    "source": "https://commons.wikimedia.org/wiki/File:%E0%B9%80%E0%B8%88%E0%B8%94%E0%B8%B5%E0%B8%A2%E0%B9%8C%E0%B8%9B%E0%B8%A3%E0%B8%B0%E0%B8%98%E0%B8%B2%E0%B8%99%E0%B8%97%E0%B8%A3%E0%B8%87%E0%B8%9B%E0%B8%A3%E0%B8%B2%E0%B8%87%E0%B8%84%E0%B9%8C%E0%B8%A7%E0%B8%B1%E0%B8%94%E0%B8%AD%E0%B8%A3%E0%B8%B8%E0%B8%932.jpg"
+  },
+  {
+    "slug": "turkey",
+    "key": "blue-mosque",
+    "file": "/images/tours/turkey/blue-mosque.jpg",
+    "title": "Sultan Ahmed Mosque",
+    "commonsFile": "File:Istanbul_(34223582516)_(cropped).jpg",
+    "license": "CC BY-SA 2.0",
+    "artist": "Pedro Szekely from Los Angeles, USA",
+    "source": "https://commons.wikimedia.org/wiki/File:Istanbul_(34223582516)_(cropped).jpg"
+  },
+  {
+    "slug": "turkey",
+    "key": "bosphorus",
+    "file": "/images/tours/turkey/bosphorus.jpg",
+    "title": "Bosphorus",
+    "commonsFile": "File:2007 0919 Bosporus Rumelihisarı.jpg",
+    "license": "CC BY-SA 3.0",
+    "artist": "Takeaway",
+    "source": "https://commons.wikimedia.org/wiki/File:2007_0919_Bosporus_Rumelihisar%C4%B1.jpg"
+  },
+  {
+    "slug": "turkey",
+    "key": "cappadocia",
+    "file": "/images/tours/turkey/cappadocia.jpg",
+    "title": "Cappadocia",
+    "commonsFile": "File:Cappadocia_balloon_trip,_Ortahisar_Castle_(11893715185).jpg",
+    "license": "CC BY 2.0",
+    "artist": "Arian Zwegers from Brussels, Belgium",
+    "source": "https://commons.wikimedia.org/wiki/File:Cappadocia_balloon_trip,_Ortahisar_Castle_(11893715185).jpg"
+  },
+  {
+    "slug": "turkey",
+    "key": "grand-bazaar",
+    "file": "/images/tours/turkey/grand-bazaar.jpg",
+    "title": "Topkapı Palace",
+    "commonsFile": "File:Topkapı_-_01.jpg",
+    "license": "CC BY-SA 3.0",
+    "artist": "Carlos Delgado",
+    "source": "https://commons.wikimedia.org/wiki/File:Topkap%C4%B1_-_01.jpg"
+  },
+  {
+    "slug": "turkey",
+    "key": "hagia-sophia",
+    "file": "/images/tours/turkey/hagia-sophia.jpg",
+    "title": "Hagia Sophia",
+    "commonsFile": "File:Hagia_Sophia_(228968325).jpeg",
+    "license": "CC BY-SA 3.0",
+    "artist": "Adli Wahid",
+    "source": "https://commons.wikimedia.org/wiki/File:Hagia_Sophia_(228968325).jpeg"
+  },
+  {
+    "slug": "turkey",
+    "key": "pamukkale",
+    "file": "/images/tours/turkey/pamukkale.jpg",
+    "title": "Pamukkale",
+    "commonsFile": "File:Pamukkale,_Denizli_2026_68.jpg",
+    "license": "CC BY-SA 4.0",
+    "artist": "Biologg",
+    "source": "https://commons.wikimedia.org/wiki/File:Pamukkale,_Denizli_2026_68.jpg"
   }
 ]

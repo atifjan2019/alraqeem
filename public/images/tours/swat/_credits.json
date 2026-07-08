@@ -1,0 +1,56 @@
+[
+  {
+    "key": "malam-jabba",
+    "file": "/images/tours/swat/malam-jabba.jpg",
+    "title": "Malam Jabba",
+    "commonsFile": "File:Malam_Jaba,_Swat,_Pakistan.JPG",
+    "license": "CC BY-SA 4.0",
+    "artist": "Mehlab Jameel",
+    "source": "https://commons.wikimedia.org/wiki/File:Malam_Jaba,_Swat,_Pakistan.JPG"
+  },
+  {
+    "key": "kalam",
+    "file": "/images/tours/swat/kalam.jpg",
+    "title": "Kalam, Swat",
+    "commonsFile": "File:Kalam,_Swat_(Pakistan).jpg",
+    "license": "CC BY-SA 4.0",
+    "artist": "Muhammad Akram Attari",
+    "source": "https://commons.wikimedia.org/wiki/File:Kalam,_Swat_(Pakistan).jpg"
+  },
+  {
+    "key": "mahodand-lake",
+    "file": "/images/tours/swat/mahodand-lake.jpg",
+    "title": "Mahodand Lake",
+    "commonsFile": "File:River_Swat_Pakistan_3.jpg",
+    "license": "CC BY-SA 3.0",
+    "artist": "Designer429",
+    "source": "https://commons.wikimedia.org/wiki/File:River_Swat_Pakistan_3.jpg"
+  },
+  {
+    "key": "white-palace",
+    "file": "/images/tours/swat/white-palace.jpg",
+    "title": "Marghazar",
+    "commonsFile": "File:A_marghazar_village_in_background.JPG",
+    "license": "CC BY-SA 3.0",
+    "artist": "Samikhanjb",
+    "source": "https://commons.wikimedia.org/wiki/File:A_marghazar_village_in_background.JPG"
+  },
+  {
+    "key": "bahrain",
+    "file": "/images/tours/swat/bahrain.jpg",
+    "title": "Bahrain, Swat",
+    "commonsFile": "File:Bahrain_Valley,_Swat,_KPK.JPG",
+    "license": "CC BY-SA 3.0",
+    "artist": "Muhammad Ashar",
+    "source": "https://commons.wikimedia.org/wiki/File:Bahrain_Valley,_Swat,_KPK.JPG"
+  },
+  {
+    "key": "swat-museum",
+    "file": "/images/tours/swat/swat-museum.jpg",
+    "title": "Swat Museum",
+    "commonsFile": "File:Swat_Museum.jpg",
+    "license": "CC BY-SA 4.0",
+    "artist": "Adilswati",
+    "source": "https://commons.wikimedia.org/wiki/File:Swat_Museum.jpg"
+  }
+]

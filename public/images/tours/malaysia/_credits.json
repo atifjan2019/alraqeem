@@ -1,0 +1,74 @@
+[
+  {
+    "key": "petronas",
+    "file": "/images/tours/malaysia/petronas.jpg",
+    "title": "Petronas Towers",
+    "commonsFile": "File:2016 Kuala Lumpur, Park KLCC i Suria KLCC (cropped).jpg",
+    "license": "CC BY-SA 4.0",
+    "artist": "Marcin Konsek",
+    "source": "https://commons.wikimedia.org/wiki/File:2016_Kuala_Lumpur,_Park_KLCC_i_Suria_KLCC_(cropped).jpg"
+  },
+  {
+    "key": "batu-caves",
+    "file": "/images/tours/malaysia/batu-caves.jpg",
+    "title": "Batu Caves",
+    "commonsFile": "File:Batu_Caves_stairs_2022-05.jpg",
+    "license": "CC BY-SA 4.0",
+    "artist": "Chainwit.",
+    "source": "https://commons.wikimedia.org/wiki/File:Batu_Caves_stairs_2022-05.jpg"
+  },
+  {
+    "key": "genting",
+    "file": "/images/tours/malaysia/genting.jpg",
+    "title": "Genting Highlands",
+    "commonsFile": "File:Genting_SkyWorlds_Theme_Park.jpg",
+    "license": "CC BY-SA 4.0",
+    "artist": "Chongkian",
+    "source": "https://commons.wikimedia.org/wiki/File:Genting_SkyWorlds_Theme_Park.jpg"
+  },
+  {
+    "key": "national-mosque",
+    "file": "/images/tours/malaysia/national-mosque.jpg",
+    "title": "National Mosque of Malaysia",
+    "commonsFile": "File:Masjid_Negara_Malaysia_20250822.jpg",
+    "license": "CC0",
+    "artist": "DvTor8303",
+    "source": "https://commons.wikimedia.org/wiki/File:Masjid_Negara_Malaysia_20250822.jpg"
+  },
+  {
+    "key": "langkawi",
+    "file": "/images/tours/malaysia/langkawi.jpg",
+    "title": "Langkawi",
+    "commonsFile": "File:Eagle_square_at_Kuah_Langkawi.jpg",
+    "license": "CC BY-SA 4.0",
+    "artist": "Ttt.Osakanman",
+    "source": "https://commons.wikimedia.org/wiki/File:Eagle_square_at_Kuah_Langkawi.jpg"
+  },
+  {
+    "key": "putra-mosque",
+    "file": "/images/tours/malaysia/putra-mosque.jpg",
+    "title": "Putra Mosque",
+    "commonsFile": "File:Masjid_Putra,_Putrajaya,_Malaysia.jpg",
+    "license": "CC BY 4.0",
+    "artist": "iPhone",
+    "source": "https://commons.wikimedia.org/wiki/File:Masjid_Putra,_Putrajaya,_Malaysia.jpg"
+  },
+  {
+    "key": "george-town",
+    "file": "/images/tours/malaysia/george-town.jpg",
+    "title": "George Town, Penang",
+    "commonsFile": "File:Skyline_of_George_Town,_Penang_at_night_Nov2024-29-17.jpg",
+    "license": "CC BY-SA 4.0",
+    "artist": "HundenvonPenang",
+    "source": "https://commons.wikimedia.org/wiki/File:Skyline_of_George_Town,_Penang_at_night_Nov2024-29-17.jpg"
+  },
+  {
+    "key": "cameron-highlands",
+    "file": "/images/tours/malaysia/cameron-highlands.jpg",
+    "title": "Cameron Highlands",
+    "commonsFile": "File:Tea_fields_(Will_Ellis).jpg",
+    "license": "CC BY 2.0",
+    "artist": "Will Ellis from Reading, England",
+    "source": "https://commons.wikimedia.org/wiki/File:Tea_fields_(Will_Ellis).jpg"
+  }
+]

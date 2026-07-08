@@ -1,0 +1,47 @@
+[
+  {
+    "key": "kumrat-forest",
+    "file": "/images/tours/kumrat/kumrat-forest.jpg",
+    "title": "Kumrat Valley",
+    "commonsFile": "File:Evening_shades.jpg",
+    "license": "CC BY-SA 4.0",
+    "artist": "Ali Rasheed",
+    "source": "https://commons.wikimedia.org/wiki/File:Evening_shades.jpg"
+  },
+  {
+    "key": "kumrat-waterfall",
+    "file": "/images/tours/kumrat/kumrat-waterfall.jpg",
+    "title": "Kumrat",
+    "commonsFile": "File:Evening_shades.jpg",
+    "license": "CC BY-SA 4.0",
+    "artist": "Ali Rasheed",
+    "source": "https://commons.wikimedia.org/wiki/File:Evening_shades.jpg"
+  },
+  {
+    "key": "katora-lake",
+    "file": "/images/tours/kumrat/katora-lake.jpg",
+    "title": "Katora Lake",
+    "commonsFile": "File:Katora_lake_dir.jpg",
+    "license": "CC BY-SA 4.0",
+    "artist": "Jehan Sher",
+    "source": "https://commons.wikimedia.org/wiki/File:Katora_lake_dir.jpg"
+  },
+  {
+    "key": "panjkora",
+    "file": "/images/tours/kumrat/panjkora.jpg",
+    "title": "Panjkora River",
+    "commonsFile": "File:Panjkora_River_in_Kumrat_Valley.jpg",
+    "license": "CC BY-SA 4.0",
+    "artist": "Ashfaqq",
+    "source": "https://commons.wikimedia.org/wiki/File:Panjkora_River_in_Kumrat_Valley.jpg"
+  },
+  {
+    "key": "jahaz-banda",
+    "file": "/images/tours/kumrat/jahaz-banda.jpg",
+    "title": "Jahaz Banda",
+    "commonsFile": "File:Jahaz_Banda_Meadows_-_3,100_m_(Kumrat_Valley).jpg",
+    "license": "CC BY-SA 4.0",
+    "artist": "Shahbaz Aslam",
+    "source": "https://commons.wikimedia.org/wiki/File:Jahaz_Banda_Meadows_-_3,100_m_(Kumrat_Valley).jpg"
+  }
+]
