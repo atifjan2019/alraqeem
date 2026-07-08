@@ -747,7 +747,7 @@ export const detailContent: Record<string, DetailContent> = {
 
   swat: {
     overview:
-      "Swat and Kalam Tour from Pakistan is the classic northern getaway, five days and four nights in the valley often called the Switzerland of Pakistan. From our base in Charsadda, a short drive from Swat, our team arranges transport, hotels with breakfast, and a guided run through Malam Jabba, Kalam, the Ushu Forest, and the alpine Mahodand Lake, with the craft towns of Bahrain and Madyan on the way. Green valleys, pine forest, and cool rivers make Swat a favourite for families and groups from across Pakistan.",
+      "Swat Tour from Pakistan is the classic northern getaway, five days and four nights in the valley often called the Switzerland of Pakistan. From our base in Charsadda, a short drive from Swat, our team arranges transport, hotels with breakfast, and a guided run through Malam Jabba, Kalam, the Ushu Forest, and the alpine Mahodand Lake, with the craft towns of Bahrain and Madyan on the way. Green valleys, pine forest, and cool rivers make Swat a favourite for families and groups from across Pakistan.",
     whoFor: [
       "Families wanting a cool, green summer escape",
       "Groups and friends touring the northern areas",
@@ -755,7 +755,7 @@ export const detailContent: Record<string, DetailContent> = {
       "Travelers near KPK who value a local run trip",
     ],
     faqs: [
-      pricingFaq("Swat and Kalam Tour"),
+      pricingFaq("Swat Tour"),
       {
         q: "How many days do I need for a Swat tour?",
         a: "Five days and four nights cover Swat well, Malam Jabba, Kalam, the Ushu Forest, and a jeep day to Mahodand Lake, with Bahrain and Madyan on the way. Add a night for Gabin Jabba or a Kumrat Valley extension. Tell our desk your dates and we shape the length around them.",
@@ -2609,8 +2609,13 @@ export const tourContent: Record<string, TourContent> = {
   // Islamabad, a local KPK trip run from our Charsadda base. Real Swat places,
   // typical flow, exact hotels and day plan route to inquiry.
   swat: {
-    name: "Swat and Kalam",
+    name: "Swat",
     durationWords: "five day",
+    wedge: {
+      eyebrow: "Local KPK expertise",
+      title: "Run from our Charsadda base, next door to the valley",
+      body: "Swat is a short drive from our office in Charsadda, so our desk runs it with the proximity and local knowledge a Lahore or Karachi operator cannot match. Our drivers know the Swat motorway, the mountain road to Malam Jabba, and the jeep track to Mahodand Lake, and our team knows which hotels in Mingora and Kalam hold up and when the high roads open and close. Years of arranging northern trips for families from across Khyber Pakhtunkhwa sit behind every Swat departure, real experience close to home rather than a booking passed to a distant handler.",
+    },
     itineraryNote:
       "The flow above is the typical five day plan across the Swat valley. Our desk adjusts the order and adds Gabin Jabba or a Kumrat extension on request.",
     seasonalNote:
@@ -2699,13 +2704,13 @@ export const tourContent: Record<string, TourContent> = {
       "The White Palace of Marghazar",
     ],
     practical: [
-      { icon: "clock", label: "Best time to visit", value: "April to October, green season" },
-      { icon: "tag", label: "Currency", value: "Pakistani rupee, PKR" },
-      { icon: "meal", label: "Halal food", value: "Everywhere, local Pakhtun cuisine" },
-      { icon: "bus", label: "How to reach", value: "By road from Peshawar or Islamabad" },
-      { icon: "users", label: "Language", value: "Pashto, with Urdu understood" },
-      { icon: "shield", label: "Good to know", value: "Warm days, cool nights, pack layers" },
-      { icon: "pin", label: "Top spots", value: "Kalam, Malam Jabba, and Mahodand Lake" },
+      { icon: "clock", label: "Best season", value: "May to September, winter for snow" },
+      { icon: "pin", label: "Altitude", value: "Mingora low, Mahodand around 2900 m" },
+      { icon: "bus", label: "Road access", value: "Motorway to Mingora, then mountain roads" },
+      { icon: "route", label: "Jeep sections", value: "Mahodand and the off road tracks" },
+      { icon: "phone", label: "Connectivity", value: "Signal in towns, patchy up the valley" },
+      { icon: "shield", label: "What to pack", value: "Layers, a warm jacket, and good shoes" },
+      { icon: "tag", label: "ATMs", value: "In Mingora, carry cash for the valley" },
     ],
     costDrivers: [
       {
@@ -2740,6 +2745,11 @@ export const tourContent: Record<string, TourContent> = {
   "kumrat-valley": {
     name: "Kumrat Valley",
     durationWords: "four day",
+    wedge: {
+      eyebrow: "Local KPK expertise",
+      title: "Run from our Charsadda base in Khyber Pakhtunkhwa",
+      body: "Kumrat sits in Upper Dir, within a day's reach of our office in Charsadda, so our desk runs it with local drivers who know the Dir road and the jeep track along the Panjkora. Our team knows which camps and huts hold up, when the meadows open, and how far the jeeps reach toward Jahaz Banda and Katora Lake, years of arranging northern trips close to home rather than a booking passed to a distant handler.",
+    },
     itineraryNote:
       "The flow above is the typical four day plan for Kumrat. Our desk adjusts the order and adds a Katora Lake trek or a Swat leg on request.",
     seasonalNote:
@@ -2821,13 +2831,13 @@ export const tourContent: Record<string, TourContent> = {
       "The jeep track through Kumrat",
     ],
     practical: [
-      { icon: "clock", label: "Best time to visit", value: "May to September, open season" },
-      { icon: "tag", label: "Currency", value: "Pakistani rupee, PKR" },
-      { icon: "meal", label: "Halal food", value: "Everywhere, simple local meals" },
-      { icon: "bus", label: "How to reach", value: "By road via Dir and Thal, then jeep" },
-      { icon: "users", label: "Language", value: "Pashto, with Urdu understood" },
-      { icon: "shield", label: "Good to know", value: "Camps and huts, pack warm layers" },
-      { icon: "pin", label: "Top spots", value: "Kumrat forest, Jahaz Banda, Katora Lake" },
+      { icon: "clock", label: "Best season", value: "May to September, meadows in summer" },
+      { icon: "pin", label: "Altitude", value: "Valley floor low, Jahaz Banda higher" },
+      { icon: "bus", label: "Road access", value: "Dir road to Thal, then jeep track" },
+      { icon: "route", label: "Jeep sections", value: "The Panjkora track and the meadows" },
+      { icon: "phone", label: "Connectivity", value: "Very limited up the valley" },
+      { icon: "shield", label: "What to pack", value: "Warm layers, sturdy shoes for the trek" },
+      { icon: "tag", label: "ATMs", value: "In Dir, carry cash for the valley" },
     ],
     costDrivers: [
       {
@@ -2862,6 +2872,11 @@ export const tourContent: Record<string, TourContent> = {
   "kalash-valley": {
     name: "Kalash Valley",
     durationWords: "five day",
+    wedge: {
+      eyebrow: "Local KPK expertise",
+      title: "Run from our Charsadda base in Khyber Pakhtunkhwa",
+      body: "The Kalash valleys sit beyond Chitral in the far northwest of KPK, and our desk runs them with local hosts and drivers who know the Lowari Tunnel road and the valley tracks. Our team times the trip to the Chilam Joshi festival, arranges respectful visits with the Kalash community, and knows the limited rooms in the valleys, real local knowledge from a KPK base rather than a booking passed to a distant handler.",
+    },
     itineraryNote:
       "The flow above is the typical five day plan for the Kalash valleys. Our desk times the trip to the Chilam Joshi festival on request and adds a Chitral day.",
     seasonalNote:
@@ -2950,13 +2965,13 @@ export const tourContent: Record<string, TourContent> = {
       "The Chitral Fort and river",
     ],
     practical: [
-      { icon: "clock", label: "Best time to visit", value: "May festival, and the summer" },
-      { icon: "tag", label: "Currency", value: "Pakistani rupee, PKR" },
-      { icon: "meal", label: "Halal food", value: "Everywhere in Chitral and the valleys" },
-      { icon: "bus", label: "How to reach", value: "By road via the Lowari Tunnel" },
-      { icon: "users", label: "Language", value: "Khowar and Kalasha, Urdu understood" },
-      { icon: "shield", label: "Good to know", value: "Respect Kalash customs, ask before photos" },
-      { icon: "pin", label: "Top spots", value: "Bumburet, Rumbur, and Chitral town" },
+      { icon: "clock", label: "Best season", value: "May festival, and the summer" },
+      { icon: "pin", label: "Altitude", value: "The valleys around 2000 metres" },
+      { icon: "bus", label: "Road access", value: "Through the Lowari Tunnel to Chitral" },
+      { icon: "route", label: "Jeep sections", value: "The valley roads from Chitral" },
+      { icon: "phone", label: "Connectivity", value: "Signal in Chitral, limited in valleys" },
+      { icon: "shield", label: "What to pack", value: "Layers, modest dress, ask before photos" },
+      { icon: "tag", label: "ATMs", value: "In Chitral, carry cash for the valleys" },
     ],
     costDrivers: [
       {
@@ -2991,6 +3006,11 @@ export const tourContent: Record<string, TourContent> = {
   chitral: {
     name: "Chitral",
     durationWords: "five day",
+    wedge: {
+      eyebrow: "Local KPK expertise",
+      title: "Run from our Charsadda base in Khyber Pakhtunkhwa",
+      body: "Chitral is the far northwest of Khyber Pakhtunkhwa, reached through the Lowari Tunnel, and our desk runs it with drivers and hosts who know the road, the town, and the Kalash valleys beyond. Our team knows the Chitral hotels, the Garam Chashma drive, and the Shandur season, years of arranging the far north from our KPK base rather than a booking passed to a distant handler.",
+    },
     itineraryNote:
       "The flow above is the typical five day plan for Chitral. Our desk adds a Kalash valley night, Garam Chashma, or the Shandur Pass on request.",
     seasonalNote:
@@ -3079,13 +3099,13 @@ export const tourContent: Record<string, TourContent> = {
       "The Shandur polo ground",
     ],
     practical: [
-      { icon: "clock", label: "Best time to visit", value: "April to October, July for Shandur" },
-      { icon: "tag", label: "Currency", value: "Pakistani rupee, PKR" },
-      { icon: "meal", label: "Halal food", value: "Everywhere, local Chitrali cuisine" },
-      { icon: "bus", label: "How to reach", value: "By road via the Lowari Tunnel" },
-      { icon: "users", label: "Language", value: "Khowar, with Urdu understood" },
-      { icon: "shield", label: "Good to know", value: "Warm days, cold nights, pack layers" },
-      { icon: "pin", label: "Top spots", value: "Chitral Fort, Garam Chashma, the Kalash valleys" },
+      { icon: "clock", label: "Best season", value: "April to October, July for Shandur" },
+      { icon: "pin", label: "Altitude", value: "Chitral low, Tirich Mir over 7000 m" },
+      { icon: "bus", label: "Road access", value: "Lowari Tunnel, open through the year" },
+      { icon: "route", label: "Jeep sections", value: "Garam Chashma and the Kalash valleys" },
+      { icon: "phone", label: "Connectivity", value: "Signal in Chitral town, limited beyond" },
+      { icon: "shield", label: "What to pack", value: "Layers, warm for the cold nights" },
+      { icon: "tag", label: "ATMs", value: "In Chitral town, carry cash beyond" },
     ],
     costDrivers: [
       {

@@ -219,7 +219,7 @@ export const seedPackages: TravelPackage[] = [
   },
   {
     slug: "swat",
-    title: "Swat and Kalam Tour",
+    title: "Swat Tour",
     category: "Pakistan",
     duration: "5 Days, 4 Nights",
     price: null,
@@ -310,7 +310,7 @@ export function packageDisplayName(
     return "Malaysia and Thailand Tour Package";
   if (pkg.slug === "malaysia-thailand-singapore")
     return "Malaysia, Thailand and Singapore Tour Package";
-  if (pkg.slug === "swat") return "Swat and Kalam Tour Packages";
+  if (pkg.slug === "swat") return "Swat Tour Packages";
   if (pkg.slug === "kumrat-valley") return "Kumrat Valley Tour Packages";
   if (pkg.slug === "kalash-valley") return "Kalash Valley Tour Packages";
   if (pkg.slug === "chitral") return "Chitral Tour Packages";

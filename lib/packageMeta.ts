@@ -48,7 +48,7 @@ export function packageTitle(pkg: TravelPackage) {
     return "Malaysia Thailand Singapore Tour Package | Al Raqeem";
   }
   if (pkg.slug === "swat") {
-    return "Swat and Kalam Tour Packages | Al Raqeem";
+    return "Swat Tour Packages from Pakistan | Al Raqeem";
   }
   if (pkg.slug === "kumrat-valley") {
     return "Kumrat Valley Tour Packages | Al Raqeem";
@@ -111,7 +111,7 @@ export function packageMetaDescription(pkg: TravelPackage) {
     return "Malaysia Thailand Singapore Tour from Pakistan, 9 days. Bangkok, Kuala Lumpur, Genting, and Singapore with Sentosa, all visas and flights handled.";
   }
   if (pkg.slug === "swat") {
-    return "Swat and Kalam tour package, 5 days. Malam Jabba, Kalam, and Mahodand Lake, run from our Charsadda base with transport and hotels. Inquiry priced.";
+    return "Swat tour package from Pakistan, 5 days. Malam Jabba, Kalam, and Mahodand Lake, run from our Charsadda base with transport and hotels. Inquiry priced.";
   }
   if (pkg.slug === "kumrat-valley") {
     return "Kumrat Valley tour package, 4 days. Deodar forest, the waterfall, and a trek to Jahaz Banda and Katora Lake, run from our Charsadda base. Inquiry priced.";
