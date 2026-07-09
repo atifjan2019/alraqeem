@@ -2,6 +2,8 @@
 
 Full Next.js 14 website with Tailwind CSS. Mobile-first, SEO-ready, no backend required.
 
+> Last updated: 2026-07-09
+
 ## Run it
 
 ```bash
