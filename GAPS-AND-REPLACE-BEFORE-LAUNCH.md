@@ -130,8 +130,24 @@ to lib/departureCities.ts with live true and a real service angle when
 confirmed, and they render and link automatically. Every other town is covered
 by the all cities line on the hub, no doorway pages.
 
+**The travel agency city pages, replaced.** The old developer's Travel Agency
+in a City pages at /areas/[city] are replaced by these Umrah city pages, one
+page per city, each 301 redirected, /areas/[city] to
+/umrah/umrah-packages-[city], with the entity intro absorbing the travel agency
+in the city query. Sixteen city pages now, the eight airport cities plus
+Charsadda, Mardan, Nowshera, Swabi, Swat, Rawalpindi, Tangi, and Shabqadar.
+
+**The biggest local lever, the Google Business Profile.** Pure travel agency in
+the city and near me searches are won by the verified Google Business Profile
+and the map pack, not a page. The single most valuable next local step is to
+verify and complete the Charsadda Business Profile, the name, address, phone,
+hours, photos, and reviews. The city pages capture the typed query and the
+service intent, the profile captures the map.
+
 **Replace before launch, city pages:**
 
+- [ ] Verify and complete the Charsadda Google Business Profile, the top local
+      priority, since the map pack, not a page, wins the near me searches.
 - [ ] Confirm each city's current direct Saudi Umrah flight status, correct any
       that have changed, or move the city to connecting.
 - [ ] Swap the motif panels and the shared hero for real airport or office
