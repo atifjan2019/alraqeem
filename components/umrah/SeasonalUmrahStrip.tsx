@@ -1,6 +1,8 @@
 import Link from "next/link";
 import JsonLd from "@/components/JsonLd";
+import CaptionedImage from "@/components/packages/CaptionedImage";
 import { liveSeasonalUmrah } from "@/lib/seasonalUmrah";
+import { images } from "@/lib/images";
 import { site } from "@/lib/site";
 
 // Seasonal Umrah on the hub, the Islamic calendar pages. Cards link down to
@@ -39,12 +41,15 @@ export default function SeasonalUmrahStrip() {
             <Link
               key={s.slug}
               href={`/umrah/${s.slug}`}
-              className="group flex flex-col rounded-2xl border border-black/5 bg-paper p-5 shadow-card transition hover:shadow-lift"
+              className="group flex flex-col rounded-2xl border border-black/5 bg-white p-4 shadow-card transition hover:shadow-lift"
             >
-              <span className="flex h-10 w-10 items-center justify-center rounded-full bg-brand-blue/10 text-brand-blue">
-                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true"><path d="M12 3a6 6 0 0 0 9 9 9 9 0 1 1-9-9z" /></svg>
-              </span>
-              <h3 className="mt-4 font-display text-lg text-brand-blue-deep group-hover:text-brand-orange-dark">
+              <CaptionedImage
+                src={s.heroImage === "madinah" ? images.madinah : images.kaaba}
+                caption={s.heroCaption}
+                icon="moon"
+                aspect="aspect-[16/10]"
+              />
+              <h3 className="mt-3 font-display text-lg text-brand-blue-deep group-hover:text-brand-orange-dark">
                 {s.season} Umrah
               </h3>
               <p className="mt-1 text-sm leading-relaxed text-slate-600">
