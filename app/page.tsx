@@ -26,13 +26,13 @@ export const metadata: Metadata = {
     absolute: "Umrah and Hajj Travel Agency in Pakistan | Al Raqeem",
   },
   description:
-    "A full-service Umrah, Hajj and international travel agency in Pakistan, based in Charsadda, serving all Pakistan with visa, flights, hotels and support.",
+    "A full-service Umrah, Hajj and international travel agency serving all of Pakistan, with departures from Karachi, Lahore, Islamabad, Peshawar and more, the Saudi visa, flights, hotels and WhatsApp support. Based in Charsadda.",
   alternates: { canonical: "/" },
   openGraph: {
     url: "/",
     title: "Umrah and Hajj Travel Agency in Pakistan | Al Raqeem",
     description:
-      "A full-service Umrah, Hajj and international travel agency in Pakistan, based in Charsadda and serving all Pakistan end to end.",
+      "A full-service Umrah, Hajj and international travel agency serving all of Pakistan end to end, based in Charsadda.",
   },
 };
 
@@ -45,7 +45,7 @@ const silos = [
     anchor: "Umrah packages from Pakistan",
     icon: "moon",
     caption: "Masjid al-Haram and the Kaaba in Makkah",
-    text: "Economy, premium, and Ramadan Umrah from seven to twenty eight days, with the Saudi e visa, flights, hotels near the Haram, and guided Ziyarat in Makkah and Madinah, departing from Peshawar and Islamabad.",
+    text: "Economy, premium, and Ramadan Umrah from seven to twenty eight days, with the Saudi e visa, flights, hotels near the Haram, and guided Ziyarat in Makkah and Madinah, departing from Karachi, Lahore, Islamabad, Peshawar, and other major cities.",
   },
   {
     title: "Hajj",
@@ -67,8 +67,8 @@ const silos = [
 
 const reasons = [
   {
-    title: "A name you visit in person",
-    text: "Our head office is in Charsadda. You sit with real people across a desk, not a faceless call center.",
+    title: "A real office you can visit",
+    text: "Our head office is in Charsadda, where you sit with real people across a desk, not a faceless call center, wherever in Pakistan you travel from.",
   },
   {
     title: "Clear quotes before you pay",
@@ -217,8 +217,10 @@ export default async function HomePage() {
             From your doorstep to the Haram and the world beyond
           </p>
           <p className="mt-6 max-w-2xl text-base leading-relaxed text-slate-200 sm:text-lg">
-            Arranged end to end from our Charsadda office, with WhatsApp support
-            from your first inquiry to your safe return.
+            Serving pilgrims and travelers across all of Pakistan, with
+            departures from Karachi, Lahore, Islamabad, Peshawar, and the major
+            cities, and WhatsApp support from your first inquiry to your safe
+            return.
           </p>
           <div className="mt-9 flex flex-col gap-3 sm:flex-row">
             <Link href="/packages" className="btn-orange">
@@ -325,18 +327,19 @@ export default async function HomePage() {
             <p className="eyebrow">Umrah, Hajj and travel from Pakistan</p>
             <p className="mt-5 text-base leading-relaxed text-slate-700 sm:text-lg">
               {site.name} is a full service Umrah, Hajj, tour, and visa agency
-              based in Charsadda, Khyber Pakhtunkhwa, and the sister company of
-              Al Nafi Travels, serving pilgrims and travelers across all of
-              Pakistan. Our desk arranges Umrah and Hajj to Makkah and Madinah,
+              serving pilgrims and travelers across all of Pakistan, based in
+              Charsadda, Khyber Pakhtunkhwa, and the sister company of Al Nafi
+              Travels. Our desk arranges Umrah and Hajj to Makkah and Madinah,
               with hotels near Masjid al-Haram and Masjid an-Nabawi, guided
               Ziyarat, the Saudi Umrah e-visa, and government Hajj scheme
               registration through MORA. Packages run from economy to five star
               across 7 to 30 day durations for 2026, with quad, triple, and
-              double sharing and departures from Peshawar and Islamabad. Beyond
-              the pilgrimage, our team arranges international tours to Dubai,
-              Turkey, Baku, and beyond, plus visit visas from Pakistan. Every
-              package is quoted on inquiry because airfare and hotel rates move
-              weekly, so we confirm the current best price for your exact dates.
+              double sharing and departures from Karachi, Lahore, Islamabad,
+              Peshawar, and other major cities. Beyond the pilgrimage, our team
+              arranges international tours to Dubai, Turkey, Baku, and beyond,
+              plus visit visas from Pakistan. Every package is quoted on inquiry
+              because airfare and hotel rates move weekly, so we confirm the
+              current best price for your exact dates.
             </p>
           </div>
         </div>
@@ -487,7 +490,7 @@ export default async function HomePage() {
           <SectionHeading
             eyebrow="What we offer"
             title="Umrah, Hajj, and international tours"
-            description="Three ways to travel with Al Raqeem, each handled end to end from Peshawar and Islamabad. Choose a route below to see durations, what is included, and how to get a quote for your dates."
+            description="Three ways to travel with Al Raqeem, each handled end to end, with departures from Karachi, Lahore, Islamabad, Peshawar, and the major cities. Choose a route below to see durations, what is included, and how to get a quote for your dates."
             align="center"
           />
           <div className="grid gap-6 sm:grid-cols-3">
@@ -759,7 +762,7 @@ export default async function HomePage() {
           <SectionHeading
             eyebrow="Areas we serve"
             title="One office in Charsadda, serving all of Pakistan"
-            description="Our Charsadda office serves Charsadda, Peshawar, Islamabad, Rawalpindi, Lahore, Tangi and Shabqadar, arranging Umrah, Hajj, tours and visas for travelers across all of Pakistan through WhatsApp, documents and departure."
+            description="We serve travelers across all of Pakistan, arranging your Umrah, Hajj, tour, or visa from any city through WhatsApp, document handling, and departure from your nearest airport. Our Charsadda office is where you meet our team in person."
           />
           <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
             {orderedCities.map((c) => (

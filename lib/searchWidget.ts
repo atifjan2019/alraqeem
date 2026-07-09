@@ -30,7 +30,19 @@ export type WidgetVertical = {
 // Shared option lists.
 export const PASSENGERS = ["1", "2", "3", "4", "5", "6", "7", "8", "9", "10 plus"];
 export const CHILD_COUNT = ["0", "1", "2", "3", "4", "5", "6"];
-export const FROM_CITIES = ["Peshawar", "Islamabad"];
+// Major Pakistani airport cities with Saudi and international flights, ordered
+// by size. Each has a live Umrah city page, so the departure is genuinely
+// served, not a listed city we cannot ticket.
+export const FROM_CITIES = [
+  "Karachi",
+  "Lahore",
+  "Islamabad",
+  "Peshawar",
+  "Multan",
+  "Faisalabad",
+  "Sialkot",
+  "Quetta",
+];
 export const CABIN_CLASSES = ["Economy", "Business", "First"];
 export const VISA_COUNTRIES = [
   "UAE",
