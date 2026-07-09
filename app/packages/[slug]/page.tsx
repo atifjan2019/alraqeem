@@ -139,6 +139,14 @@ export async function PackageDetailView({ pkg }: { pkg: TravelPackage }) {
   const silo = packageSilo(pkg);
   // Hajj is its own hub, so its breadcrumb stops at Home, Hajj.
   const breadcrumbIsHub = pkg.slug === "hajj-package";
+  // Tour destinations sit under a sub hub, so the breadcrumb reads Home, Tours,
+  // International or Pakistan, then the city, not skipping the sub hub tier.
+  const tourSubHub =
+    pkg.category === "International"
+      ? { name: "International Tours", href: "/tours/international-tours" }
+      : pkg.category === "Pakistan"
+        ? { name: "Pakistan Tours", href: "/tours/pakistan" }
+        : null;
   const heroImage = packageImage(pkg.slug, pkg.category, pkg.image);
 
   const quoteHref = waHref(
@@ -346,6 +354,14 @@ export async function PackageDetailView({ pkg }: { pkg: TravelPackage }) {
                   {silo.hubName}
                 </Link>
                 <span aria-hidden="true">/</span>
+                {tourSubHub && (
+                  <>
+                    <Link href={tourSubHub.href} className="hover:text-white">
+                      {tourSubHub.name}
+                    </Link>
+                    <span aria-hidden="true">/</span>
+                  </>
+                )}
                 <span className="text-white">{displayTitle}</span>
               </>
             )}

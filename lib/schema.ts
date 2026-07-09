@@ -56,13 +56,23 @@ const organization = {
   },
 };
 
-// Cities the office serves, plus the country, reused across schemas.
+// Cities the office serves, plus the country, reused across schemas. The
+// departure and service cities that have a live Umrah city page, so the
+// areaServed matches the visible national content.
 const serviceAreas = [
-  "Charsadda",
-  "Peshawar",
+  "Karachi",
+  "Lahore",
   "Islamabad",
   "Rawalpindi",
-  "Lahore",
+  "Peshawar",
+  "Charsadda",
+  "Multan",
+  "Faisalabad",
+  "Sialkot",
+  "Quetta",
+  "Mardan",
+  "Nowshera",
+  "Swabi",
   "Tangi",
   "Shabqadar",
 ];
@@ -86,6 +96,51 @@ export function travelAgencySchema() {
       "Charsadda",
       "Tangi",
       "Shabqadar",
+    ],
+  };
+}
+
+// Site level schema for the layout, present on every page. The Organization and
+// the WebSite share the same @id as the homepage's richer version, so the two
+// merge by @id, the base entity on every page, the aggregate rating and the
+// full detail on the homepage. No price anywhere.
+export function siteSchemaGraph() {
+  const orgId = `${site.url}/#organization`;
+  return {
+    "@context": "https://schema.org",
+    "@graph": [
+      {
+        "@type": ["Organization", "TravelAgency", "LocalBusiness"],
+        "@id": orgId,
+        name: site.name,
+        url: site.url,
+        logo: { "@type": "ImageObject", url: absoluteUrl("/logo.png") },
+        image: absoluteUrl("/logo.png"),
+        telephone: site.phone,
+        email: site.email,
+        address: postalAddress,
+        areaServed: [...serviceAreas, "Pakistan"],
+        openingHours: "Mo-Sa 09:00-20:00",
+        parentOrganization: {
+          "@type": "Organization",
+          name: site.sisterCompany,
+        },
+      },
+      {
+        "@type": "WebSite",
+        "@id": `${site.url}/#website`,
+        url: site.url,
+        name: site.name,
+        publisher: { "@id": orgId },
+        potentialAction: {
+          "@type": "SearchAction",
+          target: {
+            "@type": "EntryPoint",
+            urlTemplate: `${site.url}/packages?q={search_term_string}`,
+          },
+          "query-input": "required name=search_term_string",
+        },
+      },
     ],
   };
 }
@@ -495,20 +550,33 @@ export function packageDetailGraph(pkg: TravelPackage) {
       item: url,
     });
   } else {
-    crumbs.push(
-      {
-        "@type": "ListItem",
-        position: 2,
-        name: silo.hubName,
-        item: absoluteUrl(silo.hub),
-      },
-      {
+    crumbs.push({
+      "@type": "ListItem",
+      position: 2,
+      name: silo.hubName,
+      item: absoluteUrl(silo.hub),
+    });
+    // Tour destinations carry the sub hub tier, International or Pakistan.
+    const subHub =
+      pkg.category === "International"
+        ? { name: "International Tours", href: "/tours/international-tours" }
+        : pkg.category === "Pakistan"
+          ? { name: "Pakistan Tours", href: "/tours/pakistan" }
+          : null;
+    if (subHub) {
+      crumbs.push({
         "@type": "ListItem",
         position: 3,
-        name: `${packageDisplayName(pkg)} from Pakistan`,
-        item: url,
-      }
-    );
+        name: subHub.name,
+        item: absoluteUrl(subHub.href),
+      });
+    }
+    crumbs.push({
+      "@type": "ListItem",
+      position: subHub ? 4 : 3,
+      name: `${packageDisplayName(pkg)} from Pakistan`,
+      item: url,
+    });
   }
 
   const graph: Record<string, unknown>[] = [

@@ -2,7 +2,9 @@ import type { Metadata, Viewport } from "next";
 import "./globals.css";
 import NextTopLoader from "nextjs-toploader";
 import SiteChrome from "@/components/SiteChrome";
+import JsonLd from "@/components/JsonLd";
 import { getSettings } from "@/lib/settingsStore";
+import { siteSchemaGraph } from "@/lib/schema";
 import { site } from "@/lib/site";
 
 export const metadata: Metadata = {
@@ -59,6 +61,7 @@ export default async function RootLayout({
         />
       </head>
       <body>
+        <JsonLd data={siteSchemaGraph()} />
         <NextTopLoader
           color="#C5A253"
           height={3}
