@@ -81,8 +81,8 @@ export default function Footer({
           <ul className="space-y-2.5 text-sm">
             {cities.map((c) => (
               <li key={c.slug}>
-                <Link href={`/areas/${c.slug}`} className="hover:text-white">
-                  Travel Agency in {c.name}
+                <Link href={`/umrah/umrah-packages-${c.slug}`} className="hover:text-white">
+                  Umrah Packages from {c.name}
                 </Link>
               </li>
             ))}

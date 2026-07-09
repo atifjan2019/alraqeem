@@ -54,6 +54,44 @@ const nextConfig = {
         destination: "/tours/malaysia-thailand",
         statusCode: 301,
       },
+      // Travel agency in a city pages replaced by the Umrah city pages. Each old
+      // /areas page 301s to its new Umrah city page, one hop, no chains, so the
+      // ranking and links carry over and there is one page per city, not two.
+      {
+        source: "/areas/islamabad",
+        destination: "/umrah/umrah-packages-islamabad",
+        statusCode: 301,
+      },
+      {
+        source: "/areas/lahore",
+        destination: "/umrah/umrah-packages-lahore",
+        statusCode: 301,
+      },
+      {
+        source: "/areas/rawalpindi",
+        destination: "/umrah/umrah-packages-rawalpindi",
+        statusCode: 301,
+      },
+      {
+        source: "/areas/peshawar",
+        destination: "/umrah/umrah-packages-peshawar",
+        statusCode: 301,
+      },
+      {
+        source: "/areas/charsadda",
+        destination: "/umrah/umrah-packages-charsadda",
+        statusCode: 301,
+      },
+      {
+        source: "/areas/tangi",
+        destination: "/umrah/umrah-packages-tangi",
+        statusCode: 301,
+      },
+      {
+        source: "/areas/shabqadar",
+        destination: "/umrah/umrah-packages-shabqadar",
+        statusCode: 301,
+      },
     ];
   },
 };

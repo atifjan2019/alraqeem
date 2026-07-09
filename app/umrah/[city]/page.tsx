@@ -191,6 +191,22 @@ export default async function UmrahCityPage({
         </div>
       </section>
 
+      {/* Entity intro, absorbs the travel agency in the city query while leading Umrah */}
+      <section className="py-10">
+        <div className="container-site max-w-3xl">
+          <p className="text-base leading-relaxed text-slate-700">
+            Al Raqeem Travel and Tours is a travel agency serving {c.city}, run
+            from our Charsadda base in Khyber Pakhtunkhwa, with Umrah packages,
+            Hajj, international tours, and visa services. Umrah leads here,{" "}
+            {c.tier === 1
+              ? `with direct arranged departures from ${c.airportName}`
+              : `with your departure arranged from ${c.airportName} in ${c.nearestAirportCity} and pickup from ${c.city}`}
+            , the Nusuk visa, hotels near the Haram, and guided Ziyarat, all
+            quoted on inquiry for your exact dates.
+          </p>
+        </div>
+      </section>
+
       {/* 2. Trust and social proof, high */}
       <section className="bg-paper py-12">
         <div className="container-site grid gap-4 sm:grid-cols-3">

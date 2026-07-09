@@ -533,6 +533,126 @@ export const departureCities: DepartureCity[] = [
     ],
     live: true,
   },
+  {
+    slug: "umrah-packages-rawalpindi",
+    city: "Rawalpindi",
+    tier: 2,
+    region: "Punjab",
+    hasAirport: false,
+    airportName: "Islamabad International Airport",
+    airportCode: "ISB",
+    nearestAirportCity: "Islamabad",
+    distanceNote: "a short drive up the motorway",
+    flightType: "direct",
+    heroCaption: "Islamabad International Airport, the departure gate for Rawalpindi Umrah",
+    departure:
+      "Rawalpindi has no airport of its own and flies from Islamabad International Airport, the twin city terminal a short drive up the motorway, with direct Umrah flights to Jeddah and Madinah. The terminal sits close, so a Rawalpindi pilgrim reaches it quickly, and our desk books the carrier and the arrival city that fit your dates. Our team confirms the routing in writing before you pay.",
+    service:
+      "For Rawalpindi pilgrims our desk runs the journey on WhatsApp and from our Charsadda office, with pickup from Saddar, Bahria Town, DHA, and across the twin cities, and the transfer to Islamabad International. Many Rawalpindi families are armed forces households and overseas Pakistanis arranging travel for parents, so our team arranges assisted travel for elders, wheelchair support, and hotels closest to the Haram entrances, every step confirmed in writing.",
+    faqs: [
+      {
+        q: "Which airport do I fly from for Umrah from Rawalpindi?",
+        a: "Rawalpindi has no airport, so pilgrims fly from Islamabad International, the twin city terminal a short drive up the motorway, with direct flights to Jeddah and Madinah. Our desk books the arrival city and carrier for your dates, and our team arranges the transfer from Rawalpindi.",
+      },
+      {
+        q: "Do you pick up from Rawalpindi for the airport?",
+        a: "Yes. Our team picks up from Saddar, Bahria Town, DHA, and across the twin cities, and drives you to Islamabad International, timed to your flight. The terminal sits close, so the transfer is short, arranged as part of the package.",
+      },
+      {
+        q: "Do you arrange assisted Umrah for senior parents in Rawalpindi?",
+        a: "Yes. Many Rawalpindi families arrange Umrah for elders, so our desk sets wheelchair assistance at Islamabad International and in the Haramain, hotels close to the mosque entrances, and a gentle pace. Share their needs and our team builds the trip around them.",
+      },
+      {
+        q: "Can overseas families book Umrah for parents in Rawalpindi?",
+        a: "Yes. Our desk arranges Umrah for parents in Rawalpindi on behalf of overseas children, all on WhatsApp, with assisted travel, hotels near the Haram, and updates through the trip. Message us the details and we handle the rest from Pakistan.",
+      },
+      {
+        q: "Is the Nusuk visa handled for Rawalpindi pilgrims?",
+        a: "Yes. Our team prepares and files the Saudi Umrah e-visa through the official Nusuk platform for Rawalpindi travelers, checking every document first. Verify the current rules at the official Saudi source, and our desk handles the filing.",
+      },
+    ],
+    live: true,
+  },
+  {
+    slug: "umrah-packages-tangi",
+    city: "Tangi",
+    tier: 2,
+    region: "Khyber Pakhtunkhwa",
+    hasAirport: false,
+    airportName: "Bacha Khan International Airport",
+    airportCode: "PEW",
+    nearestAirportCity: "Peshawar",
+    distanceNote: "a short drive through Charsadda",
+    flightType: "direct",
+    heroCaption: "The Charsadda road from Tangi to the Umrah departure airport",
+    departure:
+      "Tangi has no airport, and the nearest is Bacha Khan International in Peshawar, a short drive through Charsadda, with direct Umrah flights to Jeddah and Madinah, and Islamabad International a longer option for a wider schedule. Our desk books your direct Umrah flight from Peshawar or Islamabad, whichever carries the better fare and dates, and our team arranges the transfer from Tangi to the terminal.",
+    service:
+      "Tangi sits in our home district of Charsadda, so our office is a short drive away and our desk serves Tangi families in person or on WhatsApp. Our team offers home document collection for group Umrah in the Tangi area, prepares the Nusuk visa, books the hotels near the Haram, and coordinates local transport from Tangi to Bacha Khan International, real local service from next door rather than a booking passed to a distant handler.",
+    faqs: [
+      {
+        q: "Which airport do I fly from for Umrah from Tangi?",
+        a: "Tangi has no airport, so pilgrims fly from Bacha Khan International in Peshawar, a short drive through Charsadda, or from Islamabad International for a wider schedule. Our desk books whichever carries the better fare and dates, and our team arranges the transfer from Tangi.",
+      },
+      {
+        q: "Do you collect documents from home in Tangi?",
+        a: "Yes. For group Umrah in the Tangi area our team offers home document collection, so a village or family group need not travel to the city to file. Our desk sets it up on WhatsApp or from our nearby Charsadda office.",
+      },
+      {
+        q: "Do you pick up from Tangi for the airport?",
+        a: "Yes. Our team coordinates local transport from Tangi to Bacha Khan International in Peshawar or on to Islamabad, timed to your flight. Tangi is a short drive from our Charsadda base, so the transfer and the timing are handled closely.",
+      },
+      {
+        q: "Is Tangi part of your home service area?",
+        a: "Yes. Tangi sits in the Charsadda district, our home ground, so our office is a short drive away and our team serves Tangi families in person. Real local service from next door sits behind every Tangi departure.",
+      },
+      {
+        q: "Is the Nusuk visa handled for Tangi pilgrims?",
+        a: "Yes. Our team prepares and files the Saudi Umrah e-visa through the official Nusuk platform for Tangi travelers, checking every document first. Verify the current rules at the official Saudi source, and our desk handles the filing.",
+      },
+    ],
+    live: true,
+  },
+  {
+    slug: "umrah-packages-shabqadar",
+    city: "Shabqadar",
+    tier: 2,
+    region: "Khyber Pakhtunkhwa",
+    hasAirport: false,
+    airportName: "Bacha Khan International Airport",
+    airportCode: "PEW",
+    nearestAirportCity: "Peshawar",
+    distanceNote: "a short drive by the Charsadda road",
+    flightType: "direct",
+    heroCaption: "The road from Shabqadar to the Umrah departure airport",
+    departure:
+      "Shabqadar has no airport, and the nearest is Bacha Khan International in Peshawar, a short drive by the Charsadda road, with direct Umrah flights to Jeddah and Madinah, and Islamabad International the wider schedule option. Our desk books your direct Umrah flight from Peshawar or Islamabad for your dates, and our team arranges the transfer from Shabqadar to the terminal.",
+    service:
+      "Shabqadar sits in our home Charsadda district, so our office is close by and our desk serves Shabqadar families in person or on WhatsApp, from first time pilgrims to families visiting relatives in the Gulf. Our team writes every cost clearly with no hidden charges, prepares the Nusuk visa, books the hotels near the Haram, and stays in contact on WhatsApp from departure to safe return, real local service from close to home.",
+    faqs: [
+      {
+        q: "Which airport do I fly from for Umrah from Shabqadar?",
+        a: "Shabqadar has no airport, so pilgrims fly from Bacha Khan International in Peshawar, a short drive by the Charsadda road, or from Islamabad International for a wider schedule. Our desk books whichever suits your fare and dates, and our team arranges the transfer from Shabqadar.",
+      },
+      {
+        q: "Do you guide first time pilgrims from Shabqadar?",
+        a: "Yes. Our desk walks first time pilgrims from Shabqadar through every step, the Nusuk visa, the documents, the flights, and the rites, in plain terms and in person at our nearby Charsadda office or on WhatsApp, so a first Umrah stays clear from the start.",
+      },
+      {
+        q: "Do you give a clear written quote with no hidden charges for Shabqadar?",
+        a: "Yes. Our team writes every cost clearly for Shabqadar travelers before you pay, with no hidden charges added later, and confirms each arrangement in writing. Message our desk your dates and group and we send the quote.",
+      },
+      {
+        q: "Do you pick up from Shabqadar for the airport?",
+        a: "Yes. Our team coordinates local transport from Shabqadar to Bacha Khan International in Peshawar or on to Islamabad, timed to your flight, since Shabqadar is a short drive from our Charsadda base.",
+      },
+      {
+        q: "Is the Nusuk visa handled for Shabqadar pilgrims?",
+        a: "Yes. Our team prepares and files the Saudi Umrah e-visa through the official Nusuk platform for Shabqadar travelers, checking every document first. Verify the current rules at the official Saudi source, and our desk handles the filing.",
+      },
+    ],
+    live: true,
+  },
 ];
 
 export function liveDepartureCities(tier?: 1 | 2): DepartureCity[] {

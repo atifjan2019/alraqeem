@@ -2092,7 +2092,7 @@ export async function PackageDetailView({ pkg }: { pkg: TravelPackage }) {
                     {departure.map((c) => (
                       <Link
                         key={c}
-                        href={`/areas/${c.toLowerCase()}`}
+                        href={`/umrah/umrah-packages-${c.toLowerCase()}`}
                         className="inline-flex min-h-[44px] items-center gap-2 rounded-full border border-black/10 bg-white px-5 py-2 text-sm font-semibold text-brand-blue-deep shadow-card transition hover:-translate-y-0.5 hover:shadow-lift"
                       >
                         <Icon

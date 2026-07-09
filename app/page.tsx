@@ -122,11 +122,11 @@ const bridge = [
   {
     heading: "Umrah from your city",
     links: [
-      { label: "Umrah from Peshawar", href: "/areas/peshawar" },
-      { label: "Umrah from Islamabad", href: "/areas/islamabad" },
-      { label: "Umrah from Charsadda", href: "/areas/charsadda" },
-      { label: "Umrah from Rawalpindi", href: "/areas/rawalpindi" },
-      { label: "Umrah from Lahore", href: "/areas/lahore" },
+      { label: "Umrah from Peshawar", href: "/umrah/umrah-packages-peshawar" },
+      { label: "Umrah from Islamabad", href: "/umrah/umrah-packages-islamabad" },
+      { label: "Umrah from Charsadda", href: "/umrah/umrah-packages-charsadda" },
+      { label: "Umrah from Rawalpindi", href: "/umrah/umrah-packages-rawalpindi" },
+      { label: "Umrah from Lahore", href: "/umrah/umrah-packages-lahore" },
     ],
   },
   {
@@ -765,7 +765,7 @@ export default async function HomePage() {
             {orderedCities.map((c) => (
               <Link
                 key={c.slug}
-                href={`/areas/${c.slug}`}
+                href={`/umrah/umrah-packages-${c.slug}`}
                 className="group flex items-center justify-between rounded-2xl border border-black/5 bg-white px-6 py-5 shadow-card transition hover:-translate-y-0.5 hover:shadow-lift"
               >
                 <div>
