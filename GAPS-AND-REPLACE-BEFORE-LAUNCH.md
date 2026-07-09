@@ -144,10 +144,23 @@ verify and complete the Charsadda Business Profile, the name, address, phone,
 hours, photos, and reviews. The city pages capture the typed query and the
 service intent, the profile captures the map.
 
+**Homepage national reframe, confirm these.** The homepage now reads as serving
+all of Pakistan, and names departures from Karachi, Lahore, Islamabad, Peshawar,
+Multan, Faisalabad, Sialkot, and Quetta, the eight cities in the departure
+dropdown. Confirm the agency genuinely tickets Umrah from each of these,
+especially the smaller airports, Multan, Faisalabad, Sialkot, and Quetta, and
+drop any it cannot ticket from the dropdown and the copy. No nationwide partner
+network is claimed on the page, only the honest WhatsApp and nearest airport
+mechanism, so nothing to gate there unless a real network is later confirmed and
+added.
+
 **Replace before launch, city pages:**
 
 - [ ] Verify and complete the Charsadda Google Business Profile, the top local
       priority, since the map pack, not a page, wins the near me searches.
+- [ ] Confirm the agency genuinely tickets Umrah from all eight departure
+      dropdown cities, and drop any it cannot from the widget and the homepage
+      copy.
 - [ ] Confirm each city's current direct Saudi Umrah flight status, correct any
       that have changed, or move the city to connecting.
 - [ ] Swap the motif panels and the shared hero for real airport or office
