@@ -9,6 +9,7 @@ import CaptionedImage from "@/components/packages/CaptionedImage";
 import SearchInquiryWidget from "@/components/SearchInquiryWidget";
 import Reviews from "@/components/Reviews";
 import { getPackages } from "@/lib/packagesStore";
+import { publicStartingPrice } from "@/lib/packages";
 import { getPosts } from "@/lib/postsStore";
 import { getSettings } from "@/lib/settingsStore";
 import { cities } from "@/lib/cities";
@@ -164,14 +165,17 @@ const cityOrder = [
 export default async function HomePage() {
   const settings = await getSettings();
   // Balanced across the silos, not mostly Umrah, the most booked from each,
-  // two Umrah, one Hajj, and one tour. Pricing is inquiry based, so the price
-  // is stripped before it reaches the card.
+  // two Umrah, one Hajj, and one tour. Only the confirmed Economy and Premium
+  // starting prices are public; every other card remains inquiry based.
   const allPkgs = await getPackages();
   const featured = [
     ...allPkgs.filter((p) => /umrah/i.test(p.slug)).slice(0, 2),
     ...allPkgs.filter((p) => /hajj/i.test(p.slug)).slice(0, 1),
     ...allPkgs.filter((p) => p.category !== "Umrah & Hajj").slice(0, 1),
-  ].map((p) => ({ ...p, price: null }));
+  ].map((p) => ({
+    ...p,
+    price: publicStartingPrice(p.slug),
+  }));
   const posts = (await getPosts()).slice(0, 3);
   const orderedCities = cityOrder
     .map((slug) => cities.find((c) => c.slug === slug))
@@ -323,24 +327,37 @@ export default async function HomePage() {
       {/* Entity context layer */}
       <section className="border-b border-black/5 bg-paper py-16 sm:py-20">
         <div className="container-site">
-          <div className="mx-auto max-w-3xl text-center">
-            <p className="eyebrow">Umrah, Hajj and travel from Pakistan</p>
-            <p className="mt-5 text-base leading-relaxed text-slate-700 sm:text-lg">
-              {site.name} is a full service Umrah, Hajj, tour, and visa agency
-              serving pilgrims and travelers across all of Pakistan, based in
-              Charsadda, Khyber Pakhtunkhwa, and the sister company of Al Nafi
-              Travels. Our desk arranges Umrah and Hajj to Makkah and Madinah,
-              with hotels near Masjid al-Haram and Masjid an-Nabawi, guided
-              Ziyarat, the Saudi Umrah e-visa, and government Hajj scheme
-              registration through MORA. Packages run from economy to five star
-              across 7 to 30 day durations for 2026, with quad, triple, and
-              double sharing and departures from Karachi, Lahore, Islamabad,
-              Peshawar, and other major cities. Beyond the pilgrimage, our team
-              arranges international tours to Dubai, Turkey, Baku, and beyond,
-              plus visit visas from Pakistan. Every package is quoted on inquiry
-              because airfare and hotel rates move weekly, so we confirm the
-              current best price for your exact dates.
-            </p>
+          <div className="grid overflow-hidden rounded-[2rem] bg-white shadow-[0_24px_70px_rgba(11,44,34,0.12)] ring-1 ring-brand-blue-deep/10 sm:rounded-[2.5rem] lg:grid-cols-[0.78fr_1.22fr]">
+            <div className="relative min-h-[280px] overflow-hidden sm:min-h-[360px]">
+              <img
+                src={images.kaaba}
+                alt="The Holy Kaaba in Masjid al-Haram, Makkah"
+                loading="lazy"
+                className="absolute inset-0 h-full w-full object-cover"
+              />
+              <div className="absolute inset-0 bg-gradient-to-t from-brand-blue-deep/45 via-transparent to-transparent lg:bg-gradient-to-r" />
+            </div>
+
+            <div className="px-6 py-8 sm:px-10 sm:py-10 lg:px-12 lg:py-14">
+              <p className="eyebrow">Umrah, Hajj and travel from Pakistan</p>
+              <div className="mt-5 h-px w-16 bg-brand-orange" />
+              <p className="mt-6 text-base leading-[1.85] text-slate-700 sm:text-lg">
+                {site.name} is a full service Umrah, Hajj, tour, and visa agency
+                serving pilgrims and travelers across all of Pakistan, based in
+                Charsadda, Khyber Pakhtunkhwa, and the sister company of Al Nafi
+                Travels. Our desk arranges Umrah and Hajj to Makkah and Madinah,
+                with hotels near Masjid al-Haram and Masjid an-Nabawi, guided
+                Ziyarat, the Saudi Umrah e-visa, and government Hajj scheme
+                registration through MORA. Packages run from economy to five star
+                across 7 to 30 day durations for 2026, with quad, triple, and
+                double sharing and departures from Karachi, Lahore, Islamabad,
+                Peshawar, and other major cities. Beyond the pilgrimage, our team
+                arranges international tours to Dubai, Turkey, Baku, and beyond,
+                plus visit visas from Pakistan. Every package is quoted on inquiry
+                because airfare and hotel rates move weekly, so we confirm the
+                current best price for your exact dates.
+              </p>
+            </div>
           </div>
         </div>
       </section>

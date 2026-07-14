@@ -42,7 +42,7 @@ create policy "Public can read packages"
 insert into public.packages
   (slug, title, category, duration, price, featured, highlights, description, sort_order)
 values
-  ('economy-umrah-15-days', 'Economy Umrah Package', 'Umrah & Hajj', '15 Days', 365000, true,
+  ('economy-umrah-15-days', 'Economy Umrah Package', 'Umrah & Hajj', '15 Days', 220000, true,
    ARRAY[
      'Return airfare from Peshawar or Islamabad',
      'Hotels within walking distance of Haram',
@@ -52,7 +52,7 @@ values
    ],
    'Our most popular package for first-time pilgrims. Comfortable hotels at honest prices, with our team handling visa, flights and transport so you can focus on your worship.', 10),
 
-  ('premium-umrah-21-days', 'Premium Umrah Package', 'Umrah & Hajj', '21 Days', 695000, true,
+  ('premium-umrah-21-days', 'Premium Umrah Package', 'Umrah & Hajj', '21 Days', 300000, true,
    ARRAY[
      '5-star hotels facing Haram in Makkah and Madinah',
      'Direct flights with checked baggage',
@@ -61,6 +61,36 @@ values
      'VIP fast-track visa processing'
    ],
    'For those who want complete comfort. Stay in 5-star properties steps from the Haram, travel in private vehicles, and let a dedicated guide handle every detail of your journey.', 20),
+
+  ('economy-umrah-21-days', 'Economy Umrah Package 21 Days', 'Umrah & Hajj', '21 Days', null, false,
+   ARRAY[
+     'Return airfare from Peshawar or Islamabad',
+     'Economy hotels within walking or shuttle distance',
+     'Saudi Umrah e-visa processing included',
+     'Shared ground transport between cities',
+     'Guided Ziyarat in Makkah and Madinah'
+   ],
+   'A longer economy journey for pilgrims who want more time for worship in Makkah and Madinah while keeping the overall cost practical. Visa, flights, hotels, transport, and guided Ziyarat are arranged together.', 22),
+
+  ('premium-umrah-15-days', 'Premium Umrah Package 15 Days', 'Umrah & Hajj', '15 Days', null, false,
+   ARRAY[
+     'Five star hotels near the Haram',
+     'Return airfare with checked baggage',
+     'Private ground transport',
+     'Double or triple room sharing',
+     'Saudi Umrah e-visa and guided Ziyarat'
+   ],
+   'A focused premium journey for pilgrims who want five star comfort near the Harams in a shorter stay. Our desk arranges the visa, flights, hotels, private transport, and guided Ziyarat end to end.', 24),
+
+  ('five-star-umrah-30-days', 'Five Star Umrah Package 30 Days', 'Umrah & Hajj', '30 Days', null, false,
+   ARRAY[
+     'Extended stay across Makkah and Madinah',
+     'Five star hotels near both Harams',
+     'Double or triple room sharing',
+     'Private airport and intercity transfers',
+     'Saudi Umrah e-visa and guided Ziyarat'
+   ],
+   'An extended five star Umrah for pilgrims seeking a slower pace, more days of worship, and comfortable hotels near both Harams. Flights, visa, private transfers, and guided Ziyarat are included in one arrangement.', 26),
 
   ('ramadan-umrah-special', 'Ramadan Umrah Special', 'Umrah & Hajj', '10 to 30 Days', null, false,
    ARRAY[

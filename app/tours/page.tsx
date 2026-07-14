@@ -17,7 +17,7 @@ import { getPackages } from "@/lib/packagesStore";
 import { getSettings } from "@/lib/settingsStore";
 import { reviewData } from "@/lib/reviews";
 import { site, mapsLink } from "@/lib/site";
-import { images } from "@/lib/images";
+import { images, packageImage } from "@/lib/images";
 import { waHref, telHref } from "@/lib/settings";
 import { toursHubGraph } from "@/lib/schema";
 
@@ -241,11 +241,15 @@ export default async function ToursPage() {
                   href={packageHref(p)}
                   className="group flex flex-col overflow-hidden rounded-3xl border border-black/5 bg-white p-4 shadow-card transition duration-300 hover:-translate-y-1 hover:shadow-lift"
                 >
-                  <CaptionedImage
-                    caption={`${p.title} in the northern areas of Pakistan`}
-                    icon="pin"
-                    aspect="aspect-[16/9]"
-                  />
+                  <div className="relative aspect-[16/9] overflow-hidden rounded-2xl">
+                    <img
+                      src={packageImage(p.slug, p.category, p.image)}
+                      alt={`${p.title} in the northern areas of Pakistan`}
+                      loading="lazy"
+                      className="h-full w-full object-cover transition duration-700 group-hover:scale-105"
+                    />
+                    <div className="absolute inset-0 bg-gradient-to-t from-brand-blue-deep/35 via-transparent to-transparent" />
+                  </div>
                   <div className="flex flex-1 flex-col pt-3">
                     <h3 className="font-display text-lg text-brand-blue-deep">
                       {p.title}

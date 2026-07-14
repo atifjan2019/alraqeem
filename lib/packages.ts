@@ -26,7 +26,7 @@ export const seedPackages: TravelPackage[] = [
     title: "Economy Umrah Package",
     category: "Umrah & Hajj",
     duration: "15 Days",
-    price: 365000,
+    price: 220000,
     featured: true,
     highlights: [
       "Return airfare from Peshawar or Islamabad",
@@ -43,7 +43,7 @@ export const seedPackages: TravelPackage[] = [
     title: "Premium Umrah Package",
     category: "Umrah & Hajj",
     duration: "21 Days",
-    price: 695000,
+    price: 300000,
     featured: true,
     highlights: [
       "5-star hotels facing Haram in Makkah and Madinah",
@@ -54,6 +54,54 @@ export const seedPackages: TravelPackage[] = [
     ],
     description:
       "For those who want complete comfort. Stay in 5-star properties steps from the Haram, travel in private vehicles, and let a dedicated guide handle every detail of your journey.",
+  },
+  {
+    slug: "economy-umrah-21-days",
+    title: "Economy Umrah Package 21 Days",
+    category: "Umrah & Hajj",
+    duration: "21 Days",
+    price: null,
+    highlights: [
+      "Return airfare from Peshawar or Islamabad",
+      "Economy hotels within walking or shuttle distance",
+      "Saudi Umrah e-visa processing included",
+      "Shared ground transport between cities",
+      "Guided Ziyarat in Makkah and Madinah",
+    ],
+    description:
+      "A longer economy journey for pilgrims who want more time for worship in Makkah and Madinah while keeping the overall cost practical. Visa, flights, hotels, transport, and guided Ziyarat are arranged together.",
+  },
+  {
+    slug: "premium-umrah-15-days",
+    title: "Premium Umrah Package 15 Days",
+    category: "Umrah & Hajj",
+    duration: "15 Days",
+    price: null,
+    highlights: [
+      "Five star hotels near the Haram",
+      "Return airfare with checked baggage",
+      "Private ground transport",
+      "Double or triple room sharing",
+      "Saudi Umrah e-visa and guided Ziyarat",
+    ],
+    description:
+      "A focused premium journey for pilgrims who want five star comfort near the Harams in a shorter stay. Our desk arranges the visa, flights, hotels, private transport, and guided Ziyarat end to end.",
+  },
+  {
+    slug: "five-star-umrah-30-days",
+    title: "Five Star Umrah Package 30 Days",
+    category: "Umrah & Hajj",
+    duration: "30 Days",
+    price: null,
+    highlights: [
+      "Extended stay across Makkah and Madinah",
+      "Five star hotels near both Harams",
+      "Double or triple room sharing",
+      "Private airport and intercity transfers",
+      "Saudi Umrah e-visa and guided Ziyarat",
+    ],
+    description:
+      "An extended five star Umrah for pilgrims seeking a slower pace, more days of worship, and comfortable hotels near both Harams. Flights, visa, private transfers, and guided Ziyarat are included in one arrangement.",
   },
   {
     slug: "ramadan-umrah-special",
@@ -341,6 +389,15 @@ export const seedPackages: TravelPackage[] = [
 export function formatPrice(price: number | null) {
   if (price === null) return "Price on inquiry";
   return `PKR ${price.toLocaleString("en-PK")}`;
+}
+
+const publicStartingPrices: Record<string, number> = {
+  "economy-umrah-15-days": 220000,
+  "premium-umrah-21-days": 300000,
+};
+
+export function publicStartingPrice(slug: string): number | null {
+  return publicStartingPrices[slug] ?? null;
 }
 
 export const categories: Category[] = ["Umrah & Hajj", "International", "Pakistan"];

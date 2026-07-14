@@ -55,18 +55,29 @@ export function photo(override: string, fallback: string) {
 export const packageImages: Record<string, string> = {
   "economy-umrah-15-days": SRC.blueMosque,
   "premium-umrah-21-days": SRC.madinahDomes,
+  "economy-umrah-21-days": SRC.kaaba,
+  "premium-umrah-15-days": SRC.madinahDomes,
+  "five-star-umrah-30-days": SRC.quran,
   "ramadan-umrah-special": SRC.quran,
   "hajj-package": SRC.kaaba,
   "dubai-5-days": SRC.dubai,
   "turkey-7-days": SRC.istanbul,
   "baku-5-days": SRC.europe,
   "malaysia-thailand-8-days": SRC.beach,
+  swat: SRC.mountainsPanorama,
+  "kumrat-valley": SRC.mountainsSnow,
+  "kalash-valley": SRC.mountainsPanorama,
+  chitral: SRC.mountainsSnow,
+  hunza: SRC.mountainsPanorama,
+  skardu: SRC.mountainsSnow,
+  "naran-kaghan": SRC.mountainsPanorama,
 };
 
 // Category fallbacks for packages without a specific image (e.g. admin-added).
 const categoryFallback: Record<string, string> = {
   "Umrah & Hajj": SRC.kaaba,
   International: SRC.dubai,
+  Pakistan: SRC.mountainsPanorama,
 };
 
 /**

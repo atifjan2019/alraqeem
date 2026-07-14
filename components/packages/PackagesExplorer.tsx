@@ -70,12 +70,14 @@ function Group({
   intro,
   items,
   whatsapp,
+  cardVariant = "default",
 }: {
   eyebrow: string;
   title: string;
   intro: string;
   items: TravelPackage[];
   whatsapp: string;
+  cardVariant?: "default" | "umrah" | "tour";
 }) {
   if (items.length === 0) return null;
   return (
@@ -86,9 +88,18 @@ function Group({
         <div className="gold-rule mt-5" />
         <p className="mt-4 text-base leading-relaxed text-slate-600">{intro}</p>
       </div>
-      <div className="grid gap-6 sm:grid-cols-2 xl:grid-cols-4">
+      <div
+        className={`grid gap-6 sm:grid-cols-2 ${
+          cardVariant === "umrah" ? "xl:grid-cols-3" : "xl:grid-cols-4"
+        }`}
+      >
         {items.map((p) => (
-          <PackageInquiryCard key={p.slug} pkg={p} whatsapp={whatsapp} />
+          <PackageInquiryCard
+            key={p.slug}
+            pkg={p}
+            whatsapp={whatsapp}
+            variant={cardVariant}
+          />
         ))}
       </div>
     </div>
@@ -138,30 +149,30 @@ export default function PackagesExplorer({
 
   return (
     <div>
-      <div className="mb-12 flex flex-col gap-4 rounded-3xl border border-black/5 bg-white p-5 shadow-card sm:p-6">
-        {scope === "all" && (
+      {scope !== "international" && (
+        <div className="mb-12 flex flex-col gap-4 rounded-3xl border border-black/5 bg-white p-5 shadow-card sm:p-6">
+          {scope === "all" && (
+            <ChipRow
+              label="Type"
+              choices={VERTICALS}
+              value={vertical}
+              onChange={setVertical}
+            />
+          )}
           <ChipRow
-            label="Type"
-            choices={VERTICALS}
-            value={vertical}
-            onChange={setVertical}
+            label="Duration"
+            choices={DURATIONS}
+            value={duration}
+            onChange={setDuration}
           />
-        )}
-        <ChipRow
-          label="Duration"
-          choices={DURATIONS}
-          value={duration}
-          onChange={setDuration}
-        />
-        {scope !== "international" && (
           <ChipRow
             label="Tier"
             choices={TIERS}
             value={tier}
             onChange={setTier}
           />
-        )}
-      </div>
+        </div>
+      )}
 
       {intro && (
         <p className="mb-12 max-w-3xl text-base leading-relaxed text-slate-700">
@@ -176,6 +187,7 @@ export default function PackagesExplorer({
           intro="Pilgrimage packages from Pakistan across economy, premium, and five star, from Peshawar and Islamabad, with visa, flights, hotels near the Haram, and guided Ziyarat."
           items={umrah}
           whatsapp={whatsapp}
+          cardVariant="umrah"
         />
       )}
       {scope !== "umrah" && (
@@ -185,6 +197,7 @@ export default function PackagesExplorer({
           intro="International tour packages from Pakistan to Dubai, Turkey, Baku, and Malaysia with Thailand, with visa, flights, hotels, and sightseeing in one booking."
           items={intl}
           whatsapp={whatsapp}
+          cardVariant="tour"
         />
       )}
 

@@ -16,6 +16,7 @@ import DepartureCityDirectory from "@/components/DepartureCityDirectory";
 import UmrahPlusStrip from "@/components/umrah/UmrahPlusStrip";
 import SeasonalUmrahStrip from "@/components/umrah/SeasonalUmrahStrip";
 import { getPackages } from "@/lib/packagesStore";
+import { publicStartingPrice } from "@/lib/packages";
 import { getSettings } from "@/lib/settingsStore";
 import { reviewData } from "@/lib/reviews";
 import { images, photo, realPhotos } from "@/lib/images";
@@ -90,8 +91,12 @@ export default async function UmrahHubPage() {
   const packages = await getPackages();
   const settings = await getSettings();
 
-  // Inquiry based section: strip any price before it reaches the client.
-  const clientPackages = packages.map((p) => ({ ...p, price: null }));
+  // Only confirmed public starting prices reach the cards. Every other package
+  // remains inquiry based because airfare and hotel rates move weekly.
+  const clientPackages = packages.map((p) => ({
+    ...p,
+    price: publicStartingPrice(p.slug),
+  }));
 
   return (
     <>
@@ -199,7 +204,7 @@ export default async function UmrahHubPage() {
             description="Compare the tiers by what actually differs, with no price in any cell."
             align="center"
           />
-          <TierCompare />
+          <TierCompare withImages />
         </div>
       </section>
 

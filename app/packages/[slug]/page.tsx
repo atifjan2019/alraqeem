@@ -8,7 +8,7 @@ import {
   packageSilo,
 } from "@/lib/packages";
 import { packageMetadata } from "@/lib/packageMeta";
-import { packageImage } from "@/lib/images";
+import { images, packageImage } from "@/lib/images";
 import { CtaBand } from "@/components/Shared";
 import JsonLd from "@/components/JsonLd";
 import FaqAccordion from "@/components/FaqAccordion";
@@ -425,6 +425,41 @@ export async function PackageDetailView({ pkg }: { pkg: TravelPackage }) {
           )}
         </div>
       </section>
+
+      {/* Hajj-only visual gallery */}
+      {isHajj && (
+        <section
+          aria-label="Hajj journey gallery"
+          className="border-b border-black/5 bg-white py-10 sm:py-14"
+        >
+          <div className="container-site grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
+            <div className="rounded-[1.75rem] bg-paper p-3 shadow-card ring-1 ring-black/5 sm:col-span-2 lg:col-span-1">
+              <CaptionedImage
+                src={images.kaaba}
+                caption="The Holy Kaaba in Masjid al-Haram, Makkah"
+                icon="moon"
+                aspect="aspect-[16/10] sm:aspect-[2/1] lg:aspect-[4/3]"
+              />
+            </div>
+            <div className="rounded-[1.75rem] bg-paper p-3 shadow-card ring-1 ring-black/5">
+              <CaptionedImage
+                src={images.madinah}
+                caption="Masjid an-Nabawi in Madinah, visited during the Hajj journey"
+                icon="moon"
+                aspect="aspect-[16/10] sm:aspect-[4/3]"
+              />
+            </div>
+            <div className="rounded-[1.75rem] bg-paper p-3 shadow-card ring-1 ring-black/5">
+              <CaptionedImage
+                src={images.quran}
+                caption="Quran recitation and preparation for the rites of Hajj"
+                icon="book"
+                aspect="aspect-[16/10] sm:aspect-[4/3]"
+              />
+            </div>
+          </div>
+        </section>
+      )}
 
       {/* Quote widget, single mode with the parent vertical resolved from route */}
       {!isHajj && (
@@ -2128,7 +2163,12 @@ export async function PackageDetailView({ pkg }: { pkg: TravelPackage }) {
                     ))}
                   </div>
                   <p className="mt-5 max-w-[65ch] text-base leading-relaxed text-slate-700">
-                    Flights depart from {departure.join(" and ")}, whichever
+                    Flights depart from{" "}
+                    {new Intl.ListFormat("en", {
+                      style: "long",
+                      type: "disjunction",
+                    }).format(departure)}
+                    , whichever
                     carries the better fare and schedule for your dates. Our team
                     arranges onward ground transport, and travelers from nearby
                     towns coordinate airport pickup when they book.

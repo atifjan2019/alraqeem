@@ -1195,10 +1195,12 @@ export function tierOf(
   return null;
 }
 
-// Departure cities. Pilgrimage travel departs from Peshawar and Islamabad
-// across the site; tour origins are not stated per package, so they omit.
+// Departure cities available for pilgrimage flights across Pakistan. Tour
+// origins are not stated per package, so they omit this shared list.
 export function departureCities(pkg: TravelPackage): string[] {
-  return pkg.category === "Umrah & Hajj" ? ["Peshawar", "Islamabad"] : [];
+  return pkg.category === "Umrah & Hajj"
+    ? ["Karachi", "Lahore", "Islamabad", "Peshawar"]
+    : [];
 }
 
 // The real hotel or proximity phrasing from the highlights, when present.

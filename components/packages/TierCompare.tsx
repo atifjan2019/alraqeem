@@ -1,4 +1,5 @@
 import Link from "next/link";
+import { images } from "@/lib/images";
 
 // Umrah tier comparison. Attributes only, no price in any cell. Three tiers
 // side by side on desktop, stacking to one column on mobile.
@@ -6,6 +7,8 @@ const tiers = [
   {
     name: "Economy",
     href: "/umrah/economy-15-days",
+    image: images.mosque,
+    alt: "Mosque domes for the Economy Umrah tier",
     rows: [
       { k: "Duration", v: "15 days" },
       { k: "Hotels", v: "Walking or shuttle distance" },
@@ -17,6 +20,8 @@ const tiers = [
   {
     name: "Premium and five star",
     href: "/umrah/premium-21-days",
+    image: images.madinah,
+    alt: "Masjid an-Nabawi in Madinah for Premium Umrah",
     rows: [
       { k: "Duration", v: "21 days" },
       { k: "Hotels", v: "Near or facing the Haram" },
@@ -28,6 +33,8 @@ const tiers = [
   {
     name: "Ramadan",
     href: "/umrah/ramadan",
+    image: images.quran,
+    alt: "The Holy Quran for Ramadan Umrah",
     rows: [
       { k: "Duration", v: "10 to 30 days" },
       { k: "Hotels", v: "Near the Haram, booked early" },
@@ -38,36 +45,61 @@ const tiers = [
   },
 ];
 
-export default function TierCompare() {
+export default function TierCompare({
+  withImages = false,
+}: {
+  withImages?: boolean;
+}) {
   return (
     <div>
       <div className="grid gap-6 lg:grid-cols-3">
         {tiers.map((t) => (
           <div
             key={t.name}
-            className="flex flex-col rounded-3xl border border-black/5 bg-white p-6 shadow-card"
+            className="group flex flex-col overflow-hidden rounded-3xl border border-black/5 bg-white shadow-card transition duration-300 hover:-translate-y-1 hover:shadow-lift"
           >
-            <h3 className="font-display text-xl text-brand-blue-deep">
-              {t.name}
-            </h3>
-            <dl className="mt-4 flex-1 divide-y divide-black/5">
-              {t.rows.map((r) => (
-                <div key={r.k} className="flex justify-between gap-3 py-2.5">
-                  <dt className="text-xs font-semibold uppercase tracking-wider text-slate-500">
-                    {r.k}
-                  </dt>
-                  <dd className="text-right text-sm font-medium text-brand-blue-deep">
-                    {r.v}
-                  </dd>
-                </div>
-              ))}
-            </dl>
-            <Link
-              href={t.href}
-              className="btn-outline mt-5 w-full !py-2.5 text-sm"
-            >
-              View {t.name} Umrah
-            </Link>
+            {withImages && (
+              <div className="relative h-44 overflow-hidden sm:h-48 lg:h-44 xl:h-48">
+                <img
+                  src={t.image}
+                  alt={t.alt}
+                  loading="lazy"
+                  className="h-full w-full object-cover transition duration-700 group-hover:scale-105"
+                />
+                <div className="absolute inset-0 bg-gradient-to-t from-brand-blue-deep/85 via-brand-blue-deep/10 to-transparent" />
+                <h3 className="absolute inset-x-0 bottom-0 p-5 font-display text-2xl text-white">
+                  {t.name}
+                </h3>
+              </div>
+            )}
+
+            <div className="flex flex-1 flex-col p-6">
+              {!withImages && (
+                <h3 className="font-display text-xl text-brand-blue-deep">
+                  {t.name}
+                </h3>
+              )}
+              <dl
+                className={`${withImages ? "" : "mt-4"} flex-1 divide-y divide-black/5`}
+              >
+                {t.rows.map((r) => (
+                  <div key={r.k} className="flex justify-between gap-3 py-2.5">
+                    <dt className="text-xs font-semibold uppercase tracking-wider text-slate-500">
+                      {r.k}
+                    </dt>
+                    <dd className="text-right text-sm font-medium text-brand-blue-deep">
+                      {r.v}
+                    </dd>
+                  </div>
+                ))}
+              </dl>
+              <Link
+                href={t.href}
+                className="btn-outline mt-5 w-full !py-2.5 text-sm"
+              >
+                View {t.name} Umrah
+              </Link>
+            </div>
           </div>
         ))}
       </div>
