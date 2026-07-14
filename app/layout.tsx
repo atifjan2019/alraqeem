@@ -62,7 +62,11 @@ export default async function RootLayout({
           rel="stylesheet"
         />
       </head>
-      <body>
+      {/* suppressHydrationWarning: browser extensions (ColorZilla, Grammarly,
+          etc.) inject attributes like cz-shortcut-listen onto <body> before
+          React hydrates. This scopes the suppression to <body>'s own
+          attributes only — real mismatches inside the tree still warn. */}
+      <body suppressHydrationWarning>
         <JsonLd data={siteSchemaGraph()} />
         <NextTopLoader
           color="#C5A253"
