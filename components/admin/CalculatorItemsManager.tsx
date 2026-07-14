@@ -346,7 +346,7 @@ export default function CalculatorItemsManager({
                 <p className="mt-1 text-sm text-slate-500">Choose the service and its customer-facing details.</p>
               </div>
               <div>
-                <label htmlFor="calc-name">Item name</label>
+                <label htmlFor="calc-name">Item name <span className="text-red-600" aria-hidden="true">*</span></label>
                 <input id="calc-name" value={form.name} onChange={(e) => update("name", e.target.value)} placeholder="Makkah 4-star hotel" autoFocus />
               </div>
               <div className="grid grid-cols-2 gap-4">
@@ -384,30 +384,30 @@ export default function CalculatorItemsManager({
                   </div>
                   <div className="grid gap-4 sm:grid-cols-2">
                     <div>
-                      <label htmlFor="calc-room-type">Room type</label>
+                      <label htmlFor="calc-room-type">Room type <span className="text-red-600" aria-hidden="true">*</span></label>
                       <select id="calc-room-type" value={form.roomType} onChange={(e) => update("roomType", e.target.value as RoomType)} required>
                         {roomTypes.map((roomType) => <option key={roomType} value={roomType}>{roomTypeLabels[roomType]}</option>)}
                       </select>
                     </div>
                     <div>
-                      <label htmlFor="calc-distance">Distance from Haram</label>
+                      <label htmlFor="calc-distance">Distance from Haram <span className="text-red-600" aria-hidden="true">*</span></label>
                       <input id="calc-distance" type="number" min="0" step="1" inputMode="numeric" value={form.distanceFromHaram} onChange={(e) => update("distanceFromHaram", e.target.value)} placeholder="e.g. 350" required />
                     </div>
                     <div>
-                      <label htmlFor="calc-haram-access">Haram access</label>
+                      <label htmlFor="calc-haram-access">Haram access <span className="text-red-600" aria-hidden="true">*</span></label>
                       <select id="calc-haram-access" value={form.haramAccess} onChange={(e) => update("haramAccess", e.target.value as HaramAccessType)} required>
                         {haramAccessTypes.map((access) => <option key={access} value={access}>{haramAccessLabels[access]}</option>)}
                       </select>
                     </div>
                     <div>
-                      <label htmlFor="calc-stars">Star rating</label>
+                      <label htmlFor="calc-stars">Star rating <span className="text-red-600" aria-hidden="true">*</span></label>
                       <select id="calc-stars" value={form.starRating} onChange={(e) => update("starRating", e.target.value)} required>
                         <option value="" disabled>Select rating</option>
                         {[1, 2, 3, 4, 5].map((rating) => <option key={rating} value={rating}>{rating} Star</option>)}
                       </select>
                     </div>
                     <div>
-                      <label htmlFor="calc-meals">Meal plan</label>
+                      <label htmlFor="calc-meals">Meal plan <span className="text-red-600" aria-hidden="true">*</span></label>
                       <select id="calc-meals" value={form.mealPlan} onChange={(e) => update("mealPlan", e.target.value)} required>
                         <option>Room only</option>
                         <option>Breakfast included</option>
@@ -431,11 +431,11 @@ export default function CalculatorItemsManager({
             <p className="mb-3 text-xs font-bold uppercase tracking-wider text-slate-500">Pricing rule</p>
             <div className="grid grid-cols-2 gap-4">
               <div>
-                <label htmlFor="calc-price">Price (SAR)</label>
+                <label htmlFor="calc-price">Price (SAR) <span className="text-red-600" aria-hidden="true">*</span></label>
                 <input id="calc-price" type="number" min="0" value={form.price} onChange={(e) => update("price", e.target.value)} placeholder="0" required />
               </div>
               <div>
-                <label htmlFor="calc-unit">Charge by</label>
+                <label htmlFor="calc-unit">Charge by <span className="text-red-600" aria-hidden="true">*</span></label>
                 <select id="calc-unit" value={form.unit} onChange={(e) => update("unit", e.target.value as CalculatorUnit)}>
                   {calculatorUnits
                     .filter(
@@ -465,15 +465,15 @@ export default function CalculatorItemsManager({
                 {form.dateRates.map((rate, index) => (
                   <div key={index} className="grid grid-cols-2 gap-3 rounded-xl bg-white p-3 shadow-sm">
                     <div>
-                      <label htmlFor={`rate-from-${index}`} className="text-xs">From</label>
+                      <label htmlFor={`rate-from-${index}`} className="text-xs">From <span className="text-red-600" aria-hidden="true">*</span></label>
                       <input id={`rate-from-${index}`} type="date" value={rate.startDate} onChange={(e) => updateDateRate(index, "startDate", e.target.value)} required />
                     </div>
                     <div>
-                      <label htmlFor={`rate-to-${index}`} className="text-xs">To</label>
+                      <label htmlFor={`rate-to-${index}`} className="text-xs">To <span className="text-red-600" aria-hidden="true">*</span></label>
                       <input id={`rate-to-${index}`} type="date" value={rate.endDate} onChange={(e) => updateDateRate(index, "endDate", e.target.value)} required />
                     </div>
                     <div>
-                      <label htmlFor={`rate-price-${index}`} className="text-xs">Price per night (SAR)</label>
+                      <label htmlFor={`rate-price-${index}`} className="text-xs">Price per night (SAR) <span className="text-red-600" aria-hidden="true">*</span></label>
                       <input id={`rate-price-${index}`} type="number" min="0" value={rate.price} onChange={(e) => updateDateRate(index, "price", e.target.value)} required />
                     </div>
                     <div className="flex items-end justify-end">
