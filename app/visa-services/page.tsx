@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
 import SectionHeading from "@/components/SectionHeading";
 import { CtaBand, PageHero } from "@/components/Shared";
-import SearchInquiryWidget from "@/components/SearchInquiryWidget";
+import FloatingInquiryWidget from "@/components/FloatingInquiryWidget";
 import { images } from "@/lib/images";
 import { waLink } from "@/lib/site";
 
@@ -90,13 +90,7 @@ export default function VisaServicesPage() {
         image={images.visa}
       />
 
-      <div className="relative z-10 -mt-10 sm:-mt-14">
-        <div className="container-site">
-          <div className="w-full">
-            <SearchInquiryWidget />
-          </div>
-        </div>
-      </div>
+      <FloatingInquiryWidget />
 
       <section className="py-16 sm:py-20">
         <div className="container-site">

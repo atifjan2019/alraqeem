@@ -5,7 +5,7 @@ import Reviews from "@/components/Reviews";
 import FaqAccordion from "@/components/FaqAccordion";
 import LastUpdated from "@/components/LastUpdated";
 import MobileActionBar from "@/components/packages/MobileActionBar";
-import SearchInquiryWidget from "@/components/SearchInquiryWidget";
+import FloatingInquiryWidget from "@/components/FloatingInquiryWidget";
 import CaptionedImage from "@/components/packages/CaptionedImage";
 import { reviewData } from "@/lib/reviews";
 import { images } from "@/lib/images";
@@ -102,9 +102,10 @@ export default function SeasonalUmrahView({
             <a href={quoteHref} target="_blank" rel="noopener noreferrer" className="btn-orange">Get a quote on WhatsApp</a>
             <a href={telHref(settings.phone)} className="btn border border-white/40 text-white hover:bg-white/10">Call {settings.phone}</a>
           </div>
-          <div className="mt-8 max-w-3xl"><SearchInquiryWidget whatsapp={settings.whatsapp} /></div>
         </div>
       </section>
+
+      <FloatingInquiryWidget whatsapp={settings.whatsapp} />
 
       {/* 2. Trust high */}
       <section className="bg-paper py-12">

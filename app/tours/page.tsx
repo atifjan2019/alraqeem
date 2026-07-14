@@ -9,7 +9,7 @@ import PackagesExplorer from "@/components/packages/PackagesExplorer";
 import SeoBlurb from "@/components/SeoBlurb";
 import MobileActionBar from "@/components/packages/MobileActionBar";
 import LastUpdated from "@/components/LastUpdated";
-import SearchInquiryWidget from "@/components/SearchInquiryWidget";
+import FloatingInquiryWidget from "@/components/FloatingInquiryWidget";
 import CaptionedImage from "@/components/packages/CaptionedImage";
 import DestinationDirectory from "@/components/DestinationDirectory";
 import { packageHref } from "@/lib/packages";
@@ -155,11 +155,10 @@ export default async function ToursPage() {
               Call {settings.phone}
             </a>
           </div>
-          <div className="mt-8 max-w-3xl">
-            <SearchInquiryWidget whatsapp={settings.whatsapp} />
-          </div>
         </div>
       </section>
+
+      <FloatingInquiryWidget whatsapp={settings.whatsapp} />
 
       {/* Airline partners */}
       <AirlineStrip />

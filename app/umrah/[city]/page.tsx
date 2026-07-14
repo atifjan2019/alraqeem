@@ -7,7 +7,7 @@ import Reviews from "@/components/Reviews";
 import FaqAccordion from "@/components/FaqAccordion";
 import LastUpdated from "@/components/LastUpdated";
 import MobileActionBar from "@/components/packages/MobileActionBar";
-import SearchInquiryWidget from "@/components/SearchInquiryWidget";
+import FloatingInquiryWidget from "@/components/FloatingInquiryWidget";
 import CaptionedImage from "@/components/packages/CaptionedImage";
 import { getSettings } from "@/lib/settingsStore";
 import { reviewData } from "@/lib/reviews";
@@ -184,11 +184,10 @@ export default async function UmrahCityPage({
               Call {settings.phone}
             </a>
           </div>
-          <div className="mt-8 max-w-3xl">
-            <SearchInquiryWidget whatsapp={settings.whatsapp} />
-          </div>
         </div>
       </section>
+
+      <FloatingInquiryWidget whatsapp={settings.whatsapp} />
 
       {/* Entity intro, absorbs the travel agency in the city query while leading Umrah */}
       <section className="py-10">

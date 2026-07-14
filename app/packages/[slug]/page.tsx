@@ -21,7 +21,7 @@ import TourCta from "@/components/packages/TourCta";
 import SocialProof from "@/components/packages/SocialProof";
 import CaptionedImage from "@/components/packages/CaptionedImage";
 import { tourImages } from "@/lib/tourImages";
-import SearchInquiryWidget from "@/components/SearchInquiryWidget";
+import FloatingInquiryWidget from "@/components/FloatingInquiryWidget";
 import LastUpdated from "@/components/LastUpdated";
 import Reviews from "@/components/Reviews";
 import { getSettings } from "@/lib/settingsStore";
@@ -416,15 +416,10 @@ export async function PackageDetailView({ pkg }: { pkg: TravelPackage }) {
               ))}
             </ul>
           </div>
-          {/* Hajj is the silo hub, so its quote widget sits inside the hero
-              like the Umrah hub, not in a strip below it */}
-          {isHajj && (
-            <div className="mt-8 max-w-3xl">
-              <SearchInquiryWidget whatsapp={settings.whatsapp} />
-            </div>
-          )}
         </div>
       </section>
+
+      <FloatingInquiryWidget whatsapp={settings.whatsapp} />
 
       {/* Hajj-only visual gallery */}
       {isHajj && (
@@ -456,17 +451,6 @@ export async function PackageDetailView({ pkg }: { pkg: TravelPackage }) {
                 icon="book"
                 aspect="aspect-[16/10] sm:aspect-[4/3]"
               />
-            </div>
-          </div>
-        </section>
-      )}
-
-      {/* Quote widget, single mode with the parent vertical resolved from route */}
-      {!isHajj && (
-        <section className="border-b border-black/5 bg-white py-8">
-          <div className="container-site">
-            <div className="max-w-3xl">
-              <SearchInquiryWidget whatsapp={settings.whatsapp} />
             </div>
           </div>
         </section>

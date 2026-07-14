@@ -2,7 +2,7 @@ import type { Metadata } from "next";
 import SectionHeading from "@/components/SectionHeading";
 import TicketCard from "@/components/TicketCard";
 import { CtaBand, PageHero } from "@/components/Shared";
-import SearchInquiryWidget from "@/components/SearchInquiryWidget";
+import FloatingInquiryWidget from "@/components/FloatingInquiryWidget";
 import { getTickets } from "@/lib/ticketsStore";
 import { getCategoryNames } from "@/lib/categoriesStore";
 import { images } from "@/lib/images";
@@ -34,11 +34,7 @@ export default async function TicketsPage() {
         image={images.dubai}
       />
 
-      <div className="relative z-10 -mt-10 sm:-mt-14">
-        <div className="container-site">
-          <SearchInquiryWidget />
-        </div>
-      </div>
+      <FloatingInquiryWidget />
 
       {/* Fare disclaimer, airfares move daily so every price is indicative */}
       <div className="container-site mt-10">

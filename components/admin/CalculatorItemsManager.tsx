@@ -1,7 +1,7 @@
 "use client";
 
 import { useRouter } from "next/navigation";
-import { useState } from "react";
+import { useMemo, useState } from "react";
 import {
   calculatorCategories,
   calculatorUnits,
@@ -36,6 +36,8 @@ export default function CalculatorItemsManager({
   const [editingId, setEditingId] = useState<string | null>(null);
   const [busy, setBusy] = useState(false);
   const [error, setError] = useState("");
+  const [query, setQuery] = useState("");
+  const [categoryFilter, setCategoryFilter] = useState<"all" | CalculatorCategory>("all");
 
   function update<K extends keyof typeof form>(key: K, value: (typeof form)[K]) {
     setForm((current) => ({ ...current, [key]: value }));
@@ -101,97 +103,183 @@ export default function CalculatorItemsManager({
     router.refresh();
   }
 
+  const filtered = useMemo(() => {
+    const needle = query.trim().toLowerCase();
+    return initial.filter((item) => {
+      const matchesCategory =
+        categoryFilter === "all" || item.category === categoryFilter;
+      const matchesQuery =
+        !needle ||
+        item.name.toLowerCase().includes(needle) ||
+        item.location.toLowerCase().includes(needle) ||
+        item.description.toLowerCase().includes(needle);
+      return matchesCategory && matchesQuery;
+    });
+  }, [initial, query, categoryFilter]);
+
   return (
-    <div className="grid items-start gap-10 xl:grid-cols-[minmax(320px,0.8fr)_minmax(560px,1.4fr)]">
-      <form onSubmit={save} className="space-y-5 rounded-2xl bg-white p-6 shadow-card">
-        <div>
-          <h2 className="text-2xl">{editingId ? "Edit price item" : "Add price item"}</h2>
-          <p className="mt-1 text-sm text-slate-500">
-            Add a hotel, visa, flight, transport service, or any package extra.
-          </p>
-        </div>
-        {!configured && (
-          <p className="rounded-xl border border-amber-300 bg-amber-50 p-3 text-sm text-amber-800">
-            Connect Supabase and run the calculator migration before adding prices.
-          </p>
-        )}
-        <div>
-          <label htmlFor="calc-name">Name</label>
-          <input id="calc-name" value={form.name} onChange={(e) => update("name", e.target.value)} placeholder="e.g. Makkah 4-star hotel" required />
-        </div>
-        <div className="grid gap-4 sm:grid-cols-2">
-          <div>
-            <label htmlFor="calc-category">Category</label>
-            <select id="calc-category" value={form.category} onChange={(e) => update("category", e.target.value as CalculatorCategory)}>
-              {calculatorCategories.map((category) => <option key={category} value={category}>{categoryLabels[category]}</option>)}
-            </select>
-          </div>
-          <div>
-            <label htmlFor="calc-location">Location</label>
-            <input id="calc-location" value={form.location} onChange={(e) => update("location", e.target.value)} placeholder="e.g. Makkah" />
+    <div className="grid items-start gap-8 xl:grid-cols-[390px_minmax(0,1fr)]">
+      <form
+        onSubmit={save}
+        className="overflow-hidden rounded-3xl border border-black/5 bg-white shadow-card xl:sticky xl:top-8"
+      >
+        <div className={`px-6 py-5 ${editingId ? "bg-brand-orange" : "bg-brand-blue-deep"}`}>
+          <div className="flex items-center gap-3">
+            <span className="flex h-10 w-10 items-center justify-center rounded-xl bg-white/15 text-white">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true"><path d="M12 5v14M5 12h14" /></svg>
+            </span>
+            <div>
+              <p className={`text-xs font-bold uppercase tracking-widest ${editingId ? "text-brand-blue-deep/70" : "text-brand-orange"}`}>
+                {editingId ? "Editing item" : "New calculator item"}
+              </p>
+              <h2 className={`text-xl ${editingId ? "text-brand-blue-deep" : "text-white"}`}>
+                {editingId ? "Update price details" : "Add a new price"}
+              </h2>
+            </div>
           </div>
         </div>
-        <div className="grid gap-4 sm:grid-cols-2">
+
+        <div className="space-y-5 p-6">
+          {!configured && (
+            <p className="rounded-xl border border-amber-300 bg-amber-50 p-3 text-sm text-amber-800">
+              Connect Supabase and run the calculator migration before adding prices.
+            </p>
+          )}
           <div>
-            <label htmlFor="calc-price">Price (PKR)</label>
-            <input id="calc-price" type="number" min="0" value={form.price} onChange={(e) => update("price", e.target.value)} required />
+            <label htmlFor="calc-name">Item name</label>
+            <input id="calc-name" value={form.name} onChange={(e) => update("name", e.target.value)} placeholder="Makkah 4-star hotel" required />
+          </div>
+          <div className="grid grid-cols-2 gap-4">
+            <div>
+              <label htmlFor="calc-category">Category</label>
+              <select id="calc-category" value={form.category} onChange={(e) => update("category", e.target.value as CalculatorCategory)}>
+                {calculatorCategories.map((category) => <option key={category} value={category}>{categoryLabels[category]}</option>)}
+              </select>
+            </div>
+            <div>
+              <label htmlFor="calc-location">Location</label>
+              <input id="calc-location" value={form.location} onChange={(e) => update("location", e.target.value)} placeholder="Makkah" />
+            </div>
+          </div>
+          <div className="rounded-2xl bg-paper p-4">
+            <p className="mb-3 text-xs font-bold uppercase tracking-wider text-slate-500">Pricing rule</p>
+            <div className="grid grid-cols-2 gap-4">
+              <div>
+                <label htmlFor="calc-price">Price (PKR)</label>
+                <input id="calc-price" type="number" min="0" value={form.price} onChange={(e) => update("price", e.target.value)} placeholder="0" required />
+              </div>
+              <div>
+                <label htmlFor="calc-unit">Charge by</label>
+                <select id="calc-unit" value={form.unit} onChange={(e) => update("unit", e.target.value as CalculatorUnit)}>
+                  {calculatorUnits.map((unit) => <option key={unit} value={unit}>{unitLabels[unit]}</option>)}
+                </select>
+              </div>
+            </div>
           </div>
           <div>
-            <label htmlFor="calc-unit">Charging basis</label>
-            <select id="calc-unit" value={form.unit} onChange={(e) => update("unit", e.target.value as CalculatorUnit)}>
-              {calculatorUnits.map((unit) => <option key={unit} value={unit}>{unitLabels[unit]}</option>)}
-            </select>
+            <label htmlFor="calc-description">Customer description</label>
+            <textarea id="calc-description" rows={3} value={form.description} onChange={(e) => update("description", e.target.value)} placeholder="Room type, inclusions, restrictions…" />
           </div>
-        </div>
-        <div>
-          <label htmlFor="calc-description">Description</label>
-          <textarea id="calc-description" rows={3} value={form.description} onChange={(e) => update("description", e.target.value)} placeholder="Room type, inclusions, restrictions…" />
-        </div>
-        <div className="grid gap-4 sm:grid-cols-2">
-          <div>
-            <label htmlFor="calc-order">Sort order</label>
-            <input id="calc-order" type="number" value={form.sortOrder} onChange={(e) => update("sortOrder", e.target.value)} />
+          <div className="grid grid-cols-[110px_1fr] gap-4">
+            <div>
+              <label htmlFor="calc-order">Order</label>
+              <input id="calc-order" type="number" value={form.sortOrder} onChange={(e) => update("sortOrder", e.target.value)} />
+            </div>
+            <label className="flex cursor-pointer items-center justify-between gap-3 self-end rounded-xl border border-black/5 bg-white px-4 py-3 shadow-sm">
+              <span>
+                <span className="block text-sm font-semibold text-brand-blue-deep">Published</span>
+                <span className="block text-[11px] text-slate-500">Visible to customers</span>
+              </span>
+              <input type="checkbox" checked={form.active} onChange={(e) => update("active", e.target.checked)} className="h-5 w-5" />
+            </label>
           </div>
-          <label className="flex items-center gap-3 self-end rounded-xl bg-paper px-4 py-3">
-            <input type="checkbox" checked={form.active} onChange={(e) => update("active", e.target.checked)} className="h-4 w-4" />
-            <span className="text-sm font-semibold">Show in calculator</span>
-          </label>
-        </div>
-        {error && <p className="rounded-xl bg-red-50 p-3 text-sm text-red-700">{error}</p>}
-        <div className="flex flex-wrap gap-3">
-          <button type="submit" disabled={!configured || busy} className="btn-orange disabled:opacity-50">
-            {busy ? "Saving…" : editingId ? "Save Changes" : "Add Price Item"}
-          </button>
-          {editingId && <button type="button" onClick={reset} className="btn-outline">Cancel</button>}
+          {error && <p className="rounded-xl bg-red-50 p-3 text-sm text-red-700">{error}</p>}
+          <div className="grid grid-cols-2 gap-3">
+            <button type="submit" disabled={!configured || busy} className="btn-orange disabled:opacity-50">
+              {busy ? "Saving…" : editingId ? "Save Changes" : "Add Price"}
+            </button>
+            {editingId ? (
+              <button type="button" onClick={reset} className="btn-outline">Cancel Edit</button>
+            ) : (
+              <button type="button" onClick={() => setForm(blank)} className="btn-outline">Clear</button>
+            )}
+          </div>
         </div>
       </form>
 
-      <div className="overflow-hidden rounded-2xl border border-black/5 bg-white shadow-card">
-        <div className="border-b border-black/5 px-5 py-4">
-          <h2 className="text-xl">Calculator prices</h2>
-          <p className="text-sm text-slate-500">{initial.length} item{initial.length === 1 ? "" : "s"}</p>
-        </div>
-        <div className="divide-y divide-black/5">
-          {initial.map((item) => (
-            <div key={item.id} className="flex flex-col gap-3 px-5 py-4 sm:flex-row sm:items-center sm:justify-between">
-              <div>
-                <div className="flex flex-wrap items-center gap-2">
-                  <p className="font-semibold text-brand-blue-deep">{item.name}</p>
-                  {!item.active && <span className="rounded-full bg-slate-100 px-2 py-0.5 text-[10px] font-bold uppercase text-slate-500">Hidden</span>}
-                </div>
-                <p className="mt-1 text-xs text-slate-500">
-                  {categoryLabels[item.category]}{item.location ? ` · ${item.location}` : ""} · {unitLabels[item.unit]}
-                </p>
-                <p className="mt-1 font-display text-lg text-brand-orange-dark">{formatCalculatorPrice(item.price)}</p>
-              </div>
-              <div className="flex gap-2">
-                <button type="button" onClick={() => edit(item)} className="btn-outline !px-3 !py-2 text-xs">Edit</button>
-                <button type="button" onClick={() => remove(item)} disabled={!configured} className="rounded-xl px-3 py-2 text-xs font-semibold text-red-600 hover:bg-red-50 disabled:opacity-40">Delete</button>
-              </div>
+      <div className="min-w-0">
+        <div className="rounded-3xl border border-black/5 bg-white p-5 shadow-card sm:p-6">
+          <div className="flex flex-col gap-4 lg:flex-row lg:items-center lg:justify-between">
+            <div>
+              <h2 className="text-2xl">Price inventory</h2>
+              <p className="mt-1 text-sm text-slate-500">
+                Showing {filtered.length} of {initial.length} items
+              </p>
             </div>
-          ))}
-          {initial.length === 0 && <p className="px-5 py-10 text-center text-sm text-slate-500">No prices yet. Add your first hotel or service.</p>}
+            <div className="relative min-w-0 lg:w-72">
+              <svg className="absolute left-3 top-1/2 -translate-y-1/2 text-slate-400" width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" aria-hidden="true"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.3-4.3"/></svg>
+              <input value={query} onChange={(e) => setQuery(e.target.value)} placeholder="Search prices…" className="!pl-10" aria-label="Search calculator prices" />
+            </div>
+          </div>
+
+          <div className="mt-5 flex gap-2 overflow-x-auto pb-1 [scrollbar-width:none] [&::-webkit-scrollbar]:hidden">
+            <button type="button" onClick={() => setCategoryFilter("all")} className={`shrink-0 rounded-full px-4 py-2 text-xs font-semibold transition ${categoryFilter === "all" ? "bg-brand-blue-deep text-white" : "bg-paper text-slate-600 hover:bg-brand-blue-deep/10"}`}>
+              All <span className="ml-1 opacity-60">{initial.length}</span>
+            </button>
+            {calculatorCategories.map((category) => {
+              const count = initial.filter((item) => item.category === category).length;
+              if (count === 0) return null;
+              return (
+                <button key={category} type="button" onClick={() => setCategoryFilter(category)} className={`shrink-0 rounded-full px-4 py-2 text-xs font-semibold transition ${categoryFilter === category ? "bg-brand-blue-deep text-white" : "bg-paper text-slate-600 hover:bg-brand-blue-deep/10"}`}>
+                  {categoryLabels[category]} <span className="ml-1 opacity-60">{count}</span>
+                </button>
+              );
+            })}
+          </div>
         </div>
+
+        <div className="mt-5 grid gap-4 2xl:grid-cols-2">
+          {filtered.map((item) => (
+            <article key={item.id} className={`group relative overflow-hidden rounded-2xl border bg-white p-5 shadow-card transition hover:-translate-y-0.5 hover:shadow-lift ${item.active ? "border-black/5" : "border-dashed border-slate-300 opacity-75"}`}>
+              <div className={`absolute inset-y-0 left-0 w-1 ${item.active ? "bg-brand-orange" : "bg-slate-300"}`} />
+              <div className="flex items-start justify-between gap-4">
+                <div className="min-w-0">
+                  <div className="flex flex-wrap items-center gap-2">
+                    <span className="rounded-full bg-brand-blue-deep/10 px-2.5 py-1 text-[10px] font-bold uppercase tracking-wide text-brand-blue-deep">
+                      {categoryLabels[item.category]}
+                    </span>
+                    <span className={`h-2 w-2 rounded-full ${item.active ? "bg-emerald-500" : "bg-slate-400"}`} title={item.active ? "Published" : "Hidden"} />
+                  </div>
+                  <h3 className="mt-3 truncate text-lg text-brand-blue-deep">{item.name}</h3>
+                  <p className="mt-1 text-xs text-slate-500">{item.location || "No location"}</p>
+                </div>
+                <div className="shrink-0 text-right">
+                  <p className="font-display text-xl text-brand-orange-dark">{formatCalculatorPrice(item.price)}</p>
+                  <p className="mt-0.5 text-[11px] text-slate-500">{unitLabels[item.unit]}</p>
+                </div>
+              </div>
+              {item.description && <p className="mt-4 line-clamp-2 text-sm leading-relaxed text-slate-600">{item.description}</p>}
+              <div className="mt-5 flex items-center justify-between border-t border-black/5 pt-4">
+                <span className="text-[11px] font-medium text-slate-400">Sort order: {item.sortOrder}</span>
+                <div className="flex gap-2">
+                  <button type="button" onClick={() => edit(item)} className="rounded-lg bg-brand-blue-deep/10 px-3 py-2 text-xs font-semibold text-brand-blue-deep transition hover:bg-brand-blue-deep hover:text-white">Edit</button>
+                  <button type="button" onClick={() => remove(item)} disabled={!configured} className="rounded-lg px-3 py-2 text-xs font-semibold text-red-600 transition hover:bg-red-50 disabled:opacity-40">Delete</button>
+                </div>
+              </div>
+            </article>
+          ))}
+        </div>
+
+        {filtered.length === 0 && (
+          <div className="mt-5 rounded-3xl border border-dashed border-slate-300 bg-white px-6 py-14 text-center">
+            <div className="mx-auto flex h-12 w-12 items-center justify-center rounded-full bg-paper text-slate-400">
+              <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" aria-hidden="true"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.3-4.3"/></svg>
+            </div>
+            <h3 className="mt-4 text-lg">No matching prices</h3>
+            <p className="mt-1 text-sm text-slate-500">Try another search or category.</p>
+            <button type="button" onClick={() => { setQuery(""); setCategoryFilter("all"); }} className="btn-outline mt-5 !py-2 text-sm">Clear Filters</button>
+          </div>
+        )}
       </div>
     </div>
   );

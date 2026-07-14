@@ -5,7 +5,7 @@ import JsonLd from "@/components/JsonLd";
 import Reviews from "@/components/Reviews";
 import FaqAccordion from "@/components/FaqAccordion";
 import LastUpdated from "@/components/LastUpdated";
-import SearchInquiryWidget from "@/components/SearchInquiryWidget";
+import FloatingInquiryWidget from "@/components/FloatingInquiryWidget";
 import CaptionedImage from "@/components/packages/CaptionedImage";
 import { getPackages } from "@/lib/packagesStore";
 import { getSettings } from "@/lib/settingsStore";
@@ -210,11 +210,10 @@ export default async function PakistanToursPage() {
             Hunza, and Skardu, with transport, hotels, and guided sightseeing in
             one booking from Peshawar and Islamabad, quoted on inquiry.
           </p>
-          <div className="mt-8 max-w-4xl">
-            <SearchInquiryWidget whatsapp={settings.whatsapp} />
-          </div>
         </div>
       </section>
+
+      <FloatingInquiryWidget whatsapp={settings.whatsapp} />
 
       {/* Regional directory */}
       <section className="bg-paper py-16 sm:py-20">

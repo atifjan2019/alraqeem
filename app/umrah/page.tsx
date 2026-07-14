@@ -11,7 +11,7 @@ import SeoBlurb from "@/components/SeoBlurb";
 import TierCompare from "@/components/packages/TierCompare";
 import MobileActionBar from "@/components/packages/MobileActionBar";
 import LastUpdated from "@/components/LastUpdated";
-import SearchInquiryWidget from "@/components/SearchInquiryWidget";
+import FloatingInquiryWidget from "@/components/FloatingInquiryWidget";
 import DepartureCityDirectory from "@/components/DepartureCityDirectory";
 import UmrahPlusStrip from "@/components/umrah/UmrahPlusStrip";
 import SeasonalUmrahStrip from "@/components/umrah/SeasonalUmrahStrip";
@@ -154,11 +154,12 @@ export default async function UmrahHubPage() {
               Call {settings.phone}
             </a>
           </div>
-          <div className="mt-8 max-w-3xl">
-            <SearchInquiryWidget whatsapp={settings.whatsapp} />
-          </div>
         </div>
       </section>
+
+      {/* Quote widget bridges the hero and the content below, matching the
+          homepage placement with half of the panel over each section. */}
+      <FloatingInquiryWidget whatsapp={settings.whatsapp} />
 
       {/* Airline partners */}
       <AirlineStrip />

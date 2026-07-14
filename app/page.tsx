@@ -6,7 +6,7 @@ import { CtaBand } from "@/components/Shared";
 import JsonLd from "@/components/JsonLd";
 import HomeFaq from "@/components/HomeFaq";
 import CaptionedImage from "@/components/packages/CaptionedImage";
-import SearchInquiryWidget from "@/components/SearchInquiryWidget";
+import FloatingInquiryWidget from "@/components/FloatingInquiryWidget";
 import Reviews from "@/components/Reviews";
 import { getPackages } from "@/lib/packagesStore";
 import { publicStartingPrice } from "@/lib/packages";
@@ -266,13 +266,7 @@ export default async function HomePage() {
 
       {/* Search widget, floating across the hero and airline partners seam so it
           reads as a bridge, half over the dark hero and half over the light band */}
-      <div className="relative z-30 -mt-16 sm:-mt-24 lg:-mt-32">
-        <div className="container-site">
-          <div className="mx-auto max-w-5xl lg:mx-0">
-            <SearchInquiryWidget whatsapp={settings.whatsapp} />
-          </div>
-        </div>
-      </div>
+      <FloatingInquiryWidget whatsapp={settings.whatsapp} />
 
       {/* Trusted Partners */}
       <section className="overflow-hidden border-y border-black/5 bg-white pb-14 pt-20 sm:pt-24">
