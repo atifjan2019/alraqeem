@@ -68,6 +68,7 @@ export default function Footer({
             <li><Link href="/tours" className="hover:text-white">Tour Packages</Link></li>
             <li><Link href="/tickets" className="hover:text-white">Flight Deals</Link></li>
             <li><Link href="/visa-services" className="hover:text-white">Visa Services</Link></li>
+            <li><Link href="/package-calculator" className="hover:text-white">Package Calculator</Link></li>
             <li><Link href="/about" className="hover:text-white">About Us</Link></li>
             <li><Link href="/blog" className="hover:text-white">Travel Blog</Link></li>
             <li><Link href="/contact" className="hover:text-white">Contact</Link></li>

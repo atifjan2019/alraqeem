@@ -10,6 +10,7 @@ const links = [
   { href: "/admin", label: "Dashboard", exact: true, icon: "M3 12l9-9 9 9M5 10v10h14V10" },
   { href: "/admin/packages", label: "Packages", icon: "M21 16V8a2 2 0 0 0-1-1.7l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.7l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z" },
   { href: "/admin/tickets", label: "Tickets", icon: "M2 9a3 3 0 0 1 0 6v2a2 2 0 0 0 2 2h16a2 2 0 0 0 2-2v-2a3 3 0 0 1 0-6V7a2 2 0 0 0-2-2H4a2 2 0 0 0-2 2zM13 5v14" },
+  { href: "/admin/calculator", label: "Calculator Prices", icon: "M4 3h16v18H4zM8 7h8M8 11h2M12 11h2M16 11h1M8 15h2M12 15h2M16 15h1M8 18h6" },
   { href: "/admin/categories", label: "Categories", icon: "M4 4h7v7H4zM13 4h7v7h-7zM4 13h7v7H4zM13 13h7v7h-7z" },
   { href: "/admin/blogs", label: "Blogs", icon: "M4 4h11l5 5v11a0 0 0 0 1 0 0H4zM14 4v5h5M8 13h8M8 17h8" },
   { href: "/admin/media", label: "Media", icon: "M3 5h18v14H3zM3 15l5-5 4 4 3-3 6 6" },

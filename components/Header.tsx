@@ -14,8 +14,7 @@ const nav = [
   { href: "/tours", label: "Tours" },
   { href: "/tickets", label: "Flight Deals" },
   { href: "/visa-services", label: "Visa Services" },
-  { href: "/about", label: "About" },
-  { href: "/blog", label: "Blog" },
+  { href: "/package-calculator", label: "Package Calculator" },
   { href: "/contact", label: "Contact" },
 ];
 

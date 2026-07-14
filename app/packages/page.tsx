@@ -3,9 +3,7 @@ import Link from "next/link";
 import { CtaBand } from "@/components/Shared";
 import JsonLd from "@/components/JsonLd";
 import LastUpdated from "@/components/LastUpdated";
-import { getSettings } from "@/lib/settingsStore";
 import { mapsLink } from "@/lib/site";
-import { waHref } from "@/lib/settings";
 import { packagesHubGraph } from "@/lib/schema";
 import { images } from "@/lib/images";
 
@@ -61,9 +59,7 @@ const silos = [
   },
 ];
 
-export default async function PackagesBrowsePage() {
-  const settings = await getSettings();
-
+export default function PackagesBrowsePage() {
   return (
     <>
       <JsonLd data={packagesHubGraph()} />
@@ -131,26 +127,20 @@ export default async function PackagesBrowsePage() {
                 </div>
               </Link>
             ))}
-            <a
-              href={waHref(
-                settings.whatsapp,
-                "Assalam o Alaikum, I want a quote for a package for my dates."
-              )}
-              target="_blank"
-              rel="noopener noreferrer"
+            <Link
+              href="/package-calculator"
               className="group flex flex-col justify-center rounded-3xl border border-dashed border-brand-orange/40 bg-brand-orange/5 p-7 text-center"
             >
               <p className="font-display text-lg text-brand-blue-deep">
-                Something custom?
+                Build a custom package
               </p>
               <p className="mt-2 text-sm leading-relaxed text-slate-600">
-                Message our desk and we build the package around your dates and
-                group.
+                Select hotels and services, then see your estimated package total instantly.
               </p>
               <span className="btn-orange mt-5 !py-2.5 text-sm">
-                Get a quote on WhatsApp
+                Open Package Calculator
               </span>
-            </a>
+            </Link>
           </div>
         </div>
       </section>
