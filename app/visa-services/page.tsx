@@ -16,48 +16,56 @@ export const metadata: Metadata = {
 const visas = [
   {
     country: "United Arab Emirates",
+    image: "/images/tours/dubai/burj-khalifa.jpg",
     type: "30 / 60 day visit visa",
     time: "3 to 5 working days",
     note: "Single and multiple entry options. Hotel booking support included.",
   },
   {
     country: "Saudi Arabia",
+    image: images.madinah,
     type: "Umrah e-visa & visit visa",
     time: "2 to 4 working days",
     note: "Processed with our Umrah packages or standalone for family visits.",
   },
   {
     country: "Turkey",
+    image: "/images/tours/turkey/hagia-sophia.jpg",
     type: "e-Visa & sticker visa",
     time: "3 to 7 working days",
     note: "e-Visa for eligible travelers, full sticker visa filing for others.",
   },
   {
     country: "Malaysia",
+    image: "/images/tours/malaysia/petronas.jpg",
     type: "eVisa / entry pass",
     time: "3 to 5 working days",
     note: "Single entry tourist eVisa with document checklist provided.",
   },
   {
     country: "Thailand",
+    image: "/images/tours/thailand/wat-arun.jpg",
     type: "Tourist visa",
     time: "5 to 7 working days",
     note: "Bank statement and itinerary guidance included.",
   },
   {
     country: "Azerbaijan",
+    image: "/images/tours/baku/flame-towers.jpg",
     type: "e-Visa",
     time: "2 to 4 working days",
     note: "One of the easiest visas for Pakistani passport holders.",
   },
   {
     country: "Schengen States",
+    image: images.europe,
     type: "Tourist / visit visa",
     time: "15 to 30 working days",
     note: "Complete file preparation, appointment booking and interview guidance.",
   },
   {
     country: "United Kingdom",
+    image: images.visa,
     type: "Standard visitor visa",
     time: "15 to 30 working days",
     note: "Document review and application support for family visits and tourism.",
@@ -84,7 +92,7 @@ export default function VisaServicesPage() {
 
       <div className="relative z-10 -mt-10 sm:-mt-14">
         <div className="container-site">
-          <div className="mx-auto max-w-3xl">
+          <div className="w-full">
             <SearchInquiryWidget />
           </div>
         </div>
@@ -101,20 +109,33 @@ export default function VisaServicesPage() {
             {visas.map((v) => (
               <div
                 key={v.country}
-                className="flex flex-col rounded-3xl bg-white p-6 shadow-card"
+                className="group flex flex-col overflow-hidden rounded-3xl bg-white shadow-card transition duration-300 hover:-translate-y-1 hover:shadow-lift"
               >
-                <h3 className="text-xl">{v.country}</h3>
-                <p className="mt-1 text-sm font-semibold text-brand-blue">
-                  {v.type}
-                </p>
-                <p className="mt-3 text-sm text-slate-600">{v.note}</p>
-                <div className="mt-auto pt-4">
-                  <p className="text-xs font-semibold uppercase tracking-wider text-slate-500">
-                    Typical processing
+                <div className="relative h-44 overflow-hidden">
+                  <img
+                    src={v.image}
+                    alt={`${v.country} visa destination`}
+                    loading="lazy"
+                    className="h-full w-full object-cover transition duration-700 group-hover:scale-105"
+                  />
+                  <div className="absolute inset-0 bg-gradient-to-t from-brand-blue-deep/75 via-transparent to-transparent" />
+                  <h3 className="absolute inset-x-0 bottom-0 p-5 text-xl text-white">
+                    {v.country}
+                  </h3>
+                </div>
+                <div className="flex flex-1 flex-col p-6">
+                  <p className="text-sm font-semibold text-brand-blue">
+                    {v.type}
                   </p>
-                  <p className="font-display text-lg text-brand-orange-dark">
-                    {v.time}
-                  </p>
+                  <p className="mt-3 text-sm text-slate-600">{v.note}</p>
+                  <div className="mt-auto pt-4">
+                    <p className="text-xs font-semibold uppercase tracking-wider text-slate-500">
+                      Typical processing
+                    </p>
+                    <p className="font-display text-lg text-brand-orange-dark">
+                      {v.time}
+                    </p>
+                  </div>
                 </div>
               </div>
             ))}
