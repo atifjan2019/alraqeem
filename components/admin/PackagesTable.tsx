@@ -3,7 +3,7 @@
 import Link from "next/link";
 import { useRouter } from "next/navigation";
 import { useState } from "react";
-import { formatPrice, type TravelPackage } from "@/lib/packages";
+import { priceLabel, type TravelPackage } from "@/lib/packages";
 
 export default function PackagesTable({
   packages,
@@ -82,7 +82,7 @@ export default function PackagesTable({
                 {p.category}
               </td>
               <td className="hidden px-5 py-3 text-slate-600 md:table-cell">
-                {formatPrice(p.price)}
+                {priceLabel(p)}
               </td>
               <td className="px-5 py-3">
                 <div className="flex justify-end gap-1">

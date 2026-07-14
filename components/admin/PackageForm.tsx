@@ -147,15 +147,18 @@ export default function PackageForm({
           />
         </div>
         <div>
-          <label htmlFor="priceType">Price type</label>
+          <label htmlFor="priceType">Package price type</label>
           <select
             id="priceType"
             value={form.priceType}
             onChange={(e) => update("priceType", e.target.value as "from" | "flat")}
           >
-            <option value="from">From (starting price)</option>
-            <option value="flat">Flat charges (fixed price)</option>
+            <option value="from">From</option>
+            <option value="flat">Flat Charges</option>
           </select>
+          <p className="mt-1 text-xs text-slate-500">
+            “From” marks a starting price; “Flat Charges” marks the full fixed price.
+          </p>
         </div>
       </div>
 

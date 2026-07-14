@@ -27,6 +27,13 @@ export function parsePackageBody(body: Record<string, unknown>): ParseResult {
     return { error: "Price must be a number." };
   }
 
+  if (
+    body.priceType !== undefined &&
+    body.priceType !== "from" &&
+    body.priceType !== "flat"
+  ) {
+    return { error: "Package price type must be From or Flat Charges." };
+  }
   const priceType = body.priceType === "flat" ? "flat" : "from";
 
   let highlights: string[] = [];

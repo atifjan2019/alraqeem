@@ -27,6 +27,21 @@ create table if not exists public.packages (
 alter table public.packages add column if not exists expiry_date date;
 alter table public.packages add column if not exists price_type text not null default 'from';
 
+-- Add the allowed-value check for databases created before price_type existed.
+do $$
+begin
+  if not exists (
+    select 1
+    from pg_constraint
+    where conname = 'packages_price_type_check'
+      and conrelid = 'public.packages'::regclass
+  ) then
+    alter table public.packages
+      add constraint packages_price_type_check
+      check (price_type in ('from', 'flat'));
+  end if;
+end $$;
+
 -- Row Level Security: anyone may READ, but only the service-role key
 -- (used by the server-side admin API) may write.
 alter table public.packages enable row level security;
