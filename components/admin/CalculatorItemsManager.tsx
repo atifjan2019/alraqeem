@@ -162,6 +162,18 @@ export default function CalculatorItemsManager({
       setError("Enter an item name before continuing.");
       return;
     }
+    if (
+      step === 1 &&
+      form.category === "hotel" &&
+      (form.distanceFromHaram === "" ||
+        form.starRating === "" ||
+        !form.roomType ||
+        !form.haramAccess ||
+        !form.mealPlan)
+    ) {
+      setError("Complete every field in Hotel Details before continuing.");
+      return;
+    }
     if (step === 2) {
       if (form.price === "" || Number(form.price) < 0) {
         setError("Enter a valid regular price before continuing.");
@@ -366,34 +378,37 @@ export default function CalculatorItemsManager({
               </div>
               {form.category === "hotel" && (
                 <div className="rounded-2xl bg-paper p-4">
-                  <p className="mb-4 text-xs font-bold uppercase tracking-wider text-slate-500">Hotel details</p>
+                  <div className="mb-4">
+                    <p className="text-xs font-bold uppercase tracking-wider text-slate-500">Hotel details</p>
+                    <p className="mt-1 text-xs text-slate-500">All hotel details are required.</p>
+                  </div>
                   <div className="grid gap-4 sm:grid-cols-2">
                     <div>
                       <label htmlFor="calc-room-type">Room type</label>
-                      <select id="calc-room-type" value={form.roomType} onChange={(e) => update("roomType", e.target.value as RoomType)}>
+                      <select id="calc-room-type" value={form.roomType} onChange={(e) => update("roomType", e.target.value as RoomType)} required>
                         {roomTypes.map((roomType) => <option key={roomType} value={roomType}>{roomTypeLabels[roomType]}</option>)}
                       </select>
                     </div>
                     <div>
                       <label htmlFor="calc-distance">Distance from Haram</label>
-                      <input id="calc-distance" type="number" min="0" step="1" inputMode="numeric" value={form.distanceFromHaram} onChange={(e) => update("distanceFromHaram", e.target.value)} placeholder="e.g. 350" />
+                      <input id="calc-distance" type="number" min="0" step="1" inputMode="numeric" value={form.distanceFromHaram} onChange={(e) => update("distanceFromHaram", e.target.value)} placeholder="e.g. 350" required />
                     </div>
                     <div>
                       <label htmlFor="calc-haram-access">Haram access</label>
-                      <select id="calc-haram-access" value={form.haramAccess} onChange={(e) => update("haramAccess", e.target.value as HaramAccessType)}>
+                      <select id="calc-haram-access" value={form.haramAccess} onChange={(e) => update("haramAccess", e.target.value as HaramAccessType)} required>
                         {haramAccessTypes.map((access) => <option key={access} value={access}>{haramAccessLabels[access]}</option>)}
                       </select>
                     </div>
                     <div>
                       <label htmlFor="calc-stars">Star rating</label>
-                      <select id="calc-stars" value={form.starRating} onChange={(e) => update("starRating", e.target.value)}>
-                        <option value="">Not specified</option>
+                      <select id="calc-stars" value={form.starRating} onChange={(e) => update("starRating", e.target.value)} required>
+                        <option value="" disabled>Select rating</option>
                         {[1, 2, 3, 4, 5].map((rating) => <option key={rating} value={rating}>{rating} Star</option>)}
                       </select>
                     </div>
                     <div>
                       <label htmlFor="calc-meals">Meal plan</label>
-                      <select id="calc-meals" value={form.mealPlan} onChange={(e) => update("mealPlan", e.target.value)}>
+                      <select id="calc-meals" value={form.mealPlan} onChange={(e) => update("mealPlan", e.target.value)} required>
                         <option>Room only</option>
                         <option>Breakfast included</option>
                         <option>Half board</option>

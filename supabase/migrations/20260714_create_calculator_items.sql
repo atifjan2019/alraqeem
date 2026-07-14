@@ -16,7 +16,17 @@ create table if not exists public.calculator_items (
   active      boolean not null default true,
   sort_order  integer not null default 0,
   created_at  timestamptz not null default now(),
-  updated_at  timestamptz not null default now()
+  updated_at  timestamptz not null default now(),
+  constraint calculator_items_hotel_details_required check (
+    category <> 'hotel'
+    or (
+      room_type is not null
+      and distance_from_haram is not null
+      and haram_access is not null
+      and star_rating is not null
+      and nullif(btrim(meal_plan), '') is not null
+    )
+  )
 );
 
 alter table public.calculator_items enable row level security;

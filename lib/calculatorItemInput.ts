@@ -59,6 +59,9 @@ export function parseCalculatorItemBody(
   if (category === "hotel" && !haramAccessTypes.includes(requestedHaramAccess)) {
     return { error: "Choose Walk, Shuttle, or Both for Haram access." };
   }
+  if (category === "hotel" && distanceFromHaram === null) {
+    return { error: "Distance from Haram is required for hotels." };
+  }
   if (
     distanceFromHaram !== null &&
     (!Number.isInteger(distanceFromHaram) || distanceFromHaram < 0)
@@ -70,6 +73,12 @@ export function parseCalculatorItemBody(
     (!Number.isInteger(starRating) || starRating < 1 || starRating > 5)
   ) {
     return { error: "Hotel star rating must be between 1 and 5." };
+  }
+  if (category === "hotel" && starRating === null) {
+    return { error: "Star rating is required for hotels." };
+  }
+  if (category === "hotel" && !mealPlan) {
+    return { error: "Meal plan is required for hotels." };
   }
   if (!Number.isFinite(price) || price < 0) {
     return { error: "Price must be zero or a positive number." };
