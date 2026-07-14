@@ -4,6 +4,7 @@ import type { CalculatorItemInput } from "@/lib/calculatorItemInput";
 import type {
   CalculatorCategory,
   DateRate,
+  HaramAccessType,
   CalculatorItem,
   CalculatorUnit,
   RoomType,
@@ -17,6 +18,10 @@ type Row = {
   category: CalculatorCategory;
   room_type: RoomType | null;
   location: string | null;
+  distance_from_haram: number | null;
+  haram_access: HaramAccessType | null;
+  star_rating: number | null;
+  meal_plan: string | null;
   price: number;
   date_rates: DateRate[] | null;
   unit: CalculatorUnit;
@@ -32,6 +37,10 @@ function rowToItem(row: Row): CalculatorItem {
     category: row.category,
     roomType: row.room_type,
     location: row.location ?? "",
+    distanceFromHaram: row.distance_from_haram ?? null,
+    haramAccess: row.haram_access ?? null,
+    starRating: row.star_rating ?? null,
+    mealPlan: row.meal_plan ?? "",
     price: row.price,
     dateRates: row.date_rates ?? [],
     unit: row.unit,
@@ -47,6 +56,10 @@ function toRow(input: CalculatorItemInput) {
     category: input.category,
     room_type: input.roomType,
     location: input.location || null,
+    distance_from_haram: input.distanceFromHaram,
+    haram_access: input.haramAccess,
+    star_rating: input.starRating,
+    meal_plan: input.mealPlan || null,
     price: input.price,
     date_rates: input.dateRates,
     unit: input.unit,

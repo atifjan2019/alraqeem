@@ -4,6 +4,10 @@ create table if not exists public.calculator_items (
   category    text not null check (category in ('hotel','flight','visa','transport','ziyarat','other')),
   room_type   text check (room_type in ('sharing','quad','triple','double')),
   location    text,
+  distance_from_haram integer check (distance_from_haram >= 0),
+  haram_access text check (haram_access in ('walk','shuttle','both')),
+  star_rating smallint check (star_rating between 1 and 5),
+  meal_plan   text,
   price       integer not null check (price >= 0),
   date_rates  jsonb not null default '[]'::jsonb
               check (jsonb_typeof(date_rates) = 'array'),

@@ -29,6 +29,14 @@ export type DateRate = {
   price: number;
 };
 
+export const haramAccessTypes = ["walk", "shuttle", "both"] as const;
+export type HaramAccessType = (typeof haramAccessTypes)[number];
+export const haramAccessLabels: Record<HaramAccessType, string> = {
+  walk: "Walk",
+  shuttle: "Shuttle",
+  both: "Both",
+};
+
 export const roomTypeLabels: Record<RoomType, string> = {
   sharing: "Sharing",
   quad: "Quad",
@@ -42,6 +50,10 @@ export type CalculatorItem = {
   category: CalculatorCategory;
   roomType: RoomType | null;
   location: string;
+  distanceFromHaram: number | null;
+  haramAccess: HaramAccessType | null;
+  starRating: number | null;
+  mealPlan: string;
   price: number;
   dateRates: DateRate[];
   unit: CalculatorUnit;

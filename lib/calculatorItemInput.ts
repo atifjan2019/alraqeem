@@ -1,11 +1,13 @@
 import {
   calculatorCategories,
   calculatorUnits,
+  haramAccessTypes,
   roomTypes,
   type CalculatorCategory,
   type CalculatorItem,
   type CalculatorUnit,
   type DateRate,
+  type HaramAccessType,
   type RoomType,
 } from "@/lib/calculatorItems";
 
@@ -18,6 +20,20 @@ export function parseCalculatorItemBody(
   const name = String(body.name ?? "").trim();
   const category = String(body.category ?? "") as CalculatorCategory;
   const location = String(body.location ?? "").trim();
+  const rawDistance = body.distanceFromHaram;
+  const distanceFromHaram =
+    rawDistance === "" || rawDistance === null || rawDistance === undefined
+      ? null
+      : Number(rawDistance);
+  const requestedHaramAccess = String(
+    body.haramAccess ?? ""
+  ).toLowerCase() as HaramAccessType;
+  const mealPlan = String(body.mealPlan ?? "").trim();
+  const rawStarRating = body.starRating;
+  const starRating =
+    rawStarRating === "" || rawStarRating === null || rawStarRating === undefined
+      ? null
+      : Number(rawStarRating);
   const requestedRoomType = String(body.roomType ?? "").toLowerCase() as RoomType;
   const unit = String(body.unit ?? "") as CalculatorUnit;
   const description = String(body.description ?? "").trim();
@@ -39,6 +55,21 @@ export function parseCalculatorItemBody(
   }
   if (category === "hotel" && !roomTypes.includes(requestedRoomType)) {
     return { error: "Choose Sharing, Quad, Triple, or Double room type." };
+  }
+  if (category === "hotel" && !haramAccessTypes.includes(requestedHaramAccess)) {
+    return { error: "Choose Walk, Shuttle, or Both for Haram access." };
+  }
+  if (
+    distanceFromHaram !== null &&
+    (!Number.isInteger(distanceFromHaram) || distanceFromHaram < 0)
+  ) {
+    return { error: "Distance from Haram must be zero or a positive number in metres." };
+  }
+  if (
+    starRating !== null &&
+    (!Number.isInteger(starRating) || starRating < 1 || starRating > 5)
+  ) {
+    return { error: "Hotel star rating must be between 1 and 5." };
   }
   if (!Number.isFinite(price) || price < 0) {
     return { error: "Price must be zero or a positive number." };
@@ -81,9 +112,15 @@ export function parseCalculatorItemBody(
       category,
       roomType: category === "hotel" ? requestedRoomType : null,
       location: category === "visa" ? "" : location,
+      distanceFromHaram: category === "hotel" ? distanceFromHaram : null,
+      haramAccess: category === "hotel" ? requestedHaramAccess : null,
+      starRating: category === "hotel" ? starRating : null,
+      mealPlan: category === "hotel" ? mealPlan : "",
       price: Math.round(price),
       dateRates:
-        unit === "per_room_night" || unit === "per_person_night"
+        category === "hotel" ||
+        unit === "per_room_night" ||
+        unit === "per_person_night"
           ? dateRates
           : [],
       unit,

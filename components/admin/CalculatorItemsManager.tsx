@@ -7,11 +7,14 @@ import {
   calculatorUnits,
   categoryLabels,
   formatCalculatorPrice,
+  haramAccessLabels,
+  haramAccessTypes,
   roomTypeLabels,
   roomTypes,
   unitLabels,
   type CalculatorCategory,
   type CalculatorItem,
+  type HaramAccessType,
   type RoomType,
   type CalculatorUnit,
 } from "@/lib/calculatorItems";
@@ -21,6 +24,10 @@ const blank = {
   category: "hotel" as CalculatorCategory,
   roomType: "sharing" as RoomType,
   location: "Makkah",
+  distanceFromHaram: "",
+  haramAccess: "walk" as HaramAccessType,
+  starRating: "",
+  mealPlan: "Room only",
   price: "",
   dateRates: [] as { startDate: string; endDate: string; price: string }[],
   unit: "per_room_night" as CalculatorUnit,
@@ -82,6 +89,11 @@ export default function CalculatorItemsManager({
             ? "Madina"
             : "Makkah"
           : item.location,
+      distanceFromHaram:
+        item.distanceFromHaram == null ? "" : String(item.distanceFromHaram),
+      haramAccess: item.haramAccess ?? "walk",
+      starRating: item.starRating == null ? "" : String(item.starRating),
+      mealPlan: item.mealPlan || "Room only",
       price: String(item.price),
       dateRates: item.dateRates.map((rate) => ({
         startDate: rate.startDate,
@@ -353,19 +365,42 @@ export default function CalculatorItemsManager({
             </div>
               </div>
               {form.category === "hotel" && (
-                <div>
-                  <label htmlFor="calc-room-type">Room type</label>
-                  <select
-                    id="calc-room-type"
-                    value={form.roomType}
-                    onChange={(e) => update("roomType", e.target.value as RoomType)}
-                  >
-                    {roomTypes.map((roomType) => (
-                      <option key={roomType} value={roomType}>
-                        {roomTypeLabels[roomType]}
-                      </option>
-                    ))}
-                  </select>
+                <div className="rounded-2xl bg-paper p-4">
+                  <p className="mb-4 text-xs font-bold uppercase tracking-wider text-slate-500">Hotel details</p>
+                  <div className="grid gap-4 sm:grid-cols-2">
+                    <div>
+                      <label htmlFor="calc-room-type">Room type</label>
+                      <select id="calc-room-type" value={form.roomType} onChange={(e) => update("roomType", e.target.value as RoomType)}>
+                        {roomTypes.map((roomType) => <option key={roomType} value={roomType}>{roomTypeLabels[roomType]}</option>)}
+                      </select>
+                    </div>
+                    <div>
+                      <label htmlFor="calc-distance">Distance from Haram</label>
+                      <input id="calc-distance" type="number" min="0" step="1" inputMode="numeric" value={form.distanceFromHaram} onChange={(e) => update("distanceFromHaram", e.target.value)} placeholder="e.g. 350" />
+                    </div>
+                    <div>
+                      <label htmlFor="calc-haram-access">Haram access</label>
+                      <select id="calc-haram-access" value={form.haramAccess} onChange={(e) => update("haramAccess", e.target.value as HaramAccessType)}>
+                        {haramAccessTypes.map((access) => <option key={access} value={access}>{haramAccessLabels[access]}</option>)}
+                      </select>
+                    </div>
+                    <div>
+                      <label htmlFor="calc-stars">Star rating</label>
+                      <select id="calc-stars" value={form.starRating} onChange={(e) => update("starRating", e.target.value)}>
+                        <option value="">Not specified</option>
+                        {[1, 2, 3, 4, 5].map((rating) => <option key={rating} value={rating}>{rating} Star</option>)}
+                      </select>
+                    </div>
+                    <div>
+                      <label htmlFor="calc-meals">Meal plan</label>
+                      <select id="calc-meals" value={form.mealPlan} onChange={(e) => update("mealPlan", e.target.value)}>
+                        <option>Room only</option>
+                        <option>Breakfast included</option>
+                        <option>Half board</option>
+                        <option>Full board</option>
+                      </select>
+                    </div>
+                  </div>
                 </div>
               )}
             </div>
@@ -398,7 +433,7 @@ export default function CalculatorItemsManager({
               </div>
             </div>
           </div>
-          {(form.unit === "per_room_night" || form.unit === "per_person_night") && (
+          {(form.category === "hotel" || form.unit === "per_room_night" || form.unit === "per_person_night") && (
             <div className="rounded-2xl border border-brand-orange/20 bg-brand-orange/5 p-4">
               <div className="flex items-start justify-between gap-3">
                 <div>
@@ -556,6 +591,11 @@ export default function CalculatorItemsManager({
                     {item.location || "No location"}
                     {item.roomType ? ` · ${roomTypeLabels[item.roomType]} room` : ""}
                   </p>
+                  {item.category === "hotel" && (item.distanceFromHaram || item.starRating || item.mealPlan) && (
+                    <p className="mt-1 text-[11px] text-slate-400">
+                      {[item.distanceFromHaram == null ? "" : `${item.distanceFromHaram} metres`, item.haramAccess ? haramAccessLabels[item.haramAccess] : "", item.starRating ? `${item.starRating} star` : "", item.mealPlan].filter(Boolean).join(" · ")}
+                    </p>
+                  )}
                   {item.dateRates.length > 0 && (
                     <p className="mt-2 text-[11px] font-semibold text-brand-orange-dark">
                       {item.dateRates.length} date price period{item.dateRates.length === 1 ? "" : "s"}

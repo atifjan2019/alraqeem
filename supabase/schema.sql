@@ -315,6 +315,10 @@ create table if not exists public.calculator_items (
   category    text not null check (category in ('hotel','flight','visa','transport','ziyarat','other')),
   room_type   text check (room_type in ('sharing','quad','triple','double')),
   location    text,
+  distance_from_haram integer check (distance_from_haram >= 0),
+  haram_access text check (haram_access in ('walk','shuttle','both')),
+  star_rating smallint check (star_rating between 1 and 5),
+  meal_plan   text,
   price       integer not null check (price >= 0),
   date_rates  jsonb not null default '[]'::jsonb
               check (jsonb_typeof(date_rates) = 'array'),
@@ -326,6 +330,13 @@ create table if not exists public.calculator_items (
   updated_at  timestamptz not null default now()
 );
 alter table public.calculator_items add column if not exists room_type text;
+alter table public.calculator_items add column if not exists distance_from_haram integer;
+alter table public.calculator_items
+  alter column distance_from_haram type integer
+  using nullif(regexp_replace(distance_from_haram::text, '[^0-9]', '', 'g'), '')::integer;
+alter table public.calculator_items add column if not exists haram_access text;
+alter table public.calculator_items add column if not exists star_rating smallint;
+alter table public.calculator_items add column if not exists meal_plan text;
 alter table public.calculator_items
   add column if not exists date_rates jsonb not null default '[]'::jsonb;
 update public.calculator_items
