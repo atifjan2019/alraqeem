@@ -11,10 +11,27 @@ import {
 } from "@/lib/calculatorItems";
 import { waHref } from "@/lib/settings";
 
-type ItemValues = { selected: boolean; nights: number; quantity: number };
+type ItemValues = {
+  selected: boolean;
+  quantity: number;
+  checkIn: string;
+  checkOut: string;
+};
 
 function positive(value: number, fallback = 1) {
   return Number.isFinite(value) && value > 0 ? Math.floor(value) : fallback;
+}
+
+function nightsBetween(checkIn: string, checkOut: string) {
+  if (!checkIn || !checkOut || checkOut <= checkIn) return [] as string[];
+  const nights: string[] = [];
+  const cursor = new Date(`${checkIn}T00:00:00Z`);
+  const end = new Date(`${checkOut}T00:00:00Z`);
+  while (cursor < end) {
+    nights.push(cursor.toISOString().slice(0, 10));
+    cursor.setUTCDate(cursor.getUTCDate() + 1);
+  }
+  return nights;
 }
 
 export default function PackageCalculator({
@@ -28,7 +45,12 @@ export default function PackageCalculator({
   const [values, setValues] = useState<Record<string, ItemValues>>({});
 
   function valueFor(id: string): ItemValues {
-    return values[id] ?? { selected: false, nights: 1, quantity: 1 };
+    return values[id] ?? {
+      selected: false,
+      quantity: 1,
+      checkIn: "",
+      checkOut: "",
+    };
   }
 
   function patch(id: string, next: Partial<ItemValues>) {
@@ -42,16 +64,39 @@ export default function PackageCalculator({
     const value = valueFor(item.id);
     if (!value.selected) return 0;
     const quantity = positive(value.quantity);
-    const nights = positive(value.nights);
+    const nightDates = nightsBetween(value.checkIn, value.checkOut);
+    const nightlySubtotal =
+      nightDates.length > 0
+        ? nightDates.reduce((sum, date) => {
+            const datedRate = item.dateRates.find(
+              (rate) => date >= rate.startDate && date <= rate.endDate
+            );
+            return sum + (datedRate?.price ?? item.price);
+          }, 0)
+        : item.price;
     if (item.unit === "per_person") return item.price * positive(travelers);
     if (item.unit === "per_person_night") {
-      return item.price * positive(travelers) * nights;
+      return nightlySubtotal * positive(travelers);
     }
-    if (item.unit === "per_room_night") return item.price * quantity * nights;
+    if (item.unit === "per_room_night") return nightlySubtotal * quantity;
     if (item.unit === "per_vehicle" || item.unit === "per_trip") {
       return item.price * quantity;
     }
     return item.price;
+  }
+
+  function rateBreakdown(item: CalculatorItem) {
+    const value = valueFor(item.id);
+    const dates = nightsBetween(value.checkIn, value.checkOut);
+    const counts = new Map<number, number>();
+    for (const date of dates) {
+      const rate =
+        item.dateRates.find(
+          (period) => date >= period.startDate && date <= period.endDate
+        )?.price ?? item.price;
+      counts.set(rate, (counts.get(rate) ?? 0) + 1);
+    }
+    return Array.from(counts, ([price, nights]) => ({ price, nights }));
   }
 
   const selected = items.filter((item) => valueFor(item.id).selected);
@@ -67,11 +112,12 @@ export default function PackageCalculator({
     `Travelers: ${positive(travelers)}`,
     ...selected.map((item) => {
       const value = valueFor(item.id);
+      const nights = nightsBetween(value.checkIn, value.checkOut).length;
       const details =
         item.unit === "per_room_night"
-          ? ` (${positive(value.quantity)} room(s), ${positive(value.nights)} night(s))`
+          ? ` (${positive(value.quantity)} room(s), ${nights || 1} night(s)${value.checkIn && value.checkOut ? `, ${value.checkIn} to ${value.checkOut}` : ""})`
           : item.unit === "per_person_night"
-            ? ` (${positive(value.nights)} night(s))`
+            ? ` (${nights || 1} night(s)${value.checkIn && value.checkOut ? `, ${value.checkIn} to ${value.checkOut}` : ""})`
             : item.unit === "per_vehicle"
               ? ` (${positive(value.quantity)} vehicle(s))`
               : item.unit === "per_trip"
@@ -143,6 +189,11 @@ export default function PackageCalculator({
                         <div>
                           <p className="font-display text-lg text-brand-orange-dark">{formatCalculatorPrice(item.price)}</p>
                           <p className="text-xs text-slate-500">{unitLabels[item.unit]}</p>
+                          {item.dateRates.length > 0 && (
+                            <p className="mt-1 text-[10px] font-semibold uppercase tracking-wide text-brand-orange-dark">
+                              Date-based rates available
+                            </p>
+                          )}
                         </div>
                         {value.selected && (
                           <p className="text-right text-sm font-semibold text-brand-blue-deep">
@@ -161,10 +212,29 @@ export default function PackageCalculator({
                             </div>
                           )}
                           {(item.unit === "per_room_night" || item.unit === "per_person_night") && (
-                            <div className={item.unit === "per_person_night" ? "col-span-2" : ""}>
-                              <label className="text-xs" htmlFor={`nights-${item.id}`}>Nights</label>
-                              <input id={`nights-${item.id}`} type="number" min="1" value={value.nights} onChange={(event) => patch(item.id, { nights: positive(Number(event.target.value)) })} />
-                            </div>
+                            <>
+                              <div className="col-span-2 sm:col-span-1">
+                                <label className="text-xs" htmlFor={`check-in-${item.id}`}>Check-in</label>
+                                <input id={`check-in-${item.id}`} type="date" value={value.checkIn} onChange={(event) => patch(item.id, { checkIn: event.target.value })} />
+                              </div>
+                              <div className="col-span-2 sm:col-span-1">
+                                <label className="text-xs" htmlFor={`check-out-${item.id}`}>Check-out</label>
+                                <input id={`check-out-${item.id}`} type="date" min={value.checkIn || undefined} value={value.checkOut} onChange={(event) => patch(item.id, { checkOut: event.target.value })} />
+                              </div>
+                              {value.checkIn && value.checkOut && value.checkOut <= value.checkIn && (
+                                <p className="col-span-2 text-xs font-medium text-red-600">Check-out must be after check-in.</p>
+                              )}
+                              {rateBreakdown(item).length > 0 && (
+                                <div className="col-span-2 rounded-lg bg-white px-3 py-2 text-xs text-slate-600">
+                                  {rateBreakdown(item).map((part) => (
+                                    <p key={part.price} className="flex justify-between gap-3">
+                                      <span>{part.nights} night{part.nights === 1 ? "" : "s"} × {formatCalculatorPrice(part.price)}</span>
+                                      <span className="font-semibold">{formatCalculatorPrice(part.nights * part.price)}</span>
+                                    </p>
+                                  ))}
+                                </div>
+                              )}
+                            </>
                           )}
                         </div>
                       )}

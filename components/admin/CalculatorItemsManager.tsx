@@ -22,6 +22,7 @@ const blank = {
   roomType: "sharing" as RoomType,
   location: "Makkah",
   price: "",
+  dateRates: [] as { startDate: string; endDate: string; price: string }[],
   unit: "per_room_night" as CalculatorUnit,
   description: "",
   active: true,
@@ -80,6 +81,11 @@ export default function CalculatorItemsManager({
             : "Makkah"
           : item.location,
       price: String(item.price),
+      dateRates: item.dateRates.map((rate) => ({
+        startDate: rate.startDate,
+        endDate: rate.endDate,
+        price: String(rate.price),
+      })),
       unit: item.unit,
       description: item.description,
       active: item.active,
@@ -92,6 +98,37 @@ export default function CalculatorItemsManager({
     setEditingId(null);
     setForm(blank);
     setError("");
+  }
+
+  function addDateRate() {
+    setForm((current) => ({
+      ...current,
+      dateRates: [
+        ...current.dateRates,
+        { startDate: "", endDate: "", price: "" },
+      ],
+    }));
+  }
+
+  function updateDateRate(
+    index: number,
+    key: "startDate" | "endDate" | "price",
+    value: string
+  ) {
+    setForm((current) => ({
+      ...current,
+      dateRates: current.dateRates.map((rate, rateIndex) =>
+        rateIndex === index ? { ...rate, [key]: value } : rate
+      ),
+    }));
+    setError("");
+  }
+
+  function removeDateRate(index: number) {
+    setForm((current) => ({
+      ...current,
+      dateRates: current.dateRates.filter((_, rateIndex) => rateIndex !== index),
+    }));
   }
 
   async function save(event: React.FormEvent) {
@@ -242,6 +279,47 @@ export default function CalculatorItemsManager({
               </div>
             </div>
           </div>
+          {(form.unit === "per_room_night" || form.unit === "per_person_night") && (
+            <div className="rounded-2xl border border-brand-orange/20 bg-brand-orange/5 p-4">
+              <div className="flex items-start justify-between gap-3">
+                <div>
+                  <p className="text-sm font-semibold text-brand-blue-deep">Date-based prices</p>
+                  <p className="mt-1 text-xs leading-relaxed text-slate-500">
+                    Optional. Matching dates override the regular price above.
+                  </p>
+                </div>
+                <button type="button" onClick={addDateRate} className="shrink-0 rounded-lg bg-white px-3 py-2 text-xs font-semibold text-brand-blue-deep shadow-sm hover:bg-paper">
+                  + Add period
+                </button>
+              </div>
+              <div className="mt-4 space-y-3">
+                {form.dateRates.map((rate, index) => (
+                  <div key={index} className="grid grid-cols-2 gap-3 rounded-xl bg-white p-3 shadow-sm">
+                    <div>
+                      <label htmlFor={`rate-from-${index}`} className="text-xs">From</label>
+                      <input id={`rate-from-${index}`} type="date" value={rate.startDate} onChange={(e) => updateDateRate(index, "startDate", e.target.value)} required />
+                    </div>
+                    <div>
+                      <label htmlFor={`rate-to-${index}`} className="text-xs">To</label>
+                      <input id={`rate-to-${index}`} type="date" value={rate.endDate} onChange={(e) => updateDateRate(index, "endDate", e.target.value)} required />
+                    </div>
+                    <div>
+                      <label htmlFor={`rate-price-${index}`} className="text-xs">Price per night</label>
+                      <input id={`rate-price-${index}`} type="number" min="0" value={rate.price} onChange={(e) => updateDateRate(index, "price", e.target.value)} required />
+                    </div>
+                    <div className="flex items-end justify-end">
+                      <button type="button" onClick={() => removeDateRate(index)} className="rounded-lg px-3 py-2 text-xs font-semibold text-red-600 hover:bg-red-50">Remove</button>
+                    </div>
+                  </div>
+                ))}
+                {form.dateRates.length === 0 && (
+                  <p className="rounded-xl border border-dashed border-brand-orange/30 px-3 py-4 text-center text-xs text-slate-500">
+                    The regular price applies to every date until you add a period.
+                  </p>
+                )}
+              </div>
+            </div>
+          )}
           <div>
             <label htmlFor="calc-description">Customer description</label>
             <textarea id="calc-description" rows={3} value={form.description} onChange={(e) => update("description", e.target.value)} placeholder="Room type, inclusions, restrictions…" />
@@ -321,6 +399,11 @@ export default function CalculatorItemsManager({
                     {item.location || "No location"}
                     {item.roomType ? ` · ${roomTypeLabels[item.roomType]} room` : ""}
                   </p>
+                  {item.dateRates.length > 0 && (
+                    <p className="mt-2 text-[11px] font-semibold text-brand-orange-dark">
+                      {item.dateRates.length} date price period{item.dateRates.length === 1 ? "" : "s"}
+                    </p>
+                  )}
                 </div>
                 <div className="shrink-0 text-right">
                   <p className="font-display text-xl text-brand-orange-dark">{formatCalculatorPrice(item.price)}</p>

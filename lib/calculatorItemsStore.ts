@@ -3,6 +3,7 @@ import { getAdminClient, getReadClient } from "@/lib/supabase";
 import type { CalculatorItemInput } from "@/lib/calculatorItemInput";
 import type {
   CalculatorCategory,
+  DateRate,
   CalculatorItem,
   CalculatorUnit,
   RoomType,
@@ -17,6 +18,7 @@ type Row = {
   room_type: RoomType | null;
   location: string | null;
   price: number;
+  date_rates: DateRate[] | null;
   unit: CalculatorUnit;
   description: string | null;
   active: boolean;
@@ -31,6 +33,7 @@ function rowToItem(row: Row): CalculatorItem {
     roomType: row.room_type,
     location: row.location ?? "",
     price: row.price,
+    dateRates: row.date_rates ?? [],
     unit: row.unit,
     description: row.description ?? "",
     active: row.active,
@@ -45,6 +48,7 @@ function toRow(input: CalculatorItemInput) {
     room_type: input.roomType,
     location: input.location || null,
     price: input.price,
+    date_rates: input.dateRates,
     unit: input.unit,
     description: input.description || null,
     active: input.active,

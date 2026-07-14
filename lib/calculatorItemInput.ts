@@ -5,6 +5,7 @@ import {
   type CalculatorCategory,
   type CalculatorItem,
   type CalculatorUnit,
+  type DateRate,
   type RoomType,
 } from "@/lib/calculatorItems";
 
@@ -43,6 +44,37 @@ export function parseCalculatorItemBody(
     return { error: "Price must be zero or a positive number." };
   }
 
+  const dateRates: DateRate[] = [];
+  if (Array.isArray(body.dateRates)) {
+    for (const raw of body.dateRates) {
+      if (!raw || typeof raw !== "object") continue;
+      const rate = raw as Record<string, unknown>;
+      const startDate = String(rate.startDate ?? "");
+      const endDate = String(rate.endDate ?? "");
+      const rawRatePrice = rate.price;
+      const ratePrice = Number(rawRatePrice);
+      if (
+        !/^\d{4}-\d{2}-\d{2}$/.test(startDate) ||
+        !/^\d{4}-\d{2}-\d{2}$/.test(endDate) ||
+        endDate < startDate ||
+        rawRatePrice === "" ||
+        rawRatePrice === null ||
+        rawRatePrice === undefined ||
+        !Number.isFinite(ratePrice) ||
+        ratePrice < 0
+      ) {
+        return { error: "Every date rate needs valid From, To, and Price values." };
+      }
+      dateRates.push({ startDate, endDate, price: Math.round(ratePrice) });
+    }
+  }
+  dateRates.sort((a, b) => a.startDate.localeCompare(b.startDate));
+  for (let index = 1; index < dateRates.length; index += 1) {
+    if (dateRates[index].startDate <= dateRates[index - 1].endDate) {
+      return { error: "Date-based price periods cannot overlap." };
+    }
+  }
+
   return {
     input: {
       name,
@@ -50,6 +82,10 @@ export function parseCalculatorItemBody(
       roomType: category === "hotel" ? requestedRoomType : null,
       location: category === "visa" ? "" : location,
       price: Math.round(price),
+      dateRates:
+        unit === "per_room_night" || unit === "per_person_night"
+          ? dateRates
+          : [],
       unit,
       description,
       active: body.active !== false,

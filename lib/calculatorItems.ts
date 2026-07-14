@@ -23,6 +23,12 @@ export type CalculatorUnit = (typeof calculatorUnits)[number];
 export const roomTypes = ["sharing", "quad", "triple", "double"] as const;
 export type RoomType = (typeof roomTypes)[number];
 
+export type DateRate = {
+  startDate: string;
+  endDate: string;
+  price: number;
+};
+
 export const roomTypeLabels: Record<RoomType, string> = {
   sharing: "Sharing",
   quad: "Quad",
@@ -37,6 +43,7 @@ export type CalculatorItem = {
   roomType: RoomType | null;
   location: string;
   price: number;
+  dateRates: DateRate[];
   unit: CalculatorUnit;
   description: string;
   active: boolean;

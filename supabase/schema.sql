@@ -316,6 +316,8 @@ create table if not exists public.calculator_items (
   room_type   text check (room_type in ('sharing','quad','triple','double')),
   location    text,
   price       integer not null check (price >= 0),
+  date_rates  jsonb not null default '[]'::jsonb
+              check (jsonb_typeof(date_rates) = 'array'),
   unit        text not null check (unit in ('per_person','per_person_night','per_room_night','per_vehicle','per_trip','flat')),
   description text,
   active      boolean not null default true,
@@ -324,6 +326,8 @@ create table if not exists public.calculator_items (
   updated_at  timestamptz not null default now()
 );
 alter table public.calculator_items add column if not exists room_type text;
+alter table public.calculator_items
+  add column if not exists date_rates jsonb not null default '[]'::jsonb;
 update public.calculator_items
 set room_type = 'sharing'
 where category = 'hotel' and room_type is null;

@@ -5,6 +5,8 @@ create table if not exists public.calculator_items (
   room_type   text check (room_type in ('sharing','quad','triple','double')),
   location    text,
   price       integer not null check (price >= 0),
+  date_rates  jsonb not null default '[]'::jsonb
+              check (jsonb_typeof(date_rates) = 'array'),
   unit        text not null check (unit in ('per_person','per_person_night','per_room_night','per_vehicle','per_trip','flat')),
   description text,
   active      boolean not null default true,
