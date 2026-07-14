@@ -5,7 +5,6 @@ import PackageInquiryCard from "@/components/packages/PackageInquiryCard";
 import { CtaBand } from "@/components/Shared";
 import JsonLd from "@/components/JsonLd";
 import HomeFaq from "@/components/HomeFaq";
-import LastUpdated from "@/components/LastUpdated";
 import CaptionedImage from "@/components/packages/CaptionedImage";
 import SearchInquiryWidget from "@/components/SearchInquiryWidget";
 import Reviews from "@/components/Reviews";
@@ -43,6 +42,7 @@ const silos = [
     href: "/umrah",
     anchor: "Umrah packages from Pakistan",
     icon: "moon",
+    image: images.kaaba,
     caption: "Masjid al-Haram and the Kaaba in Makkah",
     text: "Economy, premium, and Ramadan Umrah from seven to twenty eight days, with the Saudi e visa, flights, hotels near the Haram, and guided Ziyarat in Makkah and Madinah, departing from Karachi, Lahore, Islamabad, Peshawar, and other major cities.",
   },
@@ -51,7 +51,8 @@ const silos = [
     href: "/hajj",
     anchor: "Hajj packages from Pakistan",
     icon: "moon",
-    caption: "The tents of Mina during the days of Hajj",
+    image: images.madinah,
+    caption: "Masjid an-Nabawi in Madinah, visited on every Hajj journey",
     text: "A private Hajj and the government scheme through MORA, with the Maktab category, the camps at Mina, Arafat, and Muzdalifah, and trained scholars guiding every rite.",
   },
   {
@@ -59,6 +60,7 @@ const silos = [
     href: "/tours",
     anchor: "international tour packages from Pakistan",
     icon: "plane",
+    image: images.dubai,
     caption: "The Dubai skyline with the Burj Khalifa",
     text: "Dubai, Turkey, Baku, and Malaysia with Thailand, with the visit visa, flights, hotels, guided sightseeing, and a day by day itinerary in one booking.",
   },
@@ -243,7 +245,6 @@ export default async function HomePage() {
               Call {settings.phone}
             </a>
           </div>
-          <LastUpdated tone="dark" className="mt-6" />
           <div className="mt-14 grid max-w-2xl grid-cols-3 gap-6 border-t border-white/15 pt-8">
             {stats.map((s) => (
               <div key={s.label}>
@@ -403,20 +404,19 @@ export default async function HomePage() {
             description="Two pilgrimages, two purposes. Here is the plain difference before you choose."
             align="center"
           />
-          <div className="mx-auto max-w-3xl">
-            <p className="text-base leading-relaxed text-slate-700">
-              Umrah is the minor pilgrimage, performed year round. Pilgrims enter
-              in Ihram, perform Tawaf around the Kaaba, and complete Sa'i between
-              Safa and Marwah, then release Ihram with Halq or Taqsir. Hajj is the
-              obligatory pilgrimage of Dhul Hijjah, performed once by those who
-              are able. Hajj keeps the Umrah rites and adds the standing at
-              Arafat, the night at Muzdalifah, and the days at Mina, registered
-              through MORA in Pakistan and Nusuk in Saudi Arabia. The plain
-              difference: Umrah is shorter, year round, and voluntary, while Hajj
-              falls in Dhul Hijjah, adds Arafat, Muzdalifah, and Mina, and is
-              obligatory once for those who are able.
-            </p>
-            <div className="mt-8 grid gap-5 sm:grid-cols-2">
+          <p className="mx-auto max-w-3xl text-base leading-relaxed text-slate-700">
+            Umrah is the minor pilgrimage, performed year round. Pilgrims enter
+            in Ihram, perform Tawaf around the Kaaba, and complete Sa'i between
+            Safa and Marwah, then release Ihram with Halq or Taqsir. Hajj is the
+            obligatory pilgrimage of Dhul Hijjah, performed once by those who
+            are able. Hajj keeps the Umrah rites and adds the standing at
+            Arafat, the night at Muzdalifah, and the days at Mina, registered
+            through MORA in Pakistan and Nusuk in Saudi Arabia. The plain
+            difference: Umrah is shorter, year round, and voluntary, while Hajj
+            falls in Dhul Hijjah, adds Arafat, Muzdalifah, and Mina, and is
+            obligatory once for those who are able.
+          </p>
+          <div className="mt-8 grid gap-6 md:grid-cols-2">
               <div className="rounded-2xl border border-black/5 bg-white p-6 shadow-card">
                 <h3 className="font-display text-xl text-brand-blue-deep">
                   Umrah
@@ -440,47 +440,46 @@ export default async function HomePage() {
                 </ul>
               </div>
             </div>
-            <p className="mt-6 text-sm leading-relaxed text-slate-500">
-              Official registration runs through the{" "}
-              <a
-                href="https://www.mora.gov.pk"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="font-semibold text-brand-blue underline"
-              >
-                MORA portal
-              </a>{" "}
-              in Pakistan and the{" "}
-              <a
-                href="https://www.nusuk.sa"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="font-semibold text-brand-blue underline"
-              >
-                Nusuk platform
-              </a>{" "}
-              in Saudi Arabia, which also issues the{" "}
-              <a
-                href="https://www.nusuk.sa"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="font-semibold text-brand-blue underline"
-              >
-                Saudi Umrah e-visa
-              </a>
-              .
-            </p>
-            <div className="mt-8 flex flex-col gap-3 sm:flex-row">
-              <Link href="/umrah" className="btn-orange">
-                Explore Umrah packages
-              </Link>
-              <Link
-                href="/hajj"
-                className="btn-outline"
-              >
-                Hajj packages
-              </Link>
-            </div>
+          <p className="mx-auto mt-6 max-w-3xl text-sm leading-relaxed text-slate-500">
+            Official registration runs through the{" "}
+            <a
+              href="https://www.mora.gov.pk"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="font-semibold text-brand-blue underline"
+            >
+              MORA portal
+            </a>{" "}
+            in Pakistan and the{" "}
+            <a
+              href="https://www.nusuk.sa"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="font-semibold text-brand-blue underline"
+            >
+              Nusuk platform
+            </a>{" "}
+            in Saudi Arabia, which also issues the{" "}
+            <a
+              href="https://www.nusuk.sa"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="font-semibold text-brand-blue underline"
+            >
+              Saudi Umrah e-visa
+            </a>
+            .
+          </p>
+          <div className="mt-8 flex flex-col gap-3 sm:flex-row sm:justify-center">
+            <Link href="/umrah" className="btn-orange">
+              Explore Umrah packages
+            </Link>
+            <Link
+              href="/hajj"
+              className="btn-outline"
+            >
+              Hajj packages
+            </Link>
           </div>
         </div>
       </section>
@@ -502,6 +501,7 @@ export default async function HomePage() {
                 className="group flex flex-col overflow-hidden rounded-2xl bg-white p-5 shadow-card ring-1 ring-black/5 transition duration-300 hover:-translate-y-1 hover:shadow-lift"
               >
                 <CaptionedImage
+                  src={s.image}
                   caption={s.caption}
                   icon={s.icon}
                   aspect="aspect-[16/9]"

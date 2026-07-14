@@ -416,17 +416,26 @@ export async function PackageDetailView({ pkg }: { pkg: TravelPackage }) {
               ))}
             </ul>
           </div>
+          {/* Hajj is the silo hub, so its quote widget sits inside the hero
+              like the Umrah hub, not in a strip below it */}
+          {isHajj && (
+            <div className="mt-8 max-w-3xl">
+              <SearchInquiryWidget whatsapp={settings.whatsapp} />
+            </div>
+          )}
         </div>
       </section>
 
       {/* Quote widget, single mode with the parent vertical resolved from route */}
-      <section className="border-b border-black/5 bg-white py-8">
-        <div className="container-site">
-          <div className="max-w-3xl">
-            <SearchInquiryWidget whatsapp={settings.whatsapp} />
+      {!isHajj && (
+        <section className="border-b border-black/5 bg-white py-8">
+          <div className="container-site">
+            <div className="max-w-3xl">
+              <SearchInquiryWidget whatsapp={settings.whatsapp} />
+            </div>
           </div>
-        </div>
-      </section>
+        </section>
+      )}
 
       {/* Value strip under the hero (tours) */}
       {isTour && (
