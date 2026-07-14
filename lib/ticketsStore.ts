@@ -1,6 +1,7 @@
 import "server-only";
 import { getReadClient, getAdminClient } from "@/lib/supabase";
 import { seedTickets, type Ticket, type TripType } from "@/lib/tickets";
+import { isExpired } from "@/lib/packages";
 import type { TicketInput } from "@/lib/ticketInput";
 
 const TABLE = "tickets";
@@ -55,11 +56,29 @@ export async function getTickets(): Promise<Ticket[]> {
     .order("sort_order", { ascending: true })
     .order("airline", { ascending: true });
   if (error || !data) return seedTickets;
-  return (data as Row[]).map(rowTo);
+  // Hide expired fares from the public site.
+  return (data as Row[]).map(rowTo).filter((t) => !isExpired(t.expiryDate));
 }
 
 export async function getTicket(slug: string): Promise<Ticket | undefined> {
   return (await getTickets()).find((t) => t.slug === slug);
+}
+
+/** Real DB tickets only — no seed fallback, includes expired. Admin use. */
+export async function getDbTickets(): Promise<Ticket[]> {
+  const supabase = getReadClient();
+  if (!supabase) return [];
+  const { data, error } = await supabase
+    .from(TABLE)
+    .select("*")
+    .order("sort_order", { ascending: true })
+    .order("airline", { ascending: true });
+  if (error || !data) return [];
+  return (data as Row[]).map(rowTo);
+}
+
+export async function getDbTicket(slug: string): Promise<Ticket | undefined> {
+  return (await getDbTickets()).find((t) => t.slug === slug);
 }
 
 function toRow(input: TicketInput) {

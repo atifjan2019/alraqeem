@@ -21,9 +21,10 @@ export async function POST(request: Request) {
         { status: 400 }
       );
     }
-    if (file.size > 8 * 1024 * 1024) {
+    // Vercel caps request bodies at ~4.5 MB, so keep the limit under that.
+    if (file.size > 4 * 1024 * 1024) {
       return NextResponse.json(
-        { error: "Image must be under 8 MB." },
+        { error: "Image must be under 4 MB." },
         { status: 400 }
       );
     }

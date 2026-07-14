@@ -28,8 +28,15 @@ export default function MediaLibrary({
         const fd = new FormData();
         fd.append("file", file);
         const res = await fetch("/api/media", { method: "POST", body: fd });
-        const data = await res.json();
-        if (!res.ok) throw new Error(data.error || "Upload failed.");
+        const data = await res.json().catch(() => ({}));
+        if (!res.ok) {
+          throw new Error(
+            data.error ||
+              (res.status === 413
+                ? "Image is too large (max 4 MB)."
+                : "Upload failed.")
+          );
+        }
         setItems((prev) => [data.media, ...prev]);
       }
     } catch (err) {

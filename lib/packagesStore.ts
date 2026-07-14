@@ -7,6 +7,7 @@ import {
 } from "@/lib/supabase";
 import {
   seedPackages,
+  isExpired,
   type TravelPackage,
   type Category,
 } from "@/lib/packages";
@@ -59,7 +60,11 @@ export async function getPackages(): Promise<TravelPackage[]> {
     console.error("[packages] read failed, using seed:", error?.message);
     return seedPackages;
   }
-  return (data as Row[]).map(rowToPackage);
+  const rows = (data as Row[]).map(rowToPackage);
+  // An empty table falls back to the starter packages so the pillar pages and
+  // sitemap never 404; expired offers are hidden from the public site.
+  if (rows.length === 0) return seedPackages;
+  return rows.filter((p) => !isExpired(p.expiryDate));
 }
 
 export async function getPackage(
@@ -67,6 +72,29 @@ export async function getPackage(
 ): Promise<TravelPackage | undefined> {
   const all = await getPackages();
   return all.find((p) => p.slug === slug);
+}
+
+/**
+ * Real DB packages only — no seed fallback and no expiry filter. Used by the
+ * admin dashboard so every saved package (including expired ones) is visible
+ * and editable. Public pages use getPackages().
+ */
+export async function getDbPackages(): Promise<TravelPackage[]> {
+  const supabase = getReadClient();
+  if (!supabase) return [];
+  const { data, error } = await supabase
+    .from(PACKAGES_TABLE)
+    .select("*")
+    .order("sort_order", { ascending: true })
+    .order("title", { ascending: true });
+  if (error || !data) return [];
+  return (data as Row[]).map(rowToPackage);
+}
+
+export async function getDbPackage(
+  slug: string
+): Promise<TravelPackage | undefined> {
+  return (await getDbPackages()).find((p) => p.slug === slug);
 }
 
 export async function getFeatured(limit = 4): Promise<TravelPackage[]> {

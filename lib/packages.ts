@@ -397,6 +397,17 @@ export function formatPrice(price: number | null) {
 }
 
 /**
+ * True once an offer's expiry date has passed. Compares calendar dates as
+ * strings (YYYY-MM-DD) in local time, so an offer stays valid through the whole
+ * of its expiry day rather than flipping to "expired" at UTC midnight.
+ */
+export function isExpired(expiryDate: string | null | undefined): boolean {
+  if (!expiryDate) return false;
+  const today = new Date().toLocaleDateString("en-CA");
+  return expiryDate < today;
+}
+
+/**
  * Decode the HTML entities that leak in when text is pasted from Word or a web
  * page (e.g. `&nbsp;` between every word), so descriptions read as plain text.
  */

@@ -1,12 +1,12 @@
 import Link from "next/link";
 import TicketsTable from "@/components/admin/TicketsTable";
-import { getTickets } from "@/lib/ticketsStore";
+import { getDbTickets } from "@/lib/ticketsStore";
 import { isSupabaseConfigured } from "@/lib/packagesStore";
 
 export const dynamic = "force-dynamic";
 
 export default async function AdminTicketsPage() {
-  const tickets = await getTickets();
+  const tickets = await getDbTickets();
 
   return (
     <div>

@@ -1,6 +1,6 @@
 import { notFound } from "next/navigation";
 import TicketForm from "@/components/admin/TicketForm";
-import { getTicket } from "@/lib/ticketsStore";
+import { getDbTicket } from "@/lib/ticketsStore";
 import { isSupabaseConfigured } from "@/lib/packagesStore";
 import { getCategoryNames } from "@/lib/categoriesStore";
 
@@ -12,7 +12,7 @@ export default async function EditTicketPage({
   params: Promise<{ slug: string }>;
 }) {
   const { slug } = await params;
-  const ticket = await getTicket(slug);
+  const ticket = await getDbTicket(slug);
   if (!ticket) notFound();
   const categoryOptions = await getCategoryNames("ticket");
 

@@ -5,7 +5,7 @@ import { useRouter } from "next/navigation";
 import { useState } from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faPen, faSpinner, faTrash } from "@fortawesome/free-solid-svg-icons";
-import { priceLabel, type TravelPackage } from "@/lib/packages";
+import { isExpired, priceLabel, type TravelPackage } from "@/lib/packages";
 
 export default function PackagesTable({
   packages,
@@ -34,7 +34,7 @@ export default function PackagesTable({
 
   function expiryLabel(p: TravelPackage) {
     if (!p.expiryDate) return null;
-    const expired = new Date(p.expiryDate) < new Date();
+    const expired = isExpired(p.expiryDate);
     return (
       <span
         className={`rounded-full px-2 py-0.5 text-[10px] font-bold uppercase ${

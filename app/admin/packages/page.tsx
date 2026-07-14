@@ -1,11 +1,11 @@
 import Link from "next/link";
 import PackagesTable from "@/components/admin/PackagesTable";
-import { getPackages, isSupabaseConfigured } from "@/lib/packagesStore";
+import { getDbPackages, isSupabaseConfigured } from "@/lib/packagesStore";
 
 export const dynamic = "force-dynamic";
 
 export default async function AdminPackagesPage() {
-  const packages = await getPackages();
+  const packages = await getDbPackages();
 
   return (
     <div>
