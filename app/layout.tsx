@@ -1,8 +1,8 @@
 import type { Metadata, Viewport } from "next";
-import { Analytics } from "@vercel/analytics/next";
 import "./globals.css";
 import NextTopLoader from "nextjs-toploader";
 import SiteChrome from "@/components/SiteChrome";
+import VercelInsights from "@/components/VercelInsights";
 import JsonLd from "@/components/JsonLd";
 import { getSettings } from "@/lib/settingsStore";
 import { siteSchemaGraph } from "@/lib/schema";
@@ -77,7 +77,7 @@ export default async function RootLayout({
           zIndex={1600}
         />
         <SiteChrome settings={settings}>{children}</SiteChrome>
-        <Analytics />
+        <VercelInsights />
       </body>
     </html>
   );
