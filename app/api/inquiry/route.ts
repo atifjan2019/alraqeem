@@ -234,11 +234,15 @@ export async function POST(request: Request) {
     const fromName = process.env.INQUIRY_FROM_NAME ?? "Al Raqeem Travel & Tours";
     const from = `${fromName} <${fromAddress}>`;
 
+    const phoneHref = `tel:${payload.phone.replace(/[^+\d]/g, "")}`;
+    const whatsappHref = `https://wa.me/${payload.phone.replace(/\D/g, "")}`;
+
     const text = [
       "New website inquiry",
       "",
       `Name: ${payload.name}`,
       `Phone: ${payload.phone}`,
+      `WhatsApp: ${whatsappHref}`,
       payload.email ? `Email: ${payload.email}` : "",
       payload.city ? `City: ${payload.city}` : "",
       `Service: ${payload.service}`,
@@ -246,8 +250,6 @@ export async function POST(request: Request) {
     ]
       .filter(Boolean)
       .join("\n");
-
-    const phoneHref = `tel:${payload.phone.replace(/[^+\d]/g, "")}`;
     const details = [
       detailRow("Name", payload.name),
       detailRow("Phone", payload.phone, phoneHref),
@@ -273,6 +275,10 @@ export async function POST(request: Request) {
           <tr>
             <td style="border-radius:999px;background:${BRAND.green};">
               <a href="${escapeHtml(phoneHref)}" style="display:inline-block;padding:13px 22px;color:#ffffff;font-size:13px;font-weight:800;line-height:18px;text-decoration:none;">Call customer</a>
+            </td>
+            <td style="width:12px;font-size:0;line-height:0;">&nbsp;</td>
+            <td style="border-radius:999px;background:#25d366;">
+              <a href="${escapeHtml(whatsappHref)}" style="display:inline-block;padding:13px 22px;color:#ffffff;font-size:13px;font-weight:800;line-height:18px;text-decoration:none;">WhatsApp customer</a>
             </td>
           </tr>
         </table>`,
