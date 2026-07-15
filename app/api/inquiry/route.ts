@@ -31,6 +31,100 @@ function escapeHtml(value: string): string {
     .replace(/'/g, "&#39;");
 }
 
+const BRAND = {
+  deepGreen: "#0a211a",
+  green: "#1c6b53",
+  gold: "#c5a253",
+  paper: "#f7f3ea",
+  ink: "#17352c",
+  muted: "#61736d",
+};
+
+function detailRow(label: string, value: string, href?: string): string {
+  const safeLabel = escapeHtml(label);
+  const safeValue = escapeHtml(value);
+  const renderedValue = href
+    ? `<a href="${escapeHtml(href)}" style="color:${BRAND.green};font-weight:700;text-decoration:none;">${safeValue}</a>`
+    : safeValue;
+
+  return `
+    <tr>
+      <td style="padding:13px 0;border-bottom:1px solid #e7e3d9;color:${BRAND.muted};font-size:13px;line-height:20px;vertical-align:top;width:116px;">${safeLabel}</td>
+      <td style="padding:13px 0;border-bottom:1px solid #e7e3d9;color:${BRAND.ink};font-size:14px;font-weight:600;line-height:20px;vertical-align:top;">${renderedValue}</td>
+    </tr>`;
+}
+
+function emailShell({
+  preheader,
+  eyebrow,
+  title,
+  intro,
+  content,
+  footerNote,
+}: {
+  preheader: string;
+  eyebrow: string;
+  title: string;
+  intro: string;
+  content: string;
+  footerNote: string;
+}): string {
+  return `<!doctype html>
+  <html lang="en">
+    <head>
+      <meta charset="utf-8" />
+      <meta name="viewport" content="width=device-width,initial-scale=1" />
+      <meta name="x-apple-disable-message-reformatting" />
+      <title>${escapeHtml(title)}</title>
+    </head>
+    <body style="margin:0;padding:0;background:${BRAND.paper};font-family:Arial,'Helvetica Neue',sans-serif;color:${BRAND.ink};">
+      <div style="display:none;max-height:0;overflow:hidden;opacity:0;color:transparent;">${escapeHtml(preheader)}</div>
+      <table role="presentation" width="100%" cellspacing="0" cellpadding="0" border="0" style="width:100%;background:${BRAND.paper};">
+        <tr>
+          <td align="center" style="padding:28px 12px;">
+            <table role="presentation" width="100%" cellspacing="0" cellpadding="0" border="0" style="width:100%;max-width:620px;background:#ffffff;border-radius:18px;overflow:hidden;box-shadow:0 12px 34px rgba(10,33,26,.12);">
+              <tr>
+                <td style="height:5px;background:${BRAND.gold};font-size:0;line-height:0;">&nbsp;</td>
+              </tr>
+              <tr>
+                <td style="background:${BRAND.deepGreen};padding:25px 30px;">
+                  <table role="presentation" width="100%" cellspacing="0" cellpadding="0" border="0">
+                    <tr>
+                      <td valign="middle">
+                        <img src="https://alraqeem.com.pk/logo.png" width="58" alt="Al Raqeem Travel &amp; Tours" style="display:block;width:58px;height:auto;border:0;" />
+                      </td>
+                      <td align="right" valign="middle" style="color:#ffffff;font-size:12px;font-weight:700;letter-spacing:1.4px;line-height:18px;text-transform:uppercase;">
+                        Al Raqeem<br /><span style="color:${BRAND.gold};">Travel &amp; Tours</span>
+                      </td>
+                    </tr>
+                  </table>
+                </td>
+              </tr>
+              <tr>
+                <td style="padding:34px 30px 12px;">
+                  <p style="margin:0 0 10px;color:${BRAND.gold};font-size:11px;font-weight:800;letter-spacing:1.8px;line-height:16px;text-transform:uppercase;">${escapeHtml(eyebrow)}</p>
+                  <h1 style="margin:0;color:${BRAND.deepGreen};font-family:Georgia,'Times New Roman',serif;font-size:30px;font-weight:600;line-height:38px;">${escapeHtml(title)}</h1>
+                  <p style="margin:14px 0 0;color:${BRAND.muted};font-size:15px;line-height:24px;">${escapeHtml(intro)}</p>
+                </td>
+              </tr>
+              <tr>
+                <td style="padding:12px 30px 34px;">${content}</td>
+              </tr>
+              <tr>
+                <td style="background:#eef3f0;padding:22px 30px;text-align:center;">
+                  <p style="margin:0 0 6px;color:${BRAND.deepGreen};font-size:13px;font-weight:700;line-height:20px;">Al Raqeem Travel &amp; Tours</p>
+                  <p style="margin:0;color:${BRAND.muted};font-size:11px;line-height:18px;">${escapeHtml(footerNote)}</p>
+                  <p style="margin:8px 0 0;font-size:11px;line-height:18px;"><a href="https://alraqeem.com.pk" style="color:${BRAND.green};text-decoration:none;">alraqeem.com.pk</a></p>
+                </td>
+              </tr>
+            </table>
+          </td>
+        </tr>
+      </table>
+    </body>
+  </html>`;
+}
+
 function isValidEmail(value: string): boolean {
   return /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(value);
 }
@@ -153,15 +247,37 @@ export async function POST(request: Request) {
       .filter(Boolean)
       .join("\n");
 
-    const html = `
-      <h2>New website inquiry</h2>
-      <p><strong>Name:</strong> ${escapeHtml(payload.name)}</p>
-      <p><strong>Phone:</strong> ${escapeHtml(payload.phone)}</p>
-      ${payload.email ? `<p><strong>Email:</strong> ${escapeHtml(payload.email)}</p>` : ""}
-      ${payload.city ? `<p><strong>City:</strong> ${escapeHtml(payload.city)}</p>` : ""}
-      <p><strong>Service:</strong> ${escapeHtml(payload.service)}</p>
-      ${payload.message ? `<p><strong>Message:</strong><br/>${escapeHtml(payload.message).replace(/\n/g, "<br/>")}</p>` : ""}
-    `;
+    const phoneHref = `tel:${payload.phone.replace(/[^+\d]/g, "")}`;
+    const details = [
+      detailRow("Name", payload.name),
+      detailRow("Phone", payload.phone, phoneHref),
+      payload.email ? detailRow("Email", payload.email, `mailto:${payload.email}`) : "",
+      payload.city ? detailRow("City", payload.city) : "",
+      detailRow("Service", payload.service),
+    ].join("");
+    const messageBlock = payload.message
+      ? `<div style="margin-top:22px;padding:18px 20px;background:#f7f8f5;border-left:4px solid ${BRAND.gold};border-radius:8px;">
+          <p style="margin:0 0 7px;color:${BRAND.muted};font-size:11px;font-weight:800;letter-spacing:1.3px;line-height:16px;text-transform:uppercase;">Customer message</p>
+          <p style="margin:0;color:${BRAND.ink};font-size:14px;line-height:22px;">${escapeHtml(payload.message).replace(/\n/g, "<br />")}</p>
+        </div>`
+      : "";
+    const html = emailShell({
+      preheader: `${payload.name} requested help with ${payload.service}.`,
+      eyebrow: "New website inquiry",
+      title: "A new travel inquiry has arrived",
+      intro: "The customer details are ready below. Contact them promptly while their travel plans are still fresh.",
+      content: `
+        <table role="presentation" width="100%" cellspacing="0" cellpadding="0" border="0" style="width:100%;border-top:1px solid #e7e3d9;">${details}</table>
+        ${messageBlock}
+        <table role="presentation" cellspacing="0" cellpadding="0" border="0" style="margin-top:24px;">
+          <tr>
+            <td style="border-radius:999px;background:${BRAND.green};">
+              <a href="${escapeHtml(phoneHref)}" style="display:inline-block;padding:13px 22px;color:#ffffff;font-size:13px;font-weight:800;line-height:18px;text-decoration:none;">Call customer</a>
+            </td>
+          </tr>
+        </table>`,
+      footerNote: "This notification was sent securely from the Al Raqeem website inquiry form.",
+    });
 
     try {
       await transport.sendMail({
@@ -183,7 +299,6 @@ export async function POST(request: Request) {
       }
 
       if (payload.email) {
-        const safeName = escapeHtml(payload.name);
         const userText = [
           `Assalam o Alaikum ${payload.name},`,
           "",
@@ -198,13 +313,27 @@ export async function POST(request: Request) {
           .filter(Boolean)
           .join("\n");
 
-        const userHtml = `
-          <p>Assalam o Alaikum ${safeName},</p>
-          <p>We received your inquiry and our team will contact you shortly.</p>
-          <p><strong>Service:</strong> ${escapeHtml(payload.service)}</p>
-          ${payload.city ? `<p><strong>City:</strong> ${escapeHtml(payload.city)}</p>` : ""}
-          <p>Thanks,<br/>Al Raqeem Travel &amp; Tours</p>
-        `;
+        const userHtml = emailShell({
+          preheader: "Your inquiry is safely with the Al Raqeem team.",
+          eyebrow: "Inquiry received",
+          title: `Assalam o Alaikum ${payload.name}`,
+          intro: "Thank you for choosing Al Raqeem. Your inquiry is safely with our travel team, and we will contact you shortly.",
+          content: `
+            <div style="padding:20px;background:#f7f8f5;border:1px solid #e5ebe7;border-radius:12px;">
+              <p style="margin:0 0 8px;color:${BRAND.muted};font-size:11px;font-weight:800;letter-spacing:1.3px;line-height:16px;text-transform:uppercase;">Your request</p>
+              <p style="margin:0;color:${BRAND.deepGreen};font-family:Georgia,'Times New Roman',serif;font-size:21px;font-weight:600;line-height:29px;">${escapeHtml(payload.service)}</p>
+              ${payload.city ? `<p style="margin:8px 0 0;color:${BRAND.muted};font-size:13px;line-height:20px;">Location: ${escapeHtml(payload.city)}</p>` : ""}
+            </div>
+            <p style="margin:22px 0 0;color:${BRAND.muted};font-size:14px;line-height:23px;">For anything urgent, reply directly to this email and our team will assist you.</p>
+            <table role="presentation" cellspacing="0" cellpadding="0" border="0" style="margin-top:22px;">
+              <tr>
+                <td style="border-radius:999px;background:${BRAND.green};">
+                  <a href="https://alraqeem.com.pk/packages" style="display:inline-block;padding:13px 22px;color:#ffffff;font-size:13px;font-weight:800;line-height:18px;text-decoration:none;">Explore travel packages</a>
+                </td>
+              </tr>
+            </table>`,
+          footerNote: "Umrah, Hajj, tours, tickets and visa assistance across Pakistan.",
+        });
 
         // The customer confirmation is a bonus — don't fail the request if it bounces.
         try {
@@ -214,6 +343,7 @@ export async function POST(request: Request) {
             subject: "We received your inquiry | Al Raqeem Travel & Tours",
             text: userText,
             html: userHtml,
+            replyTo: to,
           });
         } catch (error) {
           console.error("[inquiry] confirmation email failed:", error);
