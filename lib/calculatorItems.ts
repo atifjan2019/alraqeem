@@ -44,7 +44,7 @@ export type HaramAccessType = (typeof haramAccessTypes)[number];
 export const haramAccessLabels: Record<HaramAccessType, string> = {
   walk: "Walk",
   shuttle: "Shuttle",
-  both: "Both",
+  both: "Walk/Shuttle",
 };
 
 export const roomTypeLabels: Record<RoomType, string> = {

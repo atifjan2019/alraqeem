@@ -427,61 +427,60 @@ export default function PackageCalculator({
                   No {roomTypeLabels[roomType]} rooms are available in {currentStep.location} right now — showing all room types instead.
                 </p>
               )}
-              <div className="mt-6 grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
-                {hotelsToShow
-                  .map((item) => {
-                    const value = valueFor(item.id);
-                    return (
-                      <label key={item.id} className={`cursor-pointer rounded-2xl border p-5 transition ${value.selected ? "border-brand-orange bg-brand-orange/5 shadow-card ring-1 ring-brand-orange/30" : "border-black/10 hover:border-brand-blue/30"}`}>
-                        <div className="flex items-start justify-between gap-3">
-                          <div>
-                            <h4 className="font-display text-lg text-brand-blue-deep">{item.name}</h4>
-                            {item.roomType && (
-                              <span className="mt-2 inline-flex rounded-full bg-brand-blue-deep/10 px-3 py-1 text-[10px] font-bold uppercase tracking-wide text-brand-blue-deep">
-                                {roomTypeLabels[item.roomType]} room
-                              </span>
-                            )}
-                          </div>
-                          <input type="radio" name={`hotel-${currentStep.location}`} checked={value.selected} onChange={() => selectHotel(item)} className="mt-1 h-5 w-5 shrink-0" />
-                        </div>
-                        <div className="mt-4 grid gap-2 rounded-xl bg-paper p-3 text-xs text-slate-600">
-                          <p className="flex items-center justify-between gap-3">
-                            <span>Distance from Haram</span>
-                            <span className="font-semibold text-brand-blue-deep">
-                              {item.distanceFromHaram == null
-                                ? "Confirm with our team"
-                                : `${item.distanceFromHaram.toLocaleString("en-PK")} metres`}
+              <div className="mt-6 space-y-3">
+                {hotelsToShow.map((item) => {
+                  const value = valueFor(item.id);
+                  return (
+                    <label key={item.id} className={`flex cursor-pointer flex-wrap items-center gap-x-6 gap-y-3 rounded-2xl border p-4 transition sm:px-6 ${value.selected ? "border-brand-orange bg-brand-orange/5 shadow-card ring-1 ring-brand-orange/30" : "border-black/10 hover:border-brand-blue/30"}`}>
+                      <input type="radio" name={`hotel-${currentStep.location}`} checked={value.selected} onChange={() => selectHotel(item)} className="h-5 w-5 shrink-0" />
+                      <div className="min-w-[160px] flex-1">
+                        <h4 className="font-display text-lg leading-snug text-brand-blue-deep">
+                          {item.name}
+                          {item.starRating ? (
+                            <span className="ml-2 whitespace-nowrap align-middle text-sm tracking-widest text-brand-blue" aria-label={`${item.starRating} star hotel`}>
+                              {"★".repeat(item.starRating)}
                             </span>
-                          </p>
-                          <p className="flex items-center justify-between gap-3">
-                            <span>Hotel rating</span>
-                            <span className="font-semibold text-brand-blue-deep">
-                              {item.starRating ? `${item.starRating} Star` : "Not specified"}
-                            </span>
-                          </p>
-                          <p className="flex items-center justify-between gap-3">
-                            <span>Haram access</span>
-                            <span className="font-semibold text-brand-blue-deep">
-                              {item.haramAccess ? haramAccessLabels[item.haramAccess] : "Confirm with our team"}
-                            </span>
-                          </p>
-                          <p className="flex items-center justify-between gap-3">
-                            <span>Meal plan</span>
-                            <span className="font-semibold text-brand-blue-deep">
-                              {item.mealPlan || "Room only"}
-                            </span>
-                          </p>
-                        </div>
-                        {item.description && <p className="mt-4 text-sm leading-relaxed text-slate-600">{item.description}</p>}
-                        {value.selected && item.unit === "per_room_night" && (
-                          <div className="mt-4 border-t border-black/5 pt-4">
-                            <label htmlFor={`rooms-${item.id}`} className="text-xs">Number of rooms</label>
-                            <input id={`rooms-${item.id}`} type="number" min="1" value={value.quantity} onChange={(event) => patch(item.id, { quantity: positive(Number(event.target.value)) })} onClick={(event) => event.stopPropagation()} />
-                          </div>
+                          ) : null}
+                        </h4>
+                        {item.roomType && (
+                          <span className="mt-1.5 inline-flex items-center gap-1.5 rounded-md border border-brand-orange/40 bg-brand-orange/10 px-2.5 py-1 text-[11px] font-bold uppercase tracking-wider text-brand-orange-dark">
+                            <svg viewBox="0 0 24 24" className="h-3.5 w-3.5" fill="currentColor" aria-hidden="true">
+                              <path d="M7 13c1.66 0 3-1.34 3-3S8.66 7 7 7s-3 1.34-3 3 1.34 3 3 3zm12-6h-8v7H3V5H1v15h2v-3h18v3h2v-9c0-2.21-1.79-4-4-4z" />
+                            </svg>
+                            {roomTypeLabels[item.roomType]} room
+                          </span>
                         )}
-                      </label>
-                    );
-                  })}
+                      </div>
+                      <div className="flex flex-wrap items-center gap-x-8 gap-y-2">
+                        <div>
+                          <p className="text-[10px] font-bold uppercase tracking-wide text-slate-400">Distance from Haram</p>
+                          <p className="text-sm font-semibold text-brand-blue-deep">
+                            {item.distanceFromHaram == null
+                              ? "Confirm with our team"
+                              : `${item.distanceFromHaram.toLocaleString("en-PK")} metres`}
+                          </p>
+                        </div>
+                        <div>
+                          <p className="text-[10px] font-bold uppercase tracking-wide text-slate-400">Haram access</p>
+                          <p className="text-sm font-semibold text-brand-blue-deep">
+                            {item.haramAccess ? haramAccessLabels[item.haramAccess] : "Confirm with our team"}
+                          </p>
+                        </div>
+                        <div>
+                          <p className="text-[10px] font-bold uppercase tracking-wide text-slate-400">Meal plan</p>
+                          <p className="text-sm font-semibold text-brand-blue-deep">{item.mealPlan || "Room only"}</p>
+                        </div>
+                      </div>
+                      {value.selected && item.unit === "per_room_night" && (
+                        <div className="flex shrink-0 items-center gap-2">
+                          <label htmlFor={`rooms-${item.id}`} className="mb-0 text-xs">Rooms</label>
+                          <input id={`rooms-${item.id}`} type="number" min="1" value={value.quantity} onChange={(event) => patch(item.id, { quantity: positive(Number(event.target.value)) })} onClick={(event) => event.stopPropagation()} className="w-20" />
+                        </div>
+                      )}
+                      {item.description && <p className="basis-full text-sm leading-relaxed text-slate-600">{item.description}</p>}
+                    </label>
+                  );
+                })}
               </div>
             </div>
           )}
