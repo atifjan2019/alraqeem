@@ -713,6 +713,20 @@ export default function PackageCalculator({
       const pax = positive(adults);
       const infantCount = nonNegative(infants);
 
+      // jsPDF's built-in fonts are Latin-1 only. Arrows (→), smart quotes and
+      // emoji break glyph-width measurement, which shows up as stretched,
+      // truncated text. Fold everything down to safe characters first.
+      const pdfText = (value: string) =>
+        String(value ?? "")
+          .replace(/→/g, "->")
+          .replace(/[‘’]/g, "'")
+          .replace(/[“”]/g, '"')
+          .replace(/[–—]/g, "-")
+          .replace(/…/g, "...")
+          .replace(/[^\x00-\xFF]/g, "")
+          .replace(/[ \t]{2,}/g, " ")
+          .trim();
+
       // Branded header band with the logo mark.
       const headerH = 34;
       doc.setFillColor(deep[0], deep[1], deep[2]);
@@ -726,11 +740,11 @@ export default function PackageCalculator({
       doc.setTextColor(255, 255, 255);
       doc.setFont("helvetica", "bold");
       doc.setFontSize(18);
-      doc.text(site.name, brandX, 14);
+      doc.text(pdfText(site.name), brandX, 14);
       doc.setFont("helvetica", "italic");
       doc.setFontSize(8.5);
       doc.setTextColor(210, 210, 210);
-      doc.text(site.tagline, brandX, 20);
+      doc.text(pdfText(site.tagline), brandX, 20);
       doc.setFont("helvetica", "bold");
       doc.setFontSize(10.5);
       doc.setTextColor(gold[0], gold[1], gold[2]);
@@ -765,7 +779,7 @@ export default function PackageCalculator({
       autoTable(doc, {
         startY: 42,
         head: [["Trip details", ""]],
-        body: detailRows,
+        body: detailRows.map((row) => row.map(pdfText)),
         theme: "plain",
         styles: { fontSize: 10, cellPadding: 2 },
         headStyles: { fontStyle: "bold", textColor: deep, fontSize: 11 },
@@ -778,8 +792,8 @@ export default function PackageCalculator({
 
       // Estimate line items
       const bodyRows = estimate.map((line) => [
-        line.label,
-        line.detail ?? "",
+        pdfText(line.label),
+        pdfText(line.detail ?? ""),
         line.amount !== null ? formatCalculatorPrice(line.amount) : "At inquiry",
       ]);
 
@@ -837,7 +851,7 @@ export default function PackageCalculator({
       // Notes
       const noteWidth = pageWidth - margin * 2;
       const addNote = (text: string) => {
-        const lines = doc.splitTextToSize(text, noteWidth) as string[];
+        const lines = doc.splitTextToSize(pdfText(text), noteWidth) as string[];
         const blockHeight = lines.length * 4.5 + 3;
         if (y + blockHeight > contentBottom) {
           doc.addPage();
@@ -871,11 +885,11 @@ export default function PackageCalculator({
         doc.setFont("helvetica", "bold");
         doc.setFontSize(8);
         doc.setTextColor(deep[0], deep[1], deep[2]);
-        doc.text(contactLine, margin, lineY + 5);
+        doc.text(pdfText(contactLine), margin, lineY + 5);
         doc.setFont("helvetica", "normal");
         doc.setFontSize(7);
         doc.setTextColor(slate[0], slate[1], slate[2]);
-        doc.text(site.address, margin, lineY + 9.5);
+        doc.text(pdfText(site.address), margin, lineY + 9.5);
         doc.text(`Page ${i} of ${pageCount}`, pageWidth - margin, lineY + 5, {
           align: "right",
         });
